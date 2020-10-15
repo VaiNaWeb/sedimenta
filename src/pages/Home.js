@@ -187,7 +187,6 @@ const ContentSobreText = styled.div`
 
 const ContainerParagraph = styled.p`
   color: #373737;
-  /* font-size: 1rem; */
   font-family: 'Open Sans', Regular;
 `;
 
@@ -271,7 +270,6 @@ const Box = styled.p`
 
 const SubContent = styled.div`
   width: 100%;
-  /* height: 60vh; */
   background-image: url(${Fundo});
   background-repeat: no-repeat;
 
