@@ -567,11 +567,11 @@ class Home extends Component {
               </p>
             </ContentCaixa>
             <ContentCaixa>
-              <Title>TERCEIRIZAÇÃO</Title>
+              {/* <Title>TERCEIRIZAÇÃO</Title>
               <p>Terceirizamos seu Departamento Contábil, Fiscal, 
                 Pessoal e Financeiro. Diminua seu custo 
                 e tenha mais tempo para o seu negócio.
-              </p>
+              </p> */}
             </ContentCaixa>
             <ContentCaixa>
               <Title>PLANEJAMENTO</Title>

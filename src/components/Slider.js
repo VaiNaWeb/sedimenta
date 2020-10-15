@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import Carousel from 'nuka-carousel';
 
 class Slider extends Component {
