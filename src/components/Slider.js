@@ -1,19 +1,93 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
+const ContentSlider = styled.div`
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9rem;
+  background-color: #D66B78;
+`;
+
+const ContentSliderMeio = styled.div`
+  width: 55%;
+  height: 35vh;
+  background-color: #FFFFFF;
+  color: #373737;
+  padding: 0 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin: auto; */
+  margin-top: 3.5rem;
+  outline: none;
+`;
+
+const ContentSliderParagraph = styled.p`
+  align-self: flex-end;
+  margin-top: 2rem;
+`;
+
+
 class Slider extends Component {
+  state = {
+  }
+
+
   render() {
     return (
-      // <div class="carousel">
-      //   <div><img src="https://s26.postimg.org/labezuy7d/image.jpg" alt="js" /></div>
-      //   <div><img src="https://s26.postimg.org/qzrnk64dl/image.jpg" alt="java" /></div>
-      //   <div><img src="https://s26.postimg.org/uxex9kr6x/image.jpg" alt="python"/></div>
-      //   <div><img src="https://s26.postimg.org/oas9ge9ih/image.jpg" alt="kotlin" /></div>
-      //   <div><img src="https://s26.postimg.org/z7tl55wa1/image.jpg" alt="scala" /></div>
-      //   <div><img src="https://s26.postimg.org/t85u1ibhl/image.jpg" alt="C#" /></div>
-      //   <div><img src="https://s26.postimg.org/lhz1wd961/image.jpg" alt="PHP" /></div>
-      //   <div><img src="https://s26.postimg.org/ip5ucc8tl/image.jpg" alt="dotnet" /></div>
-      // </div>
+      <ContentSlider>
+        <Carousel
+          autoplay='true'
+          cellAlign={"left"}
+          slidesToShow={3}
+          slideWidth="530px"
+          swiping={true}
+          dragging={true}
+          withoutControls={true}
+          disableEdgeSwiping={false}
+        >
+          <ContentSliderMeio>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+              Aenean luctus libero id velit laoreet dignissim.
+              Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+            <ContentSliderParagraph>Erlane, cargo, Empresa</ContentSliderParagraph>
+          </ContentSliderMeio>
+            <ContentSliderMeio>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+              Aenean luctus libero id velit laoreet dignissim.
+              Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+              <ContentSliderParagraph>Cicero, cargo, Empresa</ContentSliderParagraph>
+            </ContentSliderMeio>
+            <ContentSliderMeio>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+                Aenean luctus libero id velit laoreet dignissim.
+                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+              <ContentSliderParagraph>Evelyn, cargo, Empresa</ContentSliderParagraph>
+            </ContentSliderMeio>
+            <ContentSliderMeio>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+                Aenean luctus libero id velit laoreet dignissim.
+                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+              <ContentSliderParagraph>Israel, cargo, Empresa</ContentSliderParagraph>
+            </ContentSliderMeio>
+            <ContentSliderMeio>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+                Aenean luctus libero id velit laoreet dignissim.
+                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+              <ContentSliderParagraph>Kelvin, cargo, Empresa</ContentSliderParagraph>
+            </ContentSliderMeio>
+            <ContentSliderMeio>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
+                Aenean luctus libero id velit laoreet dignissim.
+                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
+              <ContentSliderParagraph>Rhuan, cargo, Empresa</ContentSliderParagraph>
+            </ContentSliderMeio>
+          </Carousel>
+      </ContentSlider>
     );
   }
 }
