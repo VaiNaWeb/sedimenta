@@ -96,7 +96,7 @@ const ContentSobre = styled.div`
 
 const ContentSobreTitle = styled.div`
   width: 11vw;
-  color: #000000;
+  color: #373737;
   font-size: 1.5rem;
   font-family: 'Product Sans', Bold;
 
@@ -138,7 +138,7 @@ const ContentCargo = styled.div`
 `;
 
 const ContentCargoCaixa = styled.div`
-  width: 20%;
+  width: 23%;
   height: 25vh;
   background-color: #FFFFFF;
   border-left: 5px solid #801422;
@@ -155,7 +155,7 @@ const ContentCargoCaixa = styled.div`
   }
 
   img {
-    margin-top: 1.4rem;
+    margin-top: 0.5rem;
   }
 `;
 
@@ -187,7 +187,7 @@ const ContentServiços = styled.div`
 const ContentServiçosTitle = styled.div`
   width: 25vw;
   color: #373737;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-family: 'Product Sans', Bold;
 
   hr {
@@ -202,10 +202,13 @@ const ContentServiçosTitle = styled.div`
 `;
 
 const ContentBox = styled.div`
-  width: 75%;
+  width: 67%;
+  background-color: #FFFFFF;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-right: 5rem;
+  box-shadow: 0px 3px 6px #00000029;
 
   img {
     width: 15%;
@@ -213,19 +216,22 @@ const ContentBox = styled.div`
 `;
 
 const ContentBoxGalery = styled.div`
-  width: 36%;
+  width: 49%;
+  border-bottom: 1px solid #70707099;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  padding: 3rem 0;
+`;
 
-  h2 {
-    font-size: 1.2rem;
-    font-family: 'Arial', Bold;
-    font-weight: bold;
-    text-align: center;
-    margin: 2rem 0;
-  }
+const BoxTitle = styled.h2`
+  width: ${props => (props.width)};
+  font-size: 1.2rem;
+  font-family: 'Arial', Bold;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
 `;
 
 const BoxText = styled.p`
@@ -237,6 +243,15 @@ const Box = styled.p`
   text-decoration: underline;
   margin: 2rem 0;
   opacity: 1;
+`;
+
+
+const BoxLinha = styled.div`
+  height: 18vh;
+  border-right: 2px solid #707070;
+  position: relative;
+  bottom: -147px;
+  opacity: 0.25;
 `;
 
 const SubContent = styled.div`
@@ -299,7 +314,7 @@ const SubContentSobreCaixa = styled.div`
   padding: 5rem 1.5rem;
 `;
 
-const SubContentTriangle= styled.div`
+const SubContentTriangle = styled.div`
   width: 0; 
   height: 0; 
   border-top: 15px solid transparent;
@@ -333,7 +348,7 @@ const SubContentButton = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 50px;
+  top: 30px;
 `;
 
 const Button = styled.button`
@@ -488,12 +503,12 @@ class Home extends Component {
           <span>
             <ContentSobreTitle>
               <hr></hr>
-              <h3 id="sobre">SOBRE A EMPRESA</h3>
+              <h3>SOBRE A EMPRESA</h3>
             </ContentSobreTitle>
             <ContentSobreText>
               <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em
-                  ajudar pequenas e médias empresas a atingir seus objetivos de
-                  negócios.</ContainerParagraph>
+              ajudar pequenas e médias empresas a atingir seus objetivos de
+              negócios.</ContainerParagraph>
               <ContainerParagraph>Quer seja uma empresa de médio porte, um(a)
               especialista que pretende lançar a sua ideia no mercado ou numa
               Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
@@ -502,7 +517,7 @@ class Home extends Component {
               Contabilidade, Departamento Pessoal, Impostos, Tributação de Pessoa
               Física e Finanças que permitem que você se concentre no
               crescimento de seus negócios - enquanto cuidamos de todo o trabalho
-                  de Contabilidade. </ContainerParagraph>
+              de Contabilidade. </ContainerParagraph>
               <ContainerParagraph>​Com mais de 10 anos de experiência no mercado aliada
               ao conhecimento de nossos sócios e colaboradores trabalhando em algumas
               das maiores empresas líderes do país e do mundo, atendemos nossos clientes
@@ -510,79 +525,85 @@ class Home extends Component {
               o que fazemos. Somos profissionais apaixonados que procuram proporcionar uma
               experiência de maior proximidade e interação com nossos clientes -
               colocando-os sempre em primeiro lugar. Abraçamos a inovação e buscamos
-                  oportunidades de criar valor para o seu negócio.</ContainerParagraph>
+              oportunidades de criar valor para o seu negócio.</ContainerParagraph>
               <ContainerParagraph>​Estamos sediados no bairro da
               Lapa, na cidade do Rio de Janeiro - Brasil, com escritório em Almada - Portugal,
-                  e também atendemos clientes internacionais fora do Brasil.</ContainerParagraph>
+              e também atendemos clientes internacionais fora do Brasil.</ContainerParagraph>
               <ContainerParagraph><b>A Sedimenta JPM </b>
-                  está ansiosa para ser sua parceira!</ContainerParagraph>
+              está ansiosa para ser sua parceira!</ContainerParagraph>
             </ContentSobreText>
           </span>
         </ContentSobre>
         <ContentCargo>
           <ContentCargoCaixa>
             <hr></hr>
-            <ContentBoxTitle>NOME</ContentBoxTitle>
-            <ContentBoxParagraph>cargo</ContentBoxParagraph>
+            <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
+            <ContentBoxParagraph>CEO</ContentBoxParagraph>
+            <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
             <img src={Icon} alt='linkedin' />
           </ContentCargoCaixa>
           <ContentCargoCaixa>
             <hr></hr>
-            <ContentBoxTitle>NOME</ContentBoxTitle>
-            <ContentBoxParagraph>cargo</ContentBoxParagraph>
+            <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
+            <ContentBoxParagraph>CEO</ContentBoxParagraph>
+            <ContentBoxParagraph>resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
             <img src={Icon} alt='linkedin' />
           </ContentCargoCaixa>
           <ContentCargoCaixa>
             <hr></hr>
-            <ContentBoxTitle>NOME</ContentBoxTitle>
-            <ContentBoxParagraph>cargo</ContentBoxParagraph>
+            <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
+            <ContentBoxParagraph>CEO</ContentBoxParagraph>
+            <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
             <img src={Icon} alt='linkedin' />
           </ContentCargoCaixa>
         </ContentCargo>
         <ContentServiços>
           <ContentServiçosTitle>
             <hr></hr>
-            <h3 id="serviços">CONHEÇA NOSSOS <b>SERVIÇOS</b></h3>
+            <h3>CONHEÇA NOSSOS <b>SERVIÇOS</b></h3>
           </ContentServiçosTitle>
           <ContentBox>
             <ContentBoxGalery>
               <img src={Image} alt='teste' />
-              <h2>CONTABILIDADE</h2>
+              <BoxTitle>CONTABILIDADE</BoxTitle>
+              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
+              <Box onClick={this.handleText}>LER MAIS</Box>
+            </ContentBoxGalery>
+            <BoxLinha></BoxLinha>
+            <ContentBoxGalery>
+              <img src={Image} alt='teste' />
+              <BoxTitle width='22vw'>DEPARTAMENTO FISCAL E PARAFISCAL</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
             <ContentBoxGalery>
               <img src={Image} alt='teste' />
-              <h2>DEPARTAMENTO FISCAL E PARAFISCAL</h2>
+              <BoxTitle>RECURSOS HUMANOS</BoxTitle>
+              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
+              <Box onClick={this.handleText}>LER MAIS</Box>
+            </ContentBoxGalery>
+            <BoxLinha></BoxLinha>
+            <ContentBoxGalery>
+              <img src={Image} alt='teste' />
+              <BoxTitle width='15vw'>DEPARTAMENTO PESSOAL</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
             <ContentBoxGalery>
               <img src={Image} alt='teste' />
-              <h2>RECURSOS HUMANOS</h2>
+              <BoxTitle width='22vw'>INTERNACIONALIZAÇÃO DE EMPRESAS</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
+            <BoxLinha></BoxLinha>
             <ContentBoxGalery>
               <img src={Image} alt='teste' />
-              <h2>DEPARTAMENTO PESSOAL</h2>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <h2>INTERNACIONALIZAÇÃO DE EMPRESAS</h2>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <h2>LOREM</h2>
+              <BoxTitle>LOREM</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
@@ -612,7 +633,7 @@ class Home extends Component {
             </SubContentButton>
           </SubContentSobreCaixa>
           <SubContentSobreCaixa>
-          <SubContentTriangle></SubContentTriangle>
+            <SubContentTriangle></SubContentTriangle>
             <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
             <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
               Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
@@ -625,8 +646,8 @@ class Home extends Component {
             </SubContentButton>
           </SubContentSobreCaixa>
           <SubContentSobreCaixa>
-          <SubContentTriangle></SubContentTriangle>
-          <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
+            <SubContentTriangle></SubContentTriangle>
+            <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
             <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
               Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
             <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam

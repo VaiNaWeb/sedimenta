@@ -134,11 +134,23 @@ const Title = styled.h1`
 `;
 
 const ParagraphHeader = styled.p`
-  width: ${props => (props.paragraph ? '83%' : '100%')};
-  margin-top: 1.4rem;
+  width: ${props => (props.paragraph ? '89%' : '99%')};
+  margin: 1rem 0 1.5rem;
   font-family: 'Open Sans', Regular;
   opacity: 1;
 `;
+
+const ButtonHeader= styled.button`
+  width: 20vw;
+  background: linear-gradient(to right, #992836 , #761F29, #4D141B);
+  border: none;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: 'Product Sans', Bold;
+  padding: 0.7rem;
+  text-transform: uppercase;
+`;
+
 
 const Slider = styled.div`
   width: 100%;
@@ -169,7 +181,7 @@ class Header extends Component {
     artigos: [ 
       {
         image: Aperto,
-        title: 'Agilidade, Confiança e Experiência',
+        title: 'Agilidade, Confiança e Experiência!',
         paragraph: 'Escolha quem se importar com o seu negócio. Nossa medida de sucesso é ver você prosperar.',
       },
       { 
@@ -218,7 +230,7 @@ class Header extends Component {
               <SubContainer>
                 <BoxMenu open={menu}>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </SubContainer>
@@ -226,6 +238,7 @@ class Header extends Component {
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
+              <ButtonHeader id="sobre" >conheça nosso serviço!</ButtonHeader>
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>

@@ -4,36 +4,33 @@ import styled from 'styled-components';
 import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
 
-const ContainerForm= styled.div`
+const ContainerForm = styled.div`
   width: 100%;
   height: 100vh;
-  /* background-size: cover; */
-  /* position: relative; */
 `;
 
 const ContentFinish = styled.div`
   width: 100%;
   height: 100vh;
-background-image: url(${Forma});
-  /* background-image: url(${Proposta}); */
-  background-size: cover;
-  /* position: relative; */
-  /* top: 400px; */
-
 `;
 
 const ContentFinishSolicitation = styled.span`
   width: 100%;
-  height: 97vh;
+  height: ${props => props.height ? '100vh' : '67vh'};
   color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: ${props => props.background ? `url(${Forma})` : `url(${Proposta})`};
+  background-size: cover;
 
   h3 {
     width: 45%;
+    font-size: 1rem;
+    font-family: 'Open Sans', Bold;
     text-align: center;
+    padding-top: 4rem;
   }
 `;
 
@@ -47,15 +44,11 @@ const ButtonSolicitation = styled.button`
   padding: 0.5rem 0.5rem;
   margin-top: 3rem;
   display: ${props => props.display ? 'flex' : 'none'};
+  align-items: center;
+  justify-content: center;
   outline: none;
   cursor: pointer;
 `;
-
-// const BoxForm = styled.div`
-//   width: 100%;
-//   background-image: url(${Forma});
-//   display: ${props => props.mostrar ? 'none' : 'flex'};
-// `;
 
 const Formulario = styled.form`
   width: 100%;
@@ -115,6 +108,13 @@ const ButtonForm = styled.button`
   cursor: pointer;
 `;
 
+const BoxImage = styled.div`
+  width: 100%;
+  height: 67vh;
+  background-image: url(${Proposta});
+  background-size: cover;
+`;
+
 class Formulation extends Component {
   state = {
     solicitation: true,
@@ -134,45 +134,62 @@ class Formulation extends Component {
     });
   }
 
-  render() {
+  renderForm = () => {
     return (
-      <ContainerForm>
-        {/* <img src={Forma} alt='forma' /> */}
+      <>
+        <ContentFinishSolicitation height background>
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam mi justo, interdum et rutrum dictum,
+            venenatis sollicitudin nisi.</h3>
+          <Formulario>
+            <Input
+              type="text"
+              placeholder="Nome*"
+              onChange={this.handleChange}
+            />
+            <Input
+              type="text"
+              placeholder="Empresa*"
+              onChange={this.handleChange}
+            />
+            <Input
+              type="text"
+              placeholder="E-mail*"
+              onChange={this.handleChange}
+            />
+            <Input
+              type="text"
+              placeholder="Assunto*"
+              onChange={this.handleChange}
+            />
+            <Textarea
+              placeholder="Escreva aqui a sua mensagem:"
+            />
+            <ButtonForm>ENVIAR</ButtonForm>
+          </Formulario>
+          {/* </BoxForm> */}
+        <BoxImage />
+        </ContentFinishSolicitation>
+      </>
+    )
+  }
+
+  render() {
+    const { solicitation } = this.state;
+
+    return (
+      <ContainerForm isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         <ContentFinish>
-          <ContentFinishSolicitation>
+          {solicitation ? <ContentFinishSolicitation>
             <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Nam mi justo, interdum et rutrum dictum,
             venenatis sollicitudin nisi.</h3>
-            <ButtonSolicitation display={this.state.solicitation} onClick={this.handleSolicitacion}>SOLICITE SUA PROPOSTA</ButtonSolicitation>
-          {/* <BoxForm> */}
-            <Formulario>
-              <Input 
-                type="text"
-                placeholder="Nome*"
-                onChange={this.handleChange}
-              />
-              <Input 
-                type="text"
-                placeholder="Empresa*"
-                onChange={this.handleChange}
-              />
-              <Input 
-                type="text"
-                placeholder="E-mail*"
-                onChange={this.handleChange}
-              />
-              <Input 
-                type="text"
-                placeholder="Assunto*"
-                onChange={this.handleChange}
-              />
-              <Textarea
-                placeholder="Escreva aqui a sua mensagem:"
-              />
-              <ButtonForm>ENVIAR</ButtonForm>
-              </Formulario>
-            {/* </BoxForm> */}
-          </ContentFinishSolicitation>
+            <ButtonSolicitation 
+              display={this.state.solicitation} 
+              onClick={this.handleSolicitacion}>
+              SOLICITE SUA PROPOSTA
+            </ButtonSolicitation>
+          </ContentFinishSolicitation> : this.renderForm()}
         </ContentFinish>
       </ContainerForm>
     );
