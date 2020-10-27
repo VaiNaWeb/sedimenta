@@ -7,7 +7,7 @@ const ContentSlider = styled.div`
   height: 55vh;
   display: flex;
   justify-content: center;
-  margin-bottom: 9rem;
+  margin-bottom: 8rem;
   background-color: #D66B78;
 `;
 
@@ -72,7 +72,7 @@ class Slider extends Component {
               <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
                 Aenean luctus libero id velit laoreet dignissim.
                 Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
-              <ContentSliderParagraph>Israel, cargo, Empresa</ContentSliderParagraph>
+              <ContentSliderParagraph>Jeziel, cargo, Empresa</ContentSliderParagraph>
             </ContentSliderMeio>
             <ContentSliderMeio>
               <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.

@@ -6,17 +6,12 @@ import Forma from '../assets/forma.svg';
 
 const ContainerForm = styled.div`
   width: 100%;
-  height: 100vh;
-`;
-
-const ContentFinish = styled.div`
-  width: 100%;
-  height: 100vh;
+  height: ${props => props.isBig ? '63vh' : '185vh'};
 `;
 
 const ContentFinishSolicitation = styled.span`
   width: 100%;
-  height: ${props => props.height ? '100vh' : '67vh'};
+  height: ${props => props.height ? '190vh' : '67vh'};
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -24,14 +19,14 @@ const ContentFinishSolicitation = styled.span`
   flex-direction: column;
   background: ${props => props.background ? `url(${Forma})` : `url(${Proposta})`};
   background-size: cover;
+`;
 
-  h3 {
-    width: 45%;
-    font-size: 1rem;
-    font-family: 'Open Sans', Bold;
-    text-align: center;
-    padding-top: 4rem;
-  }
+const TitleForm = styled.h3`
+  width: 49%;
+  font-size: 1rem;
+  font-family: 'Open Sans', Bold;
+  text-align: center;
+  margin-top: ${props => props.marginTop ? '11rem' : '4rem'};
 `;
 
 const ButtonSolicitation = styled.button`
@@ -57,6 +52,7 @@ const Formulario = styled.form`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-top: ${props => props.margin ? '0' : '5rem'};
 `;
 
 const Input = styled.input`
@@ -108,6 +104,31 @@ const ButtonForm = styled.button`
   cursor: pointer;
 `;
 
+const ContentFormTopo = styled.a`
+  width: 5vh;
+  height: 5vh;
+  background: #F5F5F5;
+  border-radius: 2px;
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 500px;
+  top: -275px;
+  opacity: 1;
+`;
+
+const ContentFormTriangle = styled.div`
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #992836;
+  position: absolute;
+`;
+
+
 const BoxImage = styled.div`
   width: 100%;
   height: 67vh;
@@ -121,7 +142,6 @@ class Formulation extends Component {
   }
 
   handleSolicitacion = () => {
-    console.log('solicitation', this.state.solicitation);
     this.setState({
       solicitation: !this.state.solicitation,
     });
@@ -138,10 +158,10 @@ class Formulation extends Component {
     return (
       <>
         <ContentFinishSolicitation height background>
-          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum,
-            venenatis sollicitudin nisi.</h3>
-          <Formulario>
+          <TitleForm marginTop>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
+          <Formulario margin={this.state.solicitation}>
             <Input
               type="text"
               placeholder="Nome*"
@@ -166,9 +186,11 @@ class Formulation extends Component {
               placeholder="Escreva aqui a sua mensagem:"
             />
             <ButtonForm>ENVIAR</ButtonForm>
+            <ContentFormTopo href="#topo">
+            <ContentFormTriangle />
+          </ContentFormTopo>
           </Formulario>
-          {/* </BoxForm> */}
-        <BoxImage />
+          <BoxImage />
         </ContentFinishSolicitation>
       </>
     )
@@ -178,19 +200,17 @@ class Formulation extends Component {
     const { solicitation } = this.state;
 
     return (
-      <ContainerForm isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
-        <ContentFinish>
-          {solicitation ? <ContentFinishSolicitation>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum,
-            venenatis sollicitudin nisi.</h3>
-            <ButtonSolicitation 
-              display={this.state.solicitation} 
-              onClick={this.handleSolicitacion}>
-              SOLICITE SUA PROPOSTA
-            </ButtonSolicitation>
-          </ContentFinishSolicitation> : this.renderForm()}
-        </ContentFinish>
+      <ContainerForm isBig={this.state.solicitation}
+        isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
+        {solicitation ? <ContentFinishSolicitation>
+          <TitleForm>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
+          <ButtonSolicitation
+            display={this.state.solicitation}
+            onClick={this.handleSolicitacion}>
+            SOLICITE SUA PROPOSTA
+          </ButtonSolicitation>
+        </ContentFinishSolicitation> : this.renderForm()}
       </ContainerForm>
     );
   }

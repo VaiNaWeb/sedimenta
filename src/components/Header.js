@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 //Images
 import logo from '../assets/logo.svg';
 import menuHamburguer from '../assets/menu.svg';
-import Aperto from '../assets/aperto.jpg';
+import Amigos from '../assets/amigos.jpg';
 import Background from '../assets/back.png';
 import Calculadora from '../assets/calculadora.jpg';
 
@@ -140,15 +140,15 @@ const ParagraphHeader = styled.p`
   opacity: 1;
 `;
 
-const ButtonHeader= styled.button`
+const ButtonHeader = styled.button`
   width: 20vw;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   color: #FFFFFF;
   font-size: 1rem;
   font-family: 'Product Sans', Bold;
-  padding: 0.7rem;
   text-transform: uppercase;
+  padding: 0.7rem;
 `;
 
 
@@ -167,7 +167,7 @@ const SliderBolinha = styled.div`
   border-radius: 50%;
   border: 1px solid #E0E0E0;
   background-color: #E0E0E0;
-  margin-left: 1rem;
+  margin-left: 1.3rem;
 
   &:hover {
     background-color: #FFFFFF;
@@ -178,25 +178,29 @@ class Header extends Component {
   state = {
     menu: undefined,
     sliderHeader: 0,
-    artigos: [ 
+    artigos: [
       {
-        image: Aperto,
+        image: Calculadora,
         title: 'Agilidade, Confiança e Experiência!',
         paragraph: 'Escolha quem se importar com o seu negócio. Nossa medida de sucesso é ver você prosperar.',
       },
-      { 
+      {
         image: Background,
         title: 'Administração de domesticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
 
       },
-      { 
-        image: Calculadora,
+      {
+        image: Amigos,
         title: 'Contabilidade e Assessoria para o Terceiro Setor',
         paragraph: 'ONGs, Fundações, OSCIP, e outras entidades em fins lucrativos. A gente cuida da burocracia para vocês gerarem mais impacto social.',
         isBig: true,
       },
     ]
+  }
+
+  componentDidMount() {
+    this.handleInterval()
   }
 
   handleClick = () => {
@@ -206,17 +210,33 @@ class Header extends Component {
   }
 
   handleSlider = (item) => {
-    console.log(item);
     this.setState({
       sliderHeader: item,
     })
+    clearInterval(this.interval);
+    this.handleInterval()
   }
+
+  handleInterval = () => {
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
+  }
+
+  handleTransition = () => {
+    const { sliderHeader } = this.state;
+
+    const slide = sliderHeader === 2 ? 0 : sliderHeader + 1;
+
+    this.handleSlider(slide)
+  }
+
 
   render() {
     const { menu, sliderHeader, artigos } = this.state;
 
     return (
-      <ContainerLogo image={artigos[sliderHeader].image}>
+      <ContainerLogo image={artigos[sliderHeader].image} id="topo">
         <span>
           <ContainerHeader>
             <ContainerHeaderPage>
@@ -238,7 +258,8 @@ class Header extends Component {
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              <ButtonHeader id="sobre" >conheça nosso serviço!</ButtonHeader>
+              {sliderHeader === 0 ? <ButtonHeader id="sobre">conheça nosso serviço!</ButtonHeader>
+                : null}
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>

@@ -137,6 +137,10 @@ const ContentCargo = styled.div`
 	}
 `;
 
+// const ContentCargoBox = styled.div`
+//   box-shadow: 0px 3px 6px #00000029;
+// `;
+
 const ContentCargoCaixa = styled.div`
   width: 23%;
   height: 25vh;
@@ -412,7 +416,7 @@ const ContentRedeSocial = styled.div`
   justify-content: center;
 
   hr {
-    width: 10vw;
+    width: 12vw;
     border: 2px solid #992836;
   }
 
@@ -451,6 +455,29 @@ const ContentFooterContact = styled.div`
   p {
     font-size: 0.8125rem;
   }
+`;
+
+const ContentFooterTopo = styled.a`
+  width: 5vh;
+  height: 5vh;
+  background: #F5F5F5;
+  border-radius: 2px;
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 180px;
+  opacity: 1;
+`;
+
+const ContentFooterTriangle = styled.div`
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #992836;
+  position: absolute;
 `;
 
 const Footer = styled.footer`
@@ -536,6 +563,7 @@ class Home extends Component {
         </ContentSobre>
         <ContentCargo>
           <ContentCargoCaixa>
+            {/* <ContentCargoBox></ContentCargoBox> */}
             <hr></hr>
             <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
             <ContentBoxParagraph>CEO</ContentBoxParagraph>
@@ -543,6 +571,7 @@ class Home extends Component {
             <img src={Icon} alt='linkedin' />
           </ContentCargoCaixa>
           <ContentCargoCaixa>
+            {/* <ContentCargoBox></ContentCargoBox> */}
             <hr></hr>
             <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
             <ContentBoxParagraph>CEO</ContentBoxParagraph>
@@ -550,6 +579,7 @@ class Home extends Component {
             <img src={Icon} alt='linkedin' />
           </ContentCargoCaixa>
           <ContentCargoCaixa>
+            {/* <ContentCargoBox></ContentCargoBox> */}
             <hr></hr>
             <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
             <ContentBoxParagraph>CEO</ContentBoxParagraph>
@@ -590,14 +620,14 @@ class Home extends Component {
               <img src={Image} alt='teste' />
               <BoxTitle width='15vw'>DEPARTAMENTO PESSOAL</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
+                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
             <ContentBoxGalery>
               <img src={Image} alt='teste' />
               <BoxTitle width='22vw'>INTERNACIONALIZAÇÃO DE EMPRESAS</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
+                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
             <BoxLinha></BoxLinha>
@@ -605,7 +635,7 @@ class Home extends Component {
               <img src={Image} alt='teste' />
               <BoxTitle>LOREM</BoxTitle>
               <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
+                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
               <Box onClick={this.handleText}>LER MAIS</Box>
             </ContentBoxGalery>
           </ContentBox>
@@ -625,8 +655,8 @@ class Home extends Component {
             <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
               Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
             <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-              sapien dignissim urna, quis dapibus purus quam nec tellus.
-              Pellentesque bibendum enim ultrices lacus posuere rutrum.
+            sapien dignissim urna, quis dapibus purus quam nec tellus.
+            Pellentesque bibendum enim ultrices lacus posuere rutrum.
               Nam in elementum leo.</SubContentParagraph>
             <SubContentButton>
               <Button>LER MAIS</Button>
@@ -638,8 +668,8 @@ class Home extends Component {
             <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
               Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
             <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-              sapien dignissim urna, quis dapibus purus quam nec tellus.
-              Pellentesque bibendum enim ultrices lacus posuere rutrum.
+            sapien dignissim urna, quis dapibus purus quam nec tellus.
+            Pellentesque bibendum enim ultrices lacus posuere rutrum.
               Nam in elementum leo.</SubContentParagraph>
             <SubContentButton>
               <Button>LER MAIS</Button>
@@ -651,8 +681,8 @@ class Home extends Component {
             <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
               Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
             <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-              sapien dignissim urna, quis dapibus purus quam nec tellus.
-              Pellentesque bibendum enim ultrices lacus posuere rutrum.
+            sapien dignissim urna, quis dapibus purus quam nec tellus.
+            Pellentesque bibendum enim ultrices lacus posuere rutrum.
               Nam in elementum leo.</SubContentParagraph>
             <SubContentButton>
               <Button>LER MAIS</Button>
@@ -705,12 +735,15 @@ class Home extends Component {
               <img src={Image} alt='' />
             </span>
           </ContentRedeSocial>
-        </ContentFooter>
-        <Footer>
-          <p>DESENVOLVIDO POR:</p>
-          <img src={LogoVnW} alt='logoVnw' />
-        </Footer>
-      </Container>
+          <ContentFooterTopo href="#topo">
+            <ContentFooterTriangle />
+          </ContentFooterTopo>
+        </ContentFooter >
+      <Footer>
+        <p>DESENVOLVIDO POR:</p>
+        <img src={LogoVnW} alt='logoVnw' />
+      </Footer>
+      </Container >
     )
   }
 }
