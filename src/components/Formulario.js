@@ -6,7 +6,7 @@ import Forma from '../assets/forma.svg';
 
 const ContainerForm = styled.div`
   width: 100%;
-  height: ${props => props.isBig ? '63vh' : '185vh'};
+  height: ${props => props.isBig ? '78vh' : '197vh'};
 `;
 
 const ContentFinishSolicitation = styled.span`
@@ -71,6 +71,47 @@ const Input = styled.input`
    }
 `;
 
+const FormAssunt = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormTriangle = styled.div`
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #FFFFFF;
+  position: absolute;
+  top: 417rem;
+  right: 357px;
+  cursor: pointer;
+`;
+
+const FormSelect = styled.div`
+  width: 45%;
+  display: ${props => (props.isSelected ? 'flex' : 'none')}; 
+  flex-direction: column;
+  border: 1px solid #FFFFFF;
+  list-style: none;
+`;
+
+const FormSelectList = styled.li`
+  color: #d2a2a8;
+  font-size: 0.8rem;
+  font-family: 'Arial', ExtraBold;
+  font-weight: bold;
+  padding: 0.5rem 0.5rem 0.2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: #FFFFFF;
+    background-color: #882330;
+  }
+`;
+
 const Textarea = styled.textarea`
   width: 45%;
   height: 25vh;
@@ -104,29 +145,29 @@ const ButtonForm = styled.button`
   cursor: pointer;
 `;
 
-const ContentFormTopo = styled.a`
-  width: 5vh;
-  height: 5vh;
-  background: #F5F5F5;
-  border-radius: 2px;
-  box-shadow: 0px 3px 6px #00000029;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  left: 500px;
-  top: -275px;
-  opacity: 1;
-`;
+// const ContentFormTopo = styled.a`
+//   width: 5vh;
+//   height: 5vh;
+//   background: #F5F5F5;
+//   border-radius: 2px;
+//   box-shadow: 0px 3px 6px #00000029;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+//   left: 500px;
+//   top: -275px;
+//   opacity: 1;
+// `;
 
-const ContentFormTriangle = styled.div`
-  width: 0; 
-  height: 0; 
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 10px solid #992836;
-  position: absolute;
-`;
+// const ContentFormTriangle = styled.div`
+//   width: 0; 
+//   height: 0; 
+//   border-left: 7px solid transparent;
+//   border-right: 7px solid transparent;
+//   border-bottom: 10px solid #992836;
+//   position: absolute;
+// `;
 
 
 const BoxImage = styled.div`
@@ -139,6 +180,16 @@ const BoxImage = styled.div`
 class Formulation extends Component {
   state = {
     solicitation: true,
+    isSelected: false,
+    selectedItems: [
+      'Contabilidade',
+      'RH',
+      'Departamento Pessoal',
+      'Departamento Fiscal',
+      'Departamento Parafiscal',
+      'Todos',
+      'Outros',
+    ],
   }
 
   handleSolicitacion = () => {
@@ -147,10 +198,15 @@ class Formulation extends Component {
     });
   }
 
-
   handleChange = (ev) => {
     this.setState({
       ev: ev.target.value,
+    });
+  }
+
+  handleSelected = () => {
+    this.setState({
+      isSelected: !this.state.isSelected,
     });
   }
 
@@ -177,18 +233,26 @@ class Formulation extends Component {
               placeholder="E-mail*"
               onChange={this.handleChange}
             />
-            <Input
-              type="text"
-              placeholder="Assunto*"
-              onChange={this.handleChange}
-            />
+            <FormAssunt>
+              <Input
+                type="text"
+                placeholder="Assunto*"
+                onChange={this.handleChange}
+              />
+            </FormAssunt>
+            <FormTriangle onClick={this.handleSelected}></FormTriangle>
+            <FormSelect isSelected={this.state.isSelected}>
+              {this.state.selectedItems.map((item, index) => (
+                <FormSelectList key={index}>{item}</FormSelectList>
+              ))}
+            </FormSelect>
             <Textarea
               placeholder="Escreva aqui a sua mensagem:"
             />
             <ButtonForm>ENVIAR</ButtonForm>
-            <ContentFormTopo href="#topo">
-            <ContentFormTriangle />
-          </ContentFormTopo>
+            {/* <ContentFormTopo href="#topo">
+              <ContentFormTriangle />
+            </ContentFormTopo> */}
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>

@@ -19,9 +19,9 @@ const ContainerLogo = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  /* @media (max-width: 648px) {
-    display: none;
-	} */
+  @media (max-width: 768px) {
+    flex-direction: column;
+	}
 
   span {
     width: 100%;
@@ -30,9 +30,10 @@ const ContainerLogo = styled.div`
     padding: 0.8rem 5rem;
     opacity: 0.97;
 
-  /* @media (max-width: 648px) {
-    background: none; 
-	} */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 2rem 1rem;
+	}
 }
 `;
 
@@ -46,6 +47,10 @@ const ContainerHeader = styled.div`
   justify-content: flex-end;
   margin-bottom: 0.8rem;
   opacity: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+	}
 
   p {
     font-family: 'Open Sans', Regular;
@@ -73,6 +78,10 @@ const SubContainerPrincipal = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    align-items: center;
+	}
 `;
 
 const SubContainerImage = styled.div`
@@ -131,6 +140,10 @@ const SubContainerText = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   font-family: 'Product Sans', Bold;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+	}
 `;
 
 const ParagraphHeader = styled.p`
@@ -250,7 +263,7 @@ class Header extends Component {
               <SubContainer>
                 <BoxMenu open={menu}>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </SubContainer>

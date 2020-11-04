@@ -4,12 +4,18 @@ import styled from 'styled-components';
 import Carousel from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
+import Services from '../components/Services';
 
 //Images
 import seta from '../assets/seta.svg';
 import Icon from '../assets/icon.svg';
-import Image from '../assets/image.svg';
 import Fundo from '../assets/fundo.svg';
+
+import People1 from '../assets/image1.png';
+import People2 from '../assets/image2.png';
+import People3 from '../assets/image3.png';
+
+import Image from '../assets/image.svg';
 
 import BatePapo from '../assets/batepapo.jpg';
 import Buque from '../assets/buque.jpg';
@@ -17,6 +23,9 @@ import Farol from '../assets/farol.jpg';
 import Cama from '../assets/cama.jpg';
 import Crianca from '../assets/crianca.jpg';
 import Flor from '../assets/flor.jpg';
+
+import balao from '../assets/balao.svg';
+import setinha from '../assets/setinha.svg';
 
 import LogoVnW from '../assets/logoVnw.png';
 
@@ -29,9 +38,8 @@ const Container = styled.div`
   flex-direction: column;
   background-color: #F5F5F5;
 
-  @media (max-width: 648px) {
-    background-color: none;
-    padding-top: 30rem;
+  @media (max-width: 768px) {
+   
 	}
 `;
 
@@ -44,6 +52,13 @@ const ContentCaixaGeral = styled.div`
   flex-direction: row;
   position: relative;
   bottom: 70px;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    height: 39vh;
+    flex-direction: column;
+    bottom: 30px;
+	}
 `;
 
 const ContentCaixaBox = styled.div`
@@ -51,21 +66,46 @@ const ContentCaixaBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
-`;
 
-const TitleHeader = styled.h3`
-  width: 15vw;
-  color: #373737;
-  font-size: 1.2rem;
-  font-family: 'Product Sans', Bold;
-  margin-left: 3rem;
+  @media (max-width: 768px) {
+    width: 100%;
+	}
 `;
 
 const Content = styled.div`
   width: 18vw;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: 40vw;
+    padding: 1rem 0;
+    flex-direction: column;
+	}
 `;
+
+const TitleHeader = styled.h2`
+  width: 15vw;
+  color: #373737;
+  font-size: 1.2rem;
+  font-family: 'Product Sans', Bold;
+  margin-left: 3rem;
+
+  @media (max-width: 768px) {
+    width: 40vw;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-left: 0;
+	}
+`;
+
+const ImageSeta = styled.img`
+  @media (max-width: 768px) {
+    transform: rotate(90deg);
+	}
+`;
+
+
 
 const CaixaParagraph = styled.p`
   width: ${props => (props.width)};
@@ -77,6 +117,11 @@ const CaixaParagraph = styled.p`
   b {
     color: #000000;
   }
+
+  @media (max-width: 768px) {
+    width: 28vw;;
+    padding: 0 1.5rem 0 0;
+	}
 `;
 
 const ContentSobre = styled.div`
@@ -126,10 +171,13 @@ const ContainerParagraph = styled.p`
 `;
 
 const ContentCargo = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin: 20rem 0 5rem 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 7rem 0 5rem 0;
+  padding-left: 10rem;
 
   @media (max-width: 648px) {
     align-items: center;
@@ -137,19 +185,30 @@ const ContentCargo = styled.div`
 	}
 `;
 
-// const ContentCargoBox = styled.div`
-//   box-shadow: 0px 3px 6px #00000029;
-// `;
+const SessionCargo = styled.section`
+  /* width: 45%; */
+  display: flex;
+  flex-direction: column;
+`;
+
+const ImageCargo = styled.img`
+  width: 65%;
+  /* height: 40%; */
+  box-shadow: 0px 3px 6px #00000029;
+`;
 
 const ContentCargoCaixa = styled.div`
-  width: 23%;
+  width: 65%;
   height: 25vh;
   background-color: #FFFFFF;
   border-left: 5px solid #801422;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
+  box-shadow: 0px 3px 6px #00000029;
 
   hr {
     width: 3vw;
@@ -177,85 +236,9 @@ const ContentBoxParagraph = styled.p`
   font-weight: bold;
 `;
 
-const ContentServiços = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 5rem 0;
-  padding-left: 4rem;
-
-  @media (max-width: 648px) {
-    flex-direction: column;
-	}
-`;
-
-const ContentServiçosTitle = styled.div`
-  width: 25vw;
-  color: #373737;
-  font-size: 1.4rem;
-  font-family: 'Product Sans', Bold;
-
-  hr {
-    width: 4vw;
-    border: 1px solid #707070;
-    margin-bottom: 2rem;
-  }
-
-  b {
-    color: #000000;
-  }
-`;
-
-const ContentBox = styled.div`
-  width: 67%;
-  background-color: #FFFFFF;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-right: 5rem;
-  box-shadow: 0px 3px 6px #00000029;
-
-  img {
-    width: 15%;
-  }
-`;
-
-const ContentBoxGalery = styled.div`
-  width: 49%;
-  border-bottom: 1px solid #70707099;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 0;
-`;
-
-const BoxTitle = styled.h2`
-  width: ${props => (props.width)};
-  font-size: 1.2rem;
-  font-family: 'Arial', Bold;
-  font-weight: bold;
-  text-align: center;
-  margin: 2rem 0;
-`;
-
-const BoxText = styled.p`
-  width: 75%;
-`;
-
-const Box = styled.p`
-  color: #992836;
-  text-decoration: underline;
-  margin: 2rem 0;
-  opacity: 1;
-`;
-
-
-const BoxLinha = styled.div`
-  height: 18vh;
-  border-right: 2px solid #707070;
-  position: relative;
-  bottom: -147px;
-  opacity: 0.25;
+const BoxImage = styled.img`
+  width: 13%;
+  margin-left: 0.3rem;
 `;
 
 const SubContent = styled.div`
@@ -273,31 +256,102 @@ const SubContent = styled.div`
 
 const SubContentMeio = styled.span`
   width: 35%;
-  height: 45vh;
+  height: 40vh;
   background-color: #373737;
   color: #FFFFFF;
   font-family: 'Open Sans', Bold;
+  text-transform: uppercase;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  padding: 2rem 3rem 0;
+  justify-content: center;
+  padding: 0 3rem 1.5rem;
 
   hr {
-    width: 20vw;
+    width: 5vw;
     border: 1px solid #FFFFFF;
     opacity: 1;
   }
 
   h2 {
-    padding-top: 1rem;
-    font-size: 2rem;
+    padding-top: 2.5rem;
+    font-size: 1.7rem;
+    text-align: center;
   }
 
   b {
-    color: #992836;
-    font-size: 2.2rem;
-    font-weight: bolder;
-    font-family: 'Open Sans', ExtraBold;
+    font-size: 1.9rem;
   }
+`;
+
+const ContainerCaixa = styled.div`
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+`;
+
+const CaixaBox = styled.div`
+  width: 20%;
+  display: flex;
+  background-color: #992836;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 3px 6px #00000029;
+`;
+
+const CaixaBoxHeader = styled.div`
+  width: 100%;
+  height: 25vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+`;
+
+const ImageBox = styled.img`
+  width: 14vw;
+  padding: 2rem;
+`;
+
+const BoxDate = styled.div`
+  color: #373737;
+  font-size: 0.7rem;
+  font-family: 'Open Sans', Regular;
+  margin-bottom: 0.3rem;
+`;
+
+const TitleBox = styled.p`
+  color: #373737;
+  font-size: 1rem;
+  font-family: 'Open Sans', ExtraBold;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+`;
+
+const CaixaBoxSobre = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+
+  hr {
+    width: 3vw;
+    border: 1px solid #a76b73;
+    opacity: 1;
+  }
+`;
+
+const CaixaSaiba = styled.p`
+  color: #992836;
+  font-size: 0.7rem;
+  font-family: 'Open Sans', Regular;
 `;
 
 const SubContentSobre = styled.div`
@@ -366,6 +420,40 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
+const LinkLinha = styled.div`
+  width: 93%;
+  height: 1vh;
+  background: linear-gradient(to right, #992836, #4D141B);
+  margin-bottom: 0.3rem;
+`;
+
+const ContentLink = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 3rem;
+`;
+
+const ContentLinkGeral = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;;
+`;
+
+const SeparationLink = styled.div`
+  width: 25%;
+`;
+
+const ParagraphLink = styled.p`
+  color: #373737;
+  font-size: 0.8rem;
+  font-family: 'Open Sans', ExtraBold;
+  font-weight: bold;
+  margin-bottom: 3rem;
+`;
+
 const ContentLogo = styled.div`
   display: flex;
   justify-content: center;
@@ -396,7 +484,7 @@ const ContentLogoImages = styled.div`
 `;
 
 const ContentFooter = styled.div`
-  width: 85%;
+  width: 90%;
   height: 45vh;
   display: flex;
   justify-content: space-between;
@@ -410,7 +498,7 @@ const ContentFooterRede = styled.div`
 
 const ContentRedeSocial = styled.div`
   color: #373737;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -422,8 +510,8 @@ const ContentRedeSocial = styled.div`
 
   h5 {
     font-family: 'Open Sans', Extrabold;
-    font-size: 1rem;
-    margin: 1rem 0;
+    font-size: 0.85rem;
+    margin: 0.3rem 0 2rem;
   }
 
   span {
@@ -437,9 +525,9 @@ const ContentRedeSocial = styled.div`
 `;
 
 const ContentFooterContact = styled.div`
-  width: 30%;
+  width: 31%;
   color: #373737;
-  padding-right: 3rem;
+  padding-right: 2rem;
 
   hr {
     width: 14vw;
@@ -448,8 +536,9 @@ const ContentFooterContact = styled.div`
 
   h5 {
     font-family: 'Open Sans', Extrabold;
-    font-size: 1rem;
-    margin: 0.8rem 0 2rem 0;
+    font-size: 0.85rem;
+    font-weight: bolder;
+    margin: 0.3rem 0 2rem 0;
   }
 
   p {
@@ -514,7 +603,7 @@ class Home extends Component {
         <ContentCaixaGeral>
           <Content>
             <TitleHeader>PORQUE NOS ESCOLHER</TitleHeader>
-            <img src={seta} alt='seta' />
+            <ImageSeta src={seta} alt='seta' />
           </Content>
           <ContentCaixaBox>
             <CaixaParagraph width='14vw'>Prestar um atendimento eficiente é a nossa <b>meta!</b></CaixaParagraph>
@@ -526,7 +615,7 @@ class Home extends Component {
               candidatos com o perfil profissional de sua preferencia.</CaixaParagraph>
           </ContentCaixaBox>
         </ContentCaixaGeral>
-        <ContentSobre>
+        <ContentSobre id='sobre'>
           <span>
             <ContentSobreTitle>
               <hr></hr>
@@ -562,138 +651,40 @@ class Home extends Component {
           </span>
         </ContentSobre>
         <ContentCargo>
-          <ContentCargoCaixa>
-            {/* <ContentCargoBox></ContentCargoBox> */}
-            <hr></hr>
-            <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
-            <ContentBoxParagraph>CEO</ContentBoxParagraph>
-            <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
-            <img src={Icon} alt='linkedin' />
-          </ContentCargoCaixa>
-          <ContentCargoCaixa>
-            {/* <ContentCargoBox></ContentCargoBox> */}
-            <hr></hr>
-            <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
-            <ContentBoxParagraph>CEO</ContentBoxParagraph>
-            <ContentBoxParagraph>resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
-            <img src={Icon} alt='linkedin' />
-          </ContentCargoCaixa>
-          <ContentCargoCaixa>
-            {/* <ContentCargoBox></ContentCargoBox> */}
-            <hr></hr>
-            <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
-            <ContentBoxParagraph>CEO</ContentBoxParagraph>
-            <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
-            <img src={Icon} alt='linkedin' />
-          </ContentCargoCaixa>
-        </ContentCargo>
-        <ContentServiços>
-          <ContentServiçosTitle>
-            <hr></hr>
-            <h3>CONHEÇA NOSSOS <b>SERVIÇOS</b></h3>
-          </ContentServiçosTitle>
-          <ContentBox>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle>CONTABILIDADE</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <BoxLinha></BoxLinha>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle width='22vw'>DEPARTAMENTO FISCAL E PARAFISCAL</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle>RECURSOS HUMANOS</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <BoxLinha></BoxLinha>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle width='15vw'>DEPARTAMENTO PESSOAL</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle width='22vw'>INTERNACIONALIZAÇÃO DE EMPRESAS</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-            <BoxLinha></BoxLinha>
-            <ContentBoxGalery>
-              <img src={Image} alt='teste' />
-              <BoxTitle>LOREM</BoxTitle>
-              <BoxText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</BoxText>
-              <Box onClick={this.handleText}>LER MAIS</Box>
-            </ContentBoxGalery>
-          </ContentBox>
-        </ContentServiços>
-        <SubContent>
-          <div>
-            <SubContentMeio>
+          <SessionCargo>
+            <ImageCargo src={People1} alt='people' />
+            <ContentCargoCaixa>
               <hr></hr>
-              <h2>Fique por dentro do que acontece no nosso <b>Medium</b></h2>
-            </SubContentMeio>
-          </div>
-        </SubContent>
-        <SubContentSobre>
-          <SubContentSobreCaixa>
-            <SubContentTriangle></SubContentTriangle>
-            <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
-            <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
-              Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
-            <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-            sapien dignissim urna, quis dapibus purus quam nec tellus.
-            Pellentesque bibendum enim ultrices lacus posuere rutrum.
-              Nam in elementum leo.</SubContentParagraph>
-            <SubContentButton>
-              <Button>LER MAIS</Button>
-            </SubContentButton>
-          </SubContentSobreCaixa>
-          <SubContentSobreCaixa>
-            <SubContentTriangle></SubContentTriangle>
-            <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
-            <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
-              Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
-            <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-            sapien dignissim urna, quis dapibus purus quam nec tellus.
-            Pellentesque bibendum enim ultrices lacus posuere rutrum.
-              Nam in elementum leo.</SubContentParagraph>
-            <SubContentButton>
-              <Button>LER MAIS</Button>
-            </SubContentButton>
-          </SubContentSobreCaixa>
-          <SubContentSobreCaixa>
-            <SubContentTriangle></SubContentTriangle>
-            <SubContentTitle>Lorem ipsum dolor sit amet</SubContentTitle>
-            <SubContentParagraph>Lorem ipsum dolor sit amet, consectetur adipiscig elit.
-              Aenean id nunc at ex pellentesque ultrices nec sed est.</SubContentParagraph>
-            <SubContentParagraph>Morbi suscipit, odio in bibendum imperdiet, diam
-            sapien dignissim urna, quis dapibus purus quam nec tellus.
-            Pellentesque bibendum enim ultrices lacus posuere rutrum.
-              Nam in elementum leo.</SubContentParagraph>
-            <SubContentButton>
-              <Button>LER MAIS</Button>
-            </SubContentButton>
-          </SubContentSobreCaixa>
-        </SubContentSobre>
+              <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
+              <ContentBoxParagraph>CEO</ContentBoxParagraph>
+              <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
+              <img src={Icon} alt='linkedin' />
+            </ContentCargoCaixa>
+          </SessionCargo>
+          <SessionCargo>
+            <ImageCargo src={People2} alt='people' />
+            <ContentCargoCaixa>
+              <hr></hr>
+              <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
+              <ContentBoxParagraph>CEO</ContentBoxParagraph>
+              <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
+              <img src={Icon} alt='linkedin' />
+            </ContentCargoCaixa>
+          </SessionCargo>
+          <SessionCargo>
+            <ImageCargo src={People3} alt='people' />
+            <ContentCargoCaixa>
+              <hr></hr>
+              <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
+              <ContentBoxParagraph>CEO</ContentBoxParagraph>
+              <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
+              <img src={Icon} alt='linkedin' />
+            </ContentCargoCaixa>
+          </SessionCargo>
+        </ContentCargo>
+        <Services />
+        <Carousel />
         <ContentLogo>
-          <div>
-            <hr></hr>
-            <ContentTitle>NOSSOS CLIENTES</ContentTitle>
-          </div>
           <ContentLogoImages>
             <img src={BatePapo} alt='' />
             <img src={Buque} alt='' />
@@ -703,8 +694,68 @@ class Home extends Component {
             <img src={Flor} alt='' />
           </ContentLogoImages>
         </ContentLogo>
-        <Carousel />
+        <SubContent>
+          <div>
+            <SubContentMeio>
+              <hr></hr>
+              <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
+            </SubContentMeio>
+          </div>
+        </SubContent>
+        <ContainerCaixa>
+          <CaixaBox>
+            <ImageBox src={balao} alt='figure' />
+            <CaixaBoxHeader>
+              <BoxDate>Sep 28 2020</BoxDate>
+              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+              <CaixaBoxSobre>
+                <hr></hr>
+                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+              </CaixaBoxSobre>
+            </CaixaBoxHeader>
+          </CaixaBox>
+          <CaixaBox>
+            <ImageBox src={balao} alt='figure' />
+            <CaixaBoxHeader>
+              <BoxDate>Sep 28 2020</BoxDate>
+              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+              <CaixaBoxSobre>
+                <hr></hr>
+                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+              </CaixaBoxSobre>
+            </CaixaBoxHeader>
+          </CaixaBox>
+          <CaixaBox>
+            <ImageBox src={balao} alt='figure' />
+            <CaixaBoxHeader>
+              <BoxDate>Sep 28 2020</BoxDate>
+              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+              <CaixaBoxSobre>
+                <hr></hr>
+                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+              </CaixaBoxSobre>
+            </CaixaBoxHeader>
+          </CaixaBox>
+        </ContainerCaixa>
         <Formulation />
+        <LinkLinha></LinkLinha>
+        <ContentLink>
+          <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
+          <ContentLinkGeral>
+            <SeparationLink>
+              <ParagraphLink>Link 1</ParagraphLink>
+              <ParagraphLink>Link 2</ParagraphLink>
+            </SeparationLink>
+            <SeparationLink>
+              <ParagraphLink>Link 3</ParagraphLink>
+              <ParagraphLink>Link 4</ParagraphLink>
+            </SeparationLink>
+            <SeparationLink>
+              <ParagraphLink>Link 5</ParagraphLink>
+              <ParagraphLink>Link 6</ParagraphLink>
+            </SeparationLink>
+          </ContentLinkGeral>
+        </ContentLink>
         <ContentFooter>
           <ContentFooterRede>
             <ContentFooterContact>
@@ -739,10 +790,10 @@ class Home extends Component {
             <ContentFooterTriangle />
           </ContentFooterTopo>
         </ContentFooter >
-      <Footer>
-        <p>DESENVOLVIDO POR:</p>
-        <img src={LogoVnW} alt='logoVnw' />
-      </Footer>
+        <Footer>
+          <p>DESENVOLVIDO POR:</p>
+          <img src={LogoVnW} alt='logoVnw' />
+        </Footer>
       </Container >
     )
   }
