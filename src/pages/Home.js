@@ -354,73 +354,6 @@ const CaixaSaiba = styled.p`
   font-family: 'Open Sans', Regular;
 `;
 
-const SubContentSobre = styled.div`
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0 10rem;
-`;
-
-const SubContentSobreCaixa = styled.div`
-  width: 30%;
-  height: 60vh;
-  background-color: #FFFFFF;
-  border-left: 5px solid #992836;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 1.5rem;
-`;
-
-const SubContentTriangle = styled.div`
-  width: 0; 
-  height: 0; 
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 17px solid #992836;
-  position: relative;
-  right: 24px;
-`;
-
-const SubContentTitle = styled.p`
-  width: 14vw;
-  color: #373737;
-  font-size: 1.125rem;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bolder;
-  margin-bottom: 1.5rem;
-`;
-
-const SubContentParagraph = styled.p`
-  width: 20vw;
-  color: #373737;
-  font-size: 0.9rem;
-  font-family: 'Open Sans', Regular;
-  margin-bottom: 1rem;
-  opacity: 1;
-`;
-
-const SubContentButton = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 30px;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  background: linear-gradient(to right, #992836, #4D141B);
-  color: #FFFFFF;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bolder;
-  padding: 0.5rem 0.5rem;
-  outline: none;
-  cursor: pointer;
-`;
-
-
 const LinkLinha = styled.div`
   width: 93%;
   height: 1vh;
@@ -465,14 +398,6 @@ const ContentLogo = styled.div`
     border: 1px solid #707070;
     margin-left: 6rem;
   }
-`;
-
-const ContentTitle = styled.h2`
-  color: #373737;
-  font-size: 1.7rem;
-  font-family: 'Product Sans', Bold;
-  margin: 2rem 0 5rem 0;
-  opacity: 1;
 `;
 
 const ContentLogoImages = styled.div`
