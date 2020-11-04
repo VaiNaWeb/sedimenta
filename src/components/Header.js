@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 //Images
 import logo from '../assets/logo.svg';
 import menuHamburguer from '../assets/menu.svg';
-import Aperto from '../assets/aperto.jpg';
+import Amigos from '../assets/amigos.jpg';
 import Background from '../assets/back.png';
 import Calculadora from '../assets/calculadora.jpg';
 
@@ -19,9 +19,9 @@ const ContainerLogo = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  /* @media (max-width: 648px) {
-    display: none;
-	} */
+  @media (max-width: 768px) {
+    flex-direction: column;
+	}
 
   span {
     width: 100%;
@@ -30,9 +30,10 @@ const ContainerLogo = styled.div`
     padding: 0.8rem 5rem;
     opacity: 0.97;
 
-  /* @media (max-width: 648px) {
-    background: none; 
-	} */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 2rem 1rem;
+	}
 }
 `;
 
@@ -46,6 +47,10 @@ const ContainerHeader = styled.div`
   justify-content: flex-end;
   margin-bottom: 0.8rem;
   opacity: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+	}
 
   p {
     font-family: 'Open Sans', Regular;
@@ -73,6 +78,10 @@ const SubContainerPrincipal = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    align-items: center;
+	}
 `;
 
 const SubContainerImage = styled.div`
@@ -131,6 +140,10 @@ const SubContainerText = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   font-family: 'Product Sans', Bold;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+	}
 `;
 
 const ParagraphHeader = styled.p`
@@ -140,15 +153,15 @@ const ParagraphHeader = styled.p`
   opacity: 1;
 `;
 
-const ButtonHeader= styled.button`
+const ButtonHeader = styled.button`
   width: 20vw;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   color: #FFFFFF;
   font-size: 1rem;
   font-family: 'Product Sans', Bold;
-  padding: 0.7rem;
   text-transform: uppercase;
+  padding: 0.7rem;
 `;
 
 
@@ -167,7 +180,7 @@ const SliderBolinha = styled.div`
   border-radius: 50%;
   border: 1px solid #E0E0E0;
   background-color: #E0E0E0;
-  margin-left: 1rem;
+  margin-left: 1.3rem;
 
   &:hover {
     background-color: #FFFFFF;
@@ -178,25 +191,29 @@ class Header extends Component {
   state = {
     menu: undefined,
     sliderHeader: 0,
-    artigos: [ 
+    artigos: [
       {
-        image: Aperto,
+        image: Calculadora,
         title: 'Agilidade, Confiança e Experiência!',
         paragraph: 'Escolha quem se importar com o seu negócio. Nossa medida de sucesso é ver você prosperar.',
       },
-      { 
+      {
         image: Background,
         title: 'Administração de domesticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
 
       },
-      { 
-        image: Calculadora,
+      {
+        image: Amigos,
         title: 'Contabilidade e Assessoria para o Terceiro Setor',
         paragraph: 'ONGs, Fundações, OSCIP, e outras entidades em fins lucrativos. A gente cuida da burocracia para vocês gerarem mais impacto social.',
         isBig: true,
       },
     ]
+  }
+
+  componentDidMount() {
+    this.handleInterval()
   }
 
   handleClick = () => {
@@ -206,17 +223,33 @@ class Header extends Component {
   }
 
   handleSlider = (item) => {
-    console.log(item);
     this.setState({
       sliderHeader: item,
     })
+    clearInterval(this.interval);
+    this.handleInterval()
   }
+
+  handleInterval = () => {
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
+  }
+
+  handleTransition = () => {
+    const { sliderHeader } = this.state;
+
+    const slide = sliderHeader === 2 ? 0 : sliderHeader + 1;
+
+    this.handleSlider(slide)
+  }
+
 
   render() {
     const { menu, sliderHeader, artigos } = this.state;
 
     return (
-      <ContainerLogo image={artigos[sliderHeader].image}>
+      <ContainerLogo image={artigos[sliderHeader].image} id="topo">
         <span>
           <ContainerHeader>
             <ContainerHeaderPage>
@@ -230,7 +263,7 @@ class Header extends Component {
               <SubContainer>
                 <BoxMenu open={menu}>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </SubContainer>
@@ -238,7 +271,8 @@ class Header extends Component {
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              <ButtonHeader id="sobre" >conheça nosso serviço!</ButtonHeader>
+              {sliderHeader === 0 ? <ButtonHeader id="sobre">conheça nosso serviço!</ButtonHeader>
+                : null}
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>
