@@ -185,31 +185,6 @@ const ButtonForm = styled.button`
 	}
 `;
 
-// const ContentFormTopo = styled.a`
-//   width: 5vh;
-//   height: 5vh;
-//   background: #F5F5F5;
-//   border-radius: 2px;
-//   box-shadow: 0px 3px 6px #00000029;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: relative;
-//   left: 500px;
-//   top: -275px;
-//   opacity: 1;
-// `;
-
-// const ContentFormTriangle = styled.div`
-//   width: 0; 
-//   height: 0; 
-//   border-left: 7px solid transparent;
-//   border-right: 7px solid transparent;
-//   border-bottom: 10px solid #992836;
-//   position: absolute;
-// `;
-
-
 const BoxImage = styled.div`
   width: 100%;
   height: 67vh;
@@ -290,9 +265,6 @@ class Formulation extends Component {
               placeholder="Escreva aqui a sua mensagem:"
             />
             <ButtonForm>ENVIAR</ButtonForm>
-            {/* <ContentFormTopo href="#topo">
-              <ContentFormTriangle />
-            </ContentFormTopo> */}
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
