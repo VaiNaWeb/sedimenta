@@ -52,6 +52,11 @@ const ContainerHeader = styled.div`
     flex-direction: column;
 	}
 
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+	}
+
+
   p {
     font-family: 'Open Sans', Regular;
   }
@@ -63,6 +68,20 @@ const ContainerHeaderPage = styled.div`
   flex-direction: row;
   border-bottom: 1px solid #FFFFFF5C;
   opacity: 0.97;
+
+  @media (max-width: 1024px) {
+    width: 55%;
+	}
+
+  @media (max-width: 768px) {
+    width: 59%;
+    padding-bottom: 0.5rem;
+	}
+
+  @media (max-width: 648px) {
+    width: 100%;
+    justify-content: center;
+	}
 `;
 
 const Page = styled.p`
@@ -88,6 +107,10 @@ const SubContainerImage = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 95%;
+	}
 `;
 
 const Logo = styled.img`
@@ -135,6 +158,16 @@ const SubContainerText = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 70%;
+	}
+
+  @media (max-width: 648px) {
+    width: 90%;
+    text-align: center;
+    align-items: center;
+	}
 `;
 
 const Title = styled.h1`
@@ -142,7 +175,7 @@ const Title = styled.h1`
   font-family: 'Product Sans', Bold;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
 	}
 `;
 
@@ -162,6 +195,22 @@ const ButtonHeader = styled.button`
   font-family: 'Product Sans', Bold;
   text-transform: uppercase;
   padding: 0.7rem;
+
+  @media (max-width: 768px) {
+    width: 33vw;
+	}
+
+  @media (max-width: 648px) {
+    width: 40vw;
+    font-size: 0.8rem;
+    font-weight: bold;
+	}
+
+  @media (max-width: 425px) {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+	}
 `;
 
 
@@ -175,7 +224,7 @@ const Slider = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 1vw;
+  width: 2vw;
   height: 2vh;
   border-radius: 50%;
   border: 1px solid #E0E0E0;

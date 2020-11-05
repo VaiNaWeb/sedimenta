@@ -7,11 +7,15 @@ import Forma from '../assets/forma.svg';
 const ContainerForm = styled.div`
   width: 100%;
   height: ${props => props.isBig ? '78vh' : '197vh'};
+
+  @media (max-width: 768px) {
+    height: ${props => props.isBig ? '78vh' : '160vh'};
+	}
 `;
 
 const ContentFinishSolicitation = styled.span`
   width: 100%;
-  height: ${props => props.height ? '190vh' : '67vh'};
+  height: ${props => props.height ? '190vh' : '65vh'};
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -19,6 +23,10 @@ const ContentFinishSolicitation = styled.span`
   flex-direction: column;
   background: ${props => props.background ? `url(${Forma})` : `url(${Proposta})`};
   background-size: cover;
+
+  @media (max-width: 768px) {
+    height: ${props => props.height ? '150vh' : '45vh'};
+	}
 `;
 
 const TitleForm = styled.h3`
@@ -27,6 +35,14 @@ const TitleForm = styled.h3`
   font-family: 'Open Sans', Bold;
   text-align: center;
   margin-top: ${props => props.marginTop ? '11rem' : '4rem'};
+
+  @media (max-width: 768px) {
+    width: 75%;
+	}
+
+  @media (max-width: 648px) {
+    font-size: 0.8rem;
+	}
 `;
 
 const ButtonSolicitation = styled.button`
@@ -43,6 +59,14 @@ const ButtonSolicitation = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 27%;
+	}
+
+  @media (max-width: 648px) {
+    width: 60%;
+	}
 `;
 
 const Formulario = styled.form`
@@ -69,6 +93,10 @@ const Input = styled.input`
   ::placeholder {
     color: #d2a2a8;
    }
+
+   @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const FormAssunt = styled.div`
@@ -96,6 +124,10 @@ const FormSelect = styled.div`
   flex-direction: column;
   border: 1px solid #FFFFFF;
   list-style: none;
+
+  @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const FormSelectList = styled.li`
@@ -128,6 +160,10 @@ const Textarea = styled.textarea`
   ::placeholder {
     color: #d2a2a8;
    }
+
+   @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const ButtonForm = styled.button`
@@ -143,6 +179,10 @@ const ButtonForm = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    width: 35vw;
+	}
 `;
 
 // const ContentFormTopo = styled.a`

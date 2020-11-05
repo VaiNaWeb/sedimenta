@@ -13,7 +13,12 @@ const ContentServiços = styled.div`
   margin: 5rem 0 27rem;
   padding-left: 4rem;
 
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+	}
+
   @media (max-width: 648px) {
+    width: 100%;
     flex-direction: column;
 	}
 `;
@@ -24,15 +29,35 @@ const ContentServiçosTitle = styled.div`
   font-size: 1.4rem;
   font-family: 'Product Sans', Bold;
 
+  @media (max-width: 648px) {
+    width: 70vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+	}
+
   hr {
     width: 4vw;
     border: 1px solid #707070;
     margin-bottom: 2rem;
+
+    @media (max-width: 1024px) {
+      width: 8vw;
+	  }
+
+    @media (max-width: 648px) {
+     width: 25vw;
+	  }
   }
 
   b {
     color: #000000;
   }
+
+  @media (max-width: 648px) {
+    align-items: center;
+	}
 `;
 
 const ContentBox = styled.div`
@@ -43,6 +68,21 @@ const ContentBox = styled.div`
   justify-content: center;
   margin-right: 5rem;
   box-shadow: 0px 3px 6px #00000029;
+
+  @media (max-width: 1024px) {
+    margin-right: 2rem;
+	}
+
+  @media (max-width: 768px) {
+    width: 83%;
+	}
+
+  @media (max-width: 648px) {
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    overflow-x: scroll;
+	}
 `;
 
 const ContentBoxGalery = styled.div`
@@ -60,7 +100,6 @@ const ContentBoxImage = styled.img`
 
 const BoxContentText = styled.span`
   display: ${props => (props.isOpen ? 'none' : 'flex')};
-  /* display: flex; */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -74,12 +113,21 @@ const BoxTitle = styled.h2`
   text-align: center;
   text-transform: uppercase;
   margin: 2rem 0;
+
+  @media (max-width: 768px) {
+    width: ${props => (props.widthMobile)};
+	} 
 `;
 
 const BoxText = styled.p`
   width: 58%;
   font-size: 0.8rem;
   font-family: 'Open Sans', Regular;
+
+  @media (max-width: 768px) {
+    width: 70%;
+	}
+  
 `;
 
 const Box = styled.button`
@@ -118,6 +166,10 @@ const BoxContext = styled.div`
   font-family: 'Open Sans', Regular;
   line-height: 1.5rem;
   padding: 3rem 8.5rem 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 2rem 0;
+	}
 `;
 
 const BoxContextText = styled.p`
@@ -152,11 +204,9 @@ class Services extends Component {
   state = {
     services: {
       isOpen: false,
-      // isClose: true,
       isSelected: '',
     }
   }
-
 
   handleClick = (item) => {
     this.setState({
@@ -198,7 +248,7 @@ class Services extends Component {
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
             <ContentBoxImage src={Image} alt='teste' />
-            <BoxTitle width='22vw'>recursos humanos</BoxTitle>
+            <BoxTitle width='22vw' widthMobile='30vw'>recursos humanos</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list1'}>
               <BoxText>Administramos todos os serviços de RH e departamento pessoal
               para você focar no seu negócio.</BoxText>
@@ -243,7 +293,7 @@ class Services extends Component {
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
             <ContentBoxImage src={Image} alt='teste' />
-            <BoxTitle width='15vw'>legislação de empresas</BoxTitle>
+            <BoxTitle width='15vw' widthMobile='25vw'>legislação de empresas</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list3'}>
               <BoxText>Abertura, Alterações, Fechamento de empresas e muito
                 mais de forma prática e rápida.</BoxText>
@@ -282,7 +332,7 @@ class Services extends Component {
           </BoxContext>
           <ContentBoxGalery>
             <ContentBoxImage src={Image} alt='teste' />
-            <BoxTitle width='22vw'>acessoria financeira</BoxTitle>
+            <BoxTitle width='22vw' widthMobile='30vw'>acessoria financeira</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list4'}>
               <BoxText>Seu patrimônio administrado de forma inteligente.</BoxText>
               <Box onClick={() => this.handleClick('list4')}>Saiba mais <BoxImage src={setinha} /></Box>
