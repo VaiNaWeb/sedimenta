@@ -54,7 +54,11 @@ const ContentCaixaGeral = styled.div`
 	}
 
   @media (max-width: 648px) {
-    height: 110vh;
+    height: 90vh;
+	}
+
+  @media (max-width: 425px) {
+    height: 100vh;
 	}
 `;
 
@@ -209,9 +213,8 @@ const ContentSobreTitle = styled.div`
     }
 
     @media (max-width: 648px) {
-      width: 20vw;
-    }
-    
+      width: 10vw;
+    }    
   }
 `;
 
@@ -240,10 +243,6 @@ const ContainerParagraph = styled.p`
 
 const ContentCargo = styled.div`
   width: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row; */
   margin: 7rem 0 5rem 0;
   padding-left: 10rem;
 
@@ -253,6 +252,7 @@ const ContentCargo = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    padding: 0;
 	}
 `;
 
@@ -261,7 +261,9 @@ const SessionCargo = styled.section`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 100%;
+    width: 90%;
+    height: 65vh;
+    margin-right: 2rem;
 	}
 `;
 
@@ -273,18 +275,26 @@ const Cargo = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    padding-left: 2rem;
     flex-direction: row;
     overflow-x: scroll;
-    align-items: center;
+    justify-content: flex-start;
 	}
 `;
 
 const ImageCargo = styled.img`
   width: 65%;
   box-shadow: 0px 3px 6px #00000029;
+  object-fit: cover;
+  object-position: top;
 
   @media (max-width: 1024px) {
     width: 85%;
+	}
+
+  @media (max-width: 648px) {
+    width: 250px;
+    height: 39vh;
 	}
 `;
 
@@ -303,6 +313,10 @@ const ContentCargoCaixa = styled.div`
 
   @media (max-width: 1024px) {
     width: 85%;
+	}
+
+  @media (max-width: 648px) {
+    width: 100%;
 	}
 
   hr {
@@ -376,8 +390,13 @@ const SubContentMeio = styled.span`
 	}
 
   @media (max-width: 648px) {
-    width: 88%;
+    width: 60%;
     height: 55vh;
+    padding: 0 3rem 1.5rem;
+	}
+
+  @media (max-width: 425px) {
+    width: 90%;
     padding: 0 1rem 1.5rem;
 	}
 
@@ -412,43 +431,46 @@ const SubContentMeio = styled.span`
 
 const ContainerCaixa = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* justify-content: space-around; */
 
   @media (max-width: 648px) {
     width: 100%;
     height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 	}
 `;
 
 const Caixa = styled.div`
   width: 90%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   @media (max-width: 648px) {
     width: 100%;
     flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 4rem;
     overflow-x: scroll;
   } 
 `;
 
 const CaixaBox = styled.div`
-  width: 20%;
+  width: 22%;
   display: flex;
   background-color: #992836;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
-  margin-right: 4rem;
 
   @media (max-width: 768px) {
-    width: 25%;
+    width: 30%;
 	}
 
   @media (max-width: 648px) {
@@ -457,8 +479,7 @@ const CaixaBox = styled.div`
 	}
 
   @media (max-width: 425px) {
-    width: 60%;
-    margin-right: 2rem;
+    width: 80%;
 	}
 `;
 
@@ -470,6 +491,36 @@ const CaixaBoxHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 1rem;
+`;
+
+const Slider = styled.div`
+  width: 100%;
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+	}
+
+  @media (max-width: 425px) {
+    width: 80%;
+	}
+`;
+
+const SliderBolinha = styled.div`
+  width: 2.1vw;
+  height: 2vh;
+  border-radius: 50%;
+  border: 1px solid #37373759;
+  background-color: #37373759;
+  margin-left: 1rem;
+
+  &:hover {
+    background-color: #373737;
+  }
 `;
 
 const ImageBox = styled.img`
@@ -485,7 +536,7 @@ const ImageBox = styled.img`
 	}
 
   @media (max-width: 425px) {
-    width: 75vw;
+    width: 50vw;
 	}
 `;
 
@@ -648,6 +699,11 @@ class Home extends Component {
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
+          <Slider>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+          </Slider>
         </ContentCargo>
         <Services />
         <Carousel />
@@ -705,6 +761,11 @@ class Home extends Component {
               </CaixaBoxHeader>
             </CaixaBox>
           </Caixa>
+          <Slider>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+          </Slider>
         </ContainerCaixa>
         <Formulation />
         <Footer />

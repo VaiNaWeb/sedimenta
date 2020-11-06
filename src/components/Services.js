@@ -81,6 +81,7 @@ const ContentBox = styled.div`
     width: 100%;
     flex-wrap: nowrap;
     flex-direction: row;
+    justify-content: flex-start;
     overflow-x: scroll;
 	}
 `;
@@ -92,6 +93,11 @@ const ContentBoxGalery = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 3rem 0 0;
+
+  @media (max-width: 648px) {
+    width: auto;
+    /* justify-content: flex-start; */
+	}
 `;
 
 const ContentBoxImage = styled.img`
@@ -126,6 +132,10 @@ const BoxText = styled.p`
 
   @media (max-width: 768px) {
     width: 70%;
+  }
+  
+  @media (max-width: 648px) {
+    width: 45vw;
 	}
   
 `;
@@ -154,6 +164,10 @@ const BoxLinha = styled.div`
   position: relative;
   bottom: -147px;
   opacity: 0.25;
+
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const BoxContext = styled.div`

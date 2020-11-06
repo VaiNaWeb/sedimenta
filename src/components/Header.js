@@ -224,7 +224,7 @@ const Slider = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 2vw;
+  width: 1vw;
   height: 2vh;
   border-radius: 50%;
   border: 1px solid #E0E0E0;
@@ -234,6 +234,11 @@ const SliderBolinha = styled.div`
   &:hover {
     background-color: #FFFFFF;
   }
+
+  @media (max-width: 648px) {
+    width: 2.1vw;
+    height: 2vh;
+	}
 `;
 
 class Header extends Component {

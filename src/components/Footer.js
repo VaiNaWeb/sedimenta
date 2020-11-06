@@ -22,7 +22,7 @@ const ContentLink = styled.div`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 70%;
+    width: 95%;
     border-left: 7px solid #992836;
     margin-bottom: 7rem;
 	}
@@ -43,7 +43,7 @@ const SeparationLink = styled.div`
   width: 25%;
 
   @media (max-width: 648px) {
-    width: 100%;
+    width: 85%;
     display: flex;
     justify-content: space-between;
 	}
@@ -70,9 +70,10 @@ const ContentFooter = styled.div`
   margin-right: 2rem;
 
   @media (max-width: 648px) {
-    width: 93%;
+    width: ${props => (props.footer ? '100%' : '93%')};
     height: 110vh;
     flex-direction: column;
+    margin: 0;
 	}
 `;
 
@@ -81,6 +82,7 @@ const ContentFooterRede = styled.div`
   align-items: center;
 
   @media (max-width: 648px) {
+    width: 93%;
     flex-direction: column;
 	}
 `;
@@ -93,9 +95,9 @@ const ContentRedeSocial = styled.div`
   justify-content: center;
 
   @media (max-width: 648px) {
-    width: 93%;
+    width: 90%;
     border-left: 7px solid #992836;
-    margin-left: 4.5rem;
+    /* margin-left: 4rem; */
 	}
 
   span {
@@ -123,7 +125,7 @@ const ContentFooterContact = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 70%;
+    width: 100%;
     border-left: 7px solid #992836;
     margin-bottom: 3rem;
     margin-right: 0;
@@ -145,6 +147,7 @@ const ParagraphFooter = styled.p`
   font-size: 0.9rem;
 
   @media (max-width: 648px) {
+    width: 65vw;
     margin: 0 0 0 2rem;
 	}
 `;
@@ -188,7 +191,7 @@ const ContentFooterTriangle = styled.div`
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 10px solid #992836;
-  position: absolute;
+  position: static;
 `;
 
 const FooterFinish = styled.footer`
@@ -251,7 +254,7 @@ class Footer extends Component {
               <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
             </ContentFooterContact>
           </ContentFooterRede>
-          <ContentRedeSocial>
+          <ContentRedeSocial footer>
             <FooterLinha></FooterLinha>
             <TitleFooter>REDE SOCIAL</TitleFooter>
             <span>
@@ -263,7 +266,7 @@ class Footer extends Component {
           <ContentFooterTopo href="#topo">
             <ContentFooterTriangle />
           </ContentFooterTopo>
-        </ContentFooter >
+        </ContentFooter>
         <FooterFinish>
           <p>DESENVOLVIDO POR:</p>
           <img src={LogoVnW} alt='logoVnw' />
