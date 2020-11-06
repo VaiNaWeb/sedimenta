@@ -5,6 +5,7 @@ import Carousel from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
 import Services from '../components/Services';
+import Footer from '../components/Footer';
 
 //Images
 import seta from '../assets/seta.svg';
@@ -14,8 +15,6 @@ import Fundo from '../assets/fundo.svg';
 import People1 from '../assets/image1.png';
 import People2 from '../assets/image2.png';
 import People3 from '../assets/image3.png';
-
-import Image from '../assets/image.svg';
 
 import BatePapo from '../assets/batepapo.jpg';
 import Buque from '../assets/buque.jpg';
@@ -27,8 +26,6 @@ import Flor from '../assets/flor.jpg';
 import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
 
-import LogoVnW from '../assets/logoVnw.png';
-
 
 const Container = styled.div`
   width: 100%;
@@ -37,10 +34,6 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: #F5F5F5;
-
-  @media (max-width: 768px) {
-   
-	}
 `;
 
 const ContentCaixaGeral = styled.div`
@@ -55,9 +48,17 @@ const ContentCaixaGeral = styled.div`
 
   @media (max-width: 768px) {
     width: 95%;
-    height: 39vh;
+    height: 50vh;
     flex-direction: column;
-    bottom: 30px;
+    bottom: 60px;
+	}
+
+  @media (max-width: 648px) {
+    height: 90vh;
+	}
+
+  @media (max-width: 425px) {
+    height: 100vh;
 	}
 `;
 
@@ -67,8 +68,17 @@ const ContentCaixaBox = styled.div`
   justify-content: center;
   flex-direction: row;
 
+  @media (max-width: 1024px) {
+    align-items: center;
+	}
+
   @media (max-width: 768px) {
-    width: 100%;
+    width: 75%;
+    flex-wrap: wrap;
+	}
+
+  @media (max-width: 648px) {
+    flex-direction: column;
 	}
 `;
 
@@ -76,6 +86,10 @@ const Content = styled.div`
   width: 18vw;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 1024px) {
+    width: 22vw;
+	}
 
   @media (max-width: 768px) {
     width: 40vw;
@@ -91,6 +105,11 @@ const TitleHeader = styled.h2`
   font-family: 'Product Sans', Bold;
   margin-left: 3rem;
 
+  
+  @media (max-width: 1024px) {
+    margin-left: 1rem;
+	}
+
   @media (max-width: 768px) {
     width: 40vw;
     text-align: center;
@@ -105,8 +124,6 @@ const ImageSeta = styled.img`
 	}
 `;
 
-
-
 const CaixaParagraph = styled.p`
   width: ${props => (props.width)};
   color: #373737;
@@ -118,9 +135,19 @@ const CaixaParagraph = styled.p`
     color: #000000;
   }
 
+  @media (max-width: 1024px) {
+    width: ${props => (props.widthMobile)};
+    padding: 0 2rem 0 0;
+	}
+
   @media (max-width: 768px) {
-    width: 28vw;;
-    padding: 0 1.5rem 0 0;
+    width: 35vw;
+    padding: ${props => (props.paddingMobile)};
+	}
+
+  @media (max-width: 648px) {
+    width: 47vw;
+    padding: 3rem 0 0;
 	}
 `;
 
@@ -128,14 +155,27 @@ const ContentSobre = styled.div`
   width: 100%;
   padding: 0 5rem;
 
-  /* @media (max-width: 648px) {
-    align-items: center;
-    flex-direction: column;
-	} */
+  @media (max-width: 768px) {
+    padding: 0 3rem;
+	}
+
+  @media (max-width: 648px) {
+    padding: 0;
+	}
+
   span {
     width: 95%;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    } 
+
+    @media (max-width: 648px) {
+      align-items: center;
+      flex-direction: column;
+	  }
   }
 `;
 
@@ -145,22 +185,53 @@ const ContentSobreTitle = styled.div`
   font-size: 1.5rem;
   font-family: 'Product Sans', Bold;
 
+  @media (max-width: 1024px) {
+    width: 20vw;
+	}
+
+  @media (max-width: 648px) {
+    /* width: 45vw; */
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 3rem;
+	}
+
   hr {
     width: 4vw;
     border: 1px solid #707070;
     margin-bottom: 2rem;
+
+    @media (max-width: 1024px) {
+      width: 8vw;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 648px) {
+      width: 10vw;
+    }    
   }
-/* 
-  @media (max-width: 648px) {
-    width: 15vw;
-    font-size: 1rem;
-    padding-bottom: 2rem;
-	} */
 `;
 
 const ContentSobreText = styled.div`
   width: 50%;
   margin-top: 2.4rem;
+
+  @media (max-width: 768px) {
+    width: 65%;
+    margin-top: 0;
+	}
+  @media (max-width: 648px) {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+	}
 `;
 
 const ContainerParagraph = styled.p`
@@ -172,29 +243,59 @@ const ContainerParagraph = styled.p`
 
 const ContentCargo = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
   margin: 7rem 0 5rem 0;
   padding-left: 10rem;
 
+  @media (max-width: 1024px) {
+    padding-left: 3rem;
+	}
+
   @media (max-width: 648px) {
-    align-items: center;
-    flex-direction: column;
+    width: 100%;
+    padding: 0;
 	}
 `;
 
 const SessionCargo = styled.section`
-  /* width: 45%; */
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 648px) {
+    width: 90%;
+    height: 65vh;
+    margin-right: 2rem;
+	}
+`;
+
+const Cargo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    padding-left: 2rem;
+    flex-direction: row;
+    overflow-x: scroll;
+    justify-content: flex-start;
+	}
 `;
 
 const ImageCargo = styled.img`
   width: 65%;
-  /* height: 40%; */
   box-shadow: 0px 3px 6px #00000029;
+  object-fit: cover;
+  object-position: top;
+
+  @media (max-width: 1024px) {
+    width: 85%;
+	}
+
+  @media (max-width: 648px) {
+    width: 250px;
+    height: 39vh;
+	}
 `;
 
 const ContentCargoCaixa = styled.div`
@@ -209,6 +310,14 @@ const ContentCargoCaixa = styled.div`
   justify-content: center;
   padding: 0 1rem;
   box-shadow: 0px 3px 6px #00000029;
+
+  @media (max-width: 1024px) {
+    width: 85%;
+	}
+
+  @media (max-width: 648px) {
+    width: 100%;
+	}
 
   hr {
     width: 3vw;
@@ -244,6 +353,7 @@ const BoxImage = styled.img`
 const SubContent = styled.div`
   width: 100%;
   background-image: url(${Fundo});
+  background-size: cover;
   background-repeat: no-repeat;
 
   div {
@@ -251,6 +361,14 @@ const SubContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+      height: 60vh;
+	  }
+
+    @media (max-width: 648px) {
+      height: 78vh;
+	  }
   }
 `;
 
@@ -267,16 +385,43 @@ const SubContentMeio = styled.span`
   justify-content: center;
   padding: 0 3rem 1.5rem;
 
+  @media (max-width: 768px) {
+    width: 53%;
+	}
+
+  @media (max-width: 648px) {
+    width: 60%;
+    height: 55vh;
+    padding: 0 3rem 1.5rem;
+	}
+
+  @media (max-width: 425px) {
+    width: 90%;
+    padding: 0 1rem 1.5rem;
+	}
+
   hr {
     width: 5vw;
     border: 1px solid #FFFFFF;
     opacity: 1;
+
+    @media (max-width: 768px) {
+      width: 12vw;
+	  }
+
+    @media (max-width: 648px) {
+      width: 25vw;
+	  }
   }
 
   h2 {
     padding-top: 2.5rem;
     font-size: 1.7rem;
     text-align: center;
+
+    @media (max-width: 648px) {
+      font-size: 1.5rem;
+	  }
   }
 
   b {
@@ -286,22 +431,56 @@ const SubContentMeio = styled.span`
 
 const ContainerCaixa = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  justify-content: space-around;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+	}
+`;
+
+const Caixa = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 4rem;
+    overflow-x: scroll;
+  } 
 `;
 
 const CaixaBox = styled.div`
-  width: 20%;
+  width: 22%;
   display: flex;
   background-color: #992836;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
+
+  @media (max-width: 768px) {
+    width: 30%;
+	}
+
+  @media (max-width: 648px) {
+    width: 40%;
+    margin-right: 4rem;
+	}
+
+  @media (max-width: 425px) {
+    width: 80%;
+	}
 `;
 
 const CaixaBoxHeader = styled.div`
@@ -314,9 +493,51 @@ const CaixaBoxHeader = styled.div`
   padding: 0 1rem;
 `;
 
+const Slider = styled.div`
+  width: 100%;
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+	}
+
+  @media (max-width: 425px) {
+    width: 80%;
+	}
+`;
+
+const SliderBolinha = styled.div`
+  width: 2.1vw;
+  height: 2vh;
+  border-radius: 50%;
+  border: 1px solid #37373759;
+  background-color: #37373759;
+  margin-left: 1rem;
+
+  &:hover {
+    background-color: #373737;
+  }
+`;
+
 const ImageBox = styled.img`
   width: 14vw;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    width: 23vw;
+	}
+
+  @media (max-width: 648px) {
+    width: 35vw;
+	}
+
+  @media (max-width: 425px) {
+    width: 50vw;
+	}
 `;
 
 const BoxDate = styled.div`
@@ -354,39 +575,6 @@ const CaixaSaiba = styled.p`
   font-family: 'Open Sans', Regular;
 `;
 
-const LinkLinha = styled.div`
-  width: 93%;
-  height: 1vh;
-  background: linear-gradient(to right, #992836, #4D141B);
-  margin-bottom: 0.3rem;
-`;
-
-const ContentLink = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-left: 3rem;
-`;
-
-const ContentLinkGeral = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;;
-`;
-
-const SeparationLink = styled.div`
-  width: 25%;
-`;
-
-const ParagraphLink = styled.p`
-  color: #373737;
-  font-size: 0.8rem;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bold;
-  margin-bottom: 3rem;
-`;
-
 const ContentLogo = styled.div`
   display: flex;
   justify-content: center;
@@ -406,110 +594,13 @@ const ContentLogoImages = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 5rem;
-`;
-
-const ContentFooter = styled.div`
-  width: 90%;
-  height: 45vh;
-  display: flex;
-  justify-content: space-between;
-  margin-right: 2rem;
-`;
-
-const ContentFooterRede = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ContentRedeSocial = styled.div`
-  color: #373737;
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  hr {
-    width: 12vw;
-    border: 2px solid #992836;
-  }
-
-  h5 {
-    font-family: 'Open Sans', Extrabold;
-    font-size: 0.85rem;
-    margin: 0.3rem 0 2rem;
-  }
-
-  span {
-    display: flex;
-    flex-direction: row;
-  }
 
   img {
-    padding-right: 1rem;
+    @media (max-width: 648px) {
+      width: 45%;
+    }
   }
 `;
-
-const ContentFooterContact = styled.div`
-  width: 31%;
-  color: #373737;
-  padding-right: 2rem;
-
-  hr {
-    width: 14vw;
-    border: 2px solid #992836;
-  }
-
-  h5 {
-    font-family: 'Open Sans', Extrabold;
-    font-size: 0.85rem;
-    font-weight: bolder;
-    margin: 0.3rem 0 2rem 0;
-  }
-
-  p {
-    font-size: 0.8125rem;
-  }
-`;
-
-const ContentFooterTopo = styled.a`
-  width: 5vh;
-  height: 5vh;
-  background: #F5F5F5;
-  border-radius: 2px;
-  box-shadow: 0px 3px 6px #00000029;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 180px;
-  opacity: 1;
-`;
-
-const ContentFooterTriangle = styled.div`
-  width: 0; 
-  height: 0; 
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 10px solid #992836;
-  position: absolute;
-`;
-
-const Footer = styled.footer`
-  width: 100%;
-  background: linear-gradient(to right, #992836, #4D141B);
-  color: #FFFFFF;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bolder;
-  font-size: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  img {
-    margin-left: 1.3rem;
-  }
-`;
-
 
 class Home extends Component {
   state = {
@@ -531,12 +622,12 @@ class Home extends Component {
             <ImageSeta src={seta} alt='seta' />
           </Content>
           <ContentCaixaBox>
-            <CaixaParagraph width='14vw'>Prestar um atendimento eficiente é a nossa <b>meta!</b></CaixaParagraph>
-            <CaixaParagraph width='17vw'>Fazemos terceirização! Diminua seu custo e
+            <CaixaParagraph width='14vw' paddingMobile='2rem 4rem 0 0'>Prestar um atendimento eficiente é a nossa <b>meta!</b></CaixaParagraph>
+            <CaixaParagraph width='17vw' widthMobile='19vw' paddingMobile='2rem 0 0 0'>Fazemos terceirização! Diminua seu custo e
               tenha mais tempo para o seu negócio</CaixaParagraph>
-            <CaixaParagraph width='16.2vw'>Oferecemos uma ótima assessoria de planejamento
+            <CaixaParagraph width='16.2vw' paddingMobile='2rem 4rem 0 0'>Oferecemos uma ótima assessoria de planejamento
               para ajudar a por em pratica uma ótima ideia.</CaixaParagraph>
-            <CaixaParagraph width='17vw'>Nossos colaboradores são capacitados a apresentar
+            <CaixaParagraph width='17vw' widthMobile='21vw' paddingMobile='2rem 0 0 0'>Nossos colaboradores são capacitados a apresentar
               candidatos com o perfil profissional de sua preferencia.</CaixaParagraph>
           </ContentCaixaBox>
         </ContentCaixaGeral>
@@ -576,36 +667,43 @@ class Home extends Component {
           </span>
         </ContentSobre>
         <ContentCargo>
-          <SessionCargo>
-            <ImageCargo src={People1} alt='people' />
-            <ContentCargoCaixa>
-              <hr></hr>
-              <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
-              <ContentBoxParagraph>CEO</ContentBoxParagraph>
-              <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
-              <img src={Icon} alt='linkedin' />
-            </ContentCargoCaixa>
-          </SessionCargo>
-          <SessionCargo>
-            <ImageCargo src={People2} alt='people' />
-            <ContentCargoCaixa>
-              <hr></hr>
-              <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
-              <ContentBoxParagraph>CEO</ContentBoxParagraph>
-              <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
-              <img src={Icon} alt='linkedin' />
-            </ContentCargoCaixa>
-          </SessionCargo>
-          <SessionCargo>
-            <ImageCargo src={People3} alt='people' />
-            <ContentCargoCaixa>
-              <hr></hr>
-              <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
-              <ContentBoxParagraph>CEO</ContentBoxParagraph>
-              <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
-              <img src={Icon} alt='linkedin' />
-            </ContentCargoCaixa>
-          </SessionCargo>
+          <Cargo>
+            <SessionCargo>
+              <ImageCargo src={People1} alt='people' />
+              <ContentCargoCaixa>
+                <hr></hr>
+                <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
+                <ContentBoxParagraph>CEO</ContentBoxParagraph>
+                <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
+                <img src={Icon} alt='linkedin' />
+              </ContentCargoCaixa>
+            </SessionCargo>
+            <SessionCargo>
+              <ImageCargo src={People2} alt='people' />
+              <ContentCargoCaixa>
+                <hr></hr>
+                <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
+                <ContentBoxParagraph>CEO</ContentBoxParagraph>
+                <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
+                <img src={Icon} alt='linkedin' />
+              </ContentCargoCaixa>
+            </SessionCargo>
+            <SessionCargo>
+              <ImageCargo src={People3} alt='people' />
+              <ContentCargoCaixa>
+                <hr></hr>
+                <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
+                <ContentBoxParagraph>CEO</ContentBoxParagraph>
+                <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
+                <img src={Icon} alt='linkedin' />
+              </ContentCargoCaixa>
+            </SessionCargo>
+          </Cargo>
+          <Slider>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+          </Slider>
         </ContentCargo>
         <Services />
         <Carousel />
@@ -628,97 +726,49 @@ class Home extends Component {
           </div>
         </SubContent>
         <ContainerCaixa>
-          <CaixaBox>
-            <ImageBox src={balao} alt='figure' />
-            <CaixaBoxHeader>
-              <BoxDate>Sep 28 2020</BoxDate>
-              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
-              <CaixaBoxSobre>
-                <hr></hr>
-                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-              </CaixaBoxSobre>
-            </CaixaBoxHeader>
-          </CaixaBox>
-          <CaixaBox>
-            <ImageBox src={balao} alt='figure' />
-            <CaixaBoxHeader>
-              <BoxDate>Sep 28 2020</BoxDate>
-              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
-              <CaixaBoxSobre>
-                <hr></hr>
-                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-              </CaixaBoxSobre>
-            </CaixaBoxHeader>
-          </CaixaBox>
-          <CaixaBox>
-            <ImageBox src={balao} alt='figure' />
-            <CaixaBoxHeader>
-              <BoxDate>Sep 28 2020</BoxDate>
-              <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
-              <CaixaBoxSobre>
-                <hr></hr>
-                <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-              </CaixaBoxSobre>
-            </CaixaBoxHeader>
-          </CaixaBox>
+          <Caixa>
+            <CaixaBox>
+              <ImageBox src={balao} alt='figure' />
+              <CaixaBoxHeader>
+                <BoxDate>Sep 28 2020</BoxDate>
+                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                <CaixaBoxSobre>
+                  <hr></hr>
+                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                </CaixaBoxSobre>
+              </CaixaBoxHeader>
+            </CaixaBox>
+            <CaixaBox>
+              <ImageBox src={balao} alt='figure' />
+              <CaixaBoxHeader>
+                <BoxDate>Sep 28 2020</BoxDate>
+                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                <CaixaBoxSobre>
+                  <hr></hr>
+                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                </CaixaBoxSobre>
+              </CaixaBoxHeader>
+            </CaixaBox>
+            <CaixaBox>
+              <ImageBox src={balao} alt='figure' />
+              <CaixaBoxHeader>
+                <BoxDate>Sep 28 2020</BoxDate>
+                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                <CaixaBoxSobre>
+                  <hr></hr>
+                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                </CaixaBoxSobre>
+              </CaixaBoxHeader>
+            </CaixaBox>
+          </Caixa>
+          <Slider>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+          </Slider>
         </ContainerCaixa>
         <Formulation />
-        <LinkLinha></LinkLinha>
-        <ContentLink>
-          <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
-          <ContentLinkGeral>
-            <SeparationLink>
-              <ParagraphLink>Link 1</ParagraphLink>
-              <ParagraphLink>Link 2</ParagraphLink>
-            </SeparationLink>
-            <SeparationLink>
-              <ParagraphLink>Link 3</ParagraphLink>
-              <ParagraphLink>Link 4</ParagraphLink>
-            </SeparationLink>
-            <SeparationLink>
-              <ParagraphLink>Link 5</ParagraphLink>
-              <ParagraphLink>Link 6</ParagraphLink>
-            </SeparationLink>
-          </ContentLinkGeral>
-        </ContentLink>
-        <ContentFooter>
-          <ContentFooterRede>
-            <ContentFooterContact>
-              <hr></hr>
-              <h5>CONTATO BRASIL</h5>
-              <p><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
-                RJ</p>
-              <p><b>Cep:</b> 20.021-180;</p>
-              <p><b>Telefone:</b> +55 (21) 2232-1337</p>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContentFooterContact>
-            <ContentFooterContact>
-              <hr></hr>
-              <h5>CONTATO PORTUGAL</h5>
-              <p><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
-                RJ</p>
-              <p><b>Cep:</b> 20.021-180;</p>
-              <p><b>Telefone:</b> +55 (21) 2232-1337</p>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContentFooterContact>
-          </ContentFooterRede>
-          <ContentRedeSocial>
-            <hr></hr>
-            <h5>REDE SOCIAL</h5>
-            <span>
-              <img src={Image} alt='' />
-              <img src={Image} alt='' />
-              <img src={Image} alt='' />
-            </span>
-          </ContentRedeSocial>
-          <ContentFooterTopo href="#topo">
-            <ContentFooterTriangle />
-          </ContentFooterTopo>
-        </ContentFooter >
-        <Footer>
-          <p>DESENVOLVIDO POR:</p>
-          <img src={LogoVnW} alt='logoVnw' />
-        </Footer>
+        <Footer />
       </Container >
     )
   }

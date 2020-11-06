@@ -7,11 +7,15 @@ import Forma from '../assets/forma.svg';
 const ContainerForm = styled.div`
   width: 100%;
   height: ${props => props.isBig ? '78vh' : '197vh'};
+
+  @media (max-width: 768px) {
+    height: ${props => props.isBig ? '78vh' : '160vh'};
+	}
 `;
 
 const ContentFinishSolicitation = styled.span`
   width: 100%;
-  height: ${props => props.height ? '190vh' : '67vh'};
+  height: ${props => props.height ? '190vh' : '65vh'};
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -19,14 +23,30 @@ const ContentFinishSolicitation = styled.span`
   flex-direction: column;
   background: ${props => props.background ? `url(${Forma})` : `url(${Proposta})`};
   background-size: cover;
+
+  @media (max-width: 768px) {
+    height: ${props => props.height ? '150vh' : '45vh'};
+	}
+
+  @media (max-width: 648px) {
+    height: ${props => props.height ? '150vh' : '57vh'};
+	}
 `;
 
 const TitleForm = styled.h3`
   width: 49%;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: 'Open Sans', Bold;
   text-align: center;
   margin-top: ${props => props.marginTop ? '11rem' : '4rem'};
+
+  @media (max-width: 768px) {
+    width: 75%;
+	}
+
+  @media (max-width: 648px) {
+    font-size: 1rem;
+	}
 `;
 
 const ButtonSolicitation = styled.button`
@@ -43,6 +63,14 @@ const ButtonSolicitation = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 27%;
+	}
+
+  @media (max-width: 648px) {
+    width: 60%;
+	}
 `;
 
 const Formulario = styled.form`
@@ -55,24 +83,48 @@ const Formulario = styled.form`
   margin-top: ${props => props.margin ? '0' : '5rem'};
 `;
 
+const BoxInput = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const Label = styled.label`
+  width: 45%;
+  display: ${props => props.labelShow ? "flex" : "none"};
+	color: #d2a2a8;
+  font-size: 1rem;
+  font-family: 'Arial', ExtraBold;
+  font-weight: bold;
+	transition: 0.5s;
+  margin-top: 0.5rem;
+`;
+
 const Input = styled.input`
   width: 45%;
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
-  font-size: 0.8rem;
+  color: #FFFFFF;
+  font-size: 0.95rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   padding-bottom: 0.3rem;
   
   ::placeholder {
     color: #d2a2a8;
    }
+
+   @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const FormAssunt = styled.div`
-  width: 100%;
+  width: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,12 +133,11 @@ const FormAssunt = styled.div`
 const FormTriangle = styled.div`
   width: 0; 
   height: 0; 
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 10px solid #FFFFFF;
-  position: absolute;
-  top: 417rem;
-  right: 357px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #FFFFFF;
+  transform: ${props => (props.isSelected ? 'rotate(180deg)' : 'rotate(0)')};
+  transition: .5s;
   cursor: pointer;
 `;
 
@@ -96,6 +147,10 @@ const FormSelect = styled.div`
   flex-direction: column;
   border: 1px solid #FFFFFF;
   list-style: none;
+
+  @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const FormSelectList = styled.li`
@@ -118,8 +173,8 @@ const Textarea = styled.textarea`
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
-  color: #d2a2a8;
-  font-size: 0.8rem;
+  color: #FFFFFF;
+  font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
   padding-top: 1rem;
@@ -128,6 +183,10 @@ const Textarea = styled.textarea`
   ::placeholder {
     color: #d2a2a8;
    }
+
+   @media (max-width: 768px) {
+    width: 65%;
+	}
 `;
 
 const ButtonForm = styled.button`
@@ -143,32 +202,11 @@ const ButtonForm = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    width: 35vw;
+	}
 `;
-
-// const ContentFormTopo = styled.a`
-//   width: 5vh;
-//   height: 5vh;
-//   background: #F5F5F5;
-//   border-radius: 2px;
-//   box-shadow: 0px 3px 6px #00000029;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: relative;
-//   left: 500px;
-//   top: -275px;
-//   opacity: 1;
-// `;
-
-// const ContentFormTriangle = styled.div`
-//   width: 0; 
-//   height: 0; 
-//   border-left: 7px solid transparent;
-//   border-right: 7px solid transparent;
-//   border-bottom: 10px solid #992836;
-//   position: absolute;
-// `;
-
 
 const BoxImage = styled.div`
   width: 100%;
@@ -181,6 +219,7 @@ class Formulation extends Component {
   state = {
     solicitation: true,
     isSelected: false,
+    labelShow: false,
     selectedItems: [
       'Contabilidade',
       'RH',
@@ -201,7 +240,14 @@ class Formulation extends Component {
   handleChange = (ev) => {
     this.setState({
       ev: ev.target.value,
+      labelShow: true,
     });
+  }
+
+  onBlur = () => {
+    this.setState({
+      labelShow: false,
+    })
   }
 
   handleSelected = () => {
@@ -218,29 +264,42 @@ class Formulation extends Component {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
           <Formulario margin={this.state.solicitation}>
-            <Input
-              type="text"
-              placeholder="Nome*"
-              onChange={this.handleChange}
-            />
-            <Input
-              type="text"
-              placeholder="Empresa*"
-              onChange={this.handleChange}
-            />
-            <Input
-              type="text"
-              placeholder="E-mail*"
-              onChange={this.handleChange}
-            />
-            <FormAssunt>
+            <BoxInput>
+              <Label for="name" labelShow={this.state.labelShow}>Nome*</Label>
+              <Input
+                name="name"
+                type="text"
+                placeholder="Nome*"
+                onBlur={this.onBlur}
+                onFocus={this.handleChange}
+              />
+            </BoxInput>
+            <BoxInput>
+              <Label for="name" labelShow={this.state.labelShow}>Empresa*</Label>
               <Input
                 type="text"
-                placeholder="Assunto*"
-                onChange={this.handleChange}
+                placeholder="Empresa*"
+                onBlur={this.onBlur}
+                onFocus={this.handleChange}
               />
-            </FormAssunt>
-            <FormTriangle onClick={this.handleSelected}></FormTriangle>
+            </BoxInput>
+            <BoxInput>
+              <Label for="name" labelShow={this.state.labelShow}>E-mail*</Label>
+              <Input
+                type="text"
+                placeholder="E-mail*"
+                onBlur={this.onBlur}
+                onFocus={this.handleChange}
+              />
+            </BoxInput>
+              <FormAssunt>
+                <Input
+                  type="text"
+                  placeholder="Assunto*"
+                  onChange={this.handleChange}
+                />
+                <FormTriangle onClick={this.handleSelected} isSelected={this.state.isSelected}></FormTriangle>
+              </FormAssunt>
             <FormSelect isSelected={this.state.isSelected}>
               {this.state.selectedItems.map((item, index) => (
                 <FormSelectList key={index}>{item}</FormSelectList>
@@ -250,9 +309,6 @@ class Formulation extends Component {
               placeholder="Escreva aqui a sua mensagem:"
             />
             <ButtonForm>ENVIAR</ButtonForm>
-            {/* <ContentFormTopo href="#topo">
-              <ContentFormTriangle />
-            </ContentFormTopo> */}
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>

@@ -4,7 +4,7 @@ import Carousel from 'nuka-carousel';
 
 const ContentSlider = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 85vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -14,27 +14,34 @@ const ContentSlider = styled.div`
 `;
 
 const ContentTitleSlider = styled.div`
-  width: 29%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
   hr {
     width: 15%;
     border: 1px solid #FFFFFF;
-    margin: 0 0 2rem 10rem;
     opacity: 1;
   }
 `;
 
 const TitleSlider = styled.h2`
-  width: 100%;
+  width: 65%;
   color: #FFFFFF;
   font-family: 'Product Sans', Bold;
   text-align: center;
   text-transform: uppercase;
+  margin-top: 2rem;
   opacity: 1;
 `;
 
 const CarouselSlider = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const ContentSliderMeio = styled.div`
@@ -78,6 +85,11 @@ const SliderBolinha = styled.div`
   &:hover {
     background-color: #FFFFFF;
   }
+
+  @media (max-width: 648px) {
+    width: 2.1vw;
+    height: 2vh;
+	}
 `;
 
 class Slider extends Component {
@@ -128,12 +140,15 @@ class Slider extends Component {
           <Carousel
             autoplay='true'
             cellAlign={"left"}
-            slidesToShow={3}
-            slideWidth="500px"
-            swiping={true}
+            cellSpacing={30}
             dragging={true}
-            withoutControls={true}
             disableEdgeSwiping={false} 
+            slidesToShow={7}
+            slideWidth="560px"
+            slidesToScroll={1}
+            swiping={true}
+            transactionMode={'scroll'}
+            withoutControls={true}
             >
             <ContentSliderMeio>
               <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
@@ -146,12 +161,6 @@ class Slider extends Component {
               Aenean luctus libero id velit laoreet dignissim.
               Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
               <ContentSliderParagraph>Cicero, cargo, Empresa</ContentSliderParagraph>
-            </ContentSliderMeio>
-            <ContentSliderMeio>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
-              Aenean luctus libero id velit laoreet dignissim.
-                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
-              <ContentSliderParagraph>Evelyn, cargo, Empresa</ContentSliderParagraph>
             </ContentSliderMeio>
             <ContentSliderMeio>
               <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
