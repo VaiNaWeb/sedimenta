@@ -121,6 +121,10 @@ const SubContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const BoxMenu = styled.div`
@@ -150,6 +154,48 @@ const SubContainerParagraph = styled.p`
 const MenuHamburguer = styled.img`
   height: 1.8vh;
   cursor: pointer;
+`;
+
+const SubContainerMobile = styled.div`
+   display: none;
+
+  @media (max-width: 648px) {
+    width: 50%;
+    height: 30vh;
+    background: linear-gradient(to right, #992836, #4D141B);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1rem 0.8rem;
+	}
+`;
+
+const BoxMenuMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+
+  div {
+    width: 40vw;
+    border-bottom: 1px solid #FFFFFF;
+  }
+`;
+
+const SubContainerParagraphMobile = styled.p`
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    animation: 0.7s ease-in ${rotate};
+    padding-top: 2rem;
+	}
+
+  a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Arial', Bold;
+  }
 `;
 
 const SubContainerText = styled.div`
@@ -196,6 +242,10 @@ const ButtonHeader = styled.button`
   text-transform: uppercase;
   padding: 0.7rem;
 
+  @media (max-width: 1024px) {
+    width: 24vw;
+	}
+
   @media (max-width: 768px) {
     width: 33vw;
 	}
@@ -212,7 +262,6 @@ const ButtonHeader = styled.button`
     justify-content: center;
 	}
 `;
-
 
 const Slider = styled.div`
   width: 100%;
@@ -321,6 +370,18 @@ class Header extends Component {
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </SubContainer>
+
+
+              <SubContainerMobile>
+                <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+                <BoxMenuMobile open={menu}>
+                  <SubContainerParagraphMobile><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraphMobile>
+                  <div></div>
+                  <SubContainerParagraphMobile><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraphMobile>
+                </BoxMenuMobile>
+              </SubContainerMobile>
+
+
             </SubContainerImage>
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>

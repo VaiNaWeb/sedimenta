@@ -151,16 +151,16 @@ class Slider extends Component {
             withoutControls={true}
             >
             <ContentSliderMeio>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
-              Aenean luctus libero id velit laoreet dignissim.
-              Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
-              <ContentSliderParagraph>Erlane, cargo, Empresa</ContentSliderParagraph>
+              <p>"Estamos muito satisfeitos com o atendimento 
+                personalizado da Sedimenta JPM. Contabilidade não é 
+                só número! E nós sabemos que podemos contar com eles."</p>
+              <ContentSliderParagraph>Plano B</ContentSliderParagraph>
             </ContentSliderMeio>
             <ContentSliderMeio>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
-              Aenean luctus libero id velit laoreet dignissim.
-              Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
-              <ContentSliderParagraph>Cicero, cargo, Empresa</ContentSliderParagraph>
+              <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
+                nos auxiliado em todas as questões contábeis e financeiras do
+                Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
+              <ContentSliderParagraph>Instituto Precisa Ser</ContentSliderParagraph>
             </ContentSliderMeio>
             <ContentSliderMeio>
               <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.

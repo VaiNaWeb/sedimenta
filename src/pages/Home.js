@@ -12,11 +12,11 @@ import seta from '../assets/seta.svg';
 import Icon from '../assets/icon.svg';
 import Fundo from '../assets/fundo.svg';
 
-import People1 from '../assets/image1.png';
-import People2 from '../assets/image2.png';
-import People3 from '../assets/image3.png';
+import People1 from '../assets/Eduardo.png';
+import People2 from '../assets/Christiani.png';
+import People3 from '../assets/Mauro.png';
 
-import BatePapo from '../assets/batepapo.jpg';
+import Velatura from '../assets/velaturaLogo.png';
 import Buque from '../assets/buque.jpg';
 import Farol from '../assets/farol.jpg';
 import Cama from '../assets/cama.jpg';
@@ -54,10 +54,15 @@ const ContentCaixaGeral = styled.div`
 	}
 
   @media (max-width: 648px) {
-    height: 90vh;
+    height: 95vh;
 	}
 
   @media (max-width: 425px) {
+    height: 130vh;
+    bottom: 10px;
+	}
+
+  @media (max-width: 390px) {
     height: 100vh;
 	}
 `;
@@ -160,7 +165,7 @@ const ContentSobre = styled.div`
 	}
 
   @media (max-width: 648px) {
-    padding: 0;
+    padding: 5rem 0;
 	}
 
   span {
@@ -190,7 +195,6 @@ const ContentSobreTitle = styled.div`
 	}
 
   @media (max-width: 648px) {
-    /* width: 45vw; */
     font-size: 1.3rem;
     display: flex;
     align-items: center;
@@ -224,12 +228,11 @@ const ContentSobreText = styled.div`
 
   @media (max-width: 768px) {
     width: 65%;
-    margin-top: 0;
+    margin-top: 1.3rem;
 	}
   @media (max-width: 648px) {
     width: 90%;
     display: flex;
-    align-items: center;
     flex-direction: column;
 	}
 `;
@@ -250,6 +253,10 @@ const ContentCargo = styled.div`
     padding-left: 3rem;
 	}
 
+  @media (max-width: 768px) {
+    padding-left: 2rem;
+	}
+
   @media (max-width: 648px) {
     width: 100%;
     padding: 0;
@@ -261,7 +268,7 @@ const SessionCargo = styled.section`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 90%;
+    width: 100%;
     height: 65vh;
     margin-right: 2rem;
 	}
@@ -293,7 +300,7 @@ const ImageCargo = styled.img`
 	}
 
   @media (max-width: 648px) {
-    width: 250px;
+    width: 270px;
     height: 39vh;
 	}
 `;
@@ -324,6 +331,10 @@ const ContentCargoCaixa = styled.div`
     border: 1px solid #00000029;
     margin-bottom: 1rem;
     opacity: 1;
+
+    @media (max-width: 648px) {
+      width: 15vw;
+	  }
   }
 
   img {
@@ -431,11 +442,12 @@ const SubContentMeio = styled.span`
 
 const ContainerCaixa = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 
   @media (max-width: 648px) {
     width: 100%;
@@ -475,7 +487,7 @@ const CaixaBox = styled.div`
 
   @media (max-width: 648px) {
     width: 40%;
-    margin-right: 4rem;
+    margin-right: 3rem;
 	}
 
   @media (max-width: 425px) {
@@ -576,16 +588,11 @@ const CaixaSaiba = styled.p`
 `;
 
 const ContentLogo = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  hr {
-    width: 25%;
-    border: 1px solid #707070;
-    margin-left: 6rem;
-  }
 `;
 
 const ContentLogoImages = styled.div`
@@ -593,14 +600,38 @@ const ContentLogoImages = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
+`;
 
-  img {
-    @media (max-width: 648px) {
-      width: 45%;
-    }
+const LogoSeparation = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const LogoSeparation2 = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const LogoSeparation3 = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ContentImages = styled.img`
+  width: 13vw;
+  height: 11vh;
+
+  @media (max-width: 648px) {
+    /* width: 45%; */
   }
 `;
+
+
 
 class Home extends Component {
   state = {
@@ -709,12 +740,18 @@ class Home extends Component {
         <Carousel />
         <ContentLogo>
           <ContentLogoImages>
-            <img src={BatePapo} alt='' />
-            <img src={Buque} alt='' />
-            <img src={Farol} alt='' />
-            <img src={Cama} alt='' />
-            <img src={Crianca} alt='' />
-            <img src={Flor} alt='' />
+            <LogoSeparation>
+              <ContentImages src={Velatura} alt='logo' />
+              <ContentImages src={Buque} alt='logo' />
+              <ContentImages src={Farol} alt='logo' />
+            </LogoSeparation>
+            <LogoSeparation2>
+              <ContentImages src={Cama} alt='logo' />
+              <ContentImages src={Crianca} alt='logo' />
+            </LogoSeparation2>
+            <LogoSeparation3>
+              <ContentImages src={Flor} alt='logo' />
+            </LogoSeparation3>
           </ContentLogoImages>
         </ContentLogo>
         <SubContent>

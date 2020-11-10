@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Contabilidade from '../assets/contabilidade.svg';
-import Terceirização from '../assets/terceirizacao.svg';
-import Image from '../assets/image.svg';
+import RH from '../assets/RH.svg';
+import Fiscal from '../assets/fiscal.svg';
+import Legislação from '../assets/legislação.svg';
+import AssessoriaFinanceira from '../assets/assessoriaFinanceira.svg';
+import Consultoria from '../assets/consultoria.svg';
+import Terceirização from '../assets/terceirização.svg';
+import PessoaFisica from '../assets/pessoaFisica.svg';
+
 import setinha from '../assets/setinha.svg';
 import fechar from '../assets/fechar.svg';
+
 
 const ContentServiços = styled.div`
   display: flex;
@@ -14,6 +21,7 @@ const ContentServiços = styled.div`
   padding-left: 4rem;
 
   @media (max-width: 768px) {
+    margin: 5rem 0 7rem;
     padding-left: 1rem;
 	}
 
@@ -30,11 +38,12 @@ const ContentServiçosTitle = styled.div`
   font-family: 'Product Sans', Bold;
 
   @media (max-width: 648px) {
-    width: 70vw;
+    width: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 3rem;
 	}
 
   hr {
@@ -79,10 +88,12 @@ const ContentBox = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    background-color: transparent;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
+    box-shadow: 0;
 	}
 `;
 
@@ -96,12 +107,21 @@ const ContentBoxGalery = styled.div`
 
   @media (max-width: 648px) {
     width: auto;
-    /* justify-content: flex-start; */
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 0 4rem;
+    margin-right: 2rem;
+    opacity: 1;
 	}
 `;
 
 const ContentBoxImage = styled.img`
-  width: 15%;
+  width: 19%;
+
+  @media (max-width: 648px) {
+    width: 65%;
+	}
 `;
 
 const BoxContentText = styled.span`
@@ -122,7 +142,12 @@ const BoxTitle = styled.h2`
 
   @media (max-width: 768px) {
     width: ${props => (props.widthMobile)};
-	} 
+	}
+
+  @media (max-width: 648px) {
+    width: 50vw;
+    font-size: 1.5rem;
+  }
 `;
 
 const BoxText = styled.p`
@@ -135,9 +160,9 @@ const BoxText = styled.p`
   }
   
   @media (max-width: 648px) {
-    width: 45vw;
+    width: 55vw;
+    font-size: 1rem;
 	}
-  
 `;
 
 const Box = styled.button`
@@ -151,6 +176,10 @@ const Box = styled.button`
   outline: none;
   opacity: 1;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const BoxImage = styled.img`
@@ -184,6 +213,9 @@ const BoxContext = styled.div`
   @media (max-width: 768px) {
     padding: 3rem 2rem 0;
 	}
+
+  @media (max-width: 648px) {
+	}
 `;
 
 const BoxContextText = styled.p`
@@ -210,6 +242,36 @@ const ImageClose = styled.button`
   img {
     width: 14%;
     margin-left: 0.3rem;
+  }
+`;
+
+const Slider = styled.div`
+  width: 100%;
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+	}
+
+  @media (max-width: 425px) {
+    width: 80%;
+	}
+`;
+
+const SliderBolinha = styled.div`
+  width: 2.1vw;
+  height: 2vh;
+  border-radius: 50%;
+  border: 1px solid #37373759;
+  background-color: #37373759;
+  margin-left: 1rem;
+
+  &:hover {
+    background-color: #373737;
   }
 `;
 
@@ -261,7 +323,7 @@ class Services extends Component {
           </ContentBoxGalery>
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={RH} alt='teste' />
             <BoxTitle width='22vw' widthMobile='30vw'>recursos humanos</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list1'}>
               <BoxText>Administramos todos os serviços de RH e departamento pessoal
@@ -297,7 +359,7 @@ class Services extends Component {
             </BoxImageClose>
           </BoxContext>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={Fiscal} alt='teste' />
             <BoxTitle>departamento fiscal</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list2'}>
               <BoxText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>
@@ -306,7 +368,7 @@ class Services extends Component {
           </ContentBoxGalery>
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={Legislação} alt='teste' />
             <BoxTitle width='15vw' widthMobile='25vw'>legislação de empresas</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list3'}>
               <BoxText>Abertura, Alterações, Fechamento de empresas e muito
@@ -345,7 +407,7 @@ class Services extends Component {
             </BoxImageClose>
           </BoxContext>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={AssessoriaFinanceira} alt='teste' />
             <BoxTitle width='22vw' widthMobile='30vw'>acessoria financeira</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list4'}>
               <BoxText>Seu patrimônio administrado de forma inteligente.</BoxText>
@@ -354,7 +416,7 @@ class Services extends Component {
           </ContentBoxGalery>
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={Consultoria} alt='teste' />
             <BoxTitle>consultoria</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list5'}>
               <BoxText>Uma ajuda especializada para manter seu negócio atualizado e legal.</BoxText>
@@ -400,7 +462,7 @@ class Services extends Component {
           </ContentBoxGalery>
           <BoxLinha></BoxLinha>
           <ContentBoxGalery>
-            <ContentBoxImage src={Image} alt='teste' />
+            <ContentBoxImage src={PessoaFisica} alt='teste' />
             <BoxTitle>pessoa física</BoxTitle>
             <BoxContentText isOpen={services.isOpen && services.isSelected === 'list7'}>
               <BoxText>Administração justa e simplificada.</BoxText>
@@ -432,6 +494,16 @@ class Services extends Component {
             </BoxImageClose>
           </BoxContext>
         </ContentBox>
+          <Slider>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+            <SliderBolinha></SliderBolinha>
+          </Slider>
       </ContentServiços>
     );
   }
