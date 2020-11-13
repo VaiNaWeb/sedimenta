@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Carousel from 'nuka-carousel';
+// import Carousel from 'nuka-carousel';
 
 const ContentSlider = styled.div`
   width: 100%;
-  height: 85vh;
+  height: 90vh;
+  background: linear-gradient(to right, #992836, #4D141B);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 8rem;
-  background: linear-gradient(to right, #992836, #4D141B);
+  margin-bottom: 5rem;
 `;
 
 const ContentTitleSlider = styled.div`
@@ -44,20 +44,29 @@ const CarouselSlider = styled.div`
   flex-direction: column;
 `;
 
+const ContentSliderBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 4px;
+  
+`;
+
 const ContentSliderMeio = styled.div`
-  width: 65%;
-  height: 47vh;
+  width: 27%;
+  height: 32vh;
   background-color: #FFFFFF;
   color: #373737;
   font-family: 'Open Sans', Regular;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  padding: 0 1.3rem 0.5rem;
+  padding: 1rem 1.3rem 0;
   margin-top: 3.5rem;
   outline: none;
+  transform: ${props => (props.transformScale && 'scale(1.2)')};
 `;
 
 const ContentSliderParagraph = styled.p`
@@ -94,10 +103,7 @@ const SliderBolinha = styled.div`
 
 class Slider extends Component {
   state = {
-  }
-
-  componentDidMount() {
-    this.handleInterval()
+    slider: 'slider1',
   }
 
   handleClick = () => {
@@ -108,24 +114,9 @@ class Slider extends Component {
 
   handleSlider = (item) => {
     this.setState({
-      sliderHeader: item,
+      slider: item,
     })
-    clearInterval(this.interval);
-    this.handleInterval()
-  }
-
-  handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
-  }
-
-  handleTransition = () => {
-    const { sliderHeader } = this.state;
-
-    const slide = sliderHeader === 2 ? 0 : sliderHeader + 1;
-
-    this.handleSlider(slide)
+    // document.getElementById(item).scrollIntoView();
   }
 
 
@@ -137,42 +128,30 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
-          <Carousel
-            autoplay='true'
-            cellAlign={"left"}
-            cellSpacing={30}
-            dragging={true}
-            disableEdgeSwiping={false} 
-            slidesToShow={7}
-            slideWidth="560px"
-            slidesToScroll={1}
-            swiping={true}
-            transactionMode={'scroll'}
-            withoutControls={true}
-            >
-            <ContentSliderMeio>
-              <p>"Estamos muito satisfeitos com o atendimento 
-                personalizado da Sedimenta JPM. Contabilidade não é 
+          <ContentSliderBox>
+            <ContentSliderMeio transformScale={this.state.slider === 'slider0'}>
+              <p>"Estamos muito satisfeitos com o atendimento
+              personalizado da Sedimenta JPM. Contabilidade não é
                 só número! E nós sabemos que podemos contar com eles."</p>
               <ContentSliderParagraph>Plano B</ContentSliderParagraph>
             </ContentSliderMeio>
-            <ContentSliderMeio>
+            <ContentSliderMeio transformScale={this.state.slider === 'slider1'}>
               <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
-                nos auxiliado em todas as questões contábeis e financeiras do
+              nos auxiliado em todas as questões contábeis e financeiras do
                 Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
               <ContentSliderParagraph>Instituto Precisa Ser</ContentSliderParagraph>
             </ContentSliderMeio>
-            <ContentSliderMeio>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisci elit.
-              Aenean luctus libero id velit laoreet dignissim.
-                Cras vitae venenatis felis. Phasellus egestas justo eu aliquam sodales.</p>
-              <ContentSliderParagraph>Evelyn, cargo, Empresa</ContentSliderParagraph>
+            <ContentSliderMeio transformScale={this.state.slider === 'slider2'}>
+              <p>Uma empresa que tem como Meta a qualidade nos serviços
+              e no atendimento ao Cliente. Outro diferencial é a Competência,
+                honestidade e seriedade.</p>
+              <ContentSliderParagraph>Erlane, cargo, Empresa</ContentSliderParagraph>
             </ContentSliderMeio>
-          </Carousel>
+          </ContentSliderBox>
           <SliderCarousel>
-            <SliderBolinha onClick={() => this.handleSlider(0)}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSlider(1)}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSlider(2)}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('slider0')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('slider1')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('slider2')}></SliderBolinha>
           </SliderCarousel>
         </CarouselSlider>
       </ContentSlider>

@@ -97,7 +97,6 @@ const ContentRedeSocial = styled.div`
   @media (max-width: 648px) {
     width: 90%;
     border-left: 7px solid #992836;
-    /* margin-left: 4rem; */
 	}
 
   span {
@@ -118,6 +117,7 @@ const ContentFooterContact = styled.div`
   width: 27%;
   color: #373737;
   margin-right: 2rem;
+  margin-bottom: ${props => (props.marginBottom ? '1.1rem' : '0')};
 
   @media (max-width: 768px) {
     width: 41%;
@@ -244,12 +244,10 @@ class Footer extends Component {
               <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
               <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
             </ContentFooterContact>
-            <ContentFooterContact>
+            <ContentFooterContact marginBottom>
               <FooterLinha></FooterLinha>
               <TitleFooter>CONTATO PORTUGAL</TitleFooter>
-              <ParagraphFooter><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
-                RJ</ParagraphFooter>
-              <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
+              <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
               <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
               <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
             </ContentFooterContact>

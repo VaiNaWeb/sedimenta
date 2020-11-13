@@ -112,6 +112,14 @@ const Label = styled.label`
   font-weight: bold;
 	transition: 0.5s;
   margin-top: 0.5rem;
+
+  @media (max-width: 768px) {
+    width: 65%;
+	}
+
+  @media (max-width: 648px) {
+    width: 80%;
+	}
 `;
 
 const Input = styled.input`
@@ -133,6 +141,10 @@ const Input = styled.input`
 
    @media (max-width: 768px) {
     width: 65%;
+	}
+
+  @media (max-width: 648px) {
+    width: 80%;
 	}
 `;
 
@@ -176,6 +188,10 @@ const FormTriangle = styled.div`
     right: 0;
     left: 80%;
 	}
+
+  @media (max-width: 648px) {
+    left: 86%;
+	}
 `;
 
 const FormSelect = styled.div`
@@ -189,6 +205,10 @@ const FormSelect = styled.div`
 
   @media (max-width: 768px) {
     width: 65%;
+	}
+
+  @media (max-width: 648px) {
+    width: 80%;
 	}
 `;
 
@@ -236,7 +256,7 @@ const Textarea = styled.textarea`
 	}
 
   @media (max-width: 648px) {
-    width: 65%;
+    width: 80%;
 	}
 `;
 
@@ -265,6 +285,8 @@ const BoxImage = styled.div`
   background-image: url(${Proposta});
   background-size: cover;
 `;
+
+
 
 class Formulation extends Component {
   state = {
@@ -350,7 +372,7 @@ class Formulation extends Component {
               <Input
                 name="name"
                 type="text"
-                placeholder={this.state.placeholderShowName == true ? "Nome*" : ''}
+                placeholder={this.state.placeholderShowName === true ? "Nome*" : ''}
                 onFocus={this.handleFocusName}
               />
             </BoxInput>
@@ -358,7 +380,7 @@ class Formulation extends Component {
               <Label for="name" labelShow={this.state.labelShowCompany}>Empresa*</Label>
               <Input
                 type="text"
-                placeholder={this.state.placeholderShowCompany == true ? "Empresa*" : ''}
+                placeholder={this.state.placeholderShowCompany === true ? "Empresa*" : ''}
                 onFocus={this.handleFocusCompany}
               />
             </BoxInput>
@@ -366,7 +388,7 @@ class Formulation extends Component {
               <Label for="name" labelShow={this.state.labelShowEmail}>E-mail*</Label>
               <Input
                 type="text"
-                placeholder={this.state.placeholderShowEmail == true ? "E-mail*" : ''}
+                placeholder={this.state.placeholderShowEmail === true ? "E-mail*" : ''}
                 onFocus={this.handleFocusEmail}
               />
             </BoxInput>
