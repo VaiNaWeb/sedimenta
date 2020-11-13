@@ -12,16 +12,16 @@ import seta from '../assets/seta.svg';
 import Icon from '../assets/icon.svg';
 import Fundo from '../assets/fundo.svg';
 
-import People1 from '../assets/image1.png';
-import People2 from '../assets/image2.png';
-import People3 from '../assets/image3.png';
+import People1 from '../assets/Eduardo.png';
+import People2 from '../assets/Christiani.png';
+import People3 from '../assets/Mauro.png';
 
-import BatePapo from '../assets/batepapo.jpg';
-import Buque from '../assets/buque.jpg';
-import Farol from '../assets/farol.jpg';
-import Cama from '../assets/cama.jpg';
-import Crianca from '../assets/crianca.jpg';
-import Flor from '../assets/flor.jpg';
+import Velatura from '../assets/velaturaLogo.png';
+import ChooseMed from '../assets/chooseMedLogo.png';
+import AndreLuiz from '../assets/andreLuizLogo.png';
+import FichaCerta from '../assets/fichaCertaLogo.png';
+import FitaArquitetura from '../assets/fitaArquiteturaLogo.png';
+import SabendoMais from '../assets/sabendoMaisLogo.png';
 
 import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
@@ -38,27 +38,27 @@ const Container = styled.div`
 
 const ContentCaixaGeral = styled.div`
   width: 93%;
-  height: 25vh;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
   flex-direction: row;
+  padding: 3rem 0;
   position: relative;
-  bottom: 70px;
+  bottom: 65px;
 
   @media (max-width: 768px) {
     width: 95%;
-    height: 50vh;
     flex-direction: column;
     bottom: 60px;
 	}
 
   @media (max-width: 648px) {
-    height: 90vh;
+    width: 90%;
+    padding: 1.5rem 0;
 	}
 
   @media (max-width: 425px) {
-    height: 100vh;
+    bottom: 10px;
 	}
 `;
 
@@ -160,7 +160,7 @@ const ContentSobre = styled.div`
 	}
 
   @media (max-width: 648px) {
-    padding: 0;
+    padding: 5rem 0;
 	}
 
   span {
@@ -190,7 +190,6 @@ const ContentSobreTitle = styled.div`
 	}
 
   @media (max-width: 648px) {
-    /* width: 45vw; */
     font-size: 1.3rem;
     display: flex;
     align-items: center;
@@ -224,12 +223,11 @@ const ContentSobreText = styled.div`
 
   @media (max-width: 768px) {
     width: 65%;
-    margin-top: 0;
+    margin-top: 1.3rem;
 	}
   @media (max-width: 648px) {
     width: 90%;
     display: flex;
-    align-items: center;
     flex-direction: column;
 	}
 `;
@@ -250,6 +248,10 @@ const ContentCargo = styled.div`
     padding-left: 3rem;
 	}
 
+  @media (max-width: 768px) {
+    padding-left: 2rem;
+	}
+
   @media (max-width: 648px) {
     width: 100%;
     padding: 0;
@@ -261,7 +263,7 @@ const SessionCargo = styled.section`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 90%;
+    width: 100%;
     height: 65vh;
     margin-right: 2rem;
 	}
@@ -293,7 +295,7 @@ const ImageCargo = styled.img`
 	}
 
   @media (max-width: 648px) {
-    width: 250px;
+    width: 270px;
     height: 39vh;
 	}
 `;
@@ -324,10 +326,14 @@ const ContentCargoCaixa = styled.div`
     border: 1px solid #00000029;
     margin-bottom: 1rem;
     opacity: 1;
+
+    @media (max-width: 648px) {
+      width: 15vw;
+	  }
   }
 
   img {
-    margin-top: 0.5rem;
+    margin-top: 0.9rem;
   }
 `;
 
@@ -343,6 +349,7 @@ const ContentBoxParagraph = styled.p`
   font-size: 0.6875rem;
   font-family: 'Arial', Bold;
   font-weight: bold;
+  padding-top: 0.2rem;
 `;
 
 const BoxImage = styled.img`
@@ -431,11 +438,12 @@ const SubContentMeio = styled.span`
 
 const ContainerCaixa = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 
   @media (max-width: 648px) {
     width: 100%;
@@ -475,7 +483,7 @@ const CaixaBox = styled.div`
 
   @media (max-width: 648px) {
     width: 40%;
-    margin-right: 4rem;
+    margin-right: 3rem;
 	}
 
   @media (max-width: 425px) {
@@ -511,12 +519,13 @@ const Slider = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 2.1vw;
-  height: 2vh;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 1px solid #37373759;
   background-color: #37373759;
   margin-left: 1rem;
+  cursor: pointer;
 
   &:hover {
     background-color: #373737;
@@ -576,40 +585,104 @@ const CaixaSaiba = styled.p`
 `;
 
 const ContentLogo = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  hr {
-    width: 25%;
-    border: 1px solid #707070;
-    margin-left: 6rem;
-  }
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const ContentLogoImages = styled.div`
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 5rem;
-
-  img {
-    @media (max-width: 648px) {
-      width: 45%;
-    }
-  }
 `;
+
+const LogoSeparation = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 9rem 0;
+`;
+
+const ContentImages = styled.img`
+  width: 20%;
+  height: ${props => (props.height ? '20vh' : '10vh')};
+
+  @media (max-width: 768px) {
+    width: 18vw;
+	}
+
+  @media (max-width: 648px) {
+    width: 22vw;
+	}
+`;
+
+const ContentLogoMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+	}
+`;
+
+const ContentLogoImagesMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+	}
+`;
+
+const LogoSeparationMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 5rem 0;
+	}
+`;
+
 
 class Home extends Component {
   state = {
+    slider: 0,
+    sliderCargo: 0,
   }
 
   handleText = () => {
     this.setState({
       text: this.state.text,
     })
+  }
+
+  handleSliderCargo = (item) => {
+    this.setState({
+      sliderCargo: item,
+    })
+    document.getElementById(item).scrollIntoView()
+  }
+
+  handleSlider = (item) => {
+    this.setState({
+      slider: item,
+    })
+    document.getElementById(item).scrollIntoView()
   }
 
   render() {
@@ -622,13 +695,17 @@ class Home extends Component {
             <ImageSeta src={seta} alt='seta' />
           </Content>
           <ContentCaixaBox>
-            <CaixaParagraph width='14vw' paddingMobile='2rem 4rem 0 0'>Prestar um atendimento eficiente é a nossa <b>meta!</b></CaixaParagraph>
-            <CaixaParagraph width='17vw' widthMobile='19vw' paddingMobile='2rem 0 0 0'>Fazemos terceirização! Diminua seu custo e
-              tenha mais tempo para o seu negócio</CaixaParagraph>
-            <CaixaParagraph width='16.2vw' paddingMobile='2rem 4rem 0 0'>Oferecemos uma ótima assessoria de planejamento
-              para ajudar a por em pratica uma ótima ideia.</CaixaParagraph>
-            <CaixaParagraph width='17vw' widthMobile='21vw' paddingMobile='2rem 0 0 0'>Nossos colaboradores são capacitados a apresentar
-              candidatos com o perfil profissional de sua preferencia.</CaixaParagraph>
+            <CaixaParagraph width='14vw' paddingMobile='2rem 4rem 0 0'>Prestar um atendimento
+              eficiente é a nossa <b>meta!</b></CaixaParagraph>
+            <CaixaParagraph width='17vw' widthMobile='19vw' paddingMobile='2rem 0 0 0'>Fazemos
+            terceirização! Diminua seu custo e tenha mais tempo
+              para o seu negócio</CaixaParagraph>
+            <CaixaParagraph width='16.2vw' paddingMobile='2rem 4rem 0 0'>Oferecemos uma
+            ótima assessoria de planejamento para ajudar a por
+              em pratica uma ótima ideia.</CaixaParagraph>
+            <CaixaParagraph width='17vw' widthMobile='21vw' paddingMobile='2rem 0 0 0'>Nossos
+            colaboradores são capacitados a apresentar candidatos com o
+              perfil profissional de sua preferencia.</CaixaParagraph>
           </ContentCaixaBox>
         </ContentCaixaGeral>
         <ContentSobre id='sobre'>
@@ -668,7 +745,7 @@ class Home extends Component {
         </ContentSobre>
         <ContentCargo>
           <Cargo>
-            <SessionCargo>
+            <SessionCargo id='cargo0'>
               <ImageCargo src={People1} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
@@ -678,7 +755,7 @@ class Home extends Component {
                 <img src={Icon} alt='linkedin' />
               </ContentCargoCaixa>
             </SessionCargo>
-            <SessionCargo>
+            <SessionCargo id='cargo1'>
               <ImageCargo src={People2} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
@@ -688,7 +765,7 @@ class Home extends Component {
                 <img src={Icon} alt='linkedin' />
               </ContentCargoCaixa>
             </SessionCargo>
-            <SessionCargo>
+            <SessionCargo id='cargo2'>
               <ImageCargo src={People3} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
@@ -700,23 +777,43 @@ class Home extends Component {
             </SessionCargo>
           </Cargo>
           <Slider>
-            <SliderBolinha></SliderBolinha>
-            <SliderBolinha></SliderBolinha>
-            <SliderBolinha></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSliderCargo('cargo0')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSliderCargo('cargo1')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSliderCargo('cargo2')}></SliderBolinha>
           </Slider>
         </ContentCargo>
         <Services />
         <Carousel />
         <ContentLogo>
           <ContentLogoImages>
-            <img src={BatePapo} alt='' />
-            <img src={Buque} alt='' />
-            <img src={Farol} alt='' />
-            <img src={Cama} alt='' />
-            <img src={Crianca} alt='' />
-            <img src={Flor} alt='' />
+            <LogoSeparation>
+              <ContentImages src={ChooseMed} alt='logo' />
+              <ContentImages src={AndreLuiz} alt='logo' />
+              <ContentImages src={FichaCerta} alt='logo' />
+            </LogoSeparation>
+            <LogoSeparation>
+              <ContentImages src={FitaArquitetura} alt='logo' />
+              <ContentImages height src={SabendoMais} alt='logo' />
+              <ContentImages src={Velatura} alt='logo' />
+            </LogoSeparation>
           </ContentLogoImages>
         </ContentLogo>
+        <ContentLogoMobile>
+          <ContentLogoImagesMobile>
+            <LogoSeparationMobile>
+              <ContentImages src={ChooseMed} alt='logo' />
+              <ContentImages src={AndreLuiz} alt='logo' />
+            </LogoSeparationMobile>
+            <LogoSeparationMobile>
+              <ContentImages src={FichaCerta} alt='logo' />
+              <ContentImages src={FitaArquitetura} alt='logo' />
+            </LogoSeparationMobile>
+            <LogoSeparationMobile>
+              <ContentImages height src={SabendoMais} alt='logo' />
+              <ContentImages src={Velatura} alt='logo' />
+            </LogoSeparationMobile>
+          </ContentLogoImagesMobile>
+        </ContentLogoMobile>
         <SubContent>
           <div>
             <SubContentMeio>
@@ -727,7 +824,7 @@ class Home extends Component {
         </SubContent>
         <ContainerCaixa>
           <Caixa>
-            <CaixaBox>
+            <CaixaBox id='caixa0'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
                 <BoxDate>Sep 28 2020</BoxDate>
@@ -738,7 +835,7 @@ class Home extends Component {
                 </CaixaBoxSobre>
               </CaixaBoxHeader>
             </CaixaBox>
-            <CaixaBox>
+            <CaixaBox id='caixa1'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
                 <BoxDate>Sep 28 2020</BoxDate>
@@ -749,7 +846,7 @@ class Home extends Component {
                 </CaixaBoxSobre>
               </CaixaBoxHeader>
             </CaixaBox>
-            <CaixaBox>
+            <CaixaBox id='caixa2'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
                 <BoxDate>Sep 28 2020</BoxDate>
@@ -762,9 +859,9 @@ class Home extends Component {
             </CaixaBox>
           </Caixa>
           <Slider>
-            <SliderBolinha></SliderBolinha>
-            <SliderBolinha></SliderBolinha>
-            <SliderBolinha></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('caixa0')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('caixa1')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('caixa2')}></SliderBolinha>
           </Slider>
         </ContainerCaixa>
         <Formulation />

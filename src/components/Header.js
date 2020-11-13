@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 //Images
-import logo from '../assets/logo.svg';
+import logo from '../assets/logoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
 import Amigos from '../assets/amigos.jpg';
 import Background from '../assets/back.png';
@@ -27,7 +27,7 @@ const ContainerLogo = styled.div`
     width: 100%;
     height: 100vh;
     background: #0000005C 0% 0% no-repeat padding-box;
-    padding: 0.8rem 5rem;
+    padding: 0.8rem 4rem;
     opacity: 0.97;
 
   @media (max-width: 768px) {
@@ -55,8 +55,7 @@ const ContainerHeader = styled.div`
   @media (max-width: 768px) {
     font-size: 0.6rem;
 	}
-
-
+  
   p {
     font-family: 'Open Sans', Regular;
   }
@@ -114,13 +113,17 @@ const SubContainerImage = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 4vh;
+  height: 10vh;
 `;
 
 const SubContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  @media (max-width: 425px) {
+    display: none;
+	}
 `;
 
 const BoxMenu = styled.div`
@@ -148,13 +151,58 @@ const SubContainerParagraph = styled.p`
 `;
 
 const MenuHamburguer = styled.img`
-  height: 1.8vh;
+  height: 2.1vh;
   cursor: pointer;
+`;
+
+const SubContainerMobile = styled.div`
+   display: none;
+
+  @media (max-width: 425px) {
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(to right, #992836, #4D141B);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1rem 0.8rem;
+	}
+`;
+
+const BoxMenuMobile = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 2rem;
+`;
+
+const SubContainerParagraphMobile = styled.p`
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    animation: 0.7s ease-in ${rotate};
+	}
+
+  a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Arial', Bold;
+  }
+`;
+
+const ContainerLinha = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #FFFFFF;
+  margin: 1rem 0;
 `;
 
 const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '43%')};
-  height: 70vh;
+  height: 66vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -195,6 +243,12 @@ const ButtonHeader = styled.button`
   font-family: 'Product Sans', Bold;
   text-transform: uppercase;
   padding: 0.7rem;
+  outline: none;
+  cursor: pointer;
+
+  @media (max-width: 1024px) {
+    width: 24vw;
+	}
 
   @media (max-width: 768px) {
     width: 33vw;
@@ -213,7 +267,6 @@ const ButtonHeader = styled.button`
 	}
 `;
 
-
 const Slider = styled.div`
   width: 100%;
   display: flex;
@@ -224,8 +277,8 @@ const Slider = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 1vw;
-  height: 2vh;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   border: 1px solid #E0E0E0;
   background-color: #E0E0E0;
@@ -234,11 +287,6 @@ const SliderBolinha = styled.div`
   &:hover {
     background-color: #FFFFFF;
   }
-
-  @media (max-width: 648px) {
-    width: 2.1vw;
-    height: 2vh;
-	}
 `;
 
 class Header extends Component {
@@ -307,13 +355,14 @@ class Header extends Component {
         <span>
           <ContainerHeader>
             <ContainerHeaderPage>
-              <Page><b>Telefone:</b> +55 (21) 2232-1337</Page>
+              <Page><b>Telefone:</b> 2232-1337</Page>
               <p><b>E-mail:</b> contato@sedimenta.com.br</p>
             </ContainerHeaderPage>
           </ContainerHeader>
           <SubContainerPrincipal>
             <SubContainerImage>
               <Logo src={logo} alt='Logo' />
+
               <SubContainer>
                 <BoxMenu open={menu}>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
@@ -321,11 +370,23 @@ class Header extends Component {
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </SubContainer>
+
+
+              <SubContainerMobile>
+                <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+                <BoxMenuMobile open={menu}>
+                  <SubContainerParagraphMobile><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraphMobile>
+                  <ContainerLinha></ContainerLinha>
+                  <SubContainerParagraphMobile><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraphMobile>
+                </BoxMenuMobile>
+              </SubContainerMobile>
+
+
             </SubContainerImage>
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              {sliderHeader === 0 ? <ButtonHeader id="sobre">conheça nosso serviço!</ButtonHeader>
+              {sliderHeader === 0 ? <ButtonHeader id='sobre'>conheça nosso serviço!</ButtonHeader>
                 : null}
             </SubContainerText>
           </SubContainerPrincipal>
