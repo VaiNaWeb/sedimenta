@@ -1,10 +1,14 @@
 // Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from "axios";
+
+//Components
 import Carousel from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
 import Services from '../components/Services';
+
 import Footer from '../components/Footer';
 
 //Images
@@ -44,7 +48,7 @@ const ContentCaixaGeral = styled.div`
   flex-direction: row;
   padding: 3rem 0;
   position: relative;
-  bottom: 65px;
+  bottom: 100px;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -56,25 +60,22 @@ const ContentCaixaGeral = styled.div`
     width: 90%;
     padding: 1.5rem 0;
 	}
-
-  @media (max-width: 425px) {
-    bottom: 10px;
-	}
 `;
 
 const ContentCaixaBox = styled.div`
-  width: 85%;
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: row;
+  margin-left: 6rem;
 
   @media (max-width: 1024px) {
     align-items: center;
 	}
 
   @media (max-width: 768px) {
-    width: 75%;
-    flex-wrap: wrap;
+    margin-left: 0;
 	}
 
   @media (max-width: 648px) {
@@ -105,7 +106,6 @@ const TitleHeader = styled.h2`
   font-family: 'Product Sans', Bold;
   margin-left: 3rem;
 
-  
   @media (max-width: 1024px) {
     margin-left: 1rem;
 	}
@@ -129,7 +129,7 @@ const CaixaParagraph = styled.p`
   color: #373737;
   font-weight: bold;
   font-family: 'Product Sans', Bold;
-  padding: 0 2.5rem 0 0;
+  padding: 0 8rem 0 0;
 
   b {
     color: #000000;
@@ -141,12 +141,12 @@ const CaixaParagraph = styled.p`
 	}
 
   @media (max-width: 768px) {
-    width: 35vw;
+    width: 30vw;
     padding: ${props => (props.paddingMobile)};
 	}
 
   @media (max-width: 648px) {
-    width: 47vw;
+    width: 55vw;
     padding: 3rem 0 0;
 	}
 `;
@@ -241,8 +241,8 @@ const ContainerParagraph = styled.p`
 
 const ContentCargo = styled.div`
   width: 100%;
-  margin: 7rem 0 5rem 0;
   padding-left: 10rem;
+  margin: 7rem 0 5rem 0;
 
   @media (max-width: 1024px) {
     padding-left: 3rem;
@@ -255,6 +255,7 @@ const ContentCargo = styled.div`
   @media (max-width: 648px) {
     width: 100%;
     padding: 0;
+    margin: 4rem 0 2rem 0;
 	}
 `;
 
@@ -362,21 +363,13 @@ const SubContent = styled.div`
   background-image: url(${Fundo});
   background-size: cover;
   background-repeat: no-repeat;
+`;
 
-  div {
-    height: 65vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @media (max-width: 768px) {
-      height: 60vh;
-	  }
-
-    @media (max-width: 648px) {
-      height: 78vh;
-	  }
-  }
+const SubContentCaixa = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5.5rem 2rem;
 `;
 
 const SubContentMeio = styled.span`
@@ -392,18 +385,20 @@ const SubContentMeio = styled.span`
   justify-content: center;
   padding: 0 3rem 1.5rem;
 
+  @media (max-width: 1024px) {
+    width: 45%;
+	}
+
   @media (max-width: 768px) {
-    width: 53%;
+    width: 62%;
 	}
 
   @media (max-width: 648px) {
-    width: 60%;
-    height: 55vh;
-    padding: 0 3rem 1.5rem;
+    width: 70%;
 	}
 
-  @media (max-width: 425px) {
-    width: 90%;
+  @media (max-width: 450px) {
+    width: 100%;
     padding: 0 1rem 1.5rem;
 	}
 
@@ -417,7 +412,7 @@ const SubContentMeio = styled.span`
 	  }
 
     @media (max-width: 648px) {
-      width: 25vw;
+      width: 15vw;
 	  }
   }
 
@@ -463,7 +458,7 @@ const Caixa = styled.div`
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
-    padding-left: 4rem;
+    padding-left: 2rem;
     overflow-x: scroll;
   } 
 `;
@@ -486,7 +481,7 @@ const CaixaBox = styled.div`
     margin-right: 3rem;
 	}
 
-  @media (max-width: 425px) {
+  @media (max-width: 450px) {
     width: 80%;
 	}
 `;
@@ -510,10 +505,9 @@ const Slider = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    cursor: pointer;
 	}
 
-  @media (max-width: 425px) {
+  @media (max-width: 450px) {
     width: 80%;
 	}
 `;
@@ -522,14 +516,10 @@ const SliderBolinha = styled.div`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1px solid #37373759;
-  background-color: #37373759;
+  background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
   margin-left: 1rem;
+  opacity: 1;
   cursor: pointer;
-
-  &:hover {
-    background-color: #373737;
-  }
 `;
 
 const ImageBox = styled.img`
@@ -544,8 +534,9 @@ const ImageBox = styled.img`
     width: 35vw;
 	}
 
-  @media (max-width: 425px) {
-    width: 50vw;
+  @media (max-width: 450px) {
+    width: 65vw;
+    padding: 2rem 3rem;
 	}
 `;
 
@@ -578,10 +569,11 @@ const CaixaBoxSobre = styled.div`
   }
 `;
 
-const CaixaSaiba = styled.p`
+const CaixaSaiba = styled.a`
   color: #992836;
   font-size: 0.7rem;
   font-family: 'Open Sans', Regular;
+  text-decoration: none;
 `;
 
 const ContentLogo = styled.div`
@@ -611,15 +603,19 @@ const LogoSeparation = styled.div`
 `;
 
 const ContentImages = styled.img`
-  width: 20%;
+  /* width: 20%; */
   height: ${props => (props.height ? '20vh' : '10vh')};
 
   @media (max-width: 768px) {
-    width: 18vw;
+    height: 7vh;
 	}
 
   @media (max-width: 648px) {
-    width: 22vw;
+    height: 5vh;
+	}
+
+  @media (max-width: 450px) {
+    /* width: 27vw; */
 	}
 `;
 
@@ -663,7 +659,27 @@ class Home extends Component {
   state = {
     slider: 0,
     sliderCargo: 0,
+    selectedSlider: 1,
+    sliderSelect: 0,
+    responseDate: undefined,
   }
+
+  componentDidMount() {
+    this.getPosts();
+  }
+
+  getPosts = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
+      );
+      this.setState({
+        responseDate: response,
+      })
+      console.log(response);
+    } catch (err) { }
+  };
+
 
   handleText = () => {
     this.setState({
@@ -671,21 +687,17 @@ class Home extends Component {
     })
   }
 
-  handleSliderCargo = (item) => {
-    this.setState({
-      sliderCargo: item,
-    })
-    document.getElementById(item).scrollIntoView()
-  }
-
-  handleSlider = (item) => {
+  handleSlider = (item, slider) => {
     this.setState({
       slider: item,
+      sliderSelect: slider,
     })
     document.getElementById(item).scrollIntoView()
   }
 
   render() {
+    const { sliderSelect } = this.state;
+
     return (
       <Container>
         <Header />
@@ -695,17 +707,12 @@ class Home extends Component {
             <ImageSeta src={seta} alt='seta' />
           </Content>
           <ContentCaixaBox>
-            <CaixaParagraph width='14vw' paddingMobile='2rem 4rem 0 0'>Prestar um atendimento
-              eficiente é a nossa <b>meta!</b></CaixaParagraph>
-            <CaixaParagraph width='17vw' widthMobile='19vw' paddingMobile='2rem 0 0 0'>Fazemos
-            terceirização! Diminua seu custo e tenha mais tempo
-              para o seu negócio</CaixaParagraph>
-            <CaixaParagraph width='16.2vw' paddingMobile='2rem 4rem 0 0'>Oferecemos uma
-            ótima assessoria de planejamento para ajudar a por
-              em pratica uma ótima ideia.</CaixaParagraph>
-            <CaixaParagraph width='17vw' widthMobile='21vw' paddingMobile='2rem 0 0 0'>Nossos
-            colaboradores são capacitados a apresentar candidatos com o
-              perfil profissional de sua preferencia.</CaixaParagraph>
+            <CaixaParagraph width='24vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
+              eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
+            <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência
+              nas informações</CaixaParagraph>
+            <CaixaParagraph width='23vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
+              com o seu negócio</CaixaParagraph>
           </ContentCaixaBox>
         </ContentCaixaGeral>
         <ContentSobre id='sobre'>
@@ -776,10 +783,10 @@ class Home extends Component {
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
-          <Slider>
-            <SliderBolinha onClick={() => this.handleSliderCargo('cargo0')}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSliderCargo('cargo1')}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSliderCargo('cargo2')}></SliderBolinha>
+          <Slider >
+            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
           </Slider>
         </ContentCargo>
         <Services />
@@ -815,53 +822,80 @@ class Home extends Component {
           </ContentLogoImagesMobile>
         </ContentLogoMobile>
         <SubContent>
-          <div>
+          <SubContentCaixa>
             <SubContentMeio>
               <hr></hr>
               <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
             </SubContentMeio>
-          </div>
+          </SubContentCaixa>
         </SubContent>
         <ContainerCaixa>
           <Caixa>
             <CaixaBox id='caixa0'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
-                <BoxDate>Sep 28 2020</BoxDate>
-                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                {this.state.responseDate !== undefined ?
+                  <BoxDate>{this.state.responseDate.data.items[1].pubDate}</BoxDate>
+                  : null
+                }
+                {this.state.responseDate !== undefined ?
+                  <TitleBox>{this.state.responseDate.data.items[1].title}</TitleBox>
+                  : null
+                }
                 <CaixaBoxSobre>
                   <hr></hr>
-                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                  <CaixaSaiba href={
+                    this.state.responseDate !== undefined ?
+                      this.state.responseDate.data.items[1].link : null
+                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
                 </CaixaBoxSobre>
               </CaixaBoxHeader>
             </CaixaBox>
             <CaixaBox id='caixa1'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
-                <BoxDate>Sep 28 2020</BoxDate>
-                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                {this.state.responseDate !== undefined ?
+                  <BoxDate>{this.state.responseDate.data.items[2].pubDate}</BoxDate>
+                  : null
+                }
+                {this.state.responseDate !== undefined ?
+                  <TitleBox>{this.state.responseDate.data.items[2].title}</TitleBox>
+                  : null
+                }
                 <CaixaBoxSobre>
                   <hr></hr>
-                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                  <CaixaSaiba href={
+                    this.state.responseDate !== undefined ?
+                      this.state.responseDate.data.items[2].link : null
+                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
                 </CaixaBoxSobre>
               </CaixaBoxHeader>
             </CaixaBox>
             <CaixaBox id='caixa2'>
               <ImageBox src={balao} alt='figure' />
               <CaixaBoxHeader>
-                <BoxDate>Sep 28 2020</BoxDate>
-                <TitleBox>Lorem ipsum dolor sit amet.</TitleBox>
+                {this.state.responseDate !== undefined ?
+                  <BoxDate>{this.state.responseDate.data.items[3].pubDate}</BoxDate>
+                  : null
+                }
+                {this.state.responseDate !== undefined ?
+                  <TitleBox>{this.state.responseDate.data.items[3].title}</TitleBox>
+                  : null
+                }
                 <CaixaBoxSobre>
                   <hr></hr>
-                  <CaixaSaiba>saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                  <CaixaSaiba href={
+                    this.state.responseDate !== undefined ?
+                      this.state.responseDate.data.items[3].link : null
+                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
                 </CaixaBoxSobre>
               </CaixaBoxHeader>
             </CaixaBox>
           </Caixa>
           <Slider>
-            <SliderBolinha onClick={() => this.handleSlider('caixa0')}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSlider('caixa1')}></SliderBolinha>
-            <SliderBolinha onClick={() => this.handleSlider('caixa2')}></SliderBolinha>
+            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('caixa1', 1)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('caixa2', 2)}></SliderBolinha>
           </Slider>
         </ContainerCaixa>
         <Formulation />

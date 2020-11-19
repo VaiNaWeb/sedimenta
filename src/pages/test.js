@@ -69,7 +69,7 @@ const ContentSliderBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
  
   @media (max-width: 648px) {
     height: 50%;
@@ -82,7 +82,7 @@ const ContentSliderBox = styled.div`
 `;
 
 const ContentSliderMeio = styled.div`
-  width: 26em;
+  width: 63%;
   background-color: #FFFFFF;
   color: #373737;
   font-size: 0.7rem;
@@ -126,28 +126,30 @@ const SliderBolinha = styled.div`
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#FFFFFF' : '#FFFFFF80')};
+  border: 1px solid #E0E0E0;
+  background-color: #E0E0E0;
   margin-left: 1.3rem;
-  opacity: 1;
   cursor: pointer;
+
+  &:hover {
+    background-color: #FFFFFF;
+  }
 `;
 
 
 class Slider extends Component {
   state = {
     slider: undefined,
-    selectedSlider: 1,
   }
 
-  handleSlider = (item, slider) => {
+  handleSlider = (item) => {
     this.setState({
       slider: item,
-      selectedSlider: slider,
     })
   }
 
   render() {
-    const { slider, selectedSlider } = this.state;
+    const { slider } = this.state;
 
     const orderDesktop1 = slider === '0' ? 1 : 0;
     const orderMobile1 = slider === '1' ? 0 : 1;
@@ -190,9 +192,9 @@ class Slider extends Component {
             </SessionSlider>
           </ContentSliderBox>
           <SliderCarousel>
-            <SliderBolinha isSelected={selectedSlider === 0 ? true : false} onClick={() => this.handleSlider('0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 1 ? true : false} onClick={() => this.handleSlider('1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 2 ? true : false} onClick={() => this.handleSlider('2', 2)}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('0')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('1')}></SliderBolinha>
+            <SliderBolinha onClick={() => this.handleSlider('2')}></SliderBolinha>
           </SliderCarousel>
         </CarouselSlider>
       </ContentSlider >

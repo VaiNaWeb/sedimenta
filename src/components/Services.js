@@ -38,12 +38,18 @@ const ContentServiçosTitle = styled.div`
   font-family: 'Product Sans', Bold;
 
   @media (max-width: 648px) {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     margin-bottom: 3rem;
+	}
+
+
+  @media (max-width: 450px) {
+    width: 85vw;
 	}
 
   hr {
@@ -59,10 +65,6 @@ const ContentServiçosTitle = styled.div`
      width: 25vw;
 	  }
   }
-  
-  @media (max-width: 648px) {
-    align-items: center;
-	}
 `;
 
 const ContentBox = styled.div`
@@ -93,6 +95,13 @@ const ContentBox = styled.div`
 	}
 `;
 
+const ContentBoxCaixa = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const ContentBoxGalery = styled.div`
   width: 100%;
   display: flex;
@@ -104,14 +113,13 @@ const ContentBoxGalery = styled.div`
 
   @media (max-width: 648px) {
     width: 95%;
-    min-height: 85%;
+    min-height: 100%;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #00000029;
     padding: 2rem 4rem;
     margin-right: 2rem;
     opacity: 1;
-    /* position: absolute; */
 	}
 `;
 
@@ -160,7 +168,7 @@ const BoxText = styled.p`
   }
   
   @media (max-width: 648px) {
-    width: 55vw;
+    width: 65vw;
     font-size: 1rem;
 	}
 `;
@@ -191,7 +199,7 @@ const BoxLinha = styled.div`
   height: 15vh;
   border-right: 2px solid #707070;
   position: relative;
-  bottom: -147px;
+  bottom: -25px;
   opacity: 0.25;
 
   @media (max-width: 648px) {
@@ -215,13 +223,15 @@ const BoxContext = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: ${props => (props.widthText ? '45%' : '95%')};
+    width: ${props => (props.widthText ? '42%' : '95%')};
     display: ${props => (props.isOpen ? 'flex' : 'none')};
 	}
 `;
 
 const Desktop = styled.div`
   display: flex;
+  /* align-items: center;
+  justify-content: center; */
 
   @media (max-width: 648px) {
     display: none;
@@ -237,7 +247,14 @@ const Mobile = styled.div`
 `;
 
 const ContentBoxText = styled.div`
+  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ContentBoxContainer = styled.div`
+  width: 100%;
 `;
 
 const BoxContextText = styled.p`
@@ -276,7 +293,6 @@ const Slider = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    cursor: pointer;
 	}
 
   @media (max-width: 425px) {
@@ -288,14 +304,10 @@ const SliderBolinha = styled.div`
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 1px solid #37373759;
-  background-color: #37373759;
+  background-color: ${props => (props.selectedClick ? '#373737' : '#A7A7A7')};
   margin-left: 1rem;
+  opacity: 1;
   cursor: pointer;
-
-  &:hover {
-    background-color: #373737;
-  }
 `;
 
 class Services extends Component {
@@ -304,9 +316,9 @@ class Services extends Component {
       isOpen: false,
       isSelected: '',
       slider: 0,
+      selectedClickSlider: 0,
     }
   }
-
 
   handleClick = (item) => {
     this.setState({
@@ -325,9 +337,10 @@ class Services extends Component {
     })
   }
 
-  handleClickSlider = (item) => {
+  handleClickSlider = (item, select) => {
     this.setState({
       slider: item,
+      selectedClickSlider: select,
     })
     document.getElementById(item).scrollIntoView();
   }
@@ -335,15 +348,15 @@ class Services extends Component {
   // -----------------------------------------------------
 
   renderTitleContabilidade = () => (
-      <ContentBoxGalery id='list0'>
-        <ContentBoxImage widthMobileImg='48%' src={Contabilidade} alt='category' />
-        <BoxTitle>contabilidade</BoxTitle>
-        <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
-          <BoxText>A contabilidade da sua empresa sem burocracia,
+    <ContentBoxGalery id='list0'>
+      <ContentBoxImage widthMobileImg='48%' src={Contabilidade} alt='category' />
+      <BoxTitle>contabilidade</BoxTitle>
+      <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
+        <BoxText>A contabilidade da sua empresa sem burocracia,
         entregas seguras e econômicas.</BoxText>
-          <Box onClick={() => this.handleClick('list0')}>Saiba mais <BoxImage src={setinha} /></Box>
-        </BoxContentText>
-      </ContentBoxGalery>
+        <Box onClick={() => this.handleClick('list0')}>Saiba mais <BoxImage src={setinha} /></Box>
+      </BoxContentText>
+    </ContentBoxGalery>
   )
 
   renderTextContabilidade = () => (
@@ -575,6 +588,10 @@ class Services extends Component {
   // -----------------------------------------------------
 
   render() {
+    const { selectedClickSlider } = this.state;
+
+    console.log('selectedClickSlider', selectedClickSlider)
+
     return (
       <ContentServiços id='serviços'>
         <ContentServiçosTitle>
@@ -582,98 +599,88 @@ class Services extends Component {
           <h3>CONHEÇA NOSSOS SERVIÇOS</h3>
         </ContentServiçosTitle>
         <ContentBox>
-
-
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <ContentBoxCaixa>
             <ContentBoxText>
               {this.renderTitleContabilidade()}
               <BoxLinha></BoxLinha>
-              <div style={{ width: '100%' }}>
+              <ContentBoxContainer>
                 {this.renderTitleRecursosHumanos()}
                 <Mobile>
                   {this.renderTextRecursosHumanos()}
                 </Mobile>
-              </div>
+              </ContentBoxContainer>
             </ContentBoxText>
-            <div style={{ width: '100%' }}>
+            <ContentBoxContainer>
               {this.renderTextContabilidade()}
               <Desktop>
                 {this.renderTextRecursosHumanos()}
               </Desktop>
-            </div>
-          </div>
-
-
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            </ContentBoxContainer>
+          </ContentBoxCaixa>
+          <ContentBoxCaixa>
             <ContentBoxText>
               {this.renderTitleDepartamentoFiscal()}
               <BoxLinha></BoxLinha>
-              <div style={{ width: '100%' }}>
+              <ContentBoxContainer>
                 {this.renderTitleLegislação()}
                 <Mobile>
                   {this.renderTextLegislação()}
                 </Mobile>
-              </div>
+              </ContentBoxContainer>
             </ContentBoxText>
-            <div style={{ width: '100%' }}>
+            <ContentBoxContainer>
               {this.renderTextDepartamentoFiscal()}
               <Desktop>
                 {this.renderTextLegislação()}
               </Desktop>
-            </div>
-          </div>
-
-
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            </ContentBoxContainer>
+          </ContentBoxCaixa>
+          <ContentBoxCaixa>
             <ContentBoxText>
               {this.renderTitleAssessoriaFinanceira()}
               <BoxLinha></BoxLinha>
-              <div style={{ width: '100%' }}>
+              <ContentBoxContainer>
                 {this.renderTitleConsultoria()}
                 <Mobile>
                   {this.renderTextConsultoria()}
                 </Mobile>
-              </div>
+              </ContentBoxContainer>
             </ContentBoxText>
-            <div style={{ width: '100%' }}>
+            <ContentBoxContainer>
               {this.renderTextAssessoriaFinanceira()}
               <Desktop>
                 {this.renderTextConsultoria()}
               </Desktop>
-            </div>
-          </div>
-
-
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            </ContentBoxContainer>
+          </ContentBoxCaixa>
+          <ContentBoxCaixa>
             <ContentBoxText>
               {this.renderTitleTerceirização()}
               <BoxLinha></BoxLinha>
-              <div style={{ width: '100%' }}>
+              <ContentBoxContainer>
                 {this.renderTitlePessoaFisica()}
                 <Mobile>
                   {this.renderTextPessoaFisica()}
                 </Mobile>
-              </div>
+              </ContentBoxContainer>
             </ContentBoxText>
-            <div style={{ width: '100%' }}>
+            <ContentBoxContainer>
               {this.renderTextTerceirização()}
               <Desktop>
                 {this.renderTextPessoaFisica()}
               </Desktop>
-            </div>
-          </div>
-
-
+            </ContentBoxContainer>
+          </ContentBoxCaixa>
         </ContentBox>
         <Slider>
-          <SliderBolinha onClick={() => this.handleClickSlider('list0')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list1')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list2')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list3')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list4')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list5')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list6')}></SliderBolinha>
-          <SliderBolinha onClick={() => this.handleClickSlider('list7')}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 0 || selectedClickSlider === undefined ? true : false} onClick={() => this.handleClickSlider('list0', 0)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 1 ? true : false} onClick={() => this.handleClickSlider('list1', 1)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 2 ? true : false} onClick={() => this.handleClickSlider('list2', 2)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 3 ? true : false} onClick={() => this.handleClickSlider('list3', 3)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 4 ? true : false} onClick={() => this.handleClickSlider('list4', 4)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 5 ? true : false} onClick={() => this.handleClickSlider('list5', 5)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 6 ? true : false} onClick={() => this.handleClickSlider('list6', 6)}></SliderBolinha>
+          <SliderBolinha selectedClick={selectedClickSlider === 7 ? true : false} onClick={() => this.handleClickSlider('list7', 7)}></SliderBolinha>
         </Slider>
       </ContentServiços>
     );
