@@ -173,7 +173,7 @@ class Slider extends Component {
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop2} orderMobile={orderMobile2}>
-              <ContentSliderMeio transformScale={(!slider && '1' || slider === '1')}>
+              <ContentSliderMeio transformScale={(!(slider && '1') || slider === '1')}>
                 <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
                   nos auxiliado em todas as questões contábeis e financeiras do
                   Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
