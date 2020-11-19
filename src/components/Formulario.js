@@ -84,7 +84,7 @@ const Formulario = styled.form`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: ${props => props.margin ? '0' : '5rem'};
+  margin-top: ${props => props.margin ? '0' : '2rem'};
 `;
 
 const BoxInput = styled.div`
@@ -107,7 +107,7 @@ const Label = styled.label`
   width: 100%;
   display: ${props => props.labelShow ? "flex" : "none"};
 	color: #d2a2a8;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
 	transition: 0.5s;
@@ -128,10 +128,10 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #FFFFFF;
   color: #FFFFFF;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   padding-bottom: 0.3rem;
   outline: none;
   
@@ -221,7 +221,7 @@ const FormSelectList = styled.div`
   font-size: 0.8rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  padding: 0.5rem 0.5rem 0.2rem;
+  padding: 0.7rem 0.6rem 0.2rem;
   cursor: pointer;
 
   &:hover {
@@ -231,6 +231,7 @@ const FormSelectList = styled.div`
 
   :last-child {
     border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 0.7rem;
   }
 `;
 
@@ -245,7 +246,7 @@ const Textarea = styled.textarea`
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
   padding-top: 1rem;
-  resize: none;
+  outline: none;
 
   ::placeholder {
     color: #d2a2a8;
@@ -368,27 +369,27 @@ class Formulation extends Component {
             Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
           <Formulario margin={this.state.solicitation} onClick={this.handleSelectedForm}>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowName}>Nome*</Label>
+              <Label for="name" labelShow={this.state.labelShowName}>Nome *</Label>
               <Input
                 name="name"
                 type="text"
-                placeholder={this.state.placeholderShowName === true ? "Nome*" : ''}
+                placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
                 onFocus={this.handleFocusName}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowCompany}>Empresa*</Label>
+              <Label for="name" labelShow={this.state.labelShowCompany}>Empresa *</Label>
               <Input
                 type="text"
-                placeholder={this.state.placeholderShowCompany === true ? "Empresa*" : ''}
+                placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onFocus={this.handleFocusCompany}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowEmail}>E-mail*</Label>
+              <Label for="name" labelShow={this.state.labelShowEmail}>E-mail *</Label>
               <Input
                 type="text"
-                placeholder={this.state.placeholderShowEmail === true ? "E-mail*" : ''}
+                placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onFocus={this.handleFocusEmail}
               />
             </BoxInput>
@@ -397,7 +398,7 @@ class Formulation extends Component {
                 <Input
                   type="text"
                   disabled
-                  placeholder="Assunto*"
+                  placeholder="Assunto *"
                   value={this.state.isSelectedItems}
                   onChange={this.handleChange}
                 />

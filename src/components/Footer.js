@@ -8,7 +8,7 @@ const LinkLinha = styled.div`
   width: 93%;
   height: 1vh;
   background: linear-gradient(to right, #992836, #4D141B);
-  margin-bottom: 0.3rem;
+  margin: 1rem 0 0.3rem;
 
   @media (max-width: 648px) {
     display: none;
@@ -22,7 +22,7 @@ const ContentLink = styled.div`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 95%;
+    width: 90%;
     border-left: 7px solid #992836;
     margin-bottom: 7rem;
 	}
@@ -61,6 +61,12 @@ const ParagraphLink = styled.p`
     margin-left: 2rem;
 	}
 `;
+const Link = styled.a`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  text-decoration: none;
+`;
 
 const ContentFooter = styled.div`
   width: 90%;
@@ -70,8 +76,8 @@ const ContentFooter = styled.div`
   margin-right: 2rem;
 
   @media (max-width: 648px) {
-    width: ${props => (props.footer ? '100%' : '93%')};
-    height: 110vh;
+    width: ${props => (props.footer ? '100%' : '90%')};
+    height: 100vh;
     flex-direction: column;
     margin: 0;
 	}
@@ -220,16 +226,16 @@ class Footer extends Component {
           <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
           <ContentLinkGeral>
             <SeparationLink>
-              <ParagraphLink>Link 1</ParagraphLink>
-              <ParagraphLink>Link 2</ParagraphLink>
+              <Link href="https://github.com/Erlane" target="_blank">Link 1</Link>
+              <Link href="https://github.com/Erlane" target="_blank">Link 2</Link>
             </SeparationLink>
             <SeparationLink>
-              <ParagraphLink>Link 3</ParagraphLink>
-              <ParagraphLink>Link 4</ParagraphLink>
+              <Link href="https://github.com/Erlane" target="_blank">Link 3</Link>
+              <Link href="https://github.com/Erlane" target="_blank">Link 4</Link>
             </SeparationLink>
             <SeparationLink>
-              <ParagraphLink>Link 5</ParagraphLink>
-              <ParagraphLink>Link 6</ParagraphLink>
+              <Link href="https://github.com/Erlane" target="_blank">Link 5</Link>
+              <Link href="https://github.com/Erlane" target="_blank">Link 6</Link>
             </SeparationLink>
           </ContentLinkGeral>
         </ContentLink>
