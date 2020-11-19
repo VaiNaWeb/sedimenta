@@ -603,7 +603,6 @@ const LogoSeparation = styled.div`
 `;
 
 const ContentImages = styled.img`
-  /* width: 20%; */
   height: ${props => (props.height ? '20vh' : '10vh')};
 
   @media (max-width: 768px) {
@@ -612,10 +611,6 @@ const ContentImages = styled.img`
 
   @media (max-width: 648px) {
     height: 5vh;
-	}
-
-  @media (max-width: 450px) {
-    /* width: 27vw; */
 	}
 `;
 
