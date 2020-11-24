@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 //Images
-import logo from '../assets/logoSedimenta.svg';
+import logo from '../assets/logoSedimenta.png';
 import menuHamburguer from '../assets/menu.svg';
 import Amigos from '../assets/amigos.jpg';
 import Domestica from '../assets/domestica.png';
@@ -31,7 +31,7 @@ const ContainerLogo = styled.div`
     width: 100%;
     height: 100vh;
     background: #0000005C 0% 0% no-repeat padding-box;
-    padding: 0.8rem 4rem;
+    padding: 0.5rem 4rem;
     opacity: 0.97;
 
   @media (max-width: 768px) {
@@ -124,7 +124,7 @@ const SubContainerPrincipal = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 10vh;
+  height: 11vh;
 
   @media (max-width: 768px) {
     height: 8vh;
@@ -145,6 +145,7 @@ const LogoMobile = styled.img`
 `;
 
 const ContainerHeaderBox = styled.div`
+  height: 3vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +239,7 @@ const MenuHamburguer = styled.img`
 
 const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '40%')};
-  height: 68vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -401,8 +402,6 @@ class Header extends Component {
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
     const positionBackground2 = sliderHeader === 2 && '-545px';
-
-    console.log(sliderHeader)
 
     return (
       <ContainerLogo image={artigos[sliderHeader].image}

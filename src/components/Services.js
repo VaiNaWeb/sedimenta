@@ -166,8 +166,12 @@ const BoxText = styled.p`
   }
   
   @media (max-width: 648px) {
-    width: 76vw;
+    width: 45vw;
     font-size: 1rem;
+	}
+
+  @media (max-width: 450px) {
+    width: 68vw;
 	}
 `;
 

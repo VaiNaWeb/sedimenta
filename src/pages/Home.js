@@ -47,7 +47,7 @@ const ContentCaixaGeral = styled.div`
   flex-direction: row;
   padding: 3rem 0;
   position: relative;
-  bottom: 100px;
+  bottom: 85px;
 
   @media (max-width: 768px) {
     width: 95%;
