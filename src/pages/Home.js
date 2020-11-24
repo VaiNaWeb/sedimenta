@@ -1,7 +1,7 @@
 // Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import axios from "axios";
+import axios from 'axios';
 
 //Components
 import Carousel from '../components/Slider';
