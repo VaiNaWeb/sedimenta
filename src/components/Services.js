@@ -47,7 +47,6 @@ const ContentServiçosTitle = styled.div`
     margin-bottom: 3rem;
 	}
 
-
   @media (max-width: 450px) {
     width: 85vw;
 	}
@@ -98,7 +97,6 @@ const ContentBox = styled.div`
 const ContentBoxCaixa = styled.div`
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   flex-direction: column;
 `;
 
@@ -114,7 +112,6 @@ const ContentBoxGalery = styled.div`
   @media (max-width: 648px) {
     width: 350px;
     height: 450px;
-    /* min-height: 100%; */
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #57575799;
@@ -129,7 +126,6 @@ const ContentBoxImage = styled.img`
 
   @media (max-width: 648px) {
     width: ${props => (props.widthMobileImg)};
-    /* width: 45%; */
 	}
 `;
 
@@ -232,8 +228,6 @@ const BoxContext = styled.div`
 
 const Desktop = styled.div`
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
 
   @media (max-width: 648px) {
     display: none;
@@ -261,10 +255,6 @@ const ContentBoxText = styled.div`
 
 const ContentBoxContainer = styled.div`
   width: 100%;
-
-  /* @media (max-width: 648px) {
-   width: 0;
-	} */
 `;
 
 const BoxContextText = styled.p`

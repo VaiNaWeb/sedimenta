@@ -23,7 +23,7 @@ const ContainerLogo = styled.div`
     flex-direction: column;
 	}
 
-  @media (max-width: 648px) {
+  @media (max-width: 450px) {
     background-position-x: ${props => (props.positionImg)};
 	}
 
@@ -318,7 +318,7 @@ const Slider = styled.div`
   justify-content: center;
   cursor: pointer;
 
-  @media (max-width: 450px) {
+  @media (max-width: 648px) {
     position: relative;
     bottom: 1em;
 	}
