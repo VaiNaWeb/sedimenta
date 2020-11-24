@@ -8,7 +8,6 @@ import Carousel from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
 import Services from '../components/Services';
-
 import Footer from '../components/Footer';
 
 //Images
