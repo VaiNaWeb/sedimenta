@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import logo from '../assets/logoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
 import Amigos from '../assets/amigos.jpg';
-import Background from '../assets/back.png';
+import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
 
 const ContainerLogo = styled.div`
@@ -21,6 +21,10 @@ const ContainerLogo = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+	}
+
+  @media (max-width: 648px) {
+    background-position-x: ${props => (props.positionImg)};
 	}
 
   span {
@@ -232,45 +236,6 @@ const MenuHamburguer = styled.img`
 	}
 `;
 
-// const SubContainerMobile = styled.div`
-//    display: none;
-
-//   @media (max-width: 450px) {
-//     width: 100vw;
-//     height: 50vh;
-//     background: ${props => (props.open && 'linear-gradient(to right, #992836, #4D141B)')};
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-end;
-//     padding: 1rem 0.8rem;
-//     position: absolute;
-// 	}
-// `;
-
-// const BoxMenuMobile = styled.div`
-//   width: 100%;
-//   display: ${props => (props.open ? 'flex' : 'none')};
-//   flex-direction: column;
-//   align-items: flex-end;
-//   padding-top: 2rem;
-// `;
-
-// const SubContainerParagraphMobile = styled.p`
-//   display: none;
-
-//   @media (max-width: 648px) {
-//     display: flex;
-//     animation: 0.7s ease-in ${rotate};
-// 	}
-
-//   a {
-//     color: #FFFFFF;
-//     text-decoration: none;
-//     font-size: 0.8rem;
-//     font-family: 'Arial', Bold;
-//   }
-// `;
-
 const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '40%')};
   height: 68vh;
@@ -294,7 +259,7 @@ const Title = styled.h1`
   font-family: 'Product Sans', Bold;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 2rem;
 	}
 `;
 
@@ -303,6 +268,10 @@ const ParagraphHeader = styled.p`
   margin: 1rem 0 1.5rem;
   font-family: 'Open Sans', Regular;
   opacity: 1;
+
+  @media (max-width: 450px) {
+    width: 100%;
+	}
 `;
 
 const ButtonHeader = styled.button`
@@ -336,14 +305,13 @@ const ButtonHeader = styled.button`
 	}
 
   @media (max-width: 450px) {
-    width: 50vw;
+    width: 55vw;
     display: flex;
     justify-content: center;
 	}
 `;
 
 const Slider = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -351,8 +319,8 @@ const Slider = styled.div`
   cursor: pointer;
 
   @media (max-width: 450px) {
-    position: absolute;
-    bottom: 85px;
+    position: relative;
+    bottom: 1em;
 	}
 `;
 
@@ -378,7 +346,7 @@ class Header extends Component {
         paragraph: 'Escolha quem se importar com o seu negócio. Nossa medida de sucesso é ver você prosperar.',
       },
       {
-        image: Background,
+        image: Domestica,
         title: 'Administração de domesticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
 
@@ -430,8 +398,15 @@ class Header extends Component {
   render() {
     const { menu, sliderHeader, selectedHeader, artigos } = this.state;
 
+    const positionBackground = sliderHeader === 0 && '-255px';
+    const positionBackground1 = sliderHeader === 1 && '-375px';
+    const positionBackground2 = sliderHeader === 2 && '-545px';
+
+    console.log(sliderHeader)
+
     return (
-      <ContainerLogo image={artigos[sliderHeader].image} id="topo">
+      <ContainerLogo image={artigos[sliderHeader].image}
+        positionImg={positionBackground || positionBackground1 || positionBackground2} id="topo">
         <span>
           <ContainerHeader>
             <Logo src={logo} alt='Logo' />

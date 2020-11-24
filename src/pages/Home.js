@@ -213,7 +213,10 @@ const ContentSobreTitle = styled.div`
 
     @media (max-width: 648px) {
       width: 10vw;
-    }    
+    }
+    @media (max-width: 425px) {
+      width: 15vw;
+    }
   }
 `;
 
@@ -280,8 +283,9 @@ const Cargo = styled.div`
     width: 100%;
     padding-left: 2rem;
     flex-direction: row;
-    overflow-x: scroll;
     justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
 	}
 `;
 
@@ -441,7 +445,6 @@ const ContainerCaixa = styled.div`
   margin-bottom: 3rem;
 
   @media (max-width: 648px) {
-    width: 100%;
     height: 100vh;
     align-items: center;
     flex-direction: column;
@@ -494,6 +497,11 @@ const CaixaBoxHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 1rem;
+
+  @media (max-width: 450px) {
+    height: 30vh;
+    
+	}
 `;
 
 const Slider = styled.div`
@@ -535,7 +543,7 @@ const ImageBox = styled.img`
 	}
 
   @media (max-width: 450px) {
-    width: 65vw;
+    width: 60vw;
     padding: 2rem 3rem;
 	}
 `;
