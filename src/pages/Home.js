@@ -656,7 +656,6 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-
 class Home extends Component {
   state = {
     slider: 0,
