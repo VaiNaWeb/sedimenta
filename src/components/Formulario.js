@@ -5,9 +5,9 @@ import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
 
 function encode(data) {
-	return Object.keys(data)
-		.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-		.join("&");
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
 };
 
 const ContainerForm = styled.div`
@@ -278,6 +278,22 @@ const BoxImage = styled.div`
 `;
 
 
+const SuccessContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: .5rem;
+  border-radius: 5px;
+  background-color: #32CD32;
+`;
+
+const SuccessMessage = styled.span`
+  color: #FFF;
+  font-family: 'Open Sans', Bold;
+  font-size: .9rem;
+`;
+
 
 class Formulation extends Component {
   state = {
@@ -304,7 +320,8 @@ class Formulation extends Component {
       email: '',
       subject: '',
       message: ''
-    }
+    },
+    showSuccessMessage: false,
   }
 
   handleSolicitacion = () => {
@@ -386,13 +403,28 @@ class Formulation extends Component {
         ...this.state.form
       })
     }).then(() => {
-      console.log('SUCCESS!');
-    }).catch(() => {
-      console.log('ERROR!')
-    });
+      this.setState({
+        form: {
+          name: '',
+          company: '',
+          email: '',
+          subject: '',
+          message: '',
+          showSuccessMessage: true,
+        }
+      });
+
+      setTimeout(() => {
+        this.setState({
+          showSuccessMessage: false,
+        });
+      }, 1200);
+    }).catch(() => { });
   }
 
   renderForm = () => {
+    const { showSuccessMessage, } = this.state;
+
     return (
       <>
         <ContentFinishSolicitation height background>
@@ -473,7 +505,16 @@ class Formulation extends Component {
                 this.handleForm('message', ev.target.value);
               }}
             />
-            <ButtonForm>ENVIAR</ButtonForm>
+            {!showSuccessMessage ? (
+              <SuccessContainer>
+                <SuccessMessage>
+                  Enviado!
+                </SuccessMessage>
+              </SuccessContainer>
+            ) :
+              (
+                <ButtonForm>ENVIAR</ButtonForm>
+              )}
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
@@ -482,7 +523,9 @@ class Formulation extends Component {
   }
 
   render() {
-    const { solicitation } = this.state;
+    const {
+      solicitation,
+    } = this.state;
 
     return (
       <ContainerForm isBig={this.state.solicitation}
