@@ -424,6 +424,7 @@ class Formulation extends Component {
             </BoxInput>
             <BoxInput>
               <Input
+                name="company"
                 type="text"
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 value={this.state.form.company}
@@ -435,6 +436,7 @@ class Formulation extends Component {
             </BoxInput>
             <BoxInput>
               <Input
+                name="email"
                 type="email"
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 value={this.state.form.email}
@@ -463,6 +465,7 @@ class Formulation extends Component {
               </FormSelect>
             </FormContent>
             <Textarea
+              name="message"
               placeholder="Escreva aqui a sua mensagem:"
               value={this.state.form.message}
               required
