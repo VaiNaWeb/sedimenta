@@ -1,19 +1,92 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Image from '../assets/image.svg';
+import Face from '../assets/socialFace.svg';
+import Linkedin from '../assets/socialLinkedin.svg';
+import Insta from '../assets/socialInsta.svg';
 import LogoVnW from '../assets/logoVnw.png';
+
+// const LinkLinha = styled.div`
+//   width: 93%;
+//   height: 1vh;
+//   background: linear-gradient(to right, #992836, #4D141B);
+//   margin: 1rem 0 0.3rem;
+
+//   @media (max-width: 648px) {
+//     display: none;
+// 	}
+// `;
+
+// const ContentLink = styled.div`
+//   width: 93%;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     border-left: 7px solid #992836;
+//     margin-bottom: 7rem;
+// 	}
+// `;
+
+// const ContentLinkGeral = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: row;
+//   margin-bottom: 4rem;
+
+//   @media (max-width: 648px) {
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     margin-left: 1rem;
+//     margin-bottom: 0;
+// 	}
+// `;
+
+// const SeparationLink = styled.div`
+//   width: 25%;
+
+//   @media (max-width: 648px) {
+//     width: 85%;
+//     display: flex;
+//     justify-content: space-between;
+// 	}
+// `;
+
+// const ParagraphLink = styled.p`
+//   color: #373737;
+//   font-size: 0.9rem;
+//   font-family: 'Open Sans', ExtraBold;
+//   font-weight: bold;
+//   margin-bottom: 3rem;
+
+//   @media (max-width: 648px) {
+//     font-size: 1rem;
+//     margin-left: 1rem;
+// 	}
+// `;
+// const Link = styled.a`
+//   display: flex;
+//   flex-direction: column;
+//   margin-bottom: 5rem;
+//   text-decoration: none;
+
+//   @media (max-width: 648px) {
+//     margin-bottom: ${props => (props.margin)};
+// 	}
+// `;
 
 const ContentFooter = styled.div`
   width: 90%;
-  height: 45vh;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 8rem;
   margin-right: 2rem;
 
   @media (max-width: 648px) {
     width: ${props => (props.footer ? '100%' : '90%')};
-    height: 85vh;
+    padding-bottom: 2rem;
     flex-direction: column;
     margin: 0;
 	}
@@ -51,6 +124,7 @@ const ContentRedeSocial = styled.div`
   }
 
   img {
+    height: 5vh;
     padding-right: 1rem;
   }
 `;
@@ -86,12 +160,17 @@ const TitleFooter = styled.h5`
 `;
 
 const ParagraphFooter = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-family: 'Open Sans', Regular;
 
   @media (max-width: 648px) {
     width: 65vw;
     margin: 0 0 0 1rem;
 	}
+
+  b {
+    font-family: 'Open Sans', SemiBold;
+  }
 `;
 
 const FooterLinha = styled.div`
@@ -119,7 +198,7 @@ const ContentFooterTopo = styled.a`
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 180px;
+  top: 150px;
   opacity: 1;
 
   @media (max-width: 648px) {
@@ -133,7 +212,7 @@ const ContentFooterTriangle = styled.div`
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 10px solid #992836;
-  position: static;
+  /* position: static; */
 `;
 
 const FooterFinish = styled.footer`
@@ -157,6 +236,24 @@ class Footer extends Component {
   render() {
     return (
       <>
+        {/* <LinkLinha></LinkLinha>
+        <ContentLink>
+          <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
+          <ContentLinkGeral>
+            <SeparationLink>
+              <Link href="https://github.com/Erlane" target="_blank">Link 1</Link>
+              <Link href="https://github.com/Erlane" target="_blank">Link 2</Link>
+            </SeparationLink>
+            <SeparationLink>
+              <Link href="https://github.com/Erlane" target="_blank">Link 3</Link>
+              <Link href="https://github.com/Erlane" target="_blank">Link 4</Link>
+            </SeparationLink>
+            <SeparationLink>
+              <Link margin='0' href="https://github.com/Erlane" target="_blank">Link 5</Link>
+              <Link margin='0' href="https://github.com/Erlane" target="_blank">Link 6</Link>
+            </SeparationLink>
+          </ContentLinkGeral>
+        </ContentLink> */}
         <ContentFooter>
           <ContentFooterRede>
             <ContentFooterContact>
@@ -180,9 +277,9 @@ class Footer extends Component {
             <FooterLinha></FooterLinha>
             <TitleFooter>REDE SOCIAL</TitleFooter>
             <span>
-              <img src={Image} alt='' />
-              <img src={Image} alt='' />
-              <img src={Image} alt='' />
+              <img src={Face} alt='redeSocial' />
+              <img src={Linkedin} alt='redeSocial' />
+              <img src={Insta} alt='redeSocial' />
             </span>
           </ContentRedeSocial>
           <ContentFooterTopo href="#topo">
@@ -196,7 +293,7 @@ class Footer extends Component {
             target='_blank'
             rel="noopener noreferrer"
           >
-            <img src={LogoVnW} alt='logoVnw' />
+            <img src={LogoVnW} alt='logoVnw'/>
           </a>
         </FooterFinish>
       </>

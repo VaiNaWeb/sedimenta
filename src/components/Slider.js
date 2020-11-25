@@ -60,7 +60,7 @@ const SessionSlider = styled.section`
   order: ${props => (props.order)};
 
   @media (max-width: 648px) {
-    margin-right: 4rem;
+    margin-right: 3rem;
     order: ${props => (props.orderMobile)};
 	}
 `;
@@ -92,8 +92,8 @@ const ContentSliderMeio = styled.div`
   flex-direction: column;
   padding: 2rem 1.2rem 1rem;
   margin-bottom: 3.5rem;
-  outline: none;
   transform: ${props => (props.transformScale && 'scale(1.4)')};
+  outline: none;
 
   @media (max-width: 1024px) {
     width: 70%;
@@ -110,16 +110,12 @@ const ContentSliderParagraph = styled.p`
 `;
 
 const SliderCarousel = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  /* text-decoration: none; */
   cursor: pointer;
-
-  @media (max-width: 425px) {
-    width: 80%;
-	}
 `;
 
 const SliderBolinha = styled.div`

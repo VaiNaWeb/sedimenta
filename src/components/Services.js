@@ -28,6 +28,7 @@ const ContentServiços = styled.div`
   @media (max-width: 648px) {
     width: 100%;
     flex-direction: column;
+    padding-left: 0;
 	}
 `;
 
@@ -86,11 +87,12 @@ const ContentBox = styled.div`
   @media (max-width: 648px) {
     width: 100%;
     background-color: transparent;
+    box-shadow: none;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: flex-start;
+    padding-left: 1rem;
     overflow-x: scroll;
-    box-shadow: none;
 	}
 `;
 
@@ -107,11 +109,11 @@ const ContentBoxGalery = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: ${props => (props.padding ? '2rem 0 0' : '3rem 0 0')};
-  background-color: ${props => (props.background)};
+  /* background-color: ${props => (props.background)}; */
 
   @media (max-width: 648px) {
     width: 350px;
-    height: 450px;
+    height: 455px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #57575799;
@@ -153,6 +155,7 @@ const BoxTitle = styled.h2`
   @media (max-width: 648px) {
     width: 50vw;
     font-size: 1.5rem;
+    margin: 1rem 1rem;
   }
 `;
 
@@ -217,7 +220,7 @@ const BoxContext = styled.div`
   flex-direction: column;
   font-size: 0.8rem;
   font-family: 'Open Sans', Regular;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
   padding: 3rem 8.5rem 0;
 
   @media (max-width: 768px) {
@@ -225,8 +228,9 @@ const BoxContext = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: ${props => (props.widthText ? '41.5%' : '93%')};
+    width: 350px;
     display: ${props => (props.isOpen ? 'flex' : 'none')};
+    padding: 4rem 1rem;
 	}
 `;
 
@@ -262,7 +266,7 @@ const ContentBoxContainer = styled.div`
 `;
 
 const BoxContextText = styled.p`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 const BoxImageClose = styled.div`
@@ -289,7 +293,7 @@ const ImageClose = styled.button`
 `;
 
 const Slider = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: none;
 
   @media (max-width: 648px) {
@@ -300,7 +304,7 @@ const Slider = styled.div`
 	}
 
   @media (max-width: 425px) {
-    width: 80%;
+    /* width: 80%; */
 	}
 `;
 
@@ -364,7 +368,7 @@ class Services extends Component {
   )
 
   renderTextContabilidade = () => (
-    <BoxContext widthText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
+    <BoxContext isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
       <BoxContextText>A contabilidade da sua empresa sem burocracia,
         entregas seguras e econômicas.</BoxContextText>
       <li>Planejamento e orientação contábil;</li>
@@ -414,7 +418,7 @@ class Services extends Component {
 
   renderTitleDepartamentoFiscal = () => (
     <ContentBoxGalery id='list2'>
-      <ContentBoxImage widthMobileImg='33.7%' src={Fiscal} alt='category' />
+      <ContentBoxImage widthMobileImg='33%' src={Fiscal} alt='category' />
       <BoxTitle>departamento fiscal</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
         <BoxText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>
@@ -424,7 +428,7 @@ class Services extends Component {
   )
 
   renderTextDepartamentoFiscal = () => (
-    <BoxContext widthText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
+    <BoxContext isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
       <BoxContextText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxContextText>
       <li>Planejamento e orientação fiscal;</li>
       <li>Escrituração Fiscal Digital</li>
@@ -445,7 +449,7 @@ class Services extends Component {
 
   renderTitleLegislação = () => (
     <ContentBoxGalery id='list3'>
-      <ContentBoxImage widthMobileImg='28%' src={Legislação} alt='category' />
+      <ContentBoxImage widthMobileImg='33%' src={Legislação} alt='category' />
       <BoxTitle width='15vw' widthMobile='25vw'>legislação de empresas</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
         <BoxText>Abertura, Alterações, Fechamento de empresas e muito
@@ -486,7 +490,7 @@ class Services extends Component {
   )
 
   renderTextAssessoriaFinanceira = () => (
-    <BoxContext widthText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>
+    <BoxContext isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>
       <BoxContextText>Seu patrimônio administrado de forma inteligente.</BoxContextText>
       <BoxContextText>Nossa equipe desenvolve todas as rotinas financeiras que são
       fundamentais para a sua gestão e organização, incluindo:</BoxContextText>
@@ -547,7 +551,7 @@ class Services extends Component {
   )
 
   renderTextTerceirização = () => (
-    <BoxContext widthText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
+    <BoxContext isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
       <BoxContextText>Sua empresa reduz custo e otimiza a demanda sem a
         necessidade de criar novos departamentos ou expandir a área física.</BoxContextText>
       <BoxContextText>O trabalho de Outsourcing fará com que a Sedimenta seja o seu
@@ -595,7 +599,7 @@ class Services extends Component {
     const { selectedClickSlider } = this.state;
 
     return (
-      <ContentServiços id='serviços'>
+      <ContentServiços id='services'>
         <ContentServiçosTitle>
           <hr></hr>
           <h3>CONHEÇA NOSSOS SERVIÇOS</h3>
