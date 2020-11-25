@@ -757,7 +757,13 @@ class Home extends Component {
                 <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
-                <a href="https://www.linkedin.com/in/eduardo-pereira-4b686013/" target="_blank"><img src={Icon} alt='linkedin'/></a>
+                <a
+                  href="https://www.linkedin.com/in/eduardo-pereira-4b686013/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                    <img src={Icon} alt='linkedin'/>
+                </a>
               </ContentCargoCaixa>
             </SessionCargo>
             <SessionCargo id='cargo1'>
@@ -767,7 +773,13 @@ class Home extends Component {
                 <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
-                <a href="https://www.linkedin.com/in/christiani-nascimento-23b06018b/" target="_blank"><img src={Icon} alt='linkedin'/></a>
+                <a
+                  href="https://www.linkedin.com/in/christiani-nascimento-23b06018b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                    <img src={Icon} alt='linkedin'/>
+                </a>
               </ContentCargoCaixa>
             </SessionCargo>
             <SessionCargo id='cargo2' paddingRight='2rem'>
@@ -777,7 +789,13 @@ class Home extends Component {
                 <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelo Capital Humano</ContentBoxParagraph>
-                <a href="https://www.linkedin.com/in/mauro-moura-5a406a74/" target="_blank"><img src={Icon} alt='linkedin'/></a>
+                <a
+                  href="https://www.linkedin.com/in/mauro-moura-5a406a74/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                    <img src={Icon} alt='linkedin'/>
+                </a>
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
