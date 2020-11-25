@@ -47,7 +47,6 @@ const ContentServiçosTitle = styled.div`
     margin-bottom: 3rem;
 	}
 
-
   @media (max-width: 450px) {
     width: 85vw;
 	}
@@ -98,7 +97,6 @@ const ContentBox = styled.div`
 const ContentBoxCaixa = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 `;
 
@@ -112,11 +110,11 @@ const ContentBoxGalery = styled.div`
   background-color: ${props => (props.background)};
 
   @media (max-width: 648px) {
-    width: 95%;
-    min-height: 100%;
+    width: 350px;
+    height: 450px;
     background-color: #FFFFFF;
     border-radius: 3px;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: 0px 3px 6px #57575799;
     padding: 2rem 4rem;
     margin-right: 2rem;
     opacity: 1;
@@ -168,8 +166,12 @@ const BoxText = styled.p`
   }
   
   @media (max-width: 648px) {
-    width: 65vw;
+    width: 45vw;
     font-size: 1rem;
+	}
+
+  @media (max-width: 450px) {
+    width: 68vw;
 	}
 `;
 
@@ -223,15 +225,13 @@ const BoxContext = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: ${props => (props.widthText ? '42%' : '95%')};
+    width: ${props => (props.widthText ? '41.5%' : '93%')};
     display: ${props => (props.isOpen ? 'flex' : 'none')};
 	}
 `;
 
 const Desktop = styled.div`
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
 
   @media (max-width: 648px) {
     display: none;
@@ -251,6 +251,10 @@ const ContentBoxText = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 648px) {
+    align-items: flex-start;
+	}
 `;
 
 const ContentBoxContainer = styled.div`
@@ -410,7 +414,7 @@ class Services extends Component {
 
   renderTitleDepartamentoFiscal = () => (
     <ContentBoxGalery id='list2'>
-      <ContentBoxImage widthMobileImg='27.7%' src={Fiscal} alt='category' />
+      <ContentBoxImage widthMobileImg='33.7%' src={Fiscal} alt='category' />
       <BoxTitle>departamento fiscal</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
         <BoxText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>

@@ -8,7 +8,6 @@ import Carousel from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
 import Services from '../components/Services';
-
 import Footer from '../components/Footer';
 
 //Images
@@ -48,7 +47,7 @@ const ContentCaixaGeral = styled.div`
   flex-direction: row;
   padding: 3rem 0;
   position: relative;
-  bottom: 100px;
+  bottom: 85px;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -213,7 +212,10 @@ const ContentSobreTitle = styled.div`
 
     @media (max-width: 648px) {
       width: 10vw;
-    }    
+    }
+    @media (max-width: 425px) {
+      width: 15vw;
+    }
   }
 `;
 
@@ -280,8 +282,9 @@ const Cargo = styled.div`
     width: 100%;
     padding-left: 2rem;
     flex-direction: row;
-    overflow-x: scroll;
     justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
 	}
 `;
 
@@ -441,7 +444,6 @@ const ContainerCaixa = styled.div`
   margin-bottom: 3rem;
 
   @media (max-width: 648px) {
-    width: 100%;
     height: 100vh;
     align-items: center;
     flex-direction: column;
@@ -494,6 +496,11 @@ const CaixaBoxHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 1rem;
+
+  @media (max-width: 450px) {
+    height: 30vh;
+    
+	}
 `;
 
 const Slider = styled.div`
@@ -535,7 +542,7 @@ const ImageBox = styled.img`
 	}
 
   @media (max-width: 450px) {
-    width: 65vw;
+    width: 60vw;
     padding: 2rem 3rem;
 	}
 `;
@@ -648,7 +655,6 @@ const LogoSeparationMobile = styled.div`
     margin: 0 0 5rem 0;
 	}
 `;
-
 
 class Home extends Component {
   state = {

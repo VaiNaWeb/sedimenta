@@ -36,6 +36,7 @@ const ContentLinkGeral = styled.div`
   @media (max-width: 648px) {
     flex-direction: column;
     flex-wrap: wrap;
+    margin-left: 1rem;
 	}
 `;
 
@@ -58,7 +59,7 @@ const ParagraphLink = styled.p`
 
   @media (max-width: 648px) {
     font-size: 1rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
 	}
 `;
 const Link = styled.a`
@@ -77,7 +78,7 @@ const ContentFooter = styled.div`
 
   @media (max-width: 648px) {
     width: ${props => (props.footer ? '100%' : '90%')};
-    height: 100vh;
+    height: 85vh;
     flex-direction: column;
     margin: 0;
 	}
@@ -110,7 +111,7 @@ const ContentRedeSocial = styled.div`
     flex-direction: row;
 
     @media (max-width: 648px) {
-      margin-left: 2rem;
+      margin-left: 1rem;
 	  }
   }
 
@@ -145,7 +146,7 @@ const TitleFooter = styled.h5`
   margin: 0.3rem 0 2rem 0;
 
   @media (max-width: 648px) {
-    margin: 0 0 2rem 2rem;
+    margin: 0 0 2rem 1rem;
 	}
 `;
 
@@ -154,7 +155,7 @@ const ParagraphFooter = styled.p`
 
   @media (max-width: 648px) {
     width: 65vw;
-    margin: 0 0 0 2rem;
+    margin: 0 0 0 1rem;
 	}
 `;
 
