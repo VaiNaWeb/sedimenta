@@ -410,8 +410,8 @@ class Formulation extends Component {
           email: '',
           subject: '',
           message: '',
-          showSuccessMessage: true,
-        }
+        },
+        showSuccessMessage: true,
       });
 
       setTimeout(() => {
