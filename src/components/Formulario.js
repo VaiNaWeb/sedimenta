@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 const ContainerForm = styled.div`
   width: 100%;
   height: ${props => props.isBig ? '78vh' : '197vh'};
@@ -52,17 +58,17 @@ const TitleForm = styled.h3`
 const ButtonSolicitation = styled.button`
   width: 20%;
   color: #FFFFFF;
-  background: none;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #FFF;
   font-family: 'Product Sans', Bold;
-  font-weight: bolder;
-  padding: 0.5rem 0.5rem;
+  font-weight: 700;
+  padding: .75rem;
   margin-top: 3rem;
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   outline: none;
   cursor: pointer;
+  background: none;
 
   @media (max-width: 768px) {
     width: 27%;
@@ -90,6 +96,7 @@ const Formulario = styled.form`
 const BoxInput = styled.div`
   width: 45%;
   display: flex;
+  margin: .75rem 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -156,6 +163,7 @@ const Input = styled.input`
 const FormContent = styled.div`
   width: 45%;
   display: flex;
+  margin: .75rem 0;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -245,7 +253,7 @@ const FormSelectList = styled.div`
 
 const Textarea = styled.textarea`
   width: 45%;
-  height: 32vh;
+  height: 170px;
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
@@ -254,6 +262,7 @@ const Textarea = styled.textarea`
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
+  margin: .75rem 0;
   padding-top: 1rem;
   outline: none;
 
@@ -296,6 +305,22 @@ const BoxImage = styled.div`
   background-size: cover;
 `;
 
+const SuccessContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: .5rem;
+  border-radius: 5px;
+  background-color: #32CD32;
+`;
+
+const SuccessMessage = styled.span`
+  color: #FFF;
+  font-family: 'Open Sans', Bold;
+  font-size: .9rem;
+`;
+
 class Formulation extends Component {
   state = {
     solicitation: true,
@@ -318,6 +343,14 @@ class Formulation extends Component {
       'Todos',
       'Outros',
     ],
+    form: {
+      name: '',
+      company: '',
+      email: '',
+      subject: '',
+      message: ''
+    },
+    showSuccessMessage: false,
   }
 
   handleSolicitacion = () => {
@@ -380,20 +413,82 @@ class Formulation extends Component {
   }
 
   handleSelectedItems = (item) => {
+    const { form } = this.state;
+
     this.setState({
       isSelectedItems: item,
       isSelected: false,
+      form: {
+        ...form,
+        subject: item,
+      },
     });
   }
 
+  handleForm = (field, value) => {
+    const { form } = this.state;
+
+    this.setState({
+      form: {
+        ...form,
+        [field]: value,
+      },
+    });
+  }
+
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+
+    const form = ev.target;
+
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...this.state.form
+      })
+    }).then(() => {
+      this.setState({
+        form: {
+          name: '',
+          company: '',
+          email: '',
+          subject: '',
+          message: '',
+        },
+        isSelectedItems: '',
+        showSuccessMessage: true,
+      });
+
+      setTimeout(() => {
+        this.setState({
+          showSuccessMessage: false,
+        });
+      }, 1200);
+    }).catch(() => { });
+  }
+
   renderForm = () => {
+    const { showSuccessMessage, } = this.state;
+
     return (
       <>
         <ContentFinishSolicitation height background>
           <TitleForm marginTop>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
-          <Formulario margin={this.state.solicitation} onClick={this.handleSelectedForm}>
+            Entre em contato!
+          </TitleForm>
+          <Formulario
+            name="contact"
+            method="post"
+            action=""
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            margin={this.state.solicitation}
+            onClick={this.handleSelectedForm}
+            onSubmit={this.handleSubmit}
+          >
+            <input type="hidden" name="form-name" value="contact" />
             <BoxInput>
               <Label for="name" labelShow={this.state.labelShowName || this.state.inputName}>Nome *</Label>
               <Input
@@ -408,6 +503,7 @@ class Formulation extends Component {
             <BoxInput>
               <Label for="name" labelShow={this.state.labelShowCompany || this.state.inputCompany}>Empresa *</Label>
               <Input
+                name="company"
                 type="text"
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onChange={this.handleChangeCompany}
@@ -418,7 +514,8 @@ class Formulation extends Component {
             <BoxInput>
               <Label for="name" labelShow={this.state.labelShowEmail || this.state.inputEmail}>E-mail *</Label>
               <Input
-                type="text"
+                name="email"
+                type="email"
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
@@ -442,9 +539,24 @@ class Formulation extends Component {
               </FormSelect>
             </FormContent>
             <Textarea
+              name="message"
               placeholder="Escreva aqui a sua mensagem:"
+              value={this.state.form.message}
+              required
+              onChange={(ev) => {
+                this.handleForm('message', ev.target.value);
+              }}
             />
-            <ButtonForm>ENVIAR</ButtonForm>
+            {showSuccessMessage ? (
+              <SuccessContainer>
+                <SuccessMessage>
+                  Enviado!
+                </SuccessMessage>
+              </SuccessContainer>
+            ) :
+              (
+                <ButtonForm>ENVIAR</ButtonForm>
+              )}
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
@@ -453,18 +565,21 @@ class Formulation extends Component {
   }
 
   render() {
-    const { solicitation } = this.state;
+    const {
+      solicitation,
+    } = this.state;
 
     return (
       <ContainerForm isBig={this.state.solicitation}
         isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
-          <TitleForm>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
+          <TitleForm>
+            Entre em contato!
+          </TitleForm>
           <ButtonSolicitation
             display={this.state.solicitation}
             onClick={this.handleSolicitacion}>
-            SOLICITE SUA PROPOSTA
+            Solicite sua proposta
           </ButtonSolicitation>
         </ContentFinishSolicitation> : this.renderForm()}
       </ContainerForm>

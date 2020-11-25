@@ -288,7 +288,14 @@ class Footer extends Component {
         </ContentFooter>
         <FooterFinish>
           <p>DESENVOLVIDO POR:</p>
-          <a href="https://www.vainaweb.com.br/" target="_blank"><img src={LogoVnW} alt='logoVnw' /></a>
+          {/* <a href="https://www.vainaweb.com.br/" target="_blank"><img src={LogoVnW} alt='logoVnw' /></a> */}
+          <a
+            href='https://www.vainaweb.com.br/'
+            target='_blank'
+            rel="noopener noreferrer"
+          >
+            <img src={LogoVnW} alt='logoVnw' />
+          </a>
         </FooterFinish>
       </>
     );
