@@ -48,6 +48,7 @@ const ContentCaixaGeral = styled.div`
   padding: 3rem 0;
   position: relative;
   bottom: 85px;
+  box-shadow: 0px 3px 6px #00000029;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -269,6 +270,7 @@ const SessionCargo = styled.section`
     width: 100%;
     height: 65vh;
     margin-right: 2rem;
+    padding-right: ${props => (props.paddingRight)};
 	}
 `;
 
@@ -490,17 +492,12 @@ const CaixaBox = styled.div`
 
 const CaixaBoxHeader = styled.div`
   width: 100%;
-  height: 25vh;
+  height: 30vh;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 1rem;
-
-  @media (max-width: 450px) {
-    height: 30vh;
-    
-	}
 `;
 
 const Slider = styled.div`
@@ -560,6 +557,7 @@ const TitleBox = styled.p`
   font-family: 'Open Sans', ExtraBold;
   font-weight: bolder;
   margin-bottom: 1rem;
+  text-overflow: ellipsis;
 `;
 
 const CaixaBoxSobre = styled.div`
@@ -596,7 +594,7 @@ const ContentLogo = styled.div`
 `;
 
 const ContentLogoImages = styled.div`
-  width: 80%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -610,14 +608,14 @@ const LogoSeparation = styled.div`
 `;
 
 const ContentImages = styled.img`
-  height: ${props => (props.height ? '20vh' : '10vh')};
+  width: 15%;
+  height: ${props => (props.height ? '119px' : '40px')};
+  position: ${props => (props.position)};
+  bottom: ${props => (props.bottom)};
 
   @media (max-width: 768px) {
-    height: 7vh;
-	}
-
-  @media (max-width: 648px) {
-    height: 5vh;
+    width: 22%;
+    height: ${props => (props.height ? '85px' : '50px')};
 	}
 `;
 
@@ -637,7 +635,7 @@ const ContentLogoImagesMobile = styled.div`
   display: none;
 
   @media (max-width: 648px) {
-    width: 70%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -649,7 +647,7 @@ const LogoSeparationMobile = styled.div`
   display: none;
 
   @media (max-width: 648px) {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     margin: 0 0 5rem 0;
@@ -760,7 +758,7 @@ class Home extends Component {
                 <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
-                <img src={Icon} alt='linkedin' />
+                <a href="https://www.linkedin.com/in/eduardo-pereira-4b686013/" target="_blank"><img src={Icon} alt='linkedin'/></a>
               </ContentCargoCaixa>
             </SessionCargo>
             <SessionCargo id='cargo1'>
@@ -770,17 +768,17 @@ class Home extends Component {
                 <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
-                <img src={Icon} alt='linkedin' />
+                <a href="https://www.linkedin.com/in/christiani-nascimento-23b06018b/" target="_blank"><img src={Icon} alt='linkedin'/></a>
               </ContentCargoCaixa>
             </SessionCargo>
-            <SessionCargo id='cargo2'>
+            <SessionCargo id='cargo2' paddingRight='2rem'>
               <ImageCargo src={People3} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
                 <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
-                <ContentBoxParagraph>responsável pelo Capital Humano</ContentBoxParagraph>
-                <img src={Icon} alt='linkedin' />
+                <ContentBoxParagraph>Responsável pelo Capital Humano</ContentBoxParagraph>
+                <a href="https://www.linkedin.com/in/mauro-moura-5a406a74/" target="_blank"><img src={Icon} alt='linkedin'/></a>
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
@@ -801,7 +799,7 @@ class Home extends Component {
             </LogoSeparation>
             <LogoSeparation>
               <ContentImages src={FitaArquitetura} alt='logo' />
-              <ContentImages height src={SabendoMais} alt='logo' />
+              <ContentImages height position='relative' bottom='22px' src={SabendoMais} alt='logo' />
               <ContentImages src={Velatura} alt='logo' />
             </LogoSeparation>
           </ContentLogoImages>

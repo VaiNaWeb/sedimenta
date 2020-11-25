@@ -152,11 +152,12 @@ const ContainerHeaderBox = styled.div`
 
   @media (max-width: 450px) {
     width: 100vw;
-    height: 55vh;
-    background: ${props => (props.open && 'linear-gradient(to right, #992836, #4D141B)')};
+    height: 75vh;
+    background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
     justify-content: flex-end;
     flex-direction: column-reverse;
     padding: 3.5rem 1rem 0 0;
+    opacity: 1;
     position: absolute;
     right: 0;
     top: 0;
@@ -229,7 +230,7 @@ const ContainerLinha = styled.div`
 `;
 
 const MenuHamburguer = styled.img`
-  height: 2vh;
+  height: 13px;
   cursor: pointer;
 
   @media (max-width: 450px) {
@@ -276,40 +277,39 @@ const ParagraphHeader = styled.p`
 `;
 
 const ButtonHeader = styled.button`
-  width: 20vw;
+  width: 55%;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
-  color: #FFFFFF;
-  font-size: 1rem;
-  font-family: 'Product Sans', Bold;
   text-transform: uppercase;
   padding: 0.7rem;
   outline: none;
   cursor: pointer;
 
-  @media (max-width: 1024px) {
-    width: 24vw;
+  @media (max-width: 1130px) {
+    width: 65%;
 	}
 
   @media (max-width: 768px) {
-    width: 33vw;
+    width: 48%;
 	}
 
   @media (max-width: 648px) {
-    width: 40vw;
     font-size: 0.8rem;
     font-weight: bold;
 	}
 
   @media (max-width: 485px) {
-    width: 46vw;
-	}
-
-  @media (max-width: 450px) {
-    width: 55vw;
+    width: 85%;
     display: flex;
     justify-content: center;
 	}
+
+  a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Product Sans', Bold;
+  }
 `;
 
 const Slider = styled.div`
@@ -339,7 +339,6 @@ class Header extends Component {
     menu: undefined,
     menuMobile: undefined,
     sliderHeader: 0,
-    selectedHeader: '0',
     artigos: [
       {
         image: Calculadora,
@@ -372,10 +371,9 @@ class Header extends Component {
     });
   }
 
-  handleSlider = (item, slider) => {
+  handleSlider = (item) => {
     this.setState({
       sliderHeader: item,
-      selectedHeader: slider,
     })
     clearInterval(this.interval);
     this.handleInterval()
@@ -397,7 +395,7 @@ class Header extends Component {
 
 
   render() {
-    const { menu, sliderHeader, selectedHeader, artigos } = this.state;
+    const { menu, sliderHeader, artigos } = this.state;
 
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
@@ -427,7 +425,7 @@ class Header extends Component {
                 <BoxMenu open={menu}>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
                   <ContainerLinha></ContainerLinha>
-                  <SubContainerParagraph><a href="#serviços"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </ContainerHeaderBox>
@@ -435,14 +433,14 @@ class Header extends Component {
             <SubContainerText title={artigos[sliderHeader].isBig}>
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              {sliderHeader === 0 ? <ButtonHeader id='sobre'>conheça nosso serviço!</ButtonHeader>
+              {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>
-            <SliderBolinha isSelected={selectedHeader === '0' ? true : false} onClick={() => this.handleSlider(0, '0')}></SliderBolinha>
-            <SliderBolinha isSelected={selectedHeader === '1' ? true : false} onClick={() => this.handleSlider(1, '1')}></SliderBolinha>
-            <SliderBolinha isSelected={selectedHeader === '2' ? true : false} onClick={() => this.handleSlider(2, '2')}></SliderBolinha>
+            <SliderBolinha isSelected={sliderHeader === 0 ? true : false} onClick={() => this.handleSlider(0)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>
+            <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
           </Slider>
         </span>
       </ContainerLogo>

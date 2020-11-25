@@ -52,8 +52,8 @@ const TitleForm = styled.h3`
 const ButtonSolicitation = styled.button`
   width: 20%;
   color: #FFFFFF;
-  background-color: transparent;
-  border-color: #FFFFFF;
+  background: none;
+  border: 2px solid #FFFFFF;
   font-family: 'Product Sans', Bold;
   font-weight: bolder;
   padding: 0.5rem 0.5rem;
@@ -93,6 +93,8 @@ const BoxInput = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 0.5rem;
+  position: relative;
 
   @media (max-width: 768px) {
     width: 90%;
@@ -100,6 +102,7 @@ const BoxInput = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    margin-top: 0.85rem;
 	}
 `;
 
@@ -107,11 +110,12 @@ const Label = styled.label`
   width: 100%;
   display: ${props => props.labelShow ? "flex" : "none"};
 	color: #d2a2a8;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
 	transition: 0.5s;
-  margin-top: 0.5rem;
+  position: absolute;
+  top: -0.5rem;
 
   @media (max-width: 768px) {
     width: 65%;
@@ -127,6 +131,7 @@ const Input = styled.input`
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
+  border-radius: 0;
   color: #FFFFFF;
   font-size: 0.85rem;
   font-family: 'Arial', ExtraBold;
@@ -154,6 +159,7 @@ const FormContent = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-top: 0.5rem;
   position: relative;
 
   @media (max-width: 768px) {
@@ -162,6 +168,7 @@ const FormContent = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    margin-top: 0.85rem;
 	}
 `;
 
@@ -217,6 +224,7 @@ const FormSelectList = styled.div`
   border: 1px solid #FFFFFF;
   border-top: none;
   border-bottom: none;
+  border-radius: 0;
   color: #d2a2a8;
   font-size: 0.8rem;
   font-family: 'Arial', ExtraBold;
@@ -241,6 +249,7 @@ const Textarea = styled.textarea`
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
+  border-radius: 0;
   color: #FFFFFF;
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
@@ -287,8 +296,6 @@ const BoxImage = styled.div`
   background-size: cover;
 `;
 
-
-
 class Formulation extends Component {
   state = {
     solicitation: true,
@@ -299,6 +306,9 @@ class Formulation extends Component {
     placeholderShowName: true,
     placeholderShowCompany: true,
     placeholderShowEmail: true,
+    inputName: '',
+    inputCompany: '',
+    inputEmail: '',
     selectedItems: [
       'Contabilidade',
       'RH',
@@ -316,13 +326,17 @@ class Formulation extends Component {
     });
   }
 
-
   handleSelectedForm = (ev) => {
-    console.log('qualqer coisa texto');
     ev.stopPropagation();
-      this.setState({
-        isSelected: false,
-      });
+    this.setState({
+      isSelected: false,
+    });
+  }
+
+  handleChangeName = (ev) => {
+    this.setState({
+      inputName: ev.target.value,
+    })
   }
 
   handleFocusName = () => {
@@ -332,11 +346,23 @@ class Formulation extends Component {
     });
   }
 
+  handleChangeCompany = (ev) => {
+    this.setState({
+      inputCompany: ev.target.value,
+    })
+  }
+
   handleFocusCompany = () => {
     this.setState({
       placeholderShowCompany: !this.state.placeholderShowCompany,
       labelShowCompany: !this.state.labelShowCompany,
     });
+  }
+
+  handleChangeEmail = (ev) => {
+    this.setState({
+      inputEmail: ev.target.value,
+    })
   }
 
   handleFocusEmail = () => {
@@ -369,28 +395,34 @@ class Formulation extends Component {
             Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
           <Formulario margin={this.state.solicitation} onClick={this.handleSelectedForm}>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowName}>Nome *</Label>
+              <Label for="name" labelShow={this.state.labelShowName || this.state.inputName}>Nome *</Label>
               <Input
                 name="name"
                 type="text"
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
+                onChange={this.handleChangeName}
                 onFocus={this.handleFocusName}
+                onBlur={this.handleFocusName}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowCompany}>Empresa *</Label>
+              <Label for="name" labelShow={this.state.labelShowCompany || this.state.inputCompany}>Empresa *</Label>
               <Input
                 type="text"
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
+                onChange={this.handleChangeCompany}
                 onFocus={this.handleFocusCompany}
+                onBlur={this.handleFocusCompany}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowEmail}>E-mail *</Label>
+              <Label for="name" labelShow={this.state.labelShowEmail || this.state.inputEmail}>E-mail *</Label>
               <Input
                 type="text"
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
+                onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
+                onBlur={this.handleFocusEmail}
               />
             </BoxInput>
             <FormContent>
@@ -400,7 +432,6 @@ class Formulation extends Component {
                   disabled
                   placeholder="Assunto *"
                   value={this.state.isSelectedItems}
-                  onChange={this.handleChange}
                 />
                 <FormTriangle isSelected={this.state.isSelected}></FormTriangle>
               </FormAssunt>
