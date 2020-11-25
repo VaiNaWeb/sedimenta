@@ -58,17 +58,17 @@ const TitleForm = styled.h3`
 const ButtonSolicitation = styled.button`
   width: 20%;
   color: #FFFFFF;
-  background-color: transparent;
-  border-color: #FFFFFF;
+  border: 2px solid #FFF;
   font-family: 'Product Sans', Bold;
-  font-weight: bolder;
-  padding: 0.5rem 0.5rem;
+  font-weight: 700;
+  padding: .75rem;
   margin-top: 3rem;
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   outline: none;
   cursor: pointer;
+  background: none;
 
   @media (max-width: 768px) {
     width: 27%;
