@@ -397,6 +397,7 @@ class Formulation extends Component {
             onClick={this.handleSelectedForm}
             onSubmit={this.handleSubmit}
           >
+            <input type="hidden" name="form-name" value="contact" />
             <BoxInput>
               <Label for="name" labelShow={this.state.labelShowName}>Nome *</Label>
               <Input
