@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
 
+function encode(data) {
+	return Object.keys(data)
+		.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+		.join("&");
+};
+
 const ContainerForm = styled.div`
   width: 100%;
   height: ${props => props.isBig ? '78vh' : '197vh'};
@@ -318,11 +324,10 @@ class Formulation extends Component {
 
 
   handleSelectedForm = (ev) => {
-    console.log('qualqer coisa texto');
     ev.stopPropagation();
-      this.setState({
-        isSelected: false,
-      });
+    this.setState({
+      isSelected: false,
+    });
   }
 
   handleFocusName = () => {
@@ -360,14 +365,38 @@ class Formulation extends Component {
     });
   }
 
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+
+    const form = ev.target;
+
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...this.state
+      })
+    }).then(() => {
+    }).catch(() => { });
+  }
+
   renderForm = () => {
     return (
       <>
         <ContentFinishSolicitation height background>
           <TitleForm marginTop>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
-          <Formulario margin={this.state.solicitation} onClick={this.handleSelectedForm}>
+            Entre em contato!
+          </TitleForm>
+          <Formulario
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            margin={this.state.solicitation}
+            onClick={this.handleSelectedForm}
+            onSubmit={this.handleSubmit}
+          >
             <BoxInput>
               <Label for="name" labelShow={this.state.labelShowName}>Nome *</Label>
               <Input
@@ -428,12 +457,13 @@ class Formulation extends Component {
       <ContainerForm isBig={this.state.solicitation}
         isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
-          <TitleForm>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nam mi justo, interdum et rutrum dictum, venenatis sollicitudin nisi.</TitleForm>
+          <TitleForm>
+            Entre em contato!
+          </TitleForm>
           <ButtonSolicitation
             display={this.state.solicitation}
             onClick={this.handleSolicitacion}>
-            SOLICITE SUA PROPOSTA
+            Solicite sua proposta
           </ButtonSolicitation>
         </ContentFinishSolicitation> : this.renderForm()}
       </ContainerForm>

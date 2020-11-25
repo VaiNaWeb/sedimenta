@@ -677,7 +677,6 @@ class Home extends Component {
       this.setState({
         responseDate: response,
       })
-      console.log(response);
     } catch (err) { }
   };
 
