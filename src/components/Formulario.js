@@ -402,6 +402,7 @@ class Formulation extends Component {
           <Formulario
             name="contact"
             method="post"
+            action=""
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             margin={this.state.solicitation}
