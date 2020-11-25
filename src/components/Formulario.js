@@ -505,7 +505,7 @@ class Formulation extends Component {
                 this.handleForm('message', ev.target.value);
               }}
             />
-            {!showSuccessMessage ? (
+            {showSuccessMessage ? (
               <SuccessContainer>
                 <SuccessMessage>
                   Enviado!
