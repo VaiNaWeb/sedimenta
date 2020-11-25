@@ -6,76 +6,76 @@ import Linkedin from '../assets/socialLinkedin.svg';
 import Insta from '../assets/socialInsta.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
-const LinkLinha = styled.div`
-  width: 93%;
-  height: 1vh;
-  background: linear-gradient(to right, #992836, #4D141B);
-  margin: 1rem 0 0.3rem;
+// const LinkLinha = styled.div`
+//   width: 93%;
+//   height: 1vh;
+//   background: linear-gradient(to right, #992836, #4D141B);
+//   margin: 1rem 0 0.3rem;
 
-  @media (max-width: 648px) {
-    display: none;
-	}
-`;
+//   @media (max-width: 648px) {
+//     display: none;
+// 	}
+// `;
 
-const ContentLink = styled.div`
-  width: 93%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+// const ContentLink = styled.div`
+//   width: 93%;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
 
-  @media (max-width: 648px) {
-    width: 90%;
-    border-left: 7px solid #992836;
-    margin-bottom: 7rem;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     border-left: 7px solid #992836;
+//     margin-bottom: 7rem;
+// 	}
+// `;
 
-const ContentLinkGeral = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 4rem;
+// const ContentLinkGeral = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: row;
+//   margin-bottom: 4rem;
 
-  @media (max-width: 648px) {
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-left: 1rem;
-    margin-bottom: 0;
-	}
-`;
+//   @media (max-width: 648px) {
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     margin-left: 1rem;
+//     margin-bottom: 0;
+// 	}
+// `;
 
-const SeparationLink = styled.div`
-  width: 25%;
+// const SeparationLink = styled.div`
+//   width: 25%;
 
-  @media (max-width: 648px) {
-    width: 85%;
-    display: flex;
-    justify-content: space-between;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 85%;
+//     display: flex;
+//     justify-content: space-between;
+// 	}
+// `;
 
-const ParagraphLink = styled.p`
-  color: #373737;
-  font-size: 0.9rem;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bold;
-  margin-bottom: 3rem;
+// const ParagraphLink = styled.p`
+//   color: #373737;
+//   font-size: 0.9rem;
+//   font-family: 'Open Sans', ExtraBold;
+//   font-weight: bold;
+//   margin-bottom: 3rem;
 
-  @media (max-width: 648px) {
-    font-size: 1rem;
-    margin-left: 1rem;
-	}
-`;
-const Link = styled.a`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5rem;
-  text-decoration: none;
+//   @media (max-width: 648px) {
+//     font-size: 1rem;
+//     margin-left: 1rem;
+// 	}
+// `;
+// const Link = styled.a`
+//   display: flex;
+//   flex-direction: column;
+//   margin-bottom: 5rem;
+//   text-decoration: none;
 
-  @media (max-width: 648px) {
-    margin-bottom: ${props => (props.margin)};
-	}
-`;
+//   @media (max-width: 648px) {
+//     margin-bottom: ${props => (props.margin)};
+// 	}
+// `;
 
 const ContentFooter = styled.div`
   width: 90%;
@@ -236,7 +236,7 @@ class Footer extends Component {
   render() {
     return (
       <>
-        <LinkLinha></LinkLinha>
+        {/* <LinkLinha></LinkLinha>
         <ContentLink>
           <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
           <ContentLinkGeral>
@@ -253,7 +253,7 @@ class Footer extends Component {
               <Link margin='0' href="https://github.com/Erlane" target="_blank">Link 6</Link>
             </SeparationLink>
           </ContentLinkGeral>
-        </ContentLink>
+        </ContentLink> */}
         <ContentFooter>
           <ContentFooterRede>
             <ContentFooterContact>
@@ -288,13 +288,12 @@ class Footer extends Component {
         </ContentFooter>
         <FooterFinish>
           <p>DESENVOLVIDO POR:</p>
-          {/* <a href="https://www.vainaweb.com.br/" target="_blank"><img src={LogoVnW} alt='logoVnw' /></a> */}
           <a
             href='https://www.vainaweb.com.br/'
             target='_blank'
             rel="noopener noreferrer"
           >
-            <img src={LogoVnW} alt='logoVnw' />
+            <img src={LogoVnW} alt='logoVnw'/>
           </a>
         </FooterFinish>
       </>
