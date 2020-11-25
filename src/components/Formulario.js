@@ -411,6 +411,7 @@ class Formulation extends Component {
           subject: '',
           message: '',
         },
+        isSelectedItems: '',
         showSuccessMessage: true,
       });
 
