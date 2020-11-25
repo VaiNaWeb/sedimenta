@@ -96,6 +96,7 @@ const Formulario = styled.form`
 const BoxInput = styled.div`
   width: 45%;
   display: flex;
+  margin: .75rem 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -106,25 +107,6 @@ const BoxInput = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
-	}
-`;
-
-const Label = styled.label`
-  width: 100%;
-  display: ${props => props.labelShow ? "flex" : "none"};
-	color: #d2a2a8;
-  font-size: 0.9rem;
-  font-family: 'Arial', ExtraBold;
-  font-weight: bold;
-	transition: 0.5s;
-  margin-top: 0.5rem;
-
-  @media (max-width: 768px) {
-    width: 65%;
-	}
-
-  @media (max-width: 648px) {
-    width: 80%;
 	}
 `;
 
@@ -157,6 +139,7 @@ const Input = styled.input`
 const FormContent = styled.div`
   width: 45%;
   display: flex;
+  margin: .75rem 0;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -243,7 +226,7 @@ const FormSelectList = styled.div`
 
 const Textarea = styled.textarea`
   width: 45%;
-  height: 32vh;
+  height: 170px;
   background: none;
   border: none;
   border-bottom: 1px solid #FFFFFF;
@@ -251,6 +234,7 @@ const Textarea = styled.textarea`
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
+  margin: .75rem 0;
   padding-top: 1rem;
   outline: none;
 
@@ -314,6 +298,13 @@ class Formulation extends Component {
       'Todos',
       'Outros',
     ],
+    form: {
+      name: '',
+      company: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
   }
 
   handleSolicitacion = () => {
@@ -359,9 +350,26 @@ class Formulation extends Component {
   }
 
   handleSelectedItems = (item) => {
+    const { form } = this.state;
+
     this.setState({
       isSelectedItems: item,
       isSelected: false,
+      form: {
+        ...form,
+        subject: item,
+      },
+    });
+  }
+
+  handleForm = (field, value) => {
+    const { form } = this.state;
+
+    this.setState({
+      form: {
+        ...form,
+        [field]: value,
+      },
     });
   }
 
@@ -375,10 +383,13 @@ class Formulation extends Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         'form-name': form.getAttribute('name'),
-        ...this.state
+        ...this.state.form
       })
     }).then(() => {
-    }).catch(() => { });
+      console.log('SUCCESS!');
+    }).catch(() => {
+      console.log('ERROR!')
+    });
   }
 
   renderForm = () => {
@@ -390,7 +401,7 @@ class Formulation extends Component {
           </TitleForm>
           <Formulario
             name="contact"
-            method="POST"
+            method="post"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             margin={this.state.solicitation}
@@ -399,28 +410,37 @@ class Formulation extends Component {
           >
             <input type="hidden" name="form-name" value="contact" />
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowName}>Nome *</Label>
               <Input
                 name="name"
                 type="text"
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
-                onFocus={this.handleFocusName}
+                value={this.state.form.name}
+                required
+                onChange={(ev) => {
+                  this.handleForm('name', ev.target.value);
+                }}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowCompany}>Empresa *</Label>
               <Input
                 type="text"
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
-                onFocus={this.handleFocusCompany}
+                value={this.state.form.company}
+                required
+                onChange={(ev) => {
+                  this.handleForm('company', ev.target.value);
+                }}
               />
             </BoxInput>
             <BoxInput>
-              <Label for="name" labelShow={this.state.labelShowEmail}>E-mail *</Label>
               <Input
-                type="text"
+                type="email"
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
-                onFocus={this.handleFocusEmail}
+                value={this.state.form.email}
+                required
+                onChange={(ev) => {
+                  this.handleForm('email', ev.target.value);
+                }}
               />
             </BoxInput>
             <FormContent>
@@ -430,6 +450,7 @@ class Formulation extends Component {
                   disabled
                   placeholder="Assunto *"
                   value={this.state.isSelectedItems}
+                  required
                   onChange={this.handleChange}
                 />
                 <FormTriangle isSelected={this.state.isSelected}></FormTriangle>
@@ -442,6 +463,11 @@ class Formulation extends Component {
             </FormContent>
             <Textarea
               placeholder="Escreva aqui a sua mensagem:"
+              value={this.state.form.message}
+              required
+              onChange={(ev) => {
+                this.handleForm('message', ev.target.value);
+              }}
             />
             <ButtonForm>ENVIAR</ButtonForm>
           </Formulario>
