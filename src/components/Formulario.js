@@ -58,6 +58,7 @@ const TitleForm = styled.h3`
 const ButtonSolicitation = styled.button`
   width: 20%;
   color: #FFFFFF;
+  background: none;
   border: 2px solid #FFF;
   font-family: 'Product Sans', Bold;
   font-weight: 700;
@@ -68,7 +69,6 @@ const ButtonSolicitation = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
-  background: none;
 
   @media (max-width: 768px) {
     width: 27%;
