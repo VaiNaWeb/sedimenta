@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Face from '../assets/socialFace.svg';
 import Linkedin from '../assets/socialLinkedin.svg';
-import Insta from '../assets/socialInsta.svg';
+import Medium from '../assets/socialMedium.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
 // const LinkLinha = styled.div`
@@ -104,7 +104,7 @@ const ContentFooterRede = styled.div`
 
 const ContentRedeSocial = styled.div`
   color: #373737;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,7 +124,7 @@ const ContentRedeSocial = styled.div`
   }
 
   img {
-    height: 5vh;
+    height: 4vh;
     padding-right: 1rem;
   }
 `;
@@ -277,9 +277,15 @@ class Footer extends Component {
             <FooterLinha></FooterLinha>
             <TitleFooter>REDE SOCIAL</TitleFooter>
             <span>
-              <img src={Face} alt='redeSocial' />
+              <a 
+                href='https://www.facebook.com/sedimentajpm'
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                <img src={Face} alt='redeSocial' />
+              </a>
               <img src={Linkedin} alt='redeSocial' />
-              <img src={Insta} alt='redeSocial' />
+              <img src={Medium} alt='redeSocial' />
             </span>
           </ContentRedeSocial>
           <ContentFooterTopo href="#topo">
