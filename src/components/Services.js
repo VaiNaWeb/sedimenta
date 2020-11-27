@@ -111,7 +111,7 @@ const ContentBoxGalery = styled.div`
   justify-content: space-evenly;
 
   @media (max-width: 648px) {
-    width: 350px;
+    width: 400px;
     height: 455px;
     background-color: #FFFFFF;
     border-radius: 3px;
@@ -158,7 +158,6 @@ const BoxTitle = styled.h2`
 `;
 
 const BoxText = styled.p`
-  /* width: ${props => (props.widthText ? '72%' : '58%')}; */
   width: 58%;
   font-size: 0.8rem;
   font-family: 'Open Sans', Regular;
@@ -173,7 +172,7 @@ const BoxText = styled.p`
 	}
 
   @media (max-width: 450px) {
-    width: 68vw;
+    width: 75vw;
 	}
 `;
 
@@ -191,6 +190,7 @@ const Box = styled.button`
 
   @media (max-width: 648px) {
     font-size: 0.9rem;
+    margin: 1.8rem 0;
   }
 `;
 
