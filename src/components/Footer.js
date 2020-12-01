@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Face from '../assets/socialFace.svg';
 import Linkedin from '../assets/socialLinkedin.svg';
-import Medium from '../assets/socialMedium.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
 // const LinkLinha = styled.div`
