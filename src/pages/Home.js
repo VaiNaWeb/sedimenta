@@ -654,6 +654,15 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
+const PostsMessage = styled.span`
+  display: inline-block;
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-size: 2.75rem;
+  font-family: 'Product Sans', Bold;
+`;
+
 class Home extends Component {
   state = {
     slider: 0,
@@ -713,7 +722,7 @@ class Home extends Component {
   }
 
   render() {
-    const { sliderSelect } = this.state;
+    const { sliderSelect, posts } = this.state;
 
     return (
       <Container>
@@ -866,7 +875,10 @@ class Home extends Component {
         </SubContent>
         <ContainerCaixa>
           <Caixa>
-            {this.renderPosts()}
+            {posts.length > 0 
+              ? this.renderPosts()
+              : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
+            }
           </Caixa>
           <Slider>
             <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
