@@ -660,7 +660,7 @@ class Home extends Component {
     sliderCargo: 0,
     selectedSlider: 1,
     sliderSelect: 0,
-    responseDate: undefined,
+    posts: [],
   }
 
   componentDidMount() {
@@ -670,11 +670,12 @@ class Home extends Component {
   getPosts = async () => {
     try {
       const response = await axios.get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
       );
+
       this.setState({
-        responseDate: response,
-      })
+        posts: response.data.items.slice(0, 3),
+      });
     } catch (err) { }
   };
 
@@ -691,6 +692,24 @@ class Home extends Component {
       sliderSelect: slider,
     })
     document.getElementById(item).scrollIntoView()
+  }
+
+  renderPosts = () => {
+    return this.state.posts.map((post) => {
+      return (
+        <CaixaBox>
+          <ImageBox src={balao} alt='figure' />
+          <CaixaBoxHeader>
+            <BoxDate>{post.pubDate}</BoxDate>
+            <TitleBox>{post.title}</TitleBox>
+            <CaixaBoxSobre>
+              <hr></hr>
+              <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+            </CaixaBoxSobre>
+          </CaixaBoxHeader>
+        </CaixaBox>
+      )
+    });
   }
 
   render() {
@@ -762,7 +781,7 @@ class Home extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <img src={Icon} alt='linkedin'/>
+                  <img src={Icon} alt='linkedin' />
                 </a>
               </ContentCargoCaixa>
             </SessionCargo>
@@ -778,7 +797,7 @@ class Home extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <img src={Icon} alt='linkedin'/>
+                  <img src={Icon} alt='linkedin' />
                 </a>
               </ContentCargoCaixa>
             </SessionCargo>
@@ -794,7 +813,7 @@ class Home extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <img src={Icon} alt='linkedin'/>
+                  <img src={Icon} alt='linkedin' />
                 </a>
               </ContentCargoCaixa>
             </SessionCargo>
@@ -847,66 +866,7 @@ class Home extends Component {
         </SubContent>
         <ContainerCaixa>
           <Caixa>
-            <CaixaBox id='caixa0'>
-              <ImageBox src={balao} alt='figure' />
-              <CaixaBoxHeader>
-                {this.state.responseDate !== undefined ?
-                  <BoxDate>{this.state.responseDate.data.items[1].pubDate}</BoxDate>
-                  : null
-                }
-                {this.state.responseDate !== undefined ?
-                  <TitleBox>{this.state.responseDate.data.items[1].title}</TitleBox>
-                  : null
-                }
-                <CaixaBoxSobre>
-                  <hr></hr>
-                  <CaixaSaiba href={
-                    this.state.responseDate !== undefined ?
-                      this.state.responseDate.data.items[1].link : null
-                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-                </CaixaBoxSobre>
-              </CaixaBoxHeader>
-            </CaixaBox>
-            <CaixaBox id='caixa1'>
-              <ImageBox src={balao} alt='figure' />
-              <CaixaBoxHeader>
-                {this.state.responseDate !== undefined ?
-                  <BoxDate>{this.state.responseDate.data.items[2].pubDate}</BoxDate>
-                  : null
-                }
-                {this.state.responseDate !== undefined ?
-                  <TitleBox>{this.state.responseDate.data.items[2].title}</TitleBox>
-                  : null
-                }
-                <CaixaBoxSobre>
-                  <hr></hr>
-                  <CaixaSaiba href={
-                    this.state.responseDate !== undefined ?
-                      this.state.responseDate.data.items[2].link : null
-                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-                </CaixaBoxSobre>
-              </CaixaBoxHeader>
-            </CaixaBox>
-            <CaixaBox id='caixa2'>
-              <ImageBox src={balao} alt='figure' />
-              <CaixaBoxHeader>
-                {this.state.responseDate !== undefined ?
-                  <BoxDate>{this.state.responseDate.data.items[3].pubDate}</BoxDate>
-                  : null
-                }
-                {this.state.responseDate !== undefined ?
-                  <TitleBox>{this.state.responseDate.data.items[3].title}</TitleBox>
-                  : null
-                }
-                <CaixaBoxSobre>
-                  <hr></hr>
-                  <CaixaSaiba href={
-                    this.state.responseDate !== undefined ?
-                      this.state.responseDate.data.items[3].link : null
-                  } target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-                </CaixaBoxSobre>
-              </CaixaBoxHeader>
-            </CaixaBox>
+            {this.renderPosts()}
           </Caixa>
           <Slider>
             <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>

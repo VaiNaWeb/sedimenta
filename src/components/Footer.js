@@ -282,10 +282,9 @@ class Footer extends Component {
                 target='_blank'
                 rel="noopener noreferrer"
               >
-                <img src={Face} alt='redeSocial' />
+                <img src={Face} alt='Facebook' />
               </a>
-              <img src={Linkedin} alt='redeSocial' />
-              <img src={Medium} alt='redeSocial' />
+              <img src={Linkedin} alt='LinkedIn' />
             </span>
           </ContentRedeSocial>
           <ContentFooterTopo href="#topo">
