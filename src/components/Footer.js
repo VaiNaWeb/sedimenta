@@ -283,7 +283,13 @@ class Footer extends Component {
               >
                 <img src={Face} alt='Facebook' />
               </a>
-              <img src={Linkedin} alt='LinkedIn' />
+              <a
+                href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                <img src={Linkedin} alt='LinkedIn' />
+              </a>
             </span>
           </ContentRedeSocial>
           <ContentFooterTopo href="#topo">
