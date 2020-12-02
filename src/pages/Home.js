@@ -104,7 +104,7 @@ const TitleHeader = styled.h2`
   color: #373737;
   font-size: 1.2rem;
   font-family: 'Product Sans', Bold;
-  margin-left: 3rem;
+  margin-left: 2.2rem;
 
   @media (max-width: 1024px) {
     margin-left: 1rem;
@@ -164,7 +164,6 @@ const ContentSobre = styled.div`
 	}
 
   span {
-    width: 95%;
     display: flex;
     justify-content: space-between;
 
@@ -244,7 +243,11 @@ const ContainerParagraph = styled.p`
 
 const ContentCargo = styled.div`
   width: 100%;
-  padding-left: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 10rem; */
   margin: 7rem 0 5rem 0;
 
   @media (max-width: 1024px) {
@@ -262,23 +265,10 @@ const ContentCargo = styled.div`
 	}
 `;
 
-const SessionCargo = styled.section`
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 648px) {
-    width: 100%;
-    height: 65vh;
-    margin-right: 2rem;
-    padding-right: ${props => (props.paddingRight)};
-	}
-`;
-
 const Cargo = styled.div`
+  width: 98%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  justify-content: space-around;
 
   @media (max-width: 648px) {
     width: 100%;
@@ -290,8 +280,21 @@ const Cargo = styled.div`
 	}
 `;
 
+const SessionCargo = styled.section`
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    height: 65vh;
+    margin-right: 2rem;
+    padding-right: ${props => (props.paddingRight)};
+	}
+`;
+
 const ImageCargo = styled.img`
-  width: 65%;
+  width: 100%;
   box-shadow: 0px 3px 6px #00000029;
   object-fit: cover;
   object-position: top;
@@ -301,13 +304,12 @@ const ImageCargo = styled.img`
 	}
 
   @media (max-width: 648px) {
-    width: 270px;
+    width: 280px;
     height: 39vh;
 	}
 `;
 
 const ContentCargoCaixa = styled.div`
-  width: 65%;
   height: 25vh;
   background-color: #FFFFFF;
   border-left: 5px solid #801422;
@@ -359,7 +361,7 @@ const ContentBoxParagraph = styled.p`
 `;
 
 const BoxImage = styled.img`
-  width: 13%;
+  width: 14%;
   margin-left: 0.3rem;
 `;
 
@@ -475,7 +477,7 @@ const CaixaBox = styled.div`
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
-
+  
   @media (max-width: 768px) {
     width: 30%;
 	}
@@ -486,44 +488,18 @@ const CaixaBox = styled.div`
 	}
 
   @media (max-width: 450px) {
-    width: 80%;
+    width: 90%;
 	}
 `;
 
 const CaixaBoxHeader = styled.div`
   width: 100%;
-  height: 30vh;
+  height: 27vh;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 0 1rem;
-`;
-
-const Slider = styled.div`
-  width: 100%;
-  display: none;
-
-  @media (max-width: 648px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-	}
-
-  @media (max-width: 450px) {
-    width: 80%;
-	}
-`;
-
-const SliderBolinha = styled.div`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-  margin-left: 1rem;
-  opacity: 1;
-  cursor: pointer;
 `;
 
 const ImageBox = styled.img`
@@ -552,12 +528,18 @@ const BoxDate = styled.div`
 `;
 
 const TitleBox = styled.p`
+  width: 80%;
+  /* height: 11vh; */
   color: #373737;
   font-size: 1rem;
   font-family: 'Open Sans', ExtraBold;
   font-weight: bolder;
-  margin-bottom: 1rem;
+  padding-top: 0.3rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const CaixaBoxSobre = styled.div`
@@ -571,6 +553,10 @@ const CaixaBoxSobre = styled.div`
     width: 3vw;
     border: 1px solid #a76b73;
     opacity: 1;
+
+    @media (max-width: 648px) {
+      width: 13vw;
+	  }
   }
 `;
 
@@ -579,6 +565,8 @@ const CaixaSaiba = styled.a`
   font-size: 0.7rem;
   font-family: 'Open Sans', Regular;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
 `;
 
 const ContentLogo = styled.div`
@@ -594,7 +582,7 @@ const ContentLogo = styled.div`
 `;
 
 const ContentLogoImages = styled.div`
-  width: 85%;
+  width: 89%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -609,12 +597,16 @@ const LogoSeparation = styled.div`
 
 const ContentImages = styled.img`
   width: 15%;
-  height: ${props => (props.height ? '119px' : '40px')};
+  height: ${props => (props.height)};
   position: ${props => (props.position)};
   bottom: ${props => (props.bottom)};
 
   @media (max-width: 768px) {
     width: 22%;
+	}
+
+  @media (max-width: 648px) {
+    width: 35%;
     height: ${props => (props.height ? '85px' : '50px')};
 	}
 `;
@@ -649,9 +641,36 @@ const LogoSeparationMobile = styled.div`
   @media (max-width: 648px) {
     width: 80%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin: 0 0 5rem 0;
 	}
+`;
+
+const Slider = styled.div`
+  width: 100%;
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+	}
+
+  @media (max-width: 450px) {
+    width: 80%;
+	}
+`;
+
+const SliderBolinha = styled.div`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
+  margin-left: 1rem;
+  opacity: 1;
+  cursor: pointer;
 `;
 
 class Home extends Component {
@@ -810,14 +829,14 @@ class Home extends Component {
         <ContentLogo>
           <ContentLogoImages>
             <LogoSeparation>
-              <ContentImages src={ChooseMed} alt='logo' />
-              <ContentImages src={AndreLuiz} alt='logo' />
-              <ContentImages src={FichaCerta} alt='logo' />
+              <ContentImages height='55px' src={ChooseMed} alt='logo' />
+              <ContentImages height='66px' src={AndreLuiz} alt='logo' />
+              <ContentImages height='52px' src={FichaCerta} alt='logo' />
             </LogoSeparation>
             <LogoSeparation>
-              <ContentImages src={FitaArquitetura} alt='logo' />
-              <ContentImages height position='relative' bottom='22px' src={SabendoMais} alt='logo' />
-              <ContentImages src={Velatura} alt='logo' />
+              <ContentImages height='55px' src={FitaArquitetura} alt='logo' />
+              <ContentImages height='128px' position='relative' bottom='22px' src={SabendoMais} alt='logo' />
+              <ContentImages height='57px' src={Velatura} alt='logo' />
             </LogoSeparation>
           </ContentLogoImages>
         </ContentLogo>

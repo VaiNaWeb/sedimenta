@@ -21,7 +21,7 @@ const ContainerForm = styled.div`
 
 const ContentFinishSolicitation = styled.span`
   width: 100%;
-  height: ${props => props.height ? '190vh' : '65vh'};
+  height: ${props => props.height ? '182vh' : '65vh'};
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -67,6 +67,7 @@ const ButtonSolicitation = styled.button`
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
   outline: none;
   cursor: pointer;
 
@@ -96,11 +97,10 @@ const Formulario = styled.form`
 const BoxInput = styled.div`
   width: 45%;
   display: flex;
-  margin: .75rem 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 0.5rem;
+  margin: .75rem 0 0;
   position: relative;
 
   @media (max-width: 768px) {
@@ -143,7 +143,7 @@ const Input = styled.input`
   font-size: 0.85rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  padding-top: 1rem;
+  padding-top: 0.9rem;
   padding-bottom: 0.3rem;
   outline: none;
   
@@ -163,11 +163,10 @@ const Input = styled.input`
 const FormContent = styled.div`
   width: 45%;
   display: flex;
-  margin: .75rem 0;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin: .75rem 0;
   position: relative;
 
   @media (max-width: 768px) {
@@ -262,8 +261,8 @@ const Textarea = styled.textarea`
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  margin: .75rem 0;
-  padding-top: 1rem;
+  /* margin: .75rem 0; */
+  /* padding-top: 1rem; */
   outline: none;
 
   ::placeholder {

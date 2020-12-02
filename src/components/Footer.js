@@ -82,7 +82,6 @@ const ContentFooter = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 8rem;
-  margin-right: 2rem;
 
   @media (max-width: 648px) {
     width: ${props => (props.footer ? '100%' : '90%')};
@@ -104,10 +103,14 @@ const ContentFooterRede = styled.div`
 
 const ContentRedeSocial = styled.div`
   color: #373737;
-  margin-bottom: 2rem;
+  margin-bottom: 3.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 8rem;
+	}
 
   @media (max-width: 648px) {
     width: 90%;
@@ -152,7 +155,7 @@ const TitleFooter = styled.h5`
   font-family: 'Open Sans', Extrabold;
   font-size: 1rem;
   font-weight: bolder;
-  margin: 0.3rem 0 2rem 0;
+  margin: 0.3rem 0 1.5rem 0;
 
   @media (max-width: 648px) {
     margin: 0 0 2rem 1rem;
@@ -277,7 +280,7 @@ class Footer extends Component {
             <FooterLinha></FooterLinha>
             <TitleFooter>REDE SOCIAL</TitleFooter>
             <span>
-              <a 
+              <a
                 href='https://www.facebook.com/sedimentajpm'
                 target='_blank'
                 rel="noopener noreferrer"
@@ -299,7 +302,7 @@ class Footer extends Component {
             target='_blank'
             rel="noopener noreferrer"
           >
-            <img src={LogoVnW} alt='logoVnw'/>
+            <img src={LogoVnW} alt='logoVnw' />
           </a>
         </FooterFinish>
       </>

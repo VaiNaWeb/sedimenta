@@ -239,11 +239,12 @@ const MenuHamburguer = styled.img`
 `;
 
 const SubContainerText = styled.div`
-  width: ${props => (props.title ? '53%' : '40%')};
+  width: ${props => (props.title ? '53%' : '43%')};
   height: 70vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-left: 1rem;
 
   @media (max-width: 768px) {
     width: 70%;
@@ -259,7 +260,7 @@ const SubContainerText = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   font-family: 'Product Sans', Bold;
-
+  
   @media (max-width: 768px) {
     font-size: 2rem;
 	}
