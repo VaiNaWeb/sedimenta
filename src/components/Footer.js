@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Face from '../assets/socialFace.svg';
 import Linkedin from '../assets/socialLinkedin.svg';
-import Medium from '../assets/socialMedium.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
 // const LinkLinha = styled.div`
@@ -285,10 +284,15 @@ class Footer extends Component {
                 target='_blank'
                 rel="noopener noreferrer"
               >
-                <img src={Face} alt='redeSocial' />
+                <img src={Face} alt='Facebook' />
               </a>
-              <img src={Linkedin} alt='redeSocial' />
-              <img src={Medium} alt='redeSocial' />
+              <a
+                href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                <img src={Linkedin} alt='LinkedIn' />
+              </a>
             </span>
           </ContentRedeSocial>
           <ContentFooterTopo href="#topo">
