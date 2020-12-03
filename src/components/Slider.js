@@ -47,7 +47,6 @@ const CarouselSlider = styled.div`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    /* width: 90%; */
     margin: 4rem 0 2rem;
     align-items: center;
 	}

@@ -680,6 +680,10 @@ const PostsMessage = styled.span`
   text-align: center;
   font-size: 2.75rem;
   font-family: 'Product Sans', Bold;
+
+  @media (max-width: 648px) {
+    width: 90%;
+	}
 `;
 
 class Home extends Component {
@@ -899,11 +903,11 @@ class Home extends Component {
               : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
             }
           </Caixa>
-          <Slider>
+          {/* <Slider>
             <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('caixa1', 1)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('caixa2', 2)}></SliderBolinha>
-          </Slider>
+          </Slider> */}
         </ContainerCaixa>
         <Formulation />
         <Footer />

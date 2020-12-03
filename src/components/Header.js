@@ -335,6 +335,7 @@ const SliderBolinha = styled.div`
   cursor: pointer;
 `;
 
+
 class Header extends Component {
   state = {
     menu: undefined,
