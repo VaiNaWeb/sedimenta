@@ -18,7 +18,7 @@ const ContentServiços = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 5rem 0 27rem;
-  padding-left: 4rem;
+  padding-left: 5rem;
 
   @media (max-width: 768px) {
     margin: 5rem 0 7rem;
@@ -47,11 +47,6 @@ const ContentServiçosTitle = styled.div`
     text-align: center;
     margin-bottom: 3rem;
 	}
-
-  @media (max-width: 450px) {
-    width: 85vw;
-	}
-
   hr {
     width: 4vw;
     border: 1px solid #707070;
@@ -97,41 +92,46 @@ const ContentBox = styled.div`
 `;
 
 const ContentBoxCaixa = styled.div`
+  /* width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 `;
 
 const ContentBoxGalery = styled.div`
   width: 100%;
-  height: 20rem;
+  height: 50vh;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  padding: 2rem 0;
+  position: relative;
 
   @media (max-width: 648px) {
-    width: 400px;
+    width: 340px;
     height: 455px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #57575799;
-    padding: 2rem 4rem;
+    padding: 2rem 3rem;
     margin-right: 2rem;
     opacity: 1;
 	}
 `;
 
 const ContentBoxImage = styled.img`
-  width: 15%;
+  height: 30%;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    height: 20%;
+	}
 
   @media (max-width: 648px) {
-    width: ${props => (props.widthMobileImg)};
+    height: 32%;
 	}
 `;
 
 const BoxContentText = styled.span`
-  width: 100%;
   display: ${props => (props.isOpen ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;
@@ -139,40 +139,35 @@ const BoxContentText = styled.span`
 `;
 
 const BoxTitle = styled.h2`
-  width: ${props => (props.width)};
+  height: 15%;
   font-size: 1.2rem;
   font-family: 'Product Sans', Bold;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 1rem;
  
-  @media (max-width: 768px) {
-    width: ${props => (props.widthMobile)};
-	}
-
   @media (max-width: 648px) {
-    width: 50vw;
     font-size: 1.5rem;
-    margin: 1rem 1rem;
   }
 `;
 
 const BoxText = styled.p`
-  width: 58%;
+  width: 62%;
   font-size: 0.8rem;
   font-family: 'Open Sans', Regular;
 
   @media (max-width: 768px) {
-    width: 70%;
+    width: 85%;
   }
   
   @media (max-width: 648px) {
-    width: 45vw;
+    width: 100%;
     font-size: 1rem;
 	}
 
   @media (max-width: 450px) {
-    width: 75vw;
+    width: 70vw;
 	}
 `;
 
@@ -183,14 +178,19 @@ const Box = styled.button`
   font-size: 0.75rem;
   font-family: 'Open Sans', SemiBold;
   font-weight: 600;
-  margin: 2rem 0;
+  position: absolute;
+  bottom: 1rem;
   outline: none;
   opacity: 1;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    bottom: 5rem;
+	}
+
   @media (max-width: 648px) {
     font-size: 0.9rem;
-    margin: 1.8rem 0;
+    bottom: 3rem;
   }
 `;
 
@@ -227,9 +227,9 @@ const BoxContext = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 350px;
+    width: 340px;
     display: ${props => (props.isOpen ? 'flex' : 'none')};
-    padding: 4rem 1rem;
+    padding: 4rem 1.2rem 0;
 	}
 `;
 
@@ -262,6 +262,10 @@ const ContentBoxText = styled.div`
 
 const ContentBoxContainer = styled.div`
   width: 100%;
+
+  @media (max-width: 648px) {
+    width: 0;
+	}
 `;
 
 const BoxContextText = styled.p`
@@ -351,7 +355,7 @@ class Services extends Component {
 
   renderTitleContabilidade = () => (
     <ContentBoxGalery id='list0'>
-      <ContentBoxImage widthMobileImg='48%' src={Contabilidade} alt='category' />
+      <ContentBoxImage src={Contabilidade} alt='category' />
       <BoxTitle>contabilidade</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
         <BoxText>A contabilidade da sua empresa sem burocracia,
@@ -384,8 +388,8 @@ class Services extends Component {
 
   renderTitleRecursosHumanos = () => (
     <ContentBoxGalery id='list1'>
-      <ContentBoxImage widthMobileImg='51%' src={RH} alt='category' />
-      <BoxTitle width='22vw' widthMobile='30vw'>recursos humanos</BoxTitle>
+      <ContentBoxImage src={RH} alt='category' />
+      <BoxTitle>recursos humanos</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list1'}>
         <BoxText>Administramos todos os serviços de RH e departamento pessoal
           para você focar no seu negócio.</BoxText>
@@ -412,10 +416,10 @@ class Services extends Component {
 
   renderTitleDepartamentoFiscal = () => (
     <ContentBoxGalery id='list2'>
-      <ContentBoxImage widthMobileImg='33%' src={Fiscal} alt='category' />
+      <ContentBoxImage src={Fiscal} alt='category' />
       <BoxTitle>departamento fiscal</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
-        <BoxText widthText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>
+        <BoxText>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>
         <Box onClick={() => this.handleClick('list2')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
     </ContentBoxGalery>
@@ -444,8 +448,8 @@ class Services extends Component {
 
   renderTitleLegislação = () => (
     <ContentBoxGalery id='list3'>
-      <ContentBoxImage widthMobileImg='33%' src={Legislação} alt='category' />
-      <BoxTitle width='15vw' widthMobile='25vw'>legislação de empresas</BoxTitle>
+      <ContentBoxImage src={Legislação} alt='category' />
+      <BoxTitle>legislação de empresas</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
         <BoxText>Abertura, Alterações, Fechamento de empresas e muito
           mais de forma prática e rápida.</BoxText>
@@ -475,8 +479,8 @@ class Services extends Component {
 
   renderTitleAssessoriaFinanceira = () => (
     <ContentBoxGalery id='list4'>
-      <ContentBoxImage widthMobileImg='42.5%' src={AssessoriaFinanceira} alt='category' />
-      <BoxTitle width='22vw' widthMobile='30vw'>acessoria financeira</BoxTitle>
+      <ContentBoxImage src={AssessoriaFinanceira} alt='category' />
+      <BoxTitle>acessoria financeira</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>
         <BoxText>Seu patrimônio administrado de forma inteligente.</BoxText>
         <Box onClick={() => this.handleClick('list4')}>Saiba mais <BoxImage src={setinha} /></Box>
@@ -507,7 +511,7 @@ class Services extends Component {
 
   renderTitleConsultoria = () => (
     <ContentBoxGalery id='list5'>
-      <ContentBoxImage widthMobileImg='44%' src={Consultoria} alt='category' />
+      <ContentBoxImage src={Consultoria} alt='category' />
       <BoxTitle>consultoria</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list5'}>
         <BoxText>Uma ajuda especializada para manter seu negócio atualizado e legal.</BoxText>
@@ -537,7 +541,7 @@ class Services extends Component {
 
   renderTitleTerceirização = () => (
     <ContentBoxGalery id='list6'>
-      <ContentBoxImage widthMobileImg='51%' src={Terceirização} alt='category' />
+      <ContentBoxImage src={Terceirização} alt='category' />
       <BoxTitle>terceirização</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
         <BoxText>Sua empresa reduz custo e otimiza a demanda sem a
@@ -569,10 +573,10 @@ class Services extends Component {
 
   renderTitlePessoaFisica = () => (
     <ContentBoxGalery padding id='list7'>
-      <ContentBoxImage width widthMobileImg='39%' src={PessoaFisica} alt='category' />
+      <ContentBoxImage src={PessoaFisica} alt='category' />
       <BoxTitle margin>pessoa física</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'}>
-        <BoxText widthText>Administração justa e simplificada.</BoxText>
+        <BoxText>Administração justa e simplificada.</BoxText>
         <Box onClick={() => this.handleClick('list7')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
     </ContentBoxGalery>
@@ -603,76 +607,76 @@ class Services extends Component {
         </ContentServiçosTitle>
         <ContentBox>
           <ContentBoxCaixa>
-          <ContentBoxText>
-            {this.renderTitleContabilidade()}
-            <BoxLinha></BoxLinha>
+            <ContentBoxText>
+              {this.renderTitleContabilidade()}
+              <BoxLinha></BoxLinha>
+              <ContentBoxContainer>
+                {this.renderTitleRecursosHumanos()}
+                <Mobile>
+                  {this.renderTextRecursosHumanos()}
+                </Mobile>
+              </ContentBoxContainer>
+            </ContentBoxText>
             <ContentBoxContainer>
-              {this.renderTitleRecursosHumanos()}
-              <Mobile>
+              {this.renderTextContabilidade()}
+              <Desktop>
                 {this.renderTextRecursosHumanos()}
-              </Mobile>
+              </Desktop>
             </ContentBoxContainer>
-          </ContentBoxText>
-          <ContentBoxContainer>
-            {this.renderTextContabilidade()}
-            <Desktop>
-              {this.renderTextRecursosHumanos()}
-            </Desktop>
-          </ContentBoxContainer>
           </ContentBoxCaixa>
           <ContentBoxCaixa>
-          <ContentBoxText>
-            {this.renderTitleDepartamentoFiscal()}
-            <BoxLinha></BoxLinha>
+            <ContentBoxText>
+              {this.renderTitleDepartamentoFiscal()}
+              <BoxLinha></BoxLinha>
+              <ContentBoxContainer>
+                {this.renderTitleLegislação()}
+                <Mobile>
+                  {this.renderTextLegislação()}
+                </Mobile>
+              </ContentBoxContainer>
+            </ContentBoxText>
             <ContentBoxContainer>
-              {this.renderTitleLegislação()}
-              <Mobile>
+              {this.renderTextDepartamentoFiscal()}
+              <Desktop>
                 {this.renderTextLegislação()}
-              </Mobile>
+              </Desktop>
             </ContentBoxContainer>
-          </ContentBoxText>
-          <ContentBoxContainer>
-            {this.renderTextDepartamentoFiscal()}
-            <Desktop>
-              {this.renderTextLegislação()}
-            </Desktop>
-          </ContentBoxContainer>
           </ContentBoxCaixa>
           <ContentBoxCaixa>
-          <ContentBoxText>
-            {this.renderTitleAssessoriaFinanceira()}
-            <BoxLinha></BoxLinha>
+            <ContentBoxText>
+              {this.renderTitleAssessoriaFinanceira()}
+              <BoxLinha></BoxLinha>
+              <ContentBoxContainer>
+                {this.renderTitleConsultoria()}
+                <Mobile>
+                  {this.renderTextConsultoria()}
+                </Mobile>
+              </ContentBoxContainer>
+            </ContentBoxText>
             <ContentBoxContainer>
-              {this.renderTitleConsultoria()}
-              <Mobile>
+              {this.renderTextAssessoriaFinanceira()}
+              <Desktop>
                 {this.renderTextConsultoria()}
-              </Mobile>
+              </Desktop>
             </ContentBoxContainer>
-          </ContentBoxText>
-          <ContentBoxContainer>
-            {this.renderTextAssessoriaFinanceira()}
-            <Desktop>
-              {this.renderTextConsultoria()}
-            </Desktop>
-          </ContentBoxContainer>
           </ContentBoxCaixa>
           <ContentBoxCaixa>
-          <ContentBoxText>
-            {this.renderTitleTerceirização()}
-            <BoxLinha></BoxLinha>
+            <ContentBoxText>
+              {this.renderTitleTerceirização()}
+              <BoxLinha></BoxLinha>
+              <ContentBoxContainer>
+                {this.renderTitlePessoaFisica()}
+                <Mobile>
+                  {this.renderTextPessoaFisica()}
+                </Mobile>
+              </ContentBoxContainer>
+            </ContentBoxText>
             <ContentBoxContainer>
-              {this.renderTitlePessoaFisica()}
-              <Mobile>
+              {this.renderTextTerceirização()}
+              <Desktop>
                 {this.renderTextPessoaFisica()}
-              </Mobile>
+              </Desktop>
             </ContentBoxContainer>
-          </ContentBoxText>
-          <ContentBoxContainer>
-            {this.renderTextTerceirização()}
-            <Desktop>
-              {this.renderTextPessoaFisica()}
-            </Desktop>
-          </ContentBoxContainer>
           </ContentBoxCaixa>
         </ContentBox>
         <Slider>

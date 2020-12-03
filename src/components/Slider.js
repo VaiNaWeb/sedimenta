@@ -47,7 +47,6 @@ const CarouselSlider = styled.div`
   flex-direction: column;
 
   @media (max-width: 648px) {
-    width: 90%;
     margin: 4rem 0 2rem;
     align-items: center;
 	}
@@ -60,8 +59,13 @@ const SessionSlider = styled.section`
   order: ${props => (props.order)};
 
   @media (max-width: 648px) {
-    margin-right: 3rem;
+    margin-right: 1.5rem;
+    padding-left: 1rem;
     order: ${props => (props.orderMobile)};
+
+    :last-child {
+      padding-right: 1.5rem;
+    }
 	}
 `;
 
@@ -82,9 +86,9 @@ const ContentSliderBox = styled.div`
 `;
 
 const ContentSliderMeio = styled.div`
-  width: 26em;
-  background-color: #FFFFFF;
-  color: #373737;
+  width: 24.8em;
+  background-color: ${props => (props.backgroundColor ? '#FFFFFF' : '#A37D82')};
+  color: ${props => (props.color ? '#373737' : '#4A2529')};
   font-size: 0.7rem;
   font-family: 'Open Sans', Regular;
   display: flex;
@@ -96,11 +100,13 @@ const ContentSliderMeio = styled.div`
   outline: none;
 
   @media (max-width: 1024px) {
-    width: 70%;
+    width: 18em;
 	}
 
   @media (max-width: 648px) {
     width: 250px;
+    background-color: #FFFFFF;
+    color: #373737;
     transform: none;
 	}
 `;
@@ -114,7 +120,6 @@ const SliderCarousel = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  /* text-decoration: none; */
   cursor: pointer;
 `;
 
@@ -127,7 +132,6 @@ const SliderBolinha = styled.div`
   opacity: 1;
   cursor: pointer;
 `;
-
 
 class Slider extends Component {
   state = {
@@ -161,7 +165,7 @@ class Slider extends Component {
         <CarouselSlider>
           <ContentSliderBox>
             <SessionSlider order={orderDesktop1} orderMobile={orderMobile1}>
-              <ContentSliderMeio transformScale={slider === '0'}>
+              <ContentSliderMeio backgroundColor={slider === '0'} color={slider === '0'} transformScale={slider === '0'}>
                 <p>"Estamos muito satisfeitos com o atendimento
                   personalizado da Sedimenta JPM. Contabilidade não é
                   só número! E nós sabemos que podemos contar com eles."</p>
@@ -169,7 +173,7 @@ class Slider extends Component {
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop2} orderMobile={orderMobile2}>
-              <ContentSliderMeio transformScale={(!(slider && '1') || slider === '1')}>
+              <ContentSliderMeio backgroundColor={(!(slider && '1') || slider === '1')} color transformScale={(!(slider && '1') || slider === '1')}>
                 <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
                   nos auxiliado em todas as questões contábeis e financeiras do
                   Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
@@ -177,7 +181,7 @@ class Slider extends Component {
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop3} orderMobile={orderMobile3}>
-              <ContentSliderMeio transformScale={slider === '2'}>
+              <ContentSliderMeio backgroundColor={slider === '2'} color={slider === '2'} transformScale={slider === '2'}>
                 <p>Uma empresa que tem como Meta a qualidade nos serviços
                   e no atendimento ao Cliente. Outro diferencial é a Competência,
                   honestidade e seriedade.</p>
