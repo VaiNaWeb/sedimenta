@@ -425,9 +425,9 @@ class Header extends Component {
               <LogoMobile src={logo} alt='Logo' />
               <ContainerHeaderBox open={menu}>
                 <BoxMenu open={menu}>
-                  <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
                   <ContainerLinha></ContainerLinha>
-                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#services"><b>SOBRE NÓS</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </ContainerHeaderBox>

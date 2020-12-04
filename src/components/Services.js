@@ -21,30 +21,30 @@ const ContentServiços = styled.div`
   padding-left: 5rem;
 
   @media (max-width: 768px) {
+    width: 100%;
     margin: 5rem 0 7rem;
-    padding-left: 1rem;
+    padding-left: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 	}
 
   @media (max-width: 648px) {
-    width: 100%;
-    flex-direction: column;
     padding-left: 0;
 	}
 `;
 
 const ContentServiçosTitle = styled.div`
-  width: 25vw;
+  /* width: 25vw; */
   color: #373737;
   font-size: 1.4rem;
   font-family: 'Product Sans', Bold;
 
-  @media (max-width: 648px) {
-    width: 100%;
+  @media (max-width: 768px) {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     margin-bottom: 3rem;
 	}
   hr {
@@ -60,10 +60,17 @@ const ContentServiçosTitle = styled.div`
      width: 25vw;
 	  }
   }
+
+  h3 {
+    @media (max-width: 648px) {
+      width: 70%;
+      text-align: center;
+	  }
+  }
 `;
 
 const ContentBox = styled.div`
-  width: 67%;
+  width: 80%;
   background-color: #FFFFFF;
   display: flex;
   flex-wrap: wrap;
@@ -76,7 +83,8 @@ const ContentBox = styled.div`
 	}
 
   @media (max-width: 768px) {
-    width: 83%;
+    width: 90%;
+    margin-right: 0;
 	}
 
   @media (max-width: 648px) {
@@ -119,7 +127,7 @@ const ContentBoxGalery = styled.div`
 `;
 
 const ContentBoxImage = styled.img`
-  height: 30%;
+  /* height: 30%; */
   margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
@@ -598,6 +606,8 @@ class Services extends Component {
 
   render() {
     const { selectedClickSlider } = this.state;
+
+    console.log(selectedClickSlider)
 
     return (
       <ContentServiços id='services'>

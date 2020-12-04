@@ -251,11 +251,11 @@ const ContentCargo = styled.div`
   margin: 7rem 0 5rem 0;
 
   @media (max-width: 1024px) {
-    padding-left: 3rem;
+    /* padding-left: 3rem; */
 	}
 
   @media (max-width: 768px) {
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
 	}
 
   @media (max-width: 648px) {
@@ -284,6 +284,10 @@ const SessionCargo = styled.section`
   width: 22%;
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 1024px) {
+    width: 30%
+	}
 
   @media (max-width: 648px) {
     width: 100%;
@@ -299,8 +303,8 @@ const ImageCargo = styled.img`
   object-fit: cover;
   object-position: top;
 
-  @media (max-width: 1024px) {
-    width: 85%;
+  @media (max-width: 768px) {
+    width: 100%;
 	}
 
   @media (max-width: 648px) {
@@ -321,8 +325,9 @@ const ContentCargoCaixa = styled.div`
   padding: 0 1rem;
   box-shadow: 0px 3px 6px #00000029;
 
-  @media (max-width: 1024px) {
-    width: 85%;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 22vh;
 	}
 
   @media (max-width: 648px) {
@@ -478,7 +483,7 @@ const CaixaBox = styled.div`
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 30%;
 	}
 
