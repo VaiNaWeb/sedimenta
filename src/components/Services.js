@@ -303,26 +303,26 @@ const ImageClose = styled.button`
   }
 `;
 
-const Slider = styled.div`
-  display: none;
+// const Slider = styled.div`
+//   display: none;
 
-  @media (max-width: 648px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-	}
-`;
+//   @media (max-width: 648px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 2rem;
+// 	}
+// `;
 
-const SliderBolinha = styled.div`
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background-color: ${props => (props.selectedClick ? '#373737' : '#A7A7A7')};
-  margin-left: 1rem;
-  opacity: 1;
-  cursor: pointer;
-`;
+// const SliderBolinha = styled.div`
+//   width: 9px;
+//   height: 9px;
+//   border-radius: 50%;
+//   background-color: ${props => (props.selectedClick ? '#373737' : '#A7A7A7')};
+//   margin-left: 1rem;
+//   opacity: 1;
+//   cursor: pointer;
+// `;
 
 class Services extends Component {
   state = {
@@ -689,7 +689,7 @@ class Services extends Component {
             </ContentBoxContainer>
           </ContentBoxCaixa>
         </ContentBox>
-        <Slider>
+        {/* <Slider>
           <SliderBolinha selectedClick={selectedClickSlider === 0 || selectedClickSlider === undefined ? true : false} onClick={() => this.handleClickSlider('list0', 0)}></SliderBolinha>
           <SliderBolinha selectedClick={selectedClickSlider === 1 ? true : false} onClick={() => this.handleClickSlider('list1', 1)}></SliderBolinha>
           <SliderBolinha selectedClick={selectedClickSlider === 2 ? true : false} onClick={() => this.handleClickSlider('list2', 2)}></SliderBolinha>
@@ -698,7 +698,7 @@ class Services extends Component {
           <SliderBolinha selectedClick={selectedClickSlider === 5 ? true : false} onClick={() => this.handleClickSlider('list5', 5)}></SliderBolinha>
           <SliderBolinha selectedClick={selectedClickSlider === 6 ? true : false} onClick={() => this.handleClickSlider('list6', 6)}></SliderBolinha>
           <SliderBolinha selectedClick={selectedClickSlider === 7 ? true : false} onClick={() => this.handleClickSlider('list7', 7)}></SliderBolinha>
-        </Slider>
+        </Slider> */}
       </ContentServiços>
     );
   }

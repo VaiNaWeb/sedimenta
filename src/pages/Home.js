@@ -652,31 +652,31 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-const Slider = styled.div`
-  width: 100%;
-  display: none;
+// const Slider = styled.div`
+//   width: 100%;
+//   display: none;
 
-  @media (max-width: 648px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-	}
+//   @media (max-width: 648px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 2rem;
+// 	}
 
-  @media (max-width: 450px) {
-    width: 80%;
-	}
-`;
+//   @media (max-width: 450px) {
+//     width: 80%;
+// 	}
+// `;
 
-const SliderBolinha = styled.div`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-  margin-left: 1rem;
-  opacity: 1;
-  cursor: pointer;
-`;
+// const SliderBolinha = styled.div`
+//   width: 12px;
+//   height: 12px;
+//   border-radius: 50%;
+//   background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
+//   margin-left: 1rem;
+//   opacity: 1;
+//   cursor: pointer;
+// `;
 
 const PostsMessage = styled.span`
   width: 100%;
@@ -855,11 +855,11 @@ class Home extends Component {
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
-          <Slider >
+          {/* <Slider >
             <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
-          </Slider>
+          </Slider> */}
         </ContentCargo>
         <Services />
         <Carousel />
