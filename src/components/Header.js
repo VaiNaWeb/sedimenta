@@ -242,9 +242,10 @@ const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '43%')};
   height: 70vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   padding-left: 1rem;
+  padding-top: 10%;
 
   @media (max-width: 768px) {
     width: 70%;
@@ -254,6 +255,7 @@ const SubContainerText = styled.div`
     width: 90%;
     text-align: center;
     align-items: center;
+    padding-top: 25%;
 	}
 `;
 
@@ -281,6 +283,7 @@ const ButtonHeader = styled.button`
   width: 55%;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
+  font-family: 'Open Sans', Bold;
   text-transform: uppercase;
   padding: 0.7rem;
   outline: none;

@@ -60,7 +60,7 @@ const SessionSlider = styled.section`
 
   @media (max-width: 648px) {
     margin-right: 1.5rem;
-    padding-left: 1rem;
+    padding-left: 0.8rem;
     order: ${props => (props.orderMobile)};
 
     :last-child {
@@ -76,8 +76,9 @@ const ContentSliderBox = styled.div`
   justify-content: space-around;
  
   @media (max-width: 648px) {
-    height: 50%;
+    /* height: 50%; */
     padding-left: 1rem;
+    align-items: flex-start;
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
@@ -94,7 +95,7 @@ const ContentSliderMeio = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  padding: 2rem 1.2rem 1rem;
+  padding: 2rem 1.3rem 1rem;
   margin-bottom: 3.5rem;
   transform: ${props => (props.transformScale && 'scale(1.4)')};
   outline: none;
@@ -104,7 +105,8 @@ const ContentSliderMeio = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 250px;
+    width: 340px;
+    /* height: 25vh; */
     background-color: #FFFFFF;
     color: #373737;
     transform: none;
@@ -121,6 +123,10 @@ const SliderCarousel = styled.div`
   align-items: center;
   margin-top: 2rem;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const SliderBolinha = styled.div`
@@ -164,7 +170,8 @@ class Slider extends Component {
         </ContentTitleSlider>
         <CarouselSlider>
           <ContentSliderBox>
-            <SessionSlider order={orderDesktop1} orderMobile={orderMobile1}>
+            <SessionSlider onFocus={(ev) => console.log(ev.target)}
+            order={orderDesktop1} orderMobile={orderMobile1}>
               <ContentSliderMeio backgroundColor={slider === '0'} color={slider === '0'} transformScale={slider === '0'}>
                 <p>"Estamos muito satisfeitos com o atendimento
                   personalizado da Sedimenta JPM. Contabilidade não é

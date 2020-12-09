@@ -353,15 +353,15 @@ const ContentCargoCaixa = styled.div`
 const ContentBoxTitle = styled.p`
   color: #373737;
   font-size: 1.125rem;
-  font-family: 'Arial', Bold;
+  font-family: 'Product Sans', Bold;
   font-weight: bold;
+  text-transform: uppercase;
 `;
 
 const ContentBoxParagraph = styled.p`
   color: #373737;
   font-size: 0.6875rem;
-  font-family: 'Arial', Bold;
-  font-weight: bold;
+  font-family: 'Product Sans', Regular;
   padding-top: 0.2rem;
 `;
 
@@ -810,7 +810,7 @@ class Home extends Component {
               <ImageCargo src={People1} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
+                <ContentBoxTitle>eduardo pereira</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
                 <a
@@ -826,7 +826,7 @@ class Home extends Component {
               <ImageCargo src={People2} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
+                <ContentBoxTitle>christiani nascimento</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
                 <a
@@ -842,7 +842,7 @@ class Home extends Component {
               <ImageCargo src={People3} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
+                <ContentBoxTitle>mauro moura</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelo Capital Humano</ContentBoxParagraph>
                 <a

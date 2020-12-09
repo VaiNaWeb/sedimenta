@@ -15,7 +15,7 @@ const ContainerForm = styled.div`
   height: ${props => props.isBig ? '78vh' : '197vh'};
 
   @media (max-width: 768px) {
-    height: ${props => props.isBig ? '78vh' : '160vh'};
+    height: ${props => props.isBig ? '85vh' : '160vh'};
 	}
 `;
 
@@ -35,13 +35,13 @@ const ContentFinishSolicitation = styled.span`
 	}
 
   @media (max-width: 648px) {
-    height: ${props => props.height ? '150vh' : '57vh'};
+    height: ${props => props.height ? '150vh' : '55vh'};
 	}
 `;
 
 const TitleForm = styled.h3`
   width: 49%;
-  font-size: 1.1rem;
+  font-size: 2rem;
   font-family: 'Open Sans', Bold;
   text-align: center;
   margin-top: ${props => props.marginTop ? '11rem' : '4rem'};
@@ -51,19 +51,33 @@ const TitleForm = styled.h3`
 	}
 
   @media (max-width: 648px) {
-    font-size: 1rem;
+    width: 100%;
+    font-size: 1.8rem;
+	}
+`;
+
+const ParagraphForm = styled.p`
+  width: 49%;
+  font-size: 1rem;
+  font-family: 'Open Sans', SemiBold;
+  text-align: center;
+  margin-top: 0.6rem;
+
+  @media (max-width: 648px) {
+    width: 95%;
+    font-size: 1.2rem;
 	}
 `;
 
 const ButtonSolicitation = styled.button`
-  width: 20%;
+  width: 18%;
   color: #FFFFFF;
   background: none;
   border: 2px solid #FFF;
   font-family: 'Product Sans', Bold;
   font-weight: 700;
   padding: .75rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
@@ -94,7 +108,7 @@ const Formulario = styled.form`
   margin-top: ${props => props.margin ? '0' : '2rem'};
 `;
 
-const BoxInput = styled.div`
+const FormContent = styled.div`
   width: 45%;
   display: flex;
   align-items: center;
@@ -157,25 +171,6 @@ const Input = styled.input`
 
   @media (max-width: 648px) {
     width: 80%;
-	}
-`;
-
-const FormContent = styled.div`
-  width: 45%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  margin: .75rem 0;
-  position: relative;
-
-  @media (max-width: 768px) {
-    width: 90%;
-	}
-
-  @media (max-width: 648px) {
-    width: 100%;
-    margin-top: 0.85rem;
 	}
 `;
 
@@ -261,8 +256,6 @@ const Textarea = styled.textarea`
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
-  /* margin: .75rem 0; */
-  /* padding-top: 1rem; */
   outline: none;
 
   ::placeholder {
@@ -275,6 +268,7 @@ const Textarea = styled.textarea`
 
   @media (max-width: 648px) {
     width: 80%;
+    padding-top: 1rem;
 	}
 `;
 
@@ -488,7 +482,7 @@ class Formulation extends Component {
             onSubmit={this.handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact" />
-            <BoxInput>
+            <FormContent>
               <Label for="name" labelShow={this.state.labelShowName || this.state.inputName}>Nome *</Label>
               <Input
                 name="name"
@@ -498,8 +492,8 @@ class Formulation extends Component {
                 onFocus={this.handleFocusName}
                 onBlur={this.handleFocusName}
               />
-            </BoxInput>
-            <BoxInput>
+            </FormContent>
+            <FormContent>
               <Label for="name" labelShow={this.state.labelShowCompany || this.state.inputCompany}>Empresa *</Label>
               <Input
                 name="company"
@@ -509,8 +503,8 @@ class Formulation extends Component {
                 onFocus={this.handleFocusCompany}
                 onBlur={this.handleFocusCompany}
               />
-            </BoxInput>
-            <BoxInput>
+            </FormContent>
+            <FormContent>
               <Label for="name" labelShow={this.state.labelShowEmail || this.state.inputEmail}>E-mail *</Label>
               <Input
                 name="email"
@@ -520,7 +514,7 @@ class Formulation extends Component {
                 onFocus={this.handleFocusEmail}
                 onBlur={this.handleFocusEmail}
               />
-            </BoxInput>
+            </FormContent>
             <FormContent>
               <FormAssunt onClick={this.handleSelected}>
                 <Input
@@ -573,8 +567,11 @@ class Formulation extends Component {
         isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
           <TitleForm>
-            Entre em contato!
+            Ainda em duvida?? 
           </TitleForm>
+          <ParagraphForm>
+            Deixe a Sedimenta cuidar da gestão financeira da sua empresa para você!!
+          </ParagraphForm>
           <ButtonSolicitation
             display={this.state.solicitation}
             onClick={this.handleSolicitacion}>
