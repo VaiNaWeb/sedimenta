@@ -82,7 +82,9 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 648px) {
-    font-size: 0.7rem;
+    width: 95%;
+    font-size: 0.85rem;
+    justify-content: space-between;
 	}
 `;
 
@@ -99,7 +101,7 @@ const Page = styled.p`
 	}
 
   @media (max-width: 425px) {
-    padding-right: 2rem;
+    padding-right: 0;
 	}
 `;
 

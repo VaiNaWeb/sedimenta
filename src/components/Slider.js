@@ -60,7 +60,7 @@ const SessionSlider = styled.section`
 
   @media (max-width: 648px) {
     margin-right: 1.5rem;
-    padding-left: 0.8rem;
+    /* padding-left: 0.8rem; */
     order: ${props => (props.orderMobile)};
 
     :last-child {
@@ -76,7 +76,6 @@ const ContentSliderBox = styled.div`
   justify-content: space-around;
  
   @media (max-width: 648px) {
-    /* height: 50%; */
     padding-left: 1rem;
     align-items: flex-start;
     flex-direction: row;
@@ -105,12 +104,11 @@ const ContentSliderMeio = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 340px;
-    /* height: 25vh; */
+    width: 25em;
     background-color: #FFFFFF;
     color: #373737;
     transform: none;
-	}
+  }
 `;
 
 const ContentSliderParagraph = styled.p`

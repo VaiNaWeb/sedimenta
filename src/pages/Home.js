@@ -58,7 +58,7 @@ const ContentCaixaGeral = styled.div`
 
   @media (max-width: 648px) {
     width: 90%;
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
 	}
 `;
 
@@ -147,7 +147,11 @@ const CaixaParagraph = styled.p`
 
   @media (max-width: 648px) {
     width: 55vw;
-    padding: 3rem 0 0;
+    padding: 3rem 0 2.5rem 0;
+
+    :last-child {
+      padding-bottom: 1rem;
+    }
 	}
 `;
 
