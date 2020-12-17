@@ -9,7 +9,7 @@ const ContentSlider = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 3rem 0 0;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 `;
 
 const ContentTitleSlider = styled.div`
@@ -174,7 +174,7 @@ class Slider extends Component {
                 <p>"Estamos muito satisfeitos com o atendimento
                   personalizado da Sedimenta JPM. Contabilidade não é
                   só número! E nós sabemos que podemos contar com eles."</p>
-                <ContentSliderParagraph>Plano B</ContentSliderParagraph>
+                <ContentSliderParagraph>Pedro Herzog, Sócio-diretor</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop2} orderMobile={orderMobile2}>
@@ -182,7 +182,7 @@ class Slider extends Component {
                 <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
                   nos auxiliado em todas as questões contábeis e financeiras do
                   Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
-                <ContentSliderParagraph>Instituto Precisa Ser</ContentSliderParagraph>
+                <ContentSliderParagraph>Aline, Instituto Precisa Ser</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop3} orderMobile={orderMobile3}>
@@ -190,7 +190,7 @@ class Slider extends Component {
                 <p>Uma empresa que tem como Meta a qualidade nos serviços
                   e no atendimento ao Cliente. Outro diferencial é a Competência,
                   honestidade e seriedade.</p>
-                <ContentSliderParagraph>Erlane, cargo, Empresa</ContentSliderParagraph>
+                <ContentSliderParagraph>Wallace Caldas, Sócio-diretor, Velatura</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
           </ContentSliderBox>

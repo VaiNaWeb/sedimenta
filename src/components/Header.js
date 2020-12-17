@@ -287,6 +287,7 @@ const ButtonHeader = styled.button`
   border: none;
   font-family: 'Open Sans', Bold;
   text-transform: uppercase;
+  letter-spacing: 0.14px;
   padding: 0.7rem;
   outline: none;
   cursor: pointer;
@@ -354,7 +355,7 @@ class Header extends Component {
       },
       {
         image: Domestica,
-        title: 'Administração de domesticas',
+        title: 'Administração de domésticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
 
       },

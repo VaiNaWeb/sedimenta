@@ -256,6 +256,7 @@ const Textarea = styled.textarea`
   font-size: 0.9rem;
   font-family: 'Arial', ExtraBold;
   font-weight: bold;
+  margin-top: 0.7rem;
   outline: none;
 
   ::placeholder {

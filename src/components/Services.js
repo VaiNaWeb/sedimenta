@@ -112,6 +112,7 @@ const ContentBoxGalery = styled.div`
   height: 55vh;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   padding: 2rem 0;
   position: relative;
 
@@ -460,7 +461,7 @@ class Services extends Component {
   renderTitleLegislação = () => (
     <ContentBoxGalery id='list3'>
       <ContentBoxImage src={Legislação} alt='category' />
-      <BoxTitle>legislação de empresas</BoxTitle>
+      <BoxTitle>legalização de empresas</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
         <BoxText widthText='57%'>Abertura, Alterações, Fechamento de empresas e muito
           mais de forma prática e rápida.</BoxText>
@@ -491,7 +492,7 @@ class Services extends Component {
   renderTitleAssessoriaFinanceira = () => (
     <ContentBoxGalery id='list4'>
       <ContentBoxImage src={AssessoriaFinanceira} alt='category' />
-      <BoxTitle>acessoria financeira</BoxTitle>
+      <BoxTitle>assessoria financeira</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>
         <BoxText widthText='57%'>Seu patrimônio administrado de forma inteligente.</BoxText>
         <Box onClick={() => this.handleClick('list4')}>Saiba mais <BoxImage src={setinha} /></Box>

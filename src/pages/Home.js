@@ -385,7 +385,7 @@ const SubContentCaixa = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5.5rem 2rem;
+  padding: 4rem 2rem;
 `;
 
 const SubContentMeio = styled.span`
@@ -601,14 +601,19 @@ const LogoSeparation = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 9rem 0;
+  margin: 0 0 6rem 0;
+
+  :last-child {
+    margin: 0 0 3rem 0;
+  }
 `;
 
 const ContentImages = styled.img`
-  width: 15%;
+  /* width: 15%; */
   height: ${props => (props.height)};
   position: ${props => (props.position)};
   bottom: ${props => (props.bottom)};
+  left: ${props => (props.left)};
 
   @media (max-width: 768px) {
     width: 22%;
@@ -875,8 +880,8 @@ class Home extends Component {
               <ContentImages height='52px' src={FichaCerta} alt='logo' />
             </LogoSeparation>
             <LogoSeparation>
-              <ContentImages height='55px' src={FitaArquitetura} alt='logo' />
-              <ContentImages height='128px' position='relative' bottom='22px' src={SabendoMais} alt='logo' />
+              <ContentImages height='60px' src={FitaArquitetura} alt='logo' />
+              <ContentImages height='128px' position='relative' bottom='22px' left='20px' src={SabendoMais} alt='logo' />
               <ContentImages height='57px' src={Velatura} alt='logo' />
             </LogoSeparation>
           </ContentLogoImages>
