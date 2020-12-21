@@ -434,6 +434,8 @@ class Header extends Component {
                   <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
                   <ContainerLinha></ContainerLinha>
                   <SubContainerParagraph><a href="#services"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#blog"><b>BLOG</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </ContainerHeaderBox>

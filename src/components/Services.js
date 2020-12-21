@@ -112,7 +112,7 @@ const ContentBoxGalery = styled.div`
   height: 55vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  /* justify-content: ${props => (props.isOpen ? 'none' : 'center')}; */
   padding: 2rem 0;
   position: relative;
 
@@ -129,7 +129,7 @@ const ContentBoxGalery = styled.div`
 `;
 
 const ContentBoxImage = styled.img`
-  height: 30%;
+  height: 25%;
   margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
@@ -150,6 +150,7 @@ const BoxContentText = styled.span`
 
 const BoxTitle = styled.h2`
   height: 15%;
+  color: ${props => (props.isOpenTitle ? '#812223' : '#000000')};
   font-size: 1.2rem;
   font-family: 'Product Sans', Bold;
   font-weight: bold;
@@ -163,9 +164,7 @@ const BoxTitle = styled.h2`
 `;
 
 const BoxText = styled.p`
-  /* width: 61%; */
   width: ${props => (props.widthText)};
-  /* width: ${props => (props.widthText ? '57%' : '61%')}; */
   font-size: 0.8rem;
   font-family: 'Open Sans', Regular;
 
@@ -181,6 +180,12 @@ const BoxText = styled.p`
   @media (max-width: 450px) {
     width: 70vw;
 	}
+`;
+
+const BoxImageText = styled.img`
+  display: ${props => (props.isOpen ? 'flex' : 'none')};
+  margin-top: 40%;
+  transform: rotate(90deg);
 `;
 
 const Box = styled.button`
@@ -366,14 +371,15 @@ class Services extends Component {
   // -----------------------------------------------------
 
   renderTitleContabilidade = () => (
-    <ContentBoxGalery id='list0'>
+    <ContentBoxGalery id='list0' isOpen>
       <ContentBoxImage src={Contabilidade} alt='category' />
-      <BoxTitle>contabilidade</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>contabilidade</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
         <BoxText widthText='61%'>A contabilidade da sua empresa sem burocracia,
-        entregas seguras e econômicas.</BoxText>
+          entregas seguras e econômicas.</BoxText>
         <Box onClick={() => this.handleClick('list0')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'} />
     </ContentBoxGalery>
   )
 
@@ -401,12 +407,13 @@ class Services extends Component {
   renderTitleRecursosHumanos = () => (
     <ContentBoxGalery id='list1'>
       <ContentBoxImage src={RH} alt='category' />
-      <BoxTitle>recursos humanos</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list1'}>recursos humanos</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list1'}>
         <BoxText widthText='57%'>Administramos todos os serviços de RH e departamento pessoal
           para você focar no seu negócio.</BoxText>
         <Box onClick={() => this.handleClick('list1')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list1'} />
     </ContentBoxGalery>
   )
 
@@ -429,11 +436,12 @@ class Services extends Component {
   renderTitleDepartamentoFiscal = () => (
     <ContentBoxGalery id='list2'>
       <ContentBoxImage src={Fiscal} alt='category' />
-      <BoxTitle>departamento fiscal</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>departamento fiscal</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'}>
         <BoxText widthText='58%'>Escrituração Fiscal 100% automatizada e livre de erros.</BoxText>
         <Box onClick={() => this.handleClick('list2')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list2'} />
     </ContentBoxGalery>
   )
 
@@ -461,12 +469,13 @@ class Services extends Component {
   renderTitleLegislação = () => (
     <ContentBoxGalery id='list3'>
       <ContentBoxImage src={Legislação} alt='category' />
-      <BoxTitle>legalização de empresas</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>legalização de empresas</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
         <BoxText widthText='57%'>Abertura, Alterações, Fechamento de empresas e muito
           mais de forma prática e rápida.</BoxText>
         <Box onClick={() => this.handleClick('list3')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'} />
     </ContentBoxGalery>
   )
 
@@ -492,11 +501,12 @@ class Services extends Component {
   renderTitleAssessoriaFinanceira = () => (
     <ContentBoxGalery id='list4'>
       <ContentBoxImage src={AssessoriaFinanceira} alt='category' />
-      <BoxTitle>assessoria financeira</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>assessoria financeira</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'}>
         <BoxText widthText='57%'>Seu patrimônio administrado de forma inteligente.</BoxText>
         <Box onClick={() => this.handleClick('list4')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list4'} />
     </ContentBoxGalery>
   )
 
@@ -524,11 +534,12 @@ class Services extends Component {
   renderTitleConsultoria = () => (
     <ContentBoxGalery id='list5'>
       <ContentBoxImage src={Consultoria} alt='category' />
-      <BoxTitle>consultoria</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list5'}>consultoria</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list5'}>
         <BoxText widthText='61%'>Uma ajuda especializada para manter seu negócio atualizado e legal.</BoxText>
         <Box onClick={() => this.handleClick('list5')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list5'} />
     </ContentBoxGalery>
   )
 
@@ -554,12 +565,13 @@ class Services extends Component {
   renderTitleTerceirização = () => (
     <ContentBoxGalery id='list6'>
       <ContentBoxImage src={Terceirização} alt='category' />
-      <BoxTitle>terceirização</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>terceirização</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
-        <BoxText widthText='61%'>Sua empresa reduz custo e otimiza a demanda sem a necessidade 
+        <BoxText widthText='61%'>Sua empresa reduz custo e otimiza a demanda sem a necessidade
           de criar novos departamentos ou expandir a área física.</BoxText>
         <Box onClick={() => this.handleClick('list6')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'} />
     </ContentBoxGalery>
   )
 
@@ -586,11 +598,12 @@ class Services extends Component {
   renderTitlePessoaFisica = () => (
     <ContentBoxGalery padding id='list7'>
       <ContentBoxImage src={PessoaFisica} alt='category' />
-      <BoxTitle margin>pessoa física</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list7'} margin>pessoa física</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'}>
         <BoxText widthText='61%'>Administração justa e simplificada.</BoxText>
         <Box onClick={() => this.handleClick('list7')}>Saiba mais <BoxImage src={setinha} /></Box>
       </BoxContentText>
+      <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'} />
     </ContentBoxGalery>
   )
 

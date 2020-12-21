@@ -743,7 +743,7 @@ class Home extends Component {
   renderPosts = () => {
     return this.state.posts.map((post) => {
       return (
-        <CaixaBox>
+        <CaixaBox id='blog'>
           <ImageBox src={balao} alt='figure' />
           <CaixaBoxHeader>
             <BoxDate>{post.pubDate}</BoxDate>

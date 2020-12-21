@@ -77,7 +77,7 @@ const ContentSliderBox = styled.div`
  
   @media (max-width: 648px) {
     padding-left: 1rem;
-    align-items: flex-start;
+    /* align-items: flex-start;s */
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
@@ -161,7 +161,7 @@ class Slider extends Component {
     const orderMobile3 = slider === '2' ? 0 : 2;
 
     return (
-      <ContentSlider>
+      <ContentSlider id='clientes'>
         <ContentTitleSlider>
           <hr></hr>
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
