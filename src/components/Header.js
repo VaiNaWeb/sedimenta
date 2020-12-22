@@ -13,6 +13,7 @@ const ContainerLogo = styled.div`
   height: 100vh;
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
+  background-position-y: -35px;
   background-size: cover;
   color: #FFFFFF;
   display: flex;
@@ -244,7 +245,6 @@ const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '43%')};
   height: 70vh;
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   padding-left: 1rem;
   padding-top: 10%;
@@ -280,6 +280,18 @@ const ParagraphHeader = styled.p`
     width: 100%;
 	}
 `;
+
+const ParagraphHeaderImage = styled.p`
+  transform: rotate(270deg);
+  color: #FFFFFF;
+  position: absolute;
+  top: 300px;
+  right: -53px;
+  font-family: 'Open Sans', Regular;
+  font-size: 0.5rem;
+  opacity: 99;
+`;
+
 
 const ButtonHeader = styled.button`
   width: 55%;
@@ -431,9 +443,9 @@ class Header extends Component {
               <LogoMobile src={logo} alt='Logo' />
               <ContainerHeaderBox open={menu}>
                 <BoxMenu open={menu}>
-                  <SubContainerParagraph><a href="#sobre"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
                   <ContainerLinha></ContainerLinha>
-                  <SubContainerParagraph><a href="#services"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
                   <SubContainerParagraph><a href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
                   <SubContainerParagraph><a href="#blog"><b>BLOG</b></a></SubContainerParagraph>
                 </BoxMenu>
@@ -445,6 +457,7 @@ class Header extends Component {
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
+              <ParagraphHeaderImage>jkgkhgkhvmhkh khgkhgb kjg kjgjkgj</ParagraphHeaderImage>
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>

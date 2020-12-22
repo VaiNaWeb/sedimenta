@@ -251,16 +251,7 @@ const ContentCargo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* padding-left: 10rem; */
   margin: 7rem 0 5rem 0;
-
-  @media (max-width: 1024px) {
-    /* padding-left: 3rem; */
-	}
-
-  @media (max-width: 768px) {
-    /* padding-left: 2rem; */
-	}
 
   @media (max-width: 648px) {
     width: 100%;
@@ -538,7 +529,6 @@ const BoxDate = styled.div`
 
 const TitleBox = styled.p`
   width: 80%;
-  /* height: 11vh; */
   color: #373737;
   font-size: 1rem;
   font-family: 'Open Sans', ExtraBold;
@@ -609,7 +599,6 @@ const LogoSeparation = styled.div`
 `;
 
 const ContentImages = styled.img`
-  /* width: 15%; */
   height: ${props => (props.height)};
   position: ${props => (props.position)};
   bottom: ${props => (props.bottom)};
