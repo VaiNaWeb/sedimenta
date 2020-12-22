@@ -13,6 +13,7 @@ const ContainerLogo = styled.div`
   height: 100vh;
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
+  background-position-y: -35px;
   background-size: cover;
   color: #FFFFFF;
   display: flex;
@@ -82,7 +83,9 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 648px) {
-    font-size: 0.7rem;
+    width: 95%;
+    font-size: 0.85rem;
+    justify-content: space-between;
 	}
 `;
 
@@ -99,7 +102,7 @@ const Page = styled.p`
 	}
 
   @media (max-width: 425px) {
-    padding-right: 2rem;
+    padding-right: 0;
 	}
 `;
 
@@ -242,9 +245,9 @@ const SubContainerText = styled.div`
   width: ${props => (props.title ? '53%' : '43%')};
   height: 70vh;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   padding-left: 1rem;
+  padding-top: 10%;
 
   @media (max-width: 768px) {
     width: 70%;
@@ -254,6 +257,7 @@ const SubContainerText = styled.div`
     width: 90%;
     text-align: center;
     align-items: center;
+    padding-top: 25%;
 	}
 `;
 
@@ -277,11 +281,25 @@ const ParagraphHeader = styled.p`
 	}
 `;
 
+const ParagraphHeaderImage = styled.p`
+  transform: rotate(270deg);
+  color: #FFFFFF;
+  position: absolute;
+  top: 300px;
+  right: -53px;
+  font-family: 'Open Sans', Regular;
+  font-size: 0.5rem;
+  opacity: 99;
+`;
+
+
 const ButtonHeader = styled.button`
   width: 55%;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
+  font-family: 'Open Sans', Bold;
   text-transform: uppercase;
+  letter-spacing: 0.14px;
   padding: 0.7rem;
   outline: none;
   cursor: pointer;
@@ -349,7 +367,7 @@ class Header extends Component {
       },
       {
         image: Domestica,
-        title: 'Administração de domesticas',
+        title: 'Administração de domésticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
 
       },
@@ -425,9 +443,11 @@ class Header extends Component {
               <LogoMobile src={logo} alt='Logo' />
               <ContainerHeaderBox open={menu}>
                 <BoxMenu open={menu}>
-                  <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  <ContainerLinha></ContainerLinha>
                   <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <ContainerLinha></ContainerLinha>
+                  <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a href="#blog"><b>BLOG</b></a></SubContainerParagraph>
                 </BoxMenu>
                 <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
               </ContainerHeaderBox>
@@ -437,6 +457,7 @@ class Header extends Component {
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
+              <ParagraphHeaderImage>jkgkhgkhvmhkh khgkhgb kjg kjgjkgj</ParagraphHeaderImage>
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>

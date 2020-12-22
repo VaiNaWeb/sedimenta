@@ -58,7 +58,7 @@ const ContentCaixaGeral = styled.div`
 
   @media (max-width: 648px) {
     width: 90%;
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
 	}
 `;
 
@@ -147,7 +147,11 @@ const CaixaParagraph = styled.p`
 
   @media (max-width: 648px) {
     width: 55vw;
-    padding: 3rem 0 0;
+    padding: 3rem 0 2.5rem 0;
+
+    :last-child {
+      padding-bottom: 1rem;
+    }
 	}
 `;
 
@@ -247,16 +251,7 @@ const ContentCargo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* padding-left: 10rem; */
   margin: 7rem 0 5rem 0;
-
-  @media (max-width: 1024px) {
-    padding-left: 3rem;
-	}
-
-  @media (max-width: 768px) {
-    padding-left: 2rem;
-	}
 
   @media (max-width: 648px) {
     width: 100%;
@@ -284,6 +279,10 @@ const SessionCargo = styled.section`
   width: 22%;
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 1024px) {
+    width: 30%
+	}
 
   @media (max-width: 648px) {
     width: 100%;
@@ -299,8 +298,8 @@ const ImageCargo = styled.img`
   object-fit: cover;
   object-position: top;
 
-  @media (max-width: 1024px) {
-    width: 85%;
+  @media (max-width: 768px) {
+    width: 100%;
 	}
 
   @media (max-width: 648px) {
@@ -321,8 +320,9 @@ const ContentCargoCaixa = styled.div`
   padding: 0 1rem;
   box-shadow: 0px 3px 6px #00000029;
 
-  @media (max-width: 1024px) {
-    width: 85%;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 22vh;
 	}
 
   @media (max-width: 648px) {
@@ -348,15 +348,15 @@ const ContentCargoCaixa = styled.div`
 const ContentBoxTitle = styled.p`
   color: #373737;
   font-size: 1.125rem;
-  font-family: 'Arial', Bold;
+  font-family: 'Product Sans', Bold;
   font-weight: bold;
+  text-transform: uppercase;
 `;
 
 const ContentBoxParagraph = styled.p`
   color: #373737;
   font-size: 0.6875rem;
-  font-family: 'Arial', Bold;
-  font-weight: bold;
+  font-family: 'Product Sans', Regular;
   padding-top: 0.2rem;
 `;
 
@@ -376,7 +376,7 @@ const SubContentCaixa = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5.5rem 2rem;
+  padding: 4rem 2rem;
 `;
 
 const SubContentMeio = styled.span`
@@ -478,7 +478,7 @@ const CaixaBox = styled.div`
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     width: 30%;
 	}
 
@@ -529,7 +529,6 @@ const BoxDate = styled.div`
 
 const TitleBox = styled.p`
   width: 80%;
-  /* height: 11vh; */
   color: #373737;
   font-size: 1rem;
   font-family: 'Open Sans', ExtraBold;
@@ -592,14 +591,18 @@ const LogoSeparation = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 9rem 0;
+  margin: 0 0 6rem 0;
+
+  :last-child {
+    margin: 0 0 3rem 0;
+  }
 `;
 
 const ContentImages = styled.img`
-  width: 15%;
   height: ${props => (props.height)};
   position: ${props => (props.position)};
   bottom: ${props => (props.bottom)};
+  left: ${props => (props.left)};
 
   @media (max-width: 768px) {
     width: 22%;
@@ -647,31 +650,31 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-const Slider = styled.div`
-  width: 100%;
-  display: none;
+// const Slider = styled.div`
+//   width: 100%;
+//   display: none;
 
-  @media (max-width: 648px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-	}
+//   @media (max-width: 648px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 2rem;
+// 	}
 
-  @media (max-width: 450px) {
-    width: 80%;
-	}
-`;
+//   @media (max-width: 450px) {
+//     width: 80%;
+// 	}
+// `;
 
-const SliderBolinha = styled.div`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-  margin-left: 1rem;
-  opacity: 1;
-  cursor: pointer;
-`;
+// const SliderBolinha = styled.div`
+//   width: 12px;
+//   height: 12px;
+//   border-radius: 50%;
+//   background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
+//   margin-left: 1rem;
+//   opacity: 1;
+//   cursor: pointer;
+// `;
 
 const PostsMessage = styled.span`
   width: 100%;
@@ -729,7 +732,7 @@ class Home extends Component {
   renderPosts = () => {
     return this.state.posts.map((post) => {
       return (
-        <CaixaBox>
+        <CaixaBox id='blog'>
           <ImageBox src={balao} alt='figure' />
           <CaixaBoxHeader>
             <BoxDate>{post.pubDate}</BoxDate>
@@ -745,7 +748,7 @@ class Home extends Component {
   }
 
   render() {
-    const { sliderSelect, posts } = this.state;
+    const { posts } = this.state;
 
     return (
       <Container>
@@ -805,7 +808,7 @@ class Home extends Component {
               <ImageCargo src={People1} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Eduardo Pereira</ContentBoxTitle>
+                <ContentBoxTitle>eduardo pereira</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
                 <a
@@ -821,7 +824,7 @@ class Home extends Component {
               <ImageCargo src={People2} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Christiani Nascimento</ContentBoxTitle>
+                <ContentBoxTitle>christiani nascimento</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
                 <a
@@ -837,7 +840,7 @@ class Home extends Component {
               <ImageCargo src={People3} alt='people' />
               <ContentCargoCaixa>
                 <hr></hr>
-                <ContentBoxTitle>Mauro Moura</ContentBoxTitle>
+                <ContentBoxTitle>mauro moura</ContentBoxTitle>
                 <ContentBoxParagraph>CEO</ContentBoxParagraph>
                 <ContentBoxParagraph>Responsável pelo Capital Humano</ContentBoxParagraph>
                 <a
@@ -850,11 +853,11 @@ class Home extends Component {
               </ContentCargoCaixa>
             </SessionCargo>
           </Cargo>
-          <Slider >
+          {/* <Slider >
             <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
             <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
-          </Slider>
+          </Slider> */}
         </ContentCargo>
         <Services />
         <Carousel />
@@ -866,8 +869,8 @@ class Home extends Component {
               <ContentImages height='52px' src={FichaCerta} alt='logo' />
             </LogoSeparation>
             <LogoSeparation>
-              <ContentImages height='55px' src={FitaArquitetura} alt='logo' />
-              <ContentImages height='128px' position='relative' bottom='22px' src={SabendoMais} alt='logo' />
+              <ContentImages height='60px' src={FitaArquitetura} alt='logo' />
+              <ContentImages height='128px' position='relative' bottom='22px' left='20px' src={SabendoMais} alt='logo' />
               <ContentImages height='57px' src={Velatura} alt='logo' />
             </LogoSeparation>
           </ContentLogoImages>

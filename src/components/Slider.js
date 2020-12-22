@@ -9,7 +9,7 @@ const ContentSlider = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 3rem 0 0;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 `;
 
 const ContentTitleSlider = styled.div`
@@ -60,7 +60,7 @@ const SessionSlider = styled.section`
 
   @media (max-width: 648px) {
     margin-right: 1.5rem;
-    padding-left: 1rem;
+    /* padding-left: 0.8rem; */
     order: ${props => (props.orderMobile)};
 
     :last-child {
@@ -76,8 +76,8 @@ const ContentSliderBox = styled.div`
   justify-content: space-around;
  
   @media (max-width: 648px) {
-    height: 50%;
     padding-left: 1rem;
+    /* align-items: flex-start;s */
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
@@ -94,7 +94,7 @@ const ContentSliderMeio = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  padding: 2rem 1.2rem 1rem;
+  padding: 2rem 1.3rem 1rem;
   margin-bottom: 3.5rem;
   transform: ${props => (props.transformScale && 'scale(1.4)')};
   outline: none;
@@ -104,11 +104,11 @@ const ContentSliderMeio = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 250px;
+    width: 25em;
     background-color: #FFFFFF;
     color: #373737;
     transform: none;
-	}
+  }
 `;
 
 const ContentSliderParagraph = styled.p`
@@ -121,6 +121,10 @@ const SliderCarousel = styled.div`
   align-items: center;
   margin-top: 2rem;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const SliderBolinha = styled.div`
@@ -157,19 +161,20 @@ class Slider extends Component {
     const orderMobile3 = slider === '2' ? 0 : 2;
 
     return (
-      <ContentSlider>
+      <ContentSlider id='clientes'>
         <ContentTitleSlider>
           <hr></hr>
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
           <ContentSliderBox>
-            <SessionSlider order={orderDesktop1} orderMobile={orderMobile1}>
+            <SessionSlider onFocus={(ev) => console.log(ev.target)}
+            order={orderDesktop1} orderMobile={orderMobile1}>
               <ContentSliderMeio backgroundColor={slider === '0'} color={slider === '0'} transformScale={slider === '0'}>
                 <p>"Estamos muito satisfeitos com o atendimento
                   personalizado da Sedimenta JPM. Contabilidade não é
                   só número! E nós sabemos que podemos contar com eles."</p>
-                <ContentSliderParagraph>Plano B</ContentSliderParagraph>
+                <ContentSliderParagraph>Pedro Herzog, Sócio-diretor</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop2} orderMobile={orderMobile2}>
@@ -177,7 +182,7 @@ class Slider extends Component {
                 <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
                   nos auxiliado em todas as questões contábeis e financeiras do
                   Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
-                <ContentSliderParagraph>Instituto Precisa Ser</ContentSliderParagraph>
+                <ContentSliderParagraph>Aline, Instituto Precisa Ser</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
             <SessionSlider order={orderDesktop3} orderMobile={orderMobile3}>
@@ -185,7 +190,7 @@ class Slider extends Component {
                 <p>Uma empresa que tem como Meta a qualidade nos serviços
                   e no atendimento ao Cliente. Outro diferencial é a Competência,
                   honestidade e seriedade.</p>
-                <ContentSliderParagraph>Erlane, cargo, Empresa</ContentSliderParagraph>
+                <ContentSliderParagraph>Wallace Caldas, Sócio-diretor, Velatura</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
           </ContentSliderBox>

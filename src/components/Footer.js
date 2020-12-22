@@ -214,7 +214,6 @@ const ContentFooterTriangle = styled.div`
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 10px solid #992836;
-  /* position: static; */
 `;
 
 const FooterFinish = styled.footer`
