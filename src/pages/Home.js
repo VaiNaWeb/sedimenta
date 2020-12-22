@@ -748,7 +748,7 @@ class Home extends Component {
   }
 
   render() {
-    const { sliderSelect, posts } = this.state;
+    const { posts } = this.state;
 
     return (
       <Container>
