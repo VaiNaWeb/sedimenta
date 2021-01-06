@@ -279,6 +279,7 @@ const SessionCargo = styled.section`
   width: 22%;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
   
   @media (max-width: 1024px) {
     width: 30%
@@ -295,6 +296,7 @@ const SessionCargo = styled.section`
 const ImageCargo = styled.img`
   width: 100%;
   box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0 0;
   object-fit: cover;
   object-position: top;
 
@@ -319,6 +321,10 @@ const ContentCargoCaixa = styled.div`
   justify-content: center;
   padding: 0 1rem;
   box-shadow: 0px 3px 6px #00000029;
+
+  :last-child{
+    border-radius: 0 0 5px 5px;
+  }
 
   @media (max-width: 768px) {
     width: 100%;

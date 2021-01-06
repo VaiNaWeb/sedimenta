@@ -190,6 +190,7 @@ const FormTriangle = styled.div`
   transform: ${props => (props.isSelected ? 'rotate(180deg)' : 'rotate(0)')};
   transition: 0.5s;
   position: absolute;
+  bottom: 8px;
   right: 10px;
   cursor: pointer;
 

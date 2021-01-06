@@ -102,7 +102,7 @@ const ContentFooterRede = styled.div`
 
 const ContentRedeSocial = styled.div`
   color: #373737;
-  margin-bottom: 3.3rem;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,7 +154,7 @@ const TitleFooter = styled.h5`
   font-family: 'Open Sans', Extrabold;
   font-size: 1rem;
   font-weight: bolder;
-  margin: 0.3rem 0 1.5rem 0;
+  margin: 0 0 1.5rem 0;
 
   @media (max-width: 648px) {
     margin: 0 0 2rem 1rem;
@@ -179,7 +179,7 @@ const FooterLinha = styled.div`
   width: 14vw;
   height: 1vh;
   background: linear-gradient(to right, #992836, #4D141B);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 
   @media (max-width: 768px) {
     width: 25vw;

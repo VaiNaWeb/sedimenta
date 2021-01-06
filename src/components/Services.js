@@ -17,7 +17,7 @@ import fechar from '../assets/fechar.svg';
 const ContentServiços = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 5rem 0 27rem;
+  margin-bottom: 20rem;
   padding-left: 5rem;
 
   @media (max-width: 768px) {
@@ -112,8 +112,9 @@ const ContentBoxGalery = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${props => (props.isOpen ? 'center' : 'flex-start')};
-  padding: 2rem 0;
+  padding: 2.7rem 0 0;
   position: relative;
+  /* margin-bottom: 1.7rem; */
 
   @media (max-width: 648px) {
     width: 340px;
@@ -183,7 +184,7 @@ const BoxText = styled.p`
 
 const BoxImageText = styled.img`
   display: ${props => (props.isOpen ? 'flex' : 'none')};
-  transform: ${props => (props.isOpen ? 'rotate(90deg) translateX(-50%)' : 'rotate(0)')};
+  transform: rotate(90deg) translateX(-50%);
   position: absolute;
   bottom: 5%;
   left: 50%;

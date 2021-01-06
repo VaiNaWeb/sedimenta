@@ -44,7 +44,7 @@ const CarouselSlider = styled.div`
   margin: 6rem 0 3rem;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
 
   @media (max-width: 648px) {
     margin: 4rem 0 2rem;
@@ -73,15 +73,27 @@ const ContentSliderBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
  
   @media (max-width: 648px) {
     padding-left: 1rem;
-    /* align-items: flex-start;s */
+    /* align-items: flex-start; */
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
     overflow-y: hidden;
+	}
+`;
+
+const SliderArrow = styled.p`
+  color: #FFFFFF;
+  font-size: 5rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  cursor: pointer;
+
+  @media (max-width: 648px) {
+    display: none; 
 	}
 `;
 
@@ -119,7 +131,7 @@ const SliderCarousel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 
   @media (max-width: 648px) {
@@ -167,13 +179,13 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
+          <SliderArrow onClick={() => this.handleSlider('0', 1)}>&#8249;</SliderArrow>
           <ContentSliderBox>
             <SessionSlider onFocus={(ev) => console.log(ev.target)}
-            order={orderDesktop1} orderMobile={orderMobile1}>
+              order={orderDesktop1} orderMobile={orderMobile1}>
               <ContentSliderMeio backgroundColor={slider === '0'} color={slider === '0'} transformScale={slider === '0'}>
-                <p>"Estamos muito satisfeitos com o atendimento
-                  personalizado da Sedimenta JPM. Contabilidade não é
-                  só número! E nós sabemos que podemos contar com eles."</p>
+                <p>"Estamos muito satisfeitos com o atendimento personalizado da Sedimenta JPM.
+                  Contabilidade não é só número! E nós sabemos que podemos contar com eles."</p>
                 <ContentSliderParagraph>Pedro Herzog, Sócio-diretor</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
@@ -188,18 +200,18 @@ class Slider extends Component {
             <SessionSlider order={orderDesktop3} orderMobile={orderMobile3}>
               <ContentSliderMeio backgroundColor={slider === '2'} color={slider === '2'} transformScale={slider === '2'}>
                 <p>Uma empresa que tem como Meta a qualidade nos serviços
-                  e no atendimento ao Cliente. Outro diferencial é a Competência,
-                  honestidade e seriedade.</p>
+                  e no atendimento ao Cliente. Outro diferencial é a Competência, honestidade e seriedade.</p>
                 <ContentSliderParagraph>Wallace Caldas, Sócio-diretor, Velatura</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
           </ContentSliderBox>
-          <SliderCarousel>
-            <SliderBolinha isSelected={selectedSlider === 0 ? true : false} onClick={() => this.handleSlider('0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 1 ? true : false} onClick={() => this.handleSlider('1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 2 ? true : false} onClick={() => this.handleSlider('2', 2)}></SliderBolinha>
-          </SliderCarousel>
+          <SliderArrow onClick={() => this.handleSlider('0', 2)}>&#8250;</SliderArrow>
         </CarouselSlider>
+        <SliderCarousel>
+          <SliderBolinha isSelected={selectedSlider === 0 ? true : false} onClick={() => this.handleSlider('0', 0)}></SliderBolinha>
+          <SliderBolinha isSelected={selectedSlider === 1 ? true : false} onClick={() => this.handleSlider('1', 1)}></SliderBolinha>
+          <SliderBolinha isSelected={selectedSlider === 2 ? true : false} onClick={() => this.handleSlider('2', 2)}></SliderBolinha>
+        </SliderCarousel>
       </ContentSlider >
     )
   }

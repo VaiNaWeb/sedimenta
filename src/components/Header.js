@@ -153,7 +153,7 @@ const ContainerHeaderBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 450px) {
+  @media (max-width: 648px) {
     width: 100vw;
     height: 75vh;
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
@@ -185,10 +185,10 @@ const BoxMenu = styled.div`
   align-items: center;
   flex-direction: row;
 
-  @media (max-width: 450px) {
+  @media (max-width: 648px) {
     width: 100%;
     display: ${props => (props.open ? 'flex' : 'none')};
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-end;
     padding-top: 2rem;
 	}
@@ -213,30 +213,31 @@ const SubContainerParagraph = styled.p`
 
   @media (max-width: 470px) {
     margin-right: 2rem;
+    padding-bottom: 0.3rem;
 	}
 
-  @media (max-width: 450px) {
+  @media (max-width: 648px) {
     margin-right: 0;
 	}
 `;
 
-const ContainerLinha = styled.div`
-  display: none;
+// const ContainerLinha = styled.div`
+//   display: none;
 
-  @media (max-width: 450px) {
-    width: 95%;
-    height: 1px;
-    display: flex;
-    background-color: #FFFFFF;
-    margin: 1rem 0;
-	}
-`;
+//   @media (max-width: 450px) {
+//     width: 95%;
+//     height: 1px;
+//     display: flex;
+//     background-color: #FFFFFF;
+//     margin: 1rem 0;
+// 	}
+// `;
 
 const MenuHamburguer = styled.img`
   height: 13px;
   cursor: pointer;
 
-  @media (max-width: 450px) {
+  @media (max-width: 648px) {
     align-self: flex-end;
 	}
 `;
@@ -282,16 +283,16 @@ const ParagraphHeader = styled.p`
 `;
 
 const ParagraphHeaderImage = styled.p`
+  color: #FFFFFF99;
   transform: rotate(270deg);
-  color: #FFFFFF;
   position: absolute;
   top: 300px;
   right: -53px;
   font-family: 'Open Sans', Regular;
   font-size: 0.5rem;
   opacity: 99;
+  z-index: -2;
 `;
-
 
 const ButtonHeader = styled.button`
   width: 55%;
@@ -443,9 +444,9 @@ class Header extends Component {
               <LogoMobile src={logo} alt='Logo' />
               <ContainerHeaderBox open={menu}>
                 <BoxMenu open={menu}>
-                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
-                  <ContainerLinha></ContainerLinha>
                   <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  {/* <ContainerLinha></ContainerLinha> */}
+                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
                   <SubContainerParagraph><a href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
                   <SubContainerParagraph><a href="#blog"><b>BLOG</b></a></SubContainerParagraph>
                 </BoxMenu>
