@@ -159,7 +159,7 @@ const ContainerHeaderBox = styled.div`
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
     justify-content: flex-end;
     flex-direction: column-reverse;
-    padding: 3.5rem 1rem 0 0;
+    padding: 3.5rem 1.5rem 0 0;
     opacity: 1;
     position: absolute;
     right: 0;

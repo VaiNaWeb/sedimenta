@@ -270,6 +270,7 @@ const Textarea = styled.textarea`
 
   @media (max-width: 648px) {
     width: 80%;
+    height: 210px;
     padding-top: 1rem;
 	}
 `;

@@ -305,8 +305,8 @@ const ImageCargo = styled.img`
 	}
 
   @media (max-width: 648px) {
-    width: 280px;
-    height: 39vh;
+    width: 285px;
+    /* height: 39vh; */
 	}
 `;
 
@@ -333,6 +333,7 @@ const ContentCargoCaixa = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    height: 26vh;
 	}
 
   hr {
@@ -616,7 +617,7 @@ const ContentImages = styled.img`
 
   @media (max-width: 648px) {
     width: 35%;
-    height: ${props => (props.height ? '85px' : '50px')};
+    /* height: ${props => (props.height ? '85px' : '50px')}; */
 	}
 `;
 
