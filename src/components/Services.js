@@ -114,7 +114,6 @@ const ContentBoxGalery = styled.div`
   justify-content: ${props => (props.isOpen ? 'center' : 'flex-start')};
   padding: 2.7rem 0 0;
   position: relative;
-  /* margin-bottom: 1.7rem; */
 
   @media (max-width: 648px) {
     width: 340px;

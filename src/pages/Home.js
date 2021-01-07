@@ -893,7 +893,7 @@ class Home extends Component {
               <ContentImages src={FitaArquitetura} alt='logo' />
             </LogoSeparationMobile>
             <LogoSeparationMobile>
-              <ContentImages height src={SabendoMais} alt='logo' />
+              <ContentImages src={SabendoMais} alt='logo' />
               <ContentImages src={Velatura} alt='logo' />
             </LogoSeparationMobile>
           </ContentLogoImagesMobile>
