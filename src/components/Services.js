@@ -625,8 +625,6 @@ class Services extends Component {
   // -----------------------------------------------------
 
   render() {
-    const { selectedClickSlider } = this.state;
-
     return (
       <ContentServiços id='services'>
         <ContentServiçosTitle>
