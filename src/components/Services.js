@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+// import Carousel from 'nuka-carousel';
 
 import Contabilidade from '../assets/contabilidade.svg';
 import RH from '../assets/RH.svg';

@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "cra-template": "1.0.3",
-    "nuka-carousel": "^4.7.1",
+    "nuka-carousel": "^4.7.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",

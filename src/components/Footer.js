@@ -5,76 +5,6 @@ import Face from '../assets/socialFace.svg';
 import Linkedin from '../assets/socialLinkedin.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
-// const LinkLinha = styled.div`
-//   width: 93%;
-//   height: 1vh;
-//   background: linear-gradient(to right, #992836, #4D141B);
-//   margin: 1rem 0 0.3rem;
-
-//   @media (max-width: 648px) {
-//     display: none;
-// 	}
-// `;
-
-// const ContentLink = styled.div`
-//   width: 93%;
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-
-//   @media (max-width: 648px) {
-//     width: 90%;
-//     border-left: 7px solid #992836;
-//     margin-bottom: 7rem;
-// 	}
-// `;
-
-// const ContentLinkGeral = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: row;
-//   margin-bottom: 4rem;
-
-//   @media (max-width: 648px) {
-//     flex-direction: column;
-//     flex-wrap: wrap;
-//     margin-left: 1rem;
-//     margin-bottom: 0;
-// 	}
-// `;
-
-// const SeparationLink = styled.div`
-//   width: 25%;
-
-//   @media (max-width: 648px) {
-//     width: 85%;
-//     display: flex;
-//     justify-content: space-between;
-// 	}
-// `;
-
-// const ParagraphLink = styled.p`
-//   color: #373737;
-//   font-size: 0.9rem;
-//   font-family: 'Open Sans', ExtraBold;
-//   font-weight: bold;
-//   margin-bottom: 3rem;
-
-//   @media (max-width: 648px) {
-//     font-size: 1rem;
-//     margin-left: 1rem;
-// 	}
-// `;
-// const Link = styled.a`
-//   display: flex;
-//   flex-direction: column;
-//   margin-bottom: 5rem;
-//   text-decoration: none;
-
-//   @media (max-width: 648px) {
-//     margin-bottom: ${props => (props.margin)};
-// 	}
-// `;
 
 const ContentFooter = styled.div`
   width: 90%;
@@ -237,24 +167,6 @@ class Footer extends Component {
   render() {
     return (
       <>
-        {/* <LinkLinha></LinkLinha>
-        <ContentLink>
-          <ParagraphLink>LINKS IMPORTANTES</ParagraphLink>
-          <ContentLinkGeral>
-            <SeparationLink>
-              <Link href="https://github.com/Erlane" target="_blank">Link 1</Link>
-              <Link href="https://github.com/Erlane" target="_blank">Link 2</Link>
-            </SeparationLink>
-            <SeparationLink>
-              <Link href="https://github.com/Erlane" target="_blank">Link 3</Link>
-              <Link href="https://github.com/Erlane" target="_blank">Link 4</Link>
-            </SeparationLink>
-            <SeparationLink>
-              <Link margin='0' href="https://github.com/Erlane" target="_blank">Link 5</Link>
-              <Link margin='0' href="https://github.com/Erlane" target="_blank">Link 6</Link>
-            </SeparationLink>
-          </ContentLinkGeral>
-        </ContentLink> */}
         <ContentFooter>
           <ContentFooterRede>
             <ContentFooterContact>
