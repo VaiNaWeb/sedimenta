@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import setaClientes from '../assets/setaClientesTransparente.svg';
+
 const ContentSlider = styled.div`
   width: 100%;
   background: linear-gradient(to right, #992836, #4D141B);
@@ -43,8 +45,8 @@ const CarouselSlider = styled.div`
   width: 100%;
   margin: 6rem 0 3rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  /* flex-direction: column; */
 
   @media (max-width: 648px) {
     margin: 4rem 0 2rem;
@@ -77,7 +79,6 @@ const ContentSliderBox = styled.div`
  
   @media (max-width: 648px) {
     padding-left: 1rem;
-    /* align-items: flex-start; */
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
@@ -85,12 +86,37 @@ const ContentSliderBox = styled.div`
 	}
 `;
 
-const SliderArrow = styled.p`
-  color: #FFFFFF;
-  font-size: 5rem;
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
+const SliderArrow = styled.svg`
+  margin: 0 2rem 0 2rem;
+  position: relative;
+  bottom: 30px;
   cursor: pointer;
+
+  &:hover {
+    path {
+      stroke: #FFFFFF;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 648px) {
+    display: none; 
+	}
+`;
+
+const SliderArrowRotate = styled.svg`
+  margin: 0 2rem 0 2rem;
+  position: relative;
+  bottom: 30px;
+  transform: rotate(180deg);
+  cursor: pointer;
+
+  &:hover {
+    path {
+      stroke: #FFFFFF;
+      opacity: 1;
+    }
+  }
 
   @media (max-width: 648px) {
     display: none; 
@@ -143,7 +169,7 @@ const SliderBolinha = styled.div`
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#FFFFFF' : '#FFFFFF80')};
+  background-color: ${props => (props.isSelected ? '#FFFFFF' : '#8A4A52')};
   margin-left: 1.3rem;
   opacity: 1;
   cursor: pointer;
@@ -153,6 +179,18 @@ class Slider extends Component {
   state = {
     slider: undefined,
     selectedSlider: 1,
+  }
+
+  handleArrowPrevious = () => {
+    this.setState({
+      
+    })
+  }
+
+  handleArrowNext = () => {
+    this.setState({
+      
+    })
   }
 
   handleSlider = (item, slider) => {
@@ -179,7 +217,12 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
-          <SliderArrow onClick={() => this.handleSlider('0', 1)}>&#8249;</SliderArrow>
+          <SliderArrow xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018" 
+            viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374" 
+            d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" 
+            stroke-width="5" opacity="0.2" />
+          </SliderArrow>
           <ContentSliderBox>
             <SessionSlider onFocus={(ev) => console.log(ev.target)}
               order={orderDesktop1} orderMobile={orderMobile1}>
@@ -205,7 +248,12 @@ class Slider extends Component {
               </ContentSliderMeio>
             </SessionSlider>
           </ContentSliderBox>
-          <SliderArrow onClick={() => this.handleSlider('0', 2)}>&#8250;</SliderArrow>
+            <SliderArrowRotate xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+              viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+              d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+              rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" 
+              stroke-linejoin="round" stroke-width="5" opacity="0.2"/>
+            </SliderArrowRotate>
         </CarouselSlider>
         <SliderCarousel>
           <SliderBolinha isSelected={selectedSlider === 0 ? true : false} onClick={() => this.handleSlider('0', 0)}></SliderBolinha>

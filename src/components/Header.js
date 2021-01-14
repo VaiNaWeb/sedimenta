@@ -282,7 +282,7 @@ const ParagraphHeader = styled.p`
 	}
 `;
 
-const ParagraphHeaderImage = styled.p`
+const ParagraphHeaderImage = styled.a`
   color: #FFFFFF99;
   transform: rotate(270deg);
   position: absolute;
@@ -365,11 +365,14 @@ class Header extends Component {
         image: Calculadora,
         title: 'Agilidade, Confiança e Experiência!',
         paragraph: 'Escolha quem se importar com o seu negócio. Nossa medida de sucesso é ver você prosperar.',
+        isBig: true,
       },
       {
         image: Domestica,
         title: 'Administração de domésticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
+        name: 'Andrea Piacquadio no Pexels',
+        link: 'https://www.pexels.com/pt-br/foto/dona-de-casa-de-meia-idade-feliz-fazendo-limpeza-em-casa-3768914/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels,',
 
       },
       {
@@ -377,6 +380,8 @@ class Header extends Component {
         title: 'Contabilidade e Assessoria para o Terceiro Setor',
         paragraph: 'ONGs, Fundações, OSCIP, e outras entidades em fins lucrativos. A gente cuida da burocracia para vocês gerarem mais impacto social.',
         isBig: true,
+        name: 'Man photo created by rawpixel.com - www.freepik.com',
+        link: 'https://www.freepik.com/photos/man',
       },
     ]
   }
@@ -458,7 +463,7 @@ class Header extends Component {
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
-              <ParagraphHeaderImage>jkgkhgkhvmhkh khgkhgb kjg kjgjkgj</ParagraphHeaderImage>
+              <ParagraphHeaderImage target="_blank" href={artigos.link}>{artigos.name}</ParagraphHeaderImage>
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>
