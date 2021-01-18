@@ -315,27 +315,6 @@ const ImageClose = styled.button`
   }
 `;
 
-// const Slider = styled.div`
-//   display: none;
-
-//   @media (max-width: 648px) {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin-top: 2rem;
-// 	}
-// `;
-
-// const SliderBolinha = styled.div`
-//   width: 9px;
-//   height: 9px;
-//   border-radius: 50%;
-//   background-color: ${props => (props.selectedClick ? '#373737' : '#A7A7A7')};
-//   margin-left: 1rem;
-//   opacity: 1;
-//   cursor: pointer;
-// `;
-
 class Services extends Component {
   state = {
     services: {
@@ -623,6 +602,7 @@ class Services extends Component {
   )
 
   // -----------------------------------------------------
+
 
   render() {
     return (

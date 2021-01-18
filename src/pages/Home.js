@@ -274,27 +274,6 @@ const Cargo = styled.div`
 const CargoMobile = styled.div`
   display: none;
   width: 100%;
-  /* padding-left: 2rem;
-  flex-direction: row;
-  justify-content: flex-start;
-  overflow-x: scroll;
-  overflow-y: hidden; */
-
-  /* .slider {
-    margin: auto;
-  }
-
-  .slider-slide {
-    outline: none;
-  }
-
-  .slider-control-centerright {
-    right: 18% !important;
-  }
-
-  .slider-control-centerleft {
-    left: 18% !important;
-  } */
 
   @media (max-width: 648px) {
     display: block;
@@ -955,47 +934,25 @@ class Home extends Component {
         </ContentSobre>
         <ContentCargo>
           <CargoMobile>
-            <div style={{ margin: '0 0 auto 0' }}>
-              <Carousel
-                animation='zoom'
-                transitionMode='scroll'
-                // cellAlign='center'
-                zoomScale={1}
-                cellSpacing={this.getCellSpacing()}
-                wrapAround={false}
-                scrollMode='remainder'
-                slidesToScroll='auto'
-                withoutControls='true'
-                slideIndex={this.state.slideIndex}
-                afterSlide={(index) => this.setState({ slideIndex: index })}
-                defaultControlsConfig={{
-                  pagingDotsStyle: {
-                    fill: 'white',
-                  },
-                }}
-                getControlsContainerStyles={(key) => {
-                  if (key === 'BottomCenter') {
-                    return {
-                      top: '110%',
-                    }
-                  }
-                  return null
-                }}
-              >
-                {this.renderPersonMobile()}
-              </Carousel>
-            </div>
-
+            <Carousel
+              animation='zoom'
+              transitionMode='scroll'
+              // cellAlign='center'
+              zoomScale={1}
+              cellSpacing={this.getCellSpacing()}
+              wrapAround={false}
+              scrollMode='remainder'
+              slidesToScroll='auto'
+              withoutControls='true'
+              slideIndex={this.state.slideIndex}
+              afterSlide={(index) => this.setState({ slideIndex: index })}
+            >
+              {this.renderPersonMobile()}
+            </Carousel>
           </CargoMobile>
           <Cargo>
             {this.renderPerson()}
           </Cargo>
-
-          {/* <Slider >
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContentCargo>
         <Services />
         <OpinionCard />

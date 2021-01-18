@@ -286,12 +286,14 @@ const ParagraphHeaderImage = styled.a`
   color: #FFFFFF99;
   transform: rotate(270deg);
   position: absolute;
+  text-decoration: none;
   top: 300px;
-  right: -53px;
+  right: 0px;
   font-family: 'Open Sans', Regular;
   font-size: 0.5rem;
   opacity: 99;
   z-index: -2;
+  cursor: pointer;
 `;
 
 const ButtonHeader = styled.button`
@@ -463,7 +465,7 @@ class Header extends Component {
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
-              <ParagraphHeaderImage target="_blank" href={artigos.link}>{artigos.name}</ParagraphHeaderImage>
+              <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
             </SubContainerText>
           </SubContainerPrincipal>
           <Slider>
