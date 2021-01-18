@@ -255,10 +255,17 @@ const ContentCargo = styled.div`
   margin: 7rem 0 5rem 0;
 
   @media (max-width: 648px) {
-    width: 100%;
     padding: 0;
-    margin: 4rem 0 2rem 0;
+    margin: 4rem 0 2rem;
 	}
+  
+  .slider {
+    margin: auto;
+  }
+
+  .slider-slide {
+    outline: none;
+  }
 `;
 
 const Cargo = styled.div`
@@ -291,11 +298,11 @@ const SessionCargo = styled.section`
 	}
 `;
 
-const SessionCargoMobile = styled.section`
+const SessionCargoMobile = styled.div`
   width: 100%;
   padding-left: 2rem;
-  /* height: 65vh;
-  margin-right: 2rem; */
+  height: 65vh;
+  margin: 0 auto;
 `;
 
 const ImageCargo = styled.img`
@@ -679,32 +686,6 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-// const Slider = styled.div`
-//   width: 100%;
-//   display: none;
-
-//   @media (max-width: 648px) {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin-top: 2rem;
-// 	}
-
-//   @media (max-width: 450px) {
-//     width: 80%;
-// 	}
-// `;
-
-// const SliderBolinha = styled.div`
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 50%;
-//   background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-//   margin-left: 1rem;
-//   opacity: 1;
-//   cursor: pointer;
-// `;
-
 const PostsMessage = styled.span`
   width: 100%;
   display: inline-block;
@@ -1001,11 +982,6 @@ class Home extends Component {
               : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
             }
           </Caixa>
-          {/* <Slider>
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('caixa1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('caixa2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContainerCaixa>
         <Formulation />
         <Footer />
