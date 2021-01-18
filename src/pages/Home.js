@@ -255,10 +255,17 @@ const ContentCargo = styled.div`
   margin: 7rem 0 5rem 0;
 
   @media (max-width: 648px) {
-    width: 100%;
     padding: 0;
-    margin: 4rem 0 2rem 0;
+    margin: 4rem 0 2rem;
 	}
+  
+  .slider {
+    margin: auto;
+  }
+
+  .slider-slide {
+    outline: none;
+  }
 `;
 
 const Cargo = styled.div`
@@ -273,28 +280,14 @@ const Cargo = styled.div`
 
 const CargoMobile = styled.div`
   display: none;
-  width: 100%;
+  margin: 0 0 auto 0;
   /* padding-left: 2rem;
   flex-direction: row;
   justify-content: flex-start;
   overflow-x: scroll;
   overflow-y: hidden; */
 
-  /* .slider {
-    margin: auto;
-  }
-
-  .slider-slide {
-    outline: none;
-  }
-
-  .slider-control-centerright {
-    right: 18% !important;
-  }
-
-  .slider-control-centerleft {
-    left: 18% !important;
-  } */
+  
 
   @media (max-width: 648px) {
     display: block;
@@ -312,11 +305,11 @@ const SessionCargo = styled.section`
 	}
 `;
 
-const SessionCargoMobile = styled.section`
+const SessionCargoMobile = styled.div`
   width: 100%;
   padding-left: 2rem;
-  /* height: 65vh;
-  margin-right: 2rem; */
+  height: 65vh;
+  margin: 0 auto;
 `;
 
 const ImageCargo = styled.img`
@@ -700,32 +693,6 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-// const Slider = styled.div`
-//   width: 100%;
-//   display: none;
-
-//   @media (max-width: 648px) {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin-top: 2rem;
-// 	}
-
-//   @media (max-width: 450px) {
-//     width: 80%;
-// 	}
-// `;
-
-// const SliderBolinha = styled.div`
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 50%;
-//   background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-//   margin-left: 1rem;
-//   opacity: 1;
-//   cursor: pointer;
-// `;
-
 const PostsMessage = styled.span`
   width: 100%;
   display: inline-block;
@@ -955,47 +922,38 @@ class Home extends Component {
         </ContentSobre>
         <ContentCargo>
           <CargoMobile>
-            <div style={{ margin: '0 0 auto 0' }}>
-              <Carousel
-                animation='zoom'
-                transitionMode='scroll'
-                // cellAlign='center'
-                zoomScale={1}
-                cellSpacing={this.getCellSpacing()}
-                wrapAround={false}
-                scrollMode='remainder'
-                slidesToScroll='auto'
-                withoutControls='true'
-                slideIndex={this.state.slideIndex}
-                afterSlide={(index) => this.setState({ slideIndex: index })}
-                defaultControlsConfig={{
-                  pagingDotsStyle: {
-                    fill: 'white',
-                  },
-                }}
-                getControlsContainerStyles={(key) => {
-                  if (key === 'BottomCenter') {
-                    return {
-                      top: '110%',
-                    }
+            {/* <Carousel
+              animation='zoom'
+              transitionMode='scroll'
+              cellAlign='center'
+              zoomScale={1}
+              cellSpacing={this.getCellSpacing()}
+              wrapAround={false}
+              scrollMode='remainder'
+              slidesToScroll='auto'
+              // withoutControls='true'
+              slideIndex={this.state.slideIndex}
+              afterSlide={(index) => this.setState({ slideIndex: index })}
+              defaultControlsConfig={{
+                pagingDotsStyle: {
+                  fill: 'white',
+                },
+              }}
+              getControlsContainerStyles={(key) => {
+                if (key === 'BottomCenter') {
+                  return {
+                    top: '110%',
                   }
-                  return null
-                }}
-              >
-                {this.renderPersonMobile()}
-              </Carousel>
-            </div>
-
+                }
+                return null
+              }}
+            >
+              {this.renderPersonMobile()}
+            </Carousel> */}
           </CargoMobile>
           <Cargo>
             {this.renderPerson()}
           </Cargo>
-
-          {/* <Slider >
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContentCargo>
         <Services />
         <OpinionCard />
@@ -1044,11 +1002,6 @@ class Home extends Component {
               : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
             }
           </Caixa>
-          {/* <Slider>
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('caixa1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('caixa2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContainerCaixa>
         <Formulation />
         <Footer />
