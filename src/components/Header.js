@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 //Images
 import logo from '../assets/logoSedimenta.png';
 import menuHamburguer from '../assets/menu.svg';
+import menuHamburguerPreto from '../assets/menuPreto.svg';
 import Amigos from '../assets/amigos.jpg';
 import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
@@ -19,6 +20,7 @@ const ContainerLogo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 99;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -32,7 +34,6 @@ const ContainerLogo = styled.div`
     width: 100%;
     height: 100vh;
     background: #0000005C 0% 0% no-repeat padding-box;
-    padding: 0.5rem 4rem;
     opacity: 0.97;
 
   @media (max-width: 768px) {
@@ -44,6 +45,26 @@ const ContainerLogo = styled.div`
     padding: 0.5rem 1rem;
 	}
 }
+`;
+
+const HeaderScroll = styled.div`
+  width: 100%;
+  height: 5rem;
+  background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
+  position: ${props => (props.isScroll && 'fixed')};
+  padding: 0 1.5rem 0.4rem;
+  /* z-index: 99; */
+
+  @media (max-width: 648px) {
+    
+	}
+
+  /* div {
+    height: 5rem;
+    position: ${props => (props.isScroll && 'fixed')};
+    background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
+    z-index: -1;
+  } */
 `;
 
 const ContainerHeader = styled.div`
@@ -75,7 +96,8 @@ const ContainerHeaderPage = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  border-bottom: 1px solid #FFFFFF5C;
+  border-bottom: 1px solid ${props => (props.isScroll ? '#FFFFFF5C' : '#00000029')} !important;
+  /* border-bottom: 1px solid #FFFFFF5C; */
   opacity: 0.97;
 
   @media (max-width: 768px) {
@@ -169,8 +191,7 @@ const ContainerHeaderBox = styled.div`
 
 const SubContainer = styled.div`
   display: flex;
-  align-self: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
 
   @media (max-width: 648px) {
     width: 100%;
@@ -181,6 +202,7 @@ const SubContainer = styled.div`
 `;
 
 const BoxMenu = styled.div`
+  color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
   display: ${props => (props.open ? 'flex' : 'none')};
   align-items: center;
   flex-direction: row;
@@ -201,11 +223,12 @@ const rotate = keyframes`
 `;
 
 const SubContainerParagraph = styled.p`
-  margin-right: 2.5rem;
+  margin-right: 2rem;
   animation: 0.7s ease-in ${rotate};
 
   a {
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
+    color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
     text-decoration: none;
     font-size: 0.8rem;
     font-family: 'Arial', Bold;
@@ -248,7 +271,7 @@ const SubContainerText = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
-  padding-top: 10%;
+  padding: 8% 4rem;
 
   @media (max-width: 768px) {
     width: 70%;
@@ -282,18 +305,26 @@ const ParagraphHeader = styled.p`
 	}
 `;
 
-const ParagraphHeaderImage = styled.a`
-  color: #FFFFFF99;
-  transform: rotate(270deg);
-  position: absolute;
-  text-decoration: none;
-  top: 300px;
-  right: 0px;
+const ContentParahraph = styled.div`
+  display: flex;
   font-family: 'Open Sans', Regular;
   font-size: 0.5rem;
+  transform: rotate(270deg);
+  position: absolute;
+  top: 300px;
+  right: -40px;
+`;
+
+const ParagraphHeaderImage = styled.a`
+  color: #FFFFFF99;
+  text-decoration: none;
   opacity: 99;
   z-index: -2;
   cursor: pointer;
+
+  @media (max-width: 450px) {
+    display: none;
+	}
 `;
 
 const ButtonHeader = styled.button`
@@ -373,8 +404,10 @@ class Header extends Component {
         image: Domestica,
         title: 'Administração de domésticas',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
-        name: 'Andrea Piacquadio no Pexels',
-        link: 'https://www.pexels.com/pt-br/foto/dona-de-casa-de-meia-idade-feliz-fazendo-limpeza-em-casa-3768914/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels,',
+        name: 'Andrea Piacquadio no',
+        lastName: 'Pexels',
+        lastNameLink: 'https://www.pexels.com/pt-br/foto/dona-de-casa-de-meia-idade-feliz-fazendo-limpeza-em-casa-3768914/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels',
+        link: 'https://www.pexels.com/pt-br/@olly?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels',
 
       },
       {
@@ -385,11 +418,26 @@ class Header extends Component {
         name: 'Man photo created by rawpixel.com - www.freepik.com',
         link: 'https://www.freepik.com/photos/man',
       },
-    ]
+    ],
+    isScroll: false,
   }
 
   componentDidMount() {
     this.handleInterval()
+    if (typeof window !== undefined) {
+      window.onscroll = () => {
+        if (window.scrollY > 100) {
+          this.setState({
+            isScroll: true,
+          })
+        }
+        if (window.scrollY === 0) {
+          this.setState({
+            isScroll: false,
+          })
+        }
+      };
+    }
   }
 
   handleClick = () => {
@@ -408,9 +456,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
+    // this.interval = setInterval(
+    //   this.handleTransition, 6000
+    // )
   }
 
   handleTransition = () => {
@@ -423,7 +471,7 @@ class Header extends Component {
 
 
   render() {
-    const { menu, sliderHeader, artigos } = this.state;
+    const { menu, sliderHeader, artigos, isScroll } = this.state;
 
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
@@ -433,41 +481,66 @@ class Header extends Component {
       <ContainerLogo image={artigos[sliderHeader].image}
         positionImg={positionBackground || positionBackground1 || positionBackground2} id="topo">
         <span>
-          <ContainerHeader>
-            <Logo src={logo} alt='Logo' />
-            <ContainerHeaderPage>
-              <Page><b>Telefone:</b> 2232-1337</Page>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContainerHeaderPage>
-          </ContainerHeader>
-          <ContainerHeaderMobile>
-            <ContainerHeaderPage>
-              <Page><b>Tel:</b> 2232-1337</Page>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContainerHeaderPage>
-          </ContainerHeaderMobile>
-          <SubContainerPrincipal>
-            <SubContainer>
-              <LogoMobile src={logo} alt='Logo' />
-              <ContainerHeaderBox open={menu}>
-                <BoxMenu open={menu}>
-                  <SubContainerParagraph><a href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  {/* <ContainerLinha></ContainerLinha> */}
-                  <SubContainerParagraph><a href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a href="#blog"><b>BLOG</b></a></SubContainerParagraph>
-                </BoxMenu>
-                <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
-              </ContainerHeaderBox>
-            </SubContainer>
-            <SubContainerText title={artigos[sliderHeader].isBig}>
-              <Title>{artigos[sliderHeader].title}</Title>
-              <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
-                : null}
+          <HeaderScroll isScroll={isScroll}>
+            <div>
+              <ContainerHeader>
+                <Logo src={logo} alt='Logo' />
+                <ContainerHeaderPage
+                  style={{
+                    color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
+                  }}>
+                  <Page><b>Telefone:</b> 2232-1337</Page>
+                  <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                </ContainerHeaderPage>
+              </ContainerHeader>
+              <ContainerHeaderMobile>
+                <ContainerHeaderPage>
+                  <Page><b>Tel:</b> 2232-1337</Page>
+                  <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                </ContainerHeaderPage>
+              </ContainerHeaderMobile>
+              {/* <SubContainerPrincipal> */}
+              <SubContainer>
+                <LogoMobile src={logo} alt='Logo' />
+                <ContainerHeaderBox open={menu}>
+                  <BoxMenu open={menu}>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                  </BoxMenu>
+                  {isScroll ?
+                    <MenuHamburguer src={menuHamburguerPreto} alt='Menu Hamburguer' onClick={this.handleClick} />
+                    :
+                    <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+                  }
+                </ContainerHeaderBox>
+              </SubContainer>
+            </div>
+          </HeaderScroll>
+          <SubContainerText title={artigos[sliderHeader].isBig}>
+            <Title>{artigos[sliderHeader].title}</Title>
+            <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
+            {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
+              : null}
+            <ContentParahraph>
               <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
-            </SubContainerText>
-          </SubContainerPrincipal>
+              <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>{artigos[sliderHeader].lastName && artigos[sliderHeader].lastName} </ParagraphHeaderImage>
+            </ContentParahraph>
+          </SubContainerText>
+          {/* </SubContainerPrincipal> */}
           <Slider>
             <SliderBolinha isSelected={sliderHeader === 0 ? true : false} onClick={() => this.handleSlider(0)}></SliderBolinha>
             <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>

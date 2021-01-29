@@ -50,6 +50,7 @@ const ContentCaixaGeral = styled.div`
   position: relative;
   bottom: 85px;
   box-shadow: 0px 3px 6px #00000029;
+  z-index: 99;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -257,6 +258,7 @@ const ContentCargo = styled.div`
   @media (max-width: 648px) {
     padding: 0;
     margin: 4rem 0 2rem;
+    margin-right: 2rem;
 	}
   
   .slider {

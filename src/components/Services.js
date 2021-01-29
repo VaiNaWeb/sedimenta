@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
+// import ServicesDesktop from '../components/ServicesDesktop';
 
 import Contabilidade from '../assets/contabilidade.svg';
 import RH from '../assets/RH.svg';
 import Fiscal from '../assets/fiscal.svg';
-import Legislação from '../assets/legislação.svg';
+import Legalização from '../assets/legalização.svg';
 import AssessoriaFinanceira from '../assets/assessoriaFinanceira.svg';
 import Consultoria from '../assets/consultoria.svg';
 import Terceirização from '../assets/terceirização.svg';
@@ -16,6 +17,7 @@ import fechar from '../assets/fechar.svg';
 
 
 const ContentServiços = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20rem;
@@ -23,11 +25,12 @@ const ContentServiços = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    margin: 5rem 0 7rem;
-    padding-left: 0;
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin: 5rem 0 7rem;
+    padding-left: 0;
 	}
 
   @media (max-width: 648px) {
@@ -88,15 +91,45 @@ const ContentBox = styled.div`
 	}
 
   @media (max-width: 648px) {
+    display: none;
+	}
+`;
+
+const ContentBoxMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
     width: 100%;
     background-color: transparent;
     box-shadow: none;
+    display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: flex-start;
-    padding-left: 1rem;
-    overflow-x: scroll;
+    /* justify-content: flex-start; */
+    padding-left: 2rem;
+    /* margin-left: 2rem; */
+    margin-right: 2rem;
+    /* overflow-x: scroll; */
 	}
+
+  .slider-control-centerleft {
+    display: none;
+  }
+
+  .slider-control-centerright {
+    display: none;
+  }
+
+  .slider-control-bottomcenter {
+    bottom: -50px !important;
+  }
+  .paging-item {
+    padding-right: 1rem;
+  }
+
+  button {
+    outline: none;
+  }
 `;
 
 const ContentBoxCaixa = styled.div`
@@ -117,12 +150,12 @@ const ContentBoxGalery = styled.div`
   position: relative;
 
   @media (max-width: 648px) {
-    width: 340px;
-    height: 455px;
+    /* width: 340px; */
+    height: 457px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #57575799;
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
     margin-right: 2rem;
     opacity: 1;
 	}
@@ -178,7 +211,8 @@ const BoxText = styled.p`
 	}
 
   @media (max-width: 450px) {
-    width: 70vw;
+    /* width: 70vw;
+    padding: 0 0.8rem; */
 	}
 `;
 
@@ -235,6 +269,7 @@ const BoxContext = styled.div`
   width: 100%;
   background-color: #f0f0f0;
   color: #373737;
+  /* display: flex; */
   display: ${props => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   font-size: 0.8rem;
@@ -248,7 +283,7 @@ const BoxContext = styled.div`
 
   @media (max-width: 648px) {
     width: 340px;
-    display: ${props => (props.isOpen ? 'flex' : 'none')};
+    display: flex;
     padding: 4rem 1.2rem 0;
 	}
 `;
@@ -322,14 +357,186 @@ class Services extends Component {
       isSelected: '',
       slider: 0,
       selectedClickSlider: 0,
-    }
+    },
+    servicesCaixa: [
+      {
+        imageServices: Contabilidade,
+        title: 'contabilidade',
+        text: 'A contabilidade da sua empresa sem burocracia, entregas seguras e econômicas.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: RH,
+        title: 'recursos humanos',
+        text: 'Administramos todos os serviços de RH e departamento pessoal para você focar no seu negócio.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: Fiscal,
+        title: 'departamento fiscal',
+        text: 'Escrituração Fiscal 100% automatizada e livre de erros.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: Legalização,
+        title: 'legalização de empresas',
+        text: 'Abertura, Alterações, Fechamento de empresas e muito mais de forma prática e rápida.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: AssessoriaFinanceira,
+        title: 'assessoria financeira',
+        text: 'Seu patrimônio administrado de forma inteligente',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: Consultoria,
+        title: 'consultoria',
+        text: 'Uma ajuda especializada para manter seu negócio atualizado e legal.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: Terceirização,
+        title: 'terceirização',
+        text: 'Sua empresa reduz custo e otimiza a demanda sem a necessidade de criar novos departamentos ou expandir a área física.',
+        knowMore: 'Saiba mais',
+      },
+      {
+        imageServices: PessoaFisica,
+        title: 'pessoa fisica',
+        text: 'Administração justa e simplificada',
+        knowMore: 'Saiba Mais',
+      },
+    ],
+    servicesCaixaText: [
+      {
+        imageServices: Contabilidade,
+        title: 'contabilidade',
+        text: [
+          'A contabilidade da sua empresa sem burocracia, entregas seguras e econômicas.',
+        ],
+        list: [
+          'Planejamento e orientação contábil;',
+          'Escrituração contábil convencional;',
+          'Levantamento de balancetes e outros relatórios contábeis;',
+          'Elaboração, análise e consolidação das demonstrações contabéis - incluindo as específicas para o terceiro setor:',
+          'Emissão dos Livros Contábeis, versão física e/ou digital;',
+          'Atendimento às obrigações vinculadas ao SPED (Escrituração Contábil Digital).',
+        ],
+        textFinal: 'Nossa Escrituração Contábil e Demonstrações Contábeis são adequadas ao padrões contabéis internacionais.',
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: RH,
+        title: 'recursos humanos',
+        text: [
+          'Escrituração Fiscal 100% automatizada e livre de erros.',
+        ],
+        list: [
+          'Recrutamento e Seleção;',
+          'Cargos e Salários;',
+          'Avaliação de Desempenho;',
+          'Treinamentos;',
+        ],
+        textFinal: 'Administramos todos os serviços de RH e departamento pessoal para você focar no seu negócio.',
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: Fiscal,
+        title: 'departamento fiscal',
+        text: [
+          'Escrituração Fiscal 100% automatizada e livre de erros.',
+        ],
+        list: [
+          'Planejamento e orientação fiscal;',
+          'Escrituração Fiscal Digital',
+          'Apuração de ICMS, PIS, COFINS, ISS e emissão das guias para recolhimento',
+          'Entrega da Declaração de Econômicos- Fiscais; Sped Contribuições, Sped Fiscal, PGDAS Simples Nacional, entre outras;',
+          'Apuração de IRPJ e CSLL, elaboração de DCTF, PER - DCOMP e da ECF - Escrituração Contábil Fiscal e DIRF anual.',
+          'Declaração de faturamento, cadastro do cliente e emissão de notas fiscais.',
+          'Estudos de Cenários de Tributação - Visando redução de custos.',
+        ],
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: Legalização,
+        title: 'legalização de empresas',
+        text: [
+          'Abertura, Alterações, Fechamento de empresas e muito mais de forma prática e rápida.',
+        ],
+        list: [
+          'Planejamento da Estrutura do Negócio (Idealizado x Realizável)',
+          'Assessoria na confecção do Contrato Social;',
+          'Cadastro/Alteração Vigilância Sanitária, Bombeiros e Entidades de classe;',
+          'Abertura, Alterações e Encerramento de empresas;',
+          'Emissão mensal de Certidões fiscais;',
+          'Manutenção mensal da situação fiscal das empresas - Identificação prévia de possíveis problemas fiscais.',
+        ],
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: AssessoriaFinanceira,
+        title: 'assessoria financeira',
+        text: [
+          'Seu patrimônio administrado de forma inteligente',
+        ],
+        list: [
+          'Faturamento (Emissão de Notas Fiscais)',
+          'Cobranças',
+          'Contas a Pagar',
+          'Conciliação Bancária',
+          'Gestão de Contratos',
+        ],
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: Consultoria,
+        title: 'consultoria',
+        text: [
+          'Uma ajuda especializada para manter seu negócio atualizado e legal.',
+        ],
+        list: [
+          'Contábil - gerenciamento dos seus negócios, análise da estrutura de custos, elaboração de orçamentos e fluxos de caixa, estudo de viabilidade de investimentos, consultoria de investimentos financeiros e análise de processos de gestão e Planejamento Tributário.',
+          'Recursos Humanos - Implantação e adequação de políticas e ações operacionais, Recrutamento e Seleção, pesquisa de Clima Organizacional, avaliação e implantação de Cargos e Salários',
+        ],
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: Terceirização,
+        title: 'terceirização',
+        text: [
+          'Sua empresa reduz custo e otimiza a demanda sem a necessidade de criar novos departamentos ou expandir a área física.',
+          'O trabalho de Outsourcing fará com que a Sedimenta seja o seu departamento dentro da sua empresa (in company).',
+          'Desenvolvemos nosso trabalho em sua empresa, onde serão prestados serviços como:',
+        ],
+        list: [
+          'Gestão Financeira;',
+          'Gestão de Capital Humano; ',
+          'Contabilidade.',
+        ],
+        knowMore: 'Fechar',
+      },
+      {
+        imageServices: PessoaFisica,
+        title: 'pessoa fisica',
+        text: [
+          'Administração justa e simplificada',
+        ],
+        list: [
+          'Declaração de Imposto de Renda',
+          'Gestão de Empregados Domésticos (Babás, motoristas, domésticas e etc)',
+          'Previdência Social (Aposentadoria)',
+        ],
+        knowMore: 'Saiba Mais',
+      },
+    ]
   }
 
-  handleClick = (item) => {
+  handleClick = (id) => {
     this.setState({
       services: {
         isOpen: true,
-        isSelected: item,
+        isSelected: id,
       }
     })
   }
@@ -450,7 +657,7 @@ class Services extends Component {
 
   renderTitleLegalização = () => (
     <ContentBoxGalery id='list3' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
-      <ContentBoxImage src={Legislação} alt='category' />
+      <ContentBoxImage src={Legalização} alt='category' />
       <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>legalização de empresas</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list3'}>
         <BoxText widthText='57%'>Abertura, Alterações, Fechamento de empresas e muito
@@ -509,7 +716,6 @@ class Services extends Component {
       </BoxImageClose>
     </BoxContext>
   )
-
 
   // -----------------------------------------------------
 
@@ -603,6 +809,44 @@ class Services extends Component {
 
   // -----------------------------------------------------
 
+  renderServiceCaixa = () => {
+    return this.state.servicesCaixa.map((item, index) => {
+      return (
+        <>
+          <ContentBoxGalery id={index} isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
+            <ContentBoxImage src={item.imageServices} alt='category' />
+            <BoxTitle>{item.title}</BoxTitle>
+            <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
+              <BoxText>{item.text}</BoxText>
+              <Box onClick={() => this.handleClick(index)} widthText='61%'>{item.knowMore} <BoxImage src={setinha} /></Box>
+            </BoxContentText>
+            <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === index} onClick={this.handleClose} />
+          </ContentBoxGalery>
+          {this.state.services.isOpen && this.state.services.isSelected === index && this.renderServiceCaixaText()}
+        </>
+      )
+    })
+  }
+
+  renderServiceCaixaText = () => {
+    const item = this.state.servicesCaixaText[this.state.services.isSelected]
+    return (
+      <ContentBoxContainer>
+        <BoxContext>
+          {item.text.map(item => (
+            <BoxContextText>{item}</BoxContextText>
+          ))}
+          {item.list.map(item => (
+            <li>{item}</li>
+          ))}
+          <BoxContentText>{item.textFinal}</BoxContentText>
+          <BoxImageClose>
+            <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+          </BoxImageClose>
+        </BoxContext>
+      </ContentBoxContainer>
+    )
+  }
 
   render() {
     return (
@@ -685,16 +929,25 @@ class Services extends Component {
             </ContentBoxContainer>
           </ContentBoxCaixa>
         </ContentBox>
-        {/* <Slider>
-          <SliderBolinha selectedClick={selectedClickSlider === 0 || selectedClickSlider === undefined ? true : false} onClick={() => this.handleClickSlider('list0', 0)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 1 ? true : false} onClick={() => this.handleClickSlider('list1', 1)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 2 ? true : false} onClick={() => this.handleClickSlider('list2', 2)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 3 ? true : false} onClick={() => this.handleClickSlider('list3', 3)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 4 ? true : false} onClick={() => this.handleClickSlider('list4', 4)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 5 ? true : false} onClick={() => this.handleClickSlider('list5', 5)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 6 ? true : false} onClick={() => this.handleClickSlider('list6', 6)}></SliderBolinha>
-          <SliderBolinha selectedClick={selectedClickSlider === 7 ? true : false} onClick={() => this.handleClickSlider('list7', 7)}></SliderBolinha>
-        </Slider> */}
+        <ContentBoxMobile>
+          <Carousel
+            // animation='zoom'
+            cellSpacing={32}
+            cellAlign='left'
+            // transitionMode='scroll'
+            slideWidth="340px"
+            // zoomScale={1}
+            // wrapAround={false}
+            // scrollMode='remainder'
+            // slidesToScroll='auto'
+            enableKeyboardControls='true'
+            // withoutControls='true'
+            slideIndex={this.state.slideIndex}
+            afterSlide={(index) => this.setState({ slideIndex: index })}
+          >
+            {this.renderServiceCaixa()}
+          </Carousel>
+        </ContentBoxMobile>
       </ContentServiços>
     );
   }
