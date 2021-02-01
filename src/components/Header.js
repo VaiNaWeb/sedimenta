@@ -135,16 +135,6 @@ const ContainerHeaderMobile = styled.div`
 	}
 `;
 
-const SubContainerPrincipal = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 768px) {
-    align-items: center;
-	}
-`;
-
 const Logo = styled.img`
   height: 11vh;
 

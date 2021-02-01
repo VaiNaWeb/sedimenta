@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import setaClientes from '../assets/setaClientesTransparente.svg';
-
 const ContentSlider = styled.div`
   width: 100%;
   background: linear-gradient(to right, #992836, #4D141B);
