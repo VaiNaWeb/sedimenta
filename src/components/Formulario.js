@@ -190,6 +190,7 @@ const FormTriangle = styled.div`
   transform: ${props => (props.isSelected ? 'rotate(180deg)' : 'rotate(0)')};
   transition: 0.5s;
   position: absolute;
+  bottom: 8px;
   right: 10px;
   cursor: pointer;
 
@@ -269,6 +270,7 @@ const Textarea = styled.textarea`
 
   @media (max-width: 648px) {
     width: 80%;
+    height: 210px;
     padding-top: 1rem;
 	}
 `;

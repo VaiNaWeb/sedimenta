@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Carousel from 'nuka-carousel';
 
 //Components
-import Carousel from '../components/Slider';
+import OpinionCard from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
 import Services from '../components/Services';
@@ -42,18 +43,19 @@ const Container = styled.div`
 const ContentCaixaGeral = styled.div`
   width: 93%;
   background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
   display: flex;
   align-items: center;
   flex-direction: row;
   padding: 3rem 0;
-  position: relative;
-  bottom: 85px;
-  box-shadow: 0px 3px 6px #00000029;
+  transform: translateY(-50%);
 
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
-    bottom: 60px;
+    /* bottom: 60px; */
+    transform: translateY(-10%);
+
 	}
 
   @media (max-width: 648px) {
@@ -254,10 +256,18 @@ const ContentCargo = styled.div`
   margin: 7rem 0 5rem 0;
 
   @media (max-width: 648px) {
-    width: 100%;
     padding: 0;
-    margin: 4rem 0 2rem 0;
+    margin: 4rem 0 2rem;
+    margin-right: 2rem;
 	}
+  
+  .slider {
+    margin: auto;
+  }
+
+  .slider-slide {
+    outline: none;
+  }
 `;
 
 const Cargo = styled.div`
@@ -266,46 +276,51 @@ const Cargo = styled.div`
   justify-content: space-around;
 
   @media (max-width: 648px) {
-    width: 100%;
-    padding-left: 2rem;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow-x: scroll;
-    overflow-y: hidden;
-	}
+    display: none;
+  }
+`;
+
+const CargoMobile = styled.div`
+  display: none;
+  width: 100%;
+
+  @media (max-width: 648px) {
+    display: block;
+  }
 `;
 
 const SessionCargo = styled.section`
   width: 22%;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
   
   @media (max-width: 1024px) {
     width: 30%
 	}
+`;
 
-  @media (max-width: 648px) {
-    width: 100%;
-    height: 65vh;
-    margin-right: 2rem;
-    padding-right: ${props => (props.paddingRight)};
-	}
+const SessionCargoMobile = styled.div`
+  width: 100%;
+  padding-left: 2rem;
+  height: 65vh;
+  margin: 0 auto;
 `;
 
 const ImageCargo = styled.img`
   width: 100%;
   box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px 5px 0 0;
   object-fit: cover;
   object-position: top;
 
   @media (max-width: 768px) {
     width: 100%;
 	}
+`;
 
-  @media (max-width: 648px) {
-    width: 280px;
-    height: 39vh;
-	}
+const ImageCargoMobile = styled.img`
+    width: 100%;
 `;
 
 const ContentCargoCaixa = styled.div`
@@ -320,28 +335,51 @@ const ContentCargoCaixa = styled.div`
   padding: 0 1rem;
   box-shadow: 0px 3px 6px #00000029;
 
+  :last-child{
+    border-radius: 0 0 5px 5px;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
     height: 22vh;
 	}
-
-  @media (max-width: 648px) {
-    width: 100%;
-	}
-
+  
   hr {
     width: 3vw;
     border: 1px solid #00000029;
     margin-bottom: 1rem;
     opacity: 1;
-
-    @media (max-width: 648px) {
-      width: 15vw;
-	  }
   }
 
   img {
     margin-top: 0.9rem;
+  }
+`;
+
+const ContentCargoCaixaMobile = styled.div`
+  width: 100%;
+  height: 25vh;
+  background-color: #FFFFFF;
+  border-left: 5px solid #801422;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0 1rem; */
+  box-shadow: 0px 3px 6px #00000029;
+
+  hr {
+    @media (max-width: 648px) {
+      width: 10vw;
+      margin-bottom: 0.5rem;
+	  }
+  }
+
+  img {
+    @media (max-width: 648px) {
+      margin-top: 0.9rem;
+	  }
   }
 `;
 
@@ -610,7 +648,7 @@ const ContentImages = styled.img`
 
   @media (max-width: 648px) {
     width: 35%;
-    height: ${props => (props.height ? '85px' : '50px')};
+    /* height: ${props => (props.height ? '85px' : '50px')}; */
 	}
 `;
 
@@ -650,32 +688,6 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-// const Slider = styled.div`
-//   width: 100%;
-//   display: none;
-
-//   @media (max-width: 648px) {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin-top: 2rem;
-// 	}
-
-//   @media (max-width: 450px) {
-//     width: 80%;
-// 	}
-// `;
-
-// const SliderBolinha = styled.div`
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 50%;
-//   background-color: ${props => (props.isSelected ? '#373737' : '#37373759')};
-//   margin-left: 1rem;
-//   opacity: 1;
-//   cursor: pointer;
-// `;
-
 const PostsMessage = styled.span`
   width: 100%;
   display: inline-block;
@@ -696,10 +708,44 @@ class Home extends Component {
     selectedSlider: 1,
     sliderSelect: 0,
     posts: [],
+    slideIndex: 0,
+    width: 0,
+    persons: [
+      {
+        imgPerson: People1,
+        name: "Eduardo Pereira",
+        office: "CEO,",
+        area: "Responsável pelas áreas Contábil e Fiscal;",
+        linkeId: Icon,
+        link: "https://www.linkedin.com/in/eduardo-pereira-4b686013/",
+      },
+      {
+        imgPerson: People2,
+        name: "CRISTIANI NASCIMENTO",
+        office: "CEO,",
+        area: "Resp. pela Legalização de Empresas, Parafiscal;",
+        linkeId: Icon,
+        link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
+      },
+      {
+        imgPerson: People3,
+        name: "Mauro Moura",
+        office: "CEO,",
+        area: "Responsável pelo Capital Humano;",
+        linkeId: Icon,
+        link: "https://www.linkedin.com/in/mauro-moura-5a406a74/",
+      },
+    ]
   }
 
   componentDidMount() {
     this.getPosts();
+    this.handleScreenSize()
+    window.addEventListener('resize', this.handleScreenSize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleScreenSize)
   }
 
   getPosts = async () => {
@@ -713,6 +759,15 @@ class Home extends Component {
       });
     } catch (err) { }
   };
+
+  handleScreenSize = () => {
+    const widthViewPort =
+      document.documentElement.clientWidth || window.screen.width
+
+    this.setState({
+      width: widthViewPort,
+    })
+  }
 
 
   handleText = () => {
@@ -746,6 +801,64 @@ class Home extends Component {
       )
     });
   }
+
+  getCellSpacing = () => {
+    const width = this.state.width;
+    if (width >= 3800) return -600
+    if (width >= 2560) return -500
+    if (width >= 1900) return -200
+    if (width >= 1366) return -200
+    if (width >= 1024) return -150
+    if (width >= 768) return -30
+    return 10
+  }
+
+  renderPerson = () => {
+    return this.state.persons.map((item, index) => {
+      return (
+        <SessionCargo id='cargo0'>
+          <ImageCargo src={item.imgPerson} alt='people' />
+          <ContentCargoCaixa>
+            <hr></hr>
+            <ContentBoxTitle>{item.name}</ContentBoxTitle>
+            <ContentBoxParagraph>{item.office}</ContentBoxParagraph>
+            <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={item.linkeId} alt='linkedin' />
+            </a>
+          </ContentCargoCaixa>
+        </SessionCargo>
+      )
+    })
+  }
+
+  renderPersonMobile = () => {
+    return this.state.persons.map((item, index) => {
+      return (
+        <SessionCargoMobile id='cargo0'>
+          <ImageCargoMobile src={item.imgPerson} alt='people' />
+          <ContentCargoCaixaMobile>
+            <hr></hr>
+            <ContentBoxTitle>{item.name}</ContentBoxTitle>
+            <ContentBoxParagraph>{item.office}</ContentBoxParagraph>
+            <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={item.linkeId} alt='linkedin' />
+            </a>
+          </ContentCargoCaixaMobile>
+        </SessionCargoMobile>
+      )
+    })
+  }
+
 
   render() {
     const { posts } = this.state;
@@ -803,64 +916,29 @@ class Home extends Component {
           </span>
         </ContentSobre>
         <ContentCargo>
+          <CargoMobile>
+            <Carousel
+              animation='zoom'
+              transitionMode='scroll'
+              // cellAlign='center'
+              zoomScale={1}
+              cellSpacing={this.getCellSpacing()}
+              wrapAround={false}
+              scrollMode='remainder'
+              slidesToScroll='auto'
+              withoutControls='true'
+              slideIndex={this.state.slideIndex}
+              afterSlide={(index) => this.setState({ slideIndex: index })}
+            >
+              {this.renderPersonMobile()}
+            </Carousel>
+          </CargoMobile>
           <Cargo>
-            <SessionCargo id='cargo0'>
-              <ImageCargo src={People1} alt='people' />
-              <ContentCargoCaixa>
-                <hr></hr>
-                <ContentBoxTitle>eduardo pereira</ContentBoxTitle>
-                <ContentBoxParagraph>CEO</ContentBoxParagraph>
-                <ContentBoxParagraph>Responsável pelas áreas Contábil e Fiscal</ContentBoxParagraph>
-                <a
-                  href="https://www.linkedin.com/in/eduardo-pereira-4b686013/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={Icon} alt='linkedin' />
-                </a>
-              </ContentCargoCaixa>
-            </SessionCargo>
-            <SessionCargo id='cargo1'>
-              <ImageCargo src={People2} alt='people' />
-              <ContentCargoCaixa>
-                <hr></hr>
-                <ContentBoxTitle>christiani nascimento</ContentBoxTitle>
-                <ContentBoxParagraph>CEO</ContentBoxParagraph>
-                <ContentBoxParagraph>Resp. pela Legalização de Empresas, Parafiscal;</ContentBoxParagraph>
-                <a
-                  href="https://www.linkedin.com/in/christiani-nascimento-23b06018b/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={Icon} alt='linkedin' />
-                </a>
-              </ContentCargoCaixa>
-            </SessionCargo>
-            <SessionCargo id='cargo2' paddingRight='2rem'>
-              <ImageCargo src={People3} alt='people' />
-              <ContentCargoCaixa>
-                <hr></hr>
-                <ContentBoxTitle>mauro moura</ContentBoxTitle>
-                <ContentBoxParagraph>CEO</ContentBoxParagraph>
-                <ContentBoxParagraph>Responsável pelo Capital Humano</ContentBoxParagraph>
-                <a
-                  href="https://www.linkedin.com/in/mauro-moura-5a406a74/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={Icon} alt='linkedin' />
-                </a>
-              </ContentCargoCaixa>
-            </SessionCargo>
+            {this.renderPerson()}
           </Cargo>
-          {/* <Slider >
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('cargo0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('cargo1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('cargo2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContentCargo>
         <Services />
-        <Carousel />
+        <OpinionCard />
         <ContentLogo>
           <ContentLogoImages>
             <LogoSeparation>
@@ -886,7 +964,7 @@ class Home extends Component {
               <ContentImages src={FitaArquitetura} alt='logo' />
             </LogoSeparationMobile>
             <LogoSeparationMobile>
-              <ContentImages height src={SabendoMais} alt='logo' />
+              <ContentImages src={SabendoMais} alt='logo' />
               <ContentImages src={Velatura} alt='logo' />
             </LogoSeparationMobile>
           </ContentLogoImagesMobile>
@@ -901,16 +979,11 @@ class Home extends Component {
         </SubContent>
         <ContainerCaixa>
           <Caixa>
-            {posts.length > 0 
+            {posts.length > 0
               ? this.renderPosts()
               : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
             }
           </Caixa>
-          {/* <Slider>
-            <SliderBolinha isSelected={sliderSelect === 0 ? true : false} onClick={() => this.handleSlider('caixa0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 1 ? true : false} onClick={() => this.handleSlider('caixa1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={sliderSelect === 2 ? true : false} onClick={() => this.handleSlider('caixa2', 2)}></SliderBolinha>
-          </Slider> */}
         </ContainerCaixa>
         <Formulation />
         <Footer />

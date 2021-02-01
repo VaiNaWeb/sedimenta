@@ -43,8 +43,8 @@ const CarouselSlider = styled.div`
   width: 100%;
   margin: 6rem 0 3rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
 
   @media (max-width: 648px) {
     margin: 4rem 0 2rem;
@@ -73,11 +73,10 @@ const ContentSliderBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
  
   @media (max-width: 648px) {
     padding-left: 1rem;
-    /* align-items: flex-start;s */
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: scroll;
@@ -85,10 +84,47 @@ const ContentSliderBox = styled.div`
 	}
 `;
 
+const SliderArrow = styled.svg`
+  margin: 0 2rem 0 2rem;
+  position: relative;
+  bottom: 30px;
+  cursor: pointer;
+
+  &:hover {
+    path {
+      stroke: #FFFFFF;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 648px) {
+    display: none; 
+	}
+`;
+
+const SliderArrowRotate = styled.svg`
+  margin: 0 2rem 0 2rem;
+  position: relative;
+  bottom: 30px;
+  transform: rotate(180deg);
+  cursor: pointer;
+
+  &:hover {
+    path {
+      stroke: #FFFFFF;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 648px) {
+    display: none; 
+	}
+`;
+
 const ContentSliderMeio = styled.div`
   width: 24.8em;
-  background-color: ${props => (props.backgroundColor ? '#FFFFFF' : '#A37D82')};
-  color: ${props => (props.color ? '#373737' : '#4A2529')};
+  background-color: ${props => (props.selected ? '#FFFFFF' : '#A37D82')};
+  color: ${props => (props.selected ? '#373737' : '#4A2529')};
   font-size: 0.7rem;
   font-family: 'Open Sans', Regular;
   display: flex;
@@ -96,7 +132,7 @@ const ContentSliderMeio = styled.div`
   flex-direction: column;
   padding: 2rem 1.3rem 1rem;
   margin-bottom: 3.5rem;
-  transform: ${props => (props.transformScale && 'scale(1.4)')};
+  transform: ${props => (props.selected && 'scale(1.4)')};
   outline: none;
 
   @media (max-width: 1024px) {
@@ -119,7 +155,7 @@ const SliderCarousel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 
   @media (max-width: 648px) {
@@ -131,7 +167,7 @@ const SliderBolinha = styled.div`
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background-color: ${props => (props.isSelected ? '#FFFFFF' : '#FFFFFF80')};
+  background-color: ${props => (props.isSelected ? '#FFFFFF' : '#8A4A52')};
   margin-left: 1.3rem;
   opacity: 1;
   cursor: pointer;
@@ -139,26 +175,74 @@ const SliderBolinha = styled.div`
 
 class Slider extends Component {
   state = {
-    slider: undefined,
-    selectedSlider: 1,
+    selectedSlide: 1,
+    previousSlide: 0,
+    nextSlide: 2,
   }
 
-  handleSlider = (item, slider) => {
+  list = [
+    {
+      text: '"Estamos muito satisfeitos com o atendimento personalizado da Sedimenta JPM. Contabilidade não é só número! E nós sabemos que podemos contar com eles."',
+      name: 'Pedro Herzog, Sócio-diretor',
+    },
+    {
+      text: 'A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem nos auxiliado em todas as questões contábeis e financeiras do Instituto sempre com muita agilidade, destreza técnica e simpatia.',
+      name: 'Aline, Instituto Precisa Ser',
+    },
+    {
+      text: 'Uma empresa que tem como Meta a qualidade nos serviços e no atendimento ao Cliente. Outro diferencial é a Competência, honestidade e seriedade.',
+      name: 'Wallace Caldas, Sócio-diretor, Velatura',
+    }
+  ]
+
+  handleArrowPrevious = () => {
+    let { selectedSlide, previousSlide, nextSlide } = this.state;
+
+    if ( selectedSlide > 0 && selectedSlide <= 2) {
+      selectedSlide = selectedSlide - 1;
+    } else {
+      selectedSlide = 2
+    }
+    previousSlide = selectedSlide === 0 ? 2 : selectedSlide - 1
+    nextSlide = selectedSlide === 2 ? 0 : selectedSlide + 1
+
     this.setState({
-      slider: item,
-      selectedSlider: slider,
+      selectedSlide,
+      previousSlide,
+      nextSlide,
+    })
+  }
+
+  handleArrowNext = () => {
+    let { selectedSlide, previousSlide, nextSlide } = this.state;
+
+    selectedSlide = selectedSlide === 2 ? 0 : selectedSlide + 1;
+    previousSlide = selectedSlide === 0 ? 2 : selectedSlide - 1
+    nextSlide = selectedSlide === 2 ? 0 : selectedSlide + 1
+
+    this.setState({
+      selectedSlide,
+      previousSlide,
+      nextSlide,
+    })
+  }
+
+  handleSlider = i => {
+    let { selectedSlide, previousSlide, nextSlide } = this.state;
+
+    selectedSlide = i;
+    previousSlide = i === 0 ? 2 : i - 1
+    nextSlide = i === 2 ? 0 : i + 1
+
+    this.setState({
+      selectedSlide,
+      previousSlide,
+      nextSlide,
     })
   }
 
   render() {
-    const { slider, selectedSlider } = this.state;
-
-    const orderDesktop1 = slider === '0' ? 1 : 0;
-    const orderMobile1 = slider === '1' ? 0 : 1;
-    const orderDesktop2 = (!slider && 1) || (slider === '2' && 2);
-    const orderMobile2 = !slider && 0;
-    const orderDesktop3 = slider === '2' ? 1 : 2;
-    const orderMobile3 = slider === '2' ? 0 : 2;
+    const { selectedSlide, previousSlide, nextSlide } = this.state;
 
     return (
       <ContentSlider id='clientes'>
@@ -167,39 +251,44 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
+          <SliderArrow xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018" 
+            viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374" 
+            d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" 
+            stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious}/>
+          </SliderArrow>
           <ContentSliderBox>
-            <SessionSlider onFocus={(ev) => console.log(ev.target)}
-            order={orderDesktop1} orderMobile={orderMobile1}>
-              <ContentSliderMeio backgroundColor={slider === '0'} color={slider === '0'} transformScale={slider === '0'}>
-                <p>"Estamos muito satisfeitos com o atendimento
-                  personalizado da Sedimenta JPM. Contabilidade não é
-                  só número! E nós sabemos que podemos contar com eles."</p>
-                <ContentSliderParagraph>Pedro Herzog, Sócio-diretor</ContentSliderParagraph>
+            <SessionSlider>
+              <ContentSliderMeio>
+                <p>{this.list[previousSlide].text}</p>
+                <ContentSliderParagraph>{this.list[previousSlide].name}</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
-            <SessionSlider order={orderDesktop2} orderMobile={orderMobile2}>
-              <ContentSliderMeio backgroundColor={(!(slider && '1') || slider === '1')} color transformScale={(!(slider && '1') || slider === '1')}>
-                <p>A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem
-                  nos auxiliado em todas as questões contábeis e financeiras do
-                  Instituto sempre com muita agilidade, destreza técnica e simpatia.</p>
-                <ContentSliderParagraph>Aline, Instituto Precisa Ser</ContentSliderParagraph>
+            <SessionSlider>
+              <ContentSliderMeio selected>
+                <p>{this.list[selectedSlide].text}</p>
+                <ContentSliderParagraph>{this.list[selectedSlide].name}</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
-            <SessionSlider order={orderDesktop3} orderMobile={orderMobile3}>
-              <ContentSliderMeio backgroundColor={slider === '2'} color={slider === '2'} transformScale={slider === '2'}>
-                <p>Uma empresa que tem como Meta a qualidade nos serviços
-                  e no atendimento ao Cliente. Outro diferencial é a Competência,
-                  honestidade e seriedade.</p>
-                <ContentSliderParagraph>Wallace Caldas, Sócio-diretor, Velatura</ContentSliderParagraph>
+            <SessionSlider>
+              <ContentSliderMeio>
+                <p>{this.list[nextSlide].text}</p>
+                <ContentSliderParagraph>{this.list[nextSlide].name}</ContentSliderParagraph>
               </ContentSliderMeio>
             </SessionSlider>
           </ContentSliderBox>
-          <SliderCarousel>
-            <SliderBolinha isSelected={selectedSlider === 0 ? true : false} onClick={() => this.handleSlider('0', 0)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 1 ? true : false} onClick={() => this.handleSlider('1', 1)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlider === 2 ? true : false} onClick={() => this.handleSlider('2', 2)}></SliderBolinha>
-          </SliderCarousel>
+            <SliderArrowRotate xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+              viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+              d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+              rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" 
+              stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext}/>
+            </SliderArrowRotate>
         </CarouselSlider>
+        <SliderCarousel>
+          <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
+          <SliderBolinha isSelected={selectedSlide === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
+          <SliderBolinha isSelected={selectedSlide === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
+        </SliderCarousel>
       </ContentSlider >
     )
   }
