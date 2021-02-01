@@ -43,19 +43,19 @@ const Container = styled.div`
 const ContentCaixaGeral = styled.div`
   width: 93%;
   background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
   display: flex;
   align-items: center;
   flex-direction: row;
   padding: 3rem 0;
-  position: relative;
-  bottom: 85px;
-  box-shadow: 0px 3px 6px #00000029;
-  z-index: 99;
+  transform: translateY(-50%);
 
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
-    bottom: 60px;
+    /* bottom: 60px; */
+    transform: translateY(-10%);
+
 	}
 
   @media (max-width: 648px) {
