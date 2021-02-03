@@ -55,7 +55,6 @@ const ContentCaixaGeral = styled.div`
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
-    /* bottom: 60px; */
     transform: translateY(-18%);
 
 	}
