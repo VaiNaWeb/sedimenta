@@ -163,7 +163,6 @@ const LogoMobile = styled.img`
 `;
 
 const ContainerHeaderBox = styled.div`
-  /* height: 3vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,7 +189,6 @@ const SubContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    /* padding-top: 0.5rem; */
 	}
 `;
 
@@ -220,7 +218,6 @@ const SubContainerParagraph = styled.p`
   animation: 0.7s ease-in ${rotate};
 
   a {
-    /* color: #FFFFFF; */
     color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
     text-decoration: none;
     font-size: 0.8rem;
@@ -236,18 +233,6 @@ const SubContainerParagraph = styled.p`
     margin-right: 0;
 	}
 `;
-
-// const ContainerLinha = styled.div`
-//   display: none;
-
-//   @media (max-width: 450px) {
-//     width: 95%;
-//     height: 1px;
-//     display: flex;
-//     background-color: #FFFFFF;
-//     margin: 1rem 0;
-// 	}
-// `;
 
 const MenuHamburguer = styled.img`
   height: 13px;
@@ -421,7 +406,6 @@ class Header extends Component {
   componentDidMount() {
     this.handleInterval();
     if (typeof window !== undefined) {
-    // if (typeof window !== undefined && window.innerWidth > 425) {
       window.onscroll = () => {
         if (window.scrollY > 100) {
           this.setState({
