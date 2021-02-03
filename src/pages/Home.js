@@ -26,6 +26,8 @@ import AndreLuiz from '../assets/andreLuizLogo.png';
 import FichaCerta from '../assets/fichaCertaLogo.png';
 import FitaArquitetura from '../assets/fitaArquiteturaLogo.png';
 import SabendoMais from '../assets/sabendoMaisLogo.png';
+import PrecisaSer from '../assets/precisaSer.svg';
+import PlanoB from '../assets/planoB.svg';
 
 import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
@@ -53,8 +55,7 @@ const ContentCaixaGeral = styled.div`
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
-    /* bottom: 60px; */
-    transform: translateY(-10%);
+    transform: translateY(-18%);
 
 	}
 
@@ -945,11 +946,13 @@ class Home extends Component {
               <ContentImages height='55px' src={ChooseMed} alt='logo' />
               <ContentImages height='66px' src={AndreLuiz} alt='logo' />
               <ContentImages height='52px' src={FichaCerta} alt='logo' />
+              <ContentImages height='45px' src={PrecisaSer} alt='logo' />
             </LogoSeparation>
             <LogoSeparation>
               <ContentImages height='60px' src={FitaArquitetura} alt='logo' />
               <ContentImages height='128px' position='relative' bottom='22px' left='20px' src={SabendoMais} alt='logo' />
               <ContentImages height='57px' src={Velatura} alt='logo' />
+              <ContentImages height='100px' src={PlanoB} alt='logo' />
             </LogoSeparation>
           </ContentLogoImages>
         </ContentLogo>
@@ -961,11 +964,15 @@ class Home extends Component {
             </LogoSeparationMobile>
             <LogoSeparationMobile>
               <ContentImages src={FichaCerta} alt='logo' />
-              <ContentImages src={FitaArquitetura} alt='logo' />
+              <ContentImages src={PrecisaSer} alt='logo' />
             </LogoSeparationMobile>
             <LogoSeparationMobile>
+              <ContentImages src={FitaArquitetura} alt='logo' />
               <ContentImages src={SabendoMais} alt='logo' />
+            </LogoSeparationMobile>
+            <LogoSeparationMobile>
               <ContentImages src={Velatura} alt='logo' />
+              <ContentImages src={PlanoB} alt='logo' />
             </LogoSeparationMobile>
           </ContentLogoImagesMobile>
         </ContentLogoMobile>
