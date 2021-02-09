@@ -5,6 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import logo from '../assets/logoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
 import menuHamburguerPreto from '../assets/menuPreto.svg';
+import close from '../assets/close.svg';
 import Amigos from '../assets/amigos.jpg';
 import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
@@ -49,7 +50,7 @@ const ContainerLogo = styled.div`
 
 const HeaderScroll = styled.div`
   width: 100%;
-  height: 4rem;
+  height: 3.59rem;
   background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
   box-shadow: ${props => (props.isScroll && '0px 3px 6px #00000029')};
   padding: 0 1.5rem 0.4rem;
@@ -61,9 +62,7 @@ const HeaderScroll = styled.div`
   @media (max-width: 648px) {
     height: 3rem;
     padding: 0 0.6rem 0.4rem;
-    /* background-color: transparent;
-    position: absolute;
-    box-shadow: none; */
+    overflow-x: scroll;
 	}
 `;
 
@@ -75,7 +74,7 @@ const ContainerHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   opacity: 1;
 
   @media (max-width: 768px) {
@@ -92,6 +91,7 @@ const ContainerHeader = styled.div`
 `;
 
 const ContainerHeaderPage = styled.div`
+  /* width: 100%; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -104,9 +104,12 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 95%;
-    font-size: 0.85rem;
-    justify-content: space-between;
+    border-top: 1px solid #FFFFFF;
+    font-size: 0.75rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 1rem;
     padding-bottom: 0;
 	}
 `;
@@ -121,6 +124,7 @@ const Page = styled.p`
 
   @media (max-width: 648px) {
     padding-right: 4rem;
+    padding-bottom: 0.4rem;
 	}
 
   @media (max-width: 425px) {
@@ -132,17 +136,17 @@ const ContainerHeaderMobile = styled.div`
   display: none;
 
   @media (max-width: 648px) {
+    width: 95%;
     color: #FFFFFF;
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     font-family: 'Open Sans', Regular;
-    margin-top: 0.3rem;
+    padding-top: 9rem;
 	}
 `;
 
 const Logo = styled.img`
-  height: 9vh;
+  height: 8.4vh;
 
   @media (max-width: 768px) {
     height: 8vh;
@@ -163,6 +167,7 @@ const LogoMobile = styled.img`
 `;
 
 const ContainerHeaderBox = styled.div`
+  height: 2vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,9 +191,9 @@ const SubContainer = styled.div`
   justify-content: flex-end;
 
   @media (max-width: 648px) {
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+    /* width: 80%; */
+    /* align-items: center;
+    justify-content: space-between; */
 	}
 `;
 
@@ -201,9 +206,17 @@ const BoxMenu = styled.div`
   @media (max-width: 648px) {
     width: 100%;
     display: ${props => (props.open ? 'flex' : 'none')};
+    align-items: end;
     flex-direction: column;
-    align-items: flex-end;
-    padding: 2rem 1.5rem 0 0;
+    padding: 2.3rem 0 0 1rem;
+	}
+`;
+
+const ImageClosed = styled.img`
+  display: none;
+
+  @media (max-width: 648px) {
+    display: flex;
 	}
 `;
 
@@ -219,14 +232,18 @@ const SubContainerParagraph = styled.p`
 
   a {
     color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
-    text-decoration: none;
     font-size: 0.8rem;
     font-family: 'Arial', Bold;
+    text-decoration: none;
+
+    @media (max-width: 648px) {
+      color: #FFFFFF !important;
+	  }
   }
 
   @media (max-width: 470px) {
+    padding-bottom: 1.5rem;
     margin-right: 2rem;
-    padding-bottom: 0.3rem;
 	}
 
   @media (max-width: 648px) {
@@ -237,10 +254,11 @@ const SubContainerParagraph = styled.p`
 const MenuHamburguer = styled.img`
   height: 13px;
   cursor: pointer;
+  /* padding-bottom: 0.3rem; */
 
   @media (max-width: 648px) {
-    align-self: flex-end;
-    padding-right: 1.5rem;
+    align-self: end;
+    padding-left: 1rem;
     /* margin-top: 1rem; */
 	}
 `;
@@ -471,16 +489,11 @@ class Header extends Component {
               <p><b>E-mail:</b> contato@sedimenta.com.br</p>
             </ContainerHeaderPage>
           </ContainerHeader>
-          <ContainerHeaderMobile>
-            <ContainerHeaderPage>
-              <Page><b>Tel:</b> 2232-1337</Page>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContainerHeaderPage>
-          </ContainerHeaderMobile>
           <SubContainer>
             <LogoMobile src={logo} alt='Logo' />
             <ContainerHeaderBox open={menu}>
               <BoxMenu open={menu}>
+              <ImageClosed src={close} alt='closed' onClick={this.handleClick} />
                 <SubContainerParagraph><a
                   style={{
                     color: `${isScroll ? '#373737' : '#FFFFFF'}`,
@@ -497,6 +510,12 @@ class Header extends Component {
                   style={{
                     color: `${isScroll ? '#373737' : '#FFFFFF'}`,
                   }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                <ContainerHeaderMobile>
+                  <ContainerHeaderPage>
+                    <Page><b>Tel:</b> 2232-1337</Page>
+                    <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                  </ContainerHeaderPage>
+                </ContainerHeaderMobile>
               </BoxMenu>
               {isScroll ?
                 <MenuHamburguer src={menuHamburguerPreto} alt='Menu Hamburguer' onClick={this.handleClick} />
@@ -521,7 +540,7 @@ class Header extends Component {
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
             </SubContainerText>
-            <ContentParahraph right={sliderHeader === 1 ? true : false}>
+            <ContentParahraph right={sliderHeader === 1 && '-42px' || sliderHeader === 2 && '-92px'}>
               <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
               <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
             </ContentParahraph>
