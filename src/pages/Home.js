@@ -62,6 +62,7 @@ const ContentCaixaGeral = styled.div`
   @media (max-width: 648px) {
     width: 90%;
     padding: 1.2rem 0;
+    text-align: center;
 	}
 `;
 
@@ -150,7 +151,7 @@ const CaixaParagraph = styled.p`
 
   @media (max-width: 648px) {
     width: 55vw;
-    padding: 3rem 0 2.5rem 0;
+    padding: 1.5rem 0 2.5rem 0;
 
     :last-child {
       padding-bottom: 1rem;
@@ -816,6 +817,7 @@ class Home extends Component {
 
   renderPerson = () => {
     return this.state.persons.map((item, index) => {
+      {console.log('person', this.state.person)}
       return (
         <SessionCargo id='cargo0'>
           <ImageCargo src={item.imgPerson} alt='people' />

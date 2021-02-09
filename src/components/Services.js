@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
-// import ServicesDesktop from '../components/ServicesDesktop';
 
 import Contabilidade from '../assets/contabilidade.svg';
 import RH from '../assets/RH.svg';
@@ -105,11 +104,8 @@ const ContentBoxMobile = styled.div`
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    /* justify-content: flex-start; */
     padding-left: 2rem;
-    /* margin-left: 2rem; */
     margin-right: 2rem;
-    /* overflow-x: scroll; */
 	}
 
   .slider-control-centerleft {
@@ -931,17 +927,10 @@ class Services extends Component {
         </ContentBox>
         <ContentBoxMobile>
           <Carousel
-            // animation='zoom'
             cellSpacing={32}
             cellAlign='left'
-            // transitionMode='scroll'
             slideWidth="340px"
-            // zoomScale={1}
-            // wrapAround={false}
-            // scrollMode='remainder'
-            // slidesToScroll='auto'
             enableKeyboardControls='true'
-            // withoutControls='true'
             slideIndex={this.state.slideIndex}
             afterSlide={(index) => this.setState({ slideIndex: index })}
           >
