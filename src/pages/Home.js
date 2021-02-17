@@ -56,13 +56,13 @@ const ContentCaixaGeral = styled.div`
     width: 95%;
     flex-direction: column;
     transform: translateY(-18%);
-
 	}
 
   @media (max-width: 648px) {
     width: 90%;
     padding: 1.2rem 0;
     text-align: center;
+    transform: translateY(-14%);
 	}
 `;
 

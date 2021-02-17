@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import logo from '../assets/logoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
 import menuHamburguerPreto from '../assets/menuPreto.svg';
-import close from '../assets/close.svg';
+import closed from '../assets/close.svg';
 import Amigos from '../assets/amigos.jpg';
 import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
@@ -62,7 +62,10 @@ const HeaderScroll = styled.div`
   @media (max-width: 648px) {
     height: 3rem;
     padding: 0 0.6rem 0.4rem;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
+    background-color: transparent;
+    box-shadow: none;
+    position: absolute;
 	}
 `;
 
@@ -143,6 +146,10 @@ const ContainerHeaderMobile = styled.div`
     font-family: 'Open Sans', Regular;
     padding-top: 9rem;
 	}
+
+  @media (max-width: 350px) {
+    padding-top: 7rem;
+	}
 `;
 
 const Logo = styled.img`
@@ -189,12 +196,6 @@ const ContainerHeaderBox = styled.div`
 const SubContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-
-  @media (max-width: 648px) {
-    /* width: 80%; */
-    /* align-items: center;
-    justify-content: space-between; */
-	}
 `;
 
 const BoxMenu = styled.div`
@@ -208,15 +209,7 @@ const BoxMenu = styled.div`
     display: ${props => (props.open ? 'flex' : 'none')};
     align-items: end;
     flex-direction: column;
-    padding: 2.3rem 0 0 1rem;
-	}
-`;
-
-const ImageClosed = styled.img`
-  display: none;
-
-  @media (max-width: 648px) {
-    display: flex;
+    padding: 0 0 0 1rem;
 	}
 `;
 
@@ -241,13 +234,9 @@ const SubContainerParagraph = styled.p`
 	  }
   }
 
-  @media (max-width: 470px) {
-    padding-bottom: 1.5rem;
-    margin-right: 2rem;
-	}
-
   @media (max-width: 648px) {
     margin-right: 0;
+    padding-top: 1.3rem;
 	}
 `;
 
@@ -255,12 +244,29 @@ const MenuHamburguer = styled.img`
   height: 13px;
   cursor: pointer;
   /* padding-bottom: 0.3rem; */
+  display: ${props => (props.isClosed ? 'none' : 'flex')};
+
 
   @media (max-width: 648px) {
+    display: none;
     align-self: end;
     padding-left: 1rem;
     /* margin-top: 1rem; */
 	}
+`;
+
+const MenuHamburguerMobile = styled.img`
+  height: 13px;
+  cursor: pointer;
+/* padding-bottom: 0.3rem; */
+  display: none;
+
+@media (max-width: 648px) {
+  display: flex;
+  align-self: end;
+  padding-left: 1rem;
+  /* margin-top: 1rem; */
+}
 `;
 
 const SubContainerText = styled.div`
@@ -281,6 +287,10 @@ const SubContainerText = styled.div`
     text-align: center;
     align-items: center;
     padding: 25% 0;
+	}
+
+  @media (max-width: 470px) {
+    padding: 15% 0;
 	}
 `;
 
@@ -311,7 +321,7 @@ const ContentParahraph = styled.div`
   transform: rotate(270deg);
   position: absolute;
   top: 300px;
-  right: ${props => (props.right ? '-42px' : '-92px')};
+  right: ${props => (props.right)};
 `;
 
 const ParagraphHeaderImage = styled.a`
@@ -361,6 +371,10 @@ const ButtonHeader = styled.button`
     text-decoration: none;
     font-size: 1rem;
     font-family: 'Product Sans', Bold;
+
+    @media (max-width: 485px) {
+      font-size: 0.8rem;
+	  }
   }
 `;
 
@@ -455,9 +469,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
+    // this.interval = setInterval(
+    //   this.handleTransition, 6000
+    // )
   }
 
   handleTransition = () => {
@@ -471,6 +485,13 @@ class Header extends Component {
 
   render() {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
+    console.log('menu', menu)
+    console.log('isScroll', isScroll)
+
+    const scroll = isScroll ? menuHamburguerPreto : menuHamburguer;
+    // const isMobile = menu ? closed : scroll;
+
+
 
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
@@ -493,7 +514,7 @@ class Header extends Component {
             <LogoMobile src={logo} alt='Logo' />
             <ContainerHeaderBox open={menu}>
               <BoxMenu open={menu}>
-              <ImageClosed src={close} alt='closed' onClick={this.handleClick} />
+              {/* <ImageClosed src={closed} alt='closed' onClick={this.handleClick} /> */}
                 <SubContainerParagraph><a
                   style={{
                     color: `${isScroll ? '#373737' : '#FFFFFF'}`,
@@ -517,11 +538,9 @@ class Header extends Component {
                   </ContainerHeaderPage>
                 </ContainerHeaderMobile>
               </BoxMenu>
-              {isScroll ?
-                <MenuHamburguer src={menuHamburguerPreto} alt='Menu Hamburguer' onClick={this.handleClick} />
-                :
-                <MenuHamburguer src={menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
-              }
+              
+              <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+              <MenuHamburguerMobile isClosed={menu && closed} src={menu ? closed  : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
             </ContainerHeaderBox>
           </SubContainer>
         </HeaderScroll>
