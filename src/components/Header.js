@@ -62,7 +62,6 @@ const HeaderScroll = styled.div`
   @media (max-width: 648px) {
     height: 3rem;
     padding: 0 0.6rem 0.4rem;
-    /* overflow-x: scroll; */
     background-color: transparent;
     box-shadow: none;
     position: absolute;
@@ -196,6 +195,10 @@ const ContainerHeaderBox = styled.div`
 const SubContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 648px) {
+    justify-content: center;
+	}
 `;
 
 const BoxMenu = styled.div`
@@ -242,30 +245,26 @@ const SubContainerParagraph = styled.p`
 
 const MenuHamburguer = styled.img`
   height: 13px;
-  cursor: pointer;
-  /* padding-bottom: 0.3rem; */
   display: ${props => (props.isClosed ? 'none' : 'flex')};
+  cursor: pointer;
 
 
   @media (max-width: 648px) {
     display: none;
     align-self: end;
     padding-left: 1rem;
-    /* margin-top: 1rem; */
 	}
 `;
 
 const MenuHamburguerMobile = styled.img`
   height: 13px;
-  cursor: pointer;
-/* padding-bottom: 0.3rem; */
   display: none;
+  cursor: pointer;
 
 @media (max-width: 648px) {
   display: flex;
   align-self: end;
   padding-left: 1rem;
-  /* margin-top: 1rem; */
 }
 `;
 
@@ -469,9 +468,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    // this.interval = setInterval(
-    //   this.handleTransition, 6000
-    // )
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
   }
 
   handleTransition = () => {
@@ -485,17 +484,11 @@ class Header extends Component {
 
   render() {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
-    console.log('menu', menu)
-    console.log('isScroll', isScroll)
-
-    const scroll = isScroll ? menuHamburguerPreto : menuHamburguer;
-    // const isMobile = menu ? closed : scroll;
-
-
 
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
     const positionBackground2 = sliderHeader === 2 && '-545px';
+    
     return (
       <>
         <HeaderScroll isScroll={isScroll}>
@@ -514,7 +507,6 @@ class Header extends Component {
             <LogoMobile src={logo} alt='Logo' />
             <ContainerHeaderBox open={menu}>
               <BoxMenu open={menu}>
-              {/* <ImageClosed src={closed} alt='closed' onClick={this.handleClick} /> */}
                 <SubContainerParagraph><a
                   style={{
                     color: `${isScroll ? '#373737' : '#FFFFFF'}`,
@@ -538,9 +530,8 @@ class Header extends Component {
                   </ContainerHeaderPage>
                 </ContainerHeaderMobile>
               </BoxMenu>
-              
               <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
-              <MenuHamburguerMobile isClosed={menu && closed} src={menu ? closed  : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+              <MenuHamburguerMobile isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
             </ContainerHeaderBox>
           </SubContainer>
         </HeaderScroll>
