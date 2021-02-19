@@ -62,7 +62,7 @@ const ContentCaixaGeral = styled.div`
     width: 90%;
     padding: 1.2rem 0;
     text-align: center;
-    transform: translateY(-14%);
+    transform: translateY(-22%);
 	}
 `;
 
@@ -817,7 +817,6 @@ class Home extends Component {
 
   renderPerson = () => {
     return this.state.persons.map((item, index) => {
-      {console.log('person', this.state.person)}
       return (
         <SessionCargo id='cargo0'>
           <ImageCargo src={item.imgPerson} alt='people' />
@@ -923,7 +922,6 @@ class Home extends Component {
             <Carousel
               animation='zoom'
               transitionMode='scroll'
-              // cellAlign='center'
               zoomScale={1}
               cellSpacing={this.getCellSpacing()}
               wrapAround={false}

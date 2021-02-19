@@ -13,9 +13,8 @@ const ContentFooter = styled.div`
   padding-bottom: 8rem;
 
   @media (max-width: 648px) {
-    width: ${props => (props.footer ? '100%' : '90%')};
-    padding-bottom: 2rem;
     flex-direction: column;
+    padding-bottom: 0;
     margin: 0;
 	}
 `;
