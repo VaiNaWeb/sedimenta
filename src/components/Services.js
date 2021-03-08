@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
+//Images
 import Contabilidade from '../assets/contabilidade.svg';
 import RH from '../assets/RH.svg';
 import Fiscal from '../assets/fiscal.svg';
@@ -122,7 +123,6 @@ const ContentBoxMobile = styled.div`
   .paging-item {
     padding-right: 1rem;
   }
-
   button {
     outline: none;
   }
@@ -146,7 +146,6 @@ const ContentBoxGalery = styled.div`
   position: relative;
 
   @media (max-width: 648px) {
-    /* width: 340px; */
     height: 457px;
     background-color: #FFFFFF;
     border-radius: 3px;
@@ -205,11 +204,6 @@ const BoxText = styled.p`
     width: 100%;
     font-size: 1rem;
 	}
-
-  @media (max-width: 450px) {
-    /* width: 70vw;
-    padding: 0 0.8rem; */
-	}
 `;
 
 const BoxImageText = styled.img`
@@ -265,7 +259,6 @@ const BoxContext = styled.div`
   width: 100%;
   background-color: #f0f0f0;
   color: #373737;
-  /* display: flex; */
   display: ${props => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   font-size: 0.8rem;
@@ -927,12 +920,11 @@ class Services extends Component {
         </ContentBox>
         <ContentBoxMobile>
           <Carousel
+            afterSlide={(index) => this.setState({ slideIndex: index })}
             cellSpacing={32}
             cellAlign='left'
-            slideWidth="340px"
             enableKeyboardControls='true'
             slideIndex={this.state.slideIndex}
-            afterSlide={(index) => this.setState({ slideIndex: index })}
           >
             {this.renderServiceCaixa()}
           </Carousel>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+//Images
 import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
 

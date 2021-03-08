@@ -2,23 +2,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Carousel from 'nuka-carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
 import Formulation from '../components/Formulario';
 import Header from '../components/Header';
+import OwnerSlider from '../components/OwnersSlider';
 import Services from '../components/Services';
 import Footer from '../components/Footer';
 
 //Images
 import seta from '../assets/seta.svg';
-import Icon from '../assets/icon.svg';
 import Fundo from '../assets/fundo.svg';
-
-import People1 from '../assets/Eduardo.png';
-import People2 from '../assets/Christiani.png';
-import People3 from '../assets/Mauro.png';
 
 import Velatura from '../assets/velaturaLogo.png';
 import ChooseMed from '../assets/chooseMedLogo.png';
@@ -124,6 +119,7 @@ const TitleHeader = styled.h2`
 
 const ImageSeta = styled.img`
   @media (max-width: 768px) {
+    height: 4vh;
     transform: rotate(90deg);
 	}
 `;
@@ -247,157 +243,6 @@ const ContainerParagraph = styled.p`
   font-size: 0.9rem;
   font-family: 'Open Sans', Regular;
   padding-bottom: 1.4rem;
-`;
-
-const ContentCargo = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 7rem 0 5rem 0;
-
-  @media (max-width: 648px) {
-    padding: 0;
-    margin: 4rem 0 2rem;
-    margin-right: 2rem;
-	}
-  
-  .slider {
-    margin: auto;
-  }
-
-  .slider-slide {
-    outline: none;
-  }
-`;
-
-const Cargo = styled.div`
-  width: 98%;
-  display: flex;
-  justify-content: space-around;
-
-  @media (max-width: 648px) {
-    display: none;
-  }
-`;
-
-const CargoMobile = styled.div`
-  display: none;
-  width: 100%;
-
-  @media (max-width: 648px) {
-    display: block;
-  }
-`;
-
-const SessionCargo = styled.section`
-  width: 22%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  
-  @media (max-width: 1024px) {
-    width: 30%
-	}
-`;
-
-const SessionCargoMobile = styled.div`
-  width: 100%;
-  padding-left: 2rem;
-  height: 65vh;
-  margin: 0 auto;
-`;
-
-const ImageCargo = styled.img`
-  width: 100%;
-  box-shadow: 0px 3px 6px #00000029;
-  border-radius: 5px 5px 0 0;
-  object-fit: cover;
-  object-position: top;
-
-  @media (max-width: 768px) {
-    width: 100%;
-	}
-`;
-
-const ImageCargoMobile = styled.img`
-    width: 100%;
-`;
-
-const ContentCargoCaixa = styled.div`
-  height: 25vh;
-  background-color: #FFFFFF;
-  border-left: 5px solid #801422;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
-  box-shadow: 0px 3px 6px #00000029;
-
-  :last-child{
-    border-radius: 0 0 5px 5px;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 22vh;
-	}
-  
-  hr {
-    width: 3vw;
-    border: 1px solid #00000029;
-    margin-bottom: 1rem;
-    opacity: 1;
-  }
-
-  img {
-    margin-top: 0.9rem;
-  }
-`;
-
-const ContentCargoCaixaMobile = styled.div`
-  width: 100%;
-  height: 25vh;
-  background-color: #FFFFFF;
-  border-left: 5px solid #801422;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* padding: 0 1rem; */
-  box-shadow: 0px 3px 6px #00000029;
-
-  hr {
-    @media (max-width: 648px) {
-      width: 10vw;
-      margin-bottom: 0.5rem;
-	  }
-  }
-
-  img {
-    @media (max-width: 648px) {
-      margin-top: 0.9rem;
-	  }
-  }
-`;
-
-const ContentBoxTitle = styled.p`
-  color: #373737;
-  font-size: 1.125rem;
-  font-family: 'Product Sans', Bold;
-  font-weight: bold;
-  text-transform: uppercase;
-`;
-
-const ContentBoxParagraph = styled.p`
-  color: #373737;
-  font-size: 0.6875rem;
-  font-family: 'Product Sans', Regular;
-  padding-top: 0.2rem;
 `;
 
 const BoxImage = styled.img`
@@ -650,7 +495,6 @@ const ContentImages = styled.img`
 
   @media (max-width: 648px) {
     width: 35%;
-    /* height: ${props => (props.height ? '85px' : '50px')}; */
 	}
 `;
 
@@ -707,37 +551,11 @@ class Home extends Component {
   state = {
     slider: 0,
     sliderCargo: 0,
-    selectedSlider: 1,
+    selectedSlide: 1,
     sliderSelect: 0,
     posts: [],
     slideIndex: 0,
     width: 0,
-    persons: [
-      {
-        imgPerson: People1,
-        name: "Eduardo Pereira",
-        office: "CEO,",
-        area: "Responsável pelas áreas Contábil e Fiscal;",
-        linkeId: Icon,
-        link: "https://www.linkedin.com/in/eduardo-pereira-4b686013/",
-      },
-      {
-        imgPerson: People2,
-        name: "CRISTIANI NASCIMENTO",
-        office: "CEO,",
-        area: "Resp. pela Legalização de Empresas, Parafiscal;",
-        linkeId: Icon,
-        link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
-      },
-      {
-        imgPerson: People3,
-        name: "Mauro Moura",
-        office: "CEO,",
-        area: "Responsável pelo Capital Humano;",
-        linkeId: Icon,
-        link: "https://www.linkedin.com/in/mauro-moura-5a406a74/",
-      },
-    ]
   }
 
   componentDidMount() {
@@ -778,14 +596,6 @@ class Home extends Component {
     })
   }
 
-  handleSlider = (item, slider) => {
-    this.setState({
-      slider: item,
-      sliderSelect: slider,
-    })
-    document.getElementById(item).scrollIntoView()
-  }
-
   renderPosts = () => {
     return this.state.posts.map((post) => {
       return (
@@ -803,64 +613,6 @@ class Home extends Component {
       )
     });
   }
-
-  getCellSpacing = () => {
-    const width = this.state.width;
-    if (width >= 3800) return -600
-    if (width >= 2560) return -500
-    if (width >= 1900) return -200
-    if (width >= 1366) return -200
-    if (width >= 1024) return -150
-    if (width >= 768) return -30
-    return 10
-  }
-
-  renderPerson = () => {
-    return this.state.persons.map((item, index) => {
-      return (
-        <SessionCargo id='cargo0'>
-          <ImageCargo src={item.imgPerson} alt='people' />
-          <ContentCargoCaixa>
-            <hr></hr>
-            <ContentBoxTitle>{item.name}</ContentBoxTitle>
-            <ContentBoxParagraph>{item.office}</ContentBoxParagraph>
-            <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={item.linkeId} alt='linkedin' />
-            </a>
-          </ContentCargoCaixa>
-        </SessionCargo>
-      )
-    })
-  }
-
-  renderPersonMobile = () => {
-    return this.state.persons.map((item, index) => {
-      return (
-        <SessionCargoMobile id='cargo0'>
-          <ImageCargoMobile src={item.imgPerson} alt='people' />
-          <ContentCargoCaixaMobile>
-            <hr></hr>
-            <ContentBoxTitle>{item.name}</ContentBoxTitle>
-            <ContentBoxParagraph>{item.office}</ContentBoxParagraph>
-            <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={item.linkeId} alt='linkedin' />
-            </a>
-          </ContentCargoCaixaMobile>
-        </SessionCargoMobile>
-      )
-    })
-  }
-
 
   render() {
     const { posts } = this.state;
@@ -917,27 +669,7 @@ class Home extends Component {
             </ContentSobreText>
           </span>
         </ContentSobre>
-        <ContentCargo>
-          <CargoMobile>
-            <Carousel
-              animation='zoom'
-              transitionMode='scroll'
-              zoomScale={1}
-              cellSpacing={this.getCellSpacing()}
-              wrapAround={false}
-              scrollMode='remainder'
-              slidesToScroll='auto'
-              withoutControls='true'
-              slideIndex={this.state.slideIndex}
-              afterSlide={(index) => this.setState({ slideIndex: index })}
-            >
-              {this.renderPersonMobile()}
-            </Carousel>
-          </CargoMobile>
-          <Cargo>
-            {this.renderPerson()}
-          </Cargo>
-        </ContentCargo>
+        < OwnerSlider />
         <Services />
         <OpinionCard />
         <ContentLogo>

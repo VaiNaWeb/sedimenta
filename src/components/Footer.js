@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+//Images
 import Face from '../assets/socialFace.svg';
 import Linkedin from '../assets/socialLinkedin.svg';
 import LogoVnW from '../assets/logoVnw.png';
