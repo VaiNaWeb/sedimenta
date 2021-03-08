@@ -93,7 +93,6 @@ const ContainerHeader = styled.div`
 `;
 
 const ContainerHeaderPage = styled.div`
-  /* width: 100%; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -109,8 +108,8 @@ const ContainerHeaderPage = styled.div`
     border-top: 1px solid #FFFFFF;
     font-size: 0.75rem;
     align-items: flex-start;
-    justify-content: flex-start;
     flex-direction: column;
+    justify-content: flex-start;
     padding-top: 1rem;
     padding-bottom: 0;
 	}

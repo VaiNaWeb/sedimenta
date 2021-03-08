@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Carousel from 'nuka-carousel';
 
 const ContentSlider = styled.div`
   width: 100%;
@@ -10,6 +11,40 @@ const ContentSlider = styled.div`
   justify-content: center;
   padding: 3rem 0 0;
   margin-bottom: 4rem;
+
+  @media (max-width: 648px) {
+    height: 77vh;
+    padding: 0;
+  }
+`;
+
+const ContentCarouselMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
+    width: 100%;
+    display: flex;
+  }
+
+  .slider-control-centerleft {
+    display: none;
+  }
+
+  .slider-control-centerright {
+    display: none;
+  }
+
+  .slider-control-bottomcenter {
+    bottom: -47px !important;
+  }
+
+  .paging-item {
+    padding-right: 1rem;
+  }
+  
+  button {
+    outline: none;
+  }
 `;
 
 const ContentTitleSlider = styled.div`
@@ -48,7 +83,7 @@ const CarouselSlider = styled.div`
 
   @media (max-width: 648px) {
     margin: 4rem 0 2rem;
-    align-items: center;
+    align-items: flex-end;
 	}
 `;
 
@@ -56,17 +91,6 @@ const SessionSlider = styled.section`
   display: flex;
   justify-content: space-around;
   border-radius: 4px;
-  order: ${props => (props.order)};
-
-  @media (max-width: 648px) {
-    margin-right: 1.5rem;
-    /* padding-left: 0.8rem; */
-    order: ${props => (props.orderMobile)};
-
-    :last-child {
-      padding-right: 1.5rem;
-    }
-	}
 `;
 
 const ContentSliderBox = styled.div`
@@ -76,11 +100,7 @@ const ContentSliderBox = styled.div`
   justify-content: space-between;
  
   @media (max-width: 648px) {
-    padding-left: 1rem;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    display: none;
 	}
 `;
 
@@ -140,9 +160,11 @@ const ContentSliderMeio = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 25em;
+    width: 23em;
     background-color: #FFFFFF;
     color: #373737;
+    font-size: 0.9rem;
+    margin-bottom: 0;
     transform: none;
   }
 `;
@@ -198,7 +220,7 @@ class Slider extends Component {
   handleArrowPrevious = () => {
     let { selectedSlide, previousSlide, nextSlide } = this.state;
 
-    if ( selectedSlide > 0 && selectedSlide <= 2) {
+    if (selectedSlide > 0 && selectedSlide <= 2) {
       selectedSlide = selectedSlide - 1;
     } else {
       selectedSlide = 2
@@ -241,8 +263,35 @@ class Slider extends Component {
     })
   }
 
-  render() {
+  renderSlider = () => {
     const { selectedSlide, previousSlide, nextSlide } = this.state;
+
+    return (
+      <>
+        <SessionSlider>
+          <ContentSliderMeio>
+            <p>{this.list[previousSlide].text}</p>
+            <ContentSliderParagraph>{this.list[previousSlide].name}</ContentSliderParagraph>
+          </ContentSliderMeio>
+        </SessionSlider>
+        <SessionSlider>
+          <ContentSliderMeio selected>
+            <p>{this.list[selectedSlide].text}</p>
+            <ContentSliderParagraph>{this.list[selectedSlide].name}</ContentSliderParagraph>
+          </ContentSliderMeio>
+        </SessionSlider>
+        <SessionSlider>
+          <ContentSliderMeio>
+            <p>{this.list[nextSlide].text}</p>
+            <ContentSliderParagraph>{this.list[nextSlide].name}</ContentSliderParagraph>
+          </ContentSliderMeio>
+        </SessionSlider>
+      </>
+    )
+  }
+
+  render() {
+    const { selectedSlide } = this.state;
 
     return (
       <ContentSlider id='clientes'>
@@ -251,44 +300,44 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
-          <SliderArrow xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018" 
-            viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374" 
+          <SliderArrow xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+            viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
             d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" 
-            stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious}/>
+            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious} />
           </SliderArrow>
           <ContentSliderBox>
-            <SessionSlider>
-              <ContentSliderMeio>
-                <p>{this.list[previousSlide].text}</p>
-                <ContentSliderParagraph>{this.list[previousSlide].name}</ContentSliderParagraph>
-              </ContentSliderMeio>
-            </SessionSlider>
-            <SessionSlider>
-              <ContentSliderMeio selected>
-                <p>{this.list[selectedSlide].text}</p>
-                <ContentSliderParagraph>{this.list[selectedSlide].name}</ContentSliderParagraph>
-              </ContentSliderMeio>
-            </SessionSlider>
-            <SessionSlider>
-              <ContentSliderMeio>
-                <p>{this.list[nextSlide].text}</p>
-                <ContentSliderParagraph>{this.list[nextSlide].name}</ContentSliderParagraph>
-              </ContentSliderMeio>
-            </SessionSlider>
+            {this.renderSlider()}
           </ContentSliderBox>
-            <SliderArrowRotate xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-              viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
-              d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-              rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" 
-              stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext}/>
-            </SliderArrowRotate>
+          <SliderArrowRotate xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+            viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+            d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext} />
+          </SliderArrowRotate>
         </CarouselSlider>
         <SliderCarousel>
           <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
           <SliderBolinha isSelected={selectedSlide === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
           <SliderBolinha isSelected={selectedSlide === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
         </SliderCarousel>
+        <ContentCarouselMobile>
+          <Carousel
+            afterSlide={(index) => this.setState({ slideIndex: index })}
+            cellSpacing={32}
+            enableKeyboardControls='true'
+            slideIndex={this.state.slideIndex}
+          >
+            {this.list.map(i => (
+              <SessionSlider>
+                <ContentSliderMeio selected>
+                  <p>{i.text}</p>
+                  <ContentSliderParagraph>{i.name}</ContentSliderParagraph>
+                </ContentSliderMeio>
+              </SessionSlider>
+            ))}
+          </Carousel>
+        </ContentCarouselMobile>
       </ContentSlider >
     )
   }
