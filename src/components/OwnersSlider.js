@@ -231,7 +231,6 @@ class Home extends Component {
 
     if (current !== 0) {
       this.setState({
-        current: current === 2 ? length - 0 : current + 3,
         current: current === 0 ? length - 2 : current - 1,
       })
     }
@@ -244,8 +243,6 @@ class Home extends Component {
     if (current <= length - 1) {
 
       this.setState({
-        current: current === length - 1 ? 0 : current + 1,
-        current: current === 0 ? length - 2 : current - 1,
         current: current === 2 ? 0 : current + 1,
       })
     }

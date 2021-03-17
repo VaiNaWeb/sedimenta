@@ -549,7 +549,7 @@ class Header extends Component {
               {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
                 : null}
             </SubContainerText>
-            <ContentParahraph right={sliderHeader === 1 && '-42px' || sliderHeader === 2 && '-92px'}>
+            <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>
               <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
               <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
             </ContentParahraph>
