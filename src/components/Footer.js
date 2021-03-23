@@ -13,6 +13,11 @@ const ContentFooter = styled.div`
   justify-content: space-between;
   padding-bottom: 8rem;
 
+  @media (max-width: 768px) {
+    width: 93%;
+    padding-bottom: 5rem;
+	}
+
   @media (max-width: 648px) {
     flex-direction: column;
     padding-bottom: 0;
@@ -22,7 +27,6 @@ const ContentFooter = styled.div`
 
 const ContentFooterRede = styled.div`
   display: flex;
-  align-items: center;
 
   @media (max-width: 648px) {
     width: 93%;
@@ -37,8 +41,12 @@ const ContentRedeSocial = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  @media (max-width: 1023px) {
+    margin-bottom: 10%;
+	}
+  
   @media (max-width: 768px) {
-    margin-bottom: 8rem;
+    margin-bottom: 10rem;
 	}
 
   @media (max-width: 648px) {
@@ -67,9 +75,15 @@ const ContentFooterContact = styled.div`
   margin-right: 2rem;
   margin-bottom: ${props => (props.marginBottom ? '1.1rem' : '0')};
 
+  @media (max-width: 1023px) {
+    margin-right: 4rem;
+	}
+
   @media (max-width: 768px) {
     width: 41%;
     line-height: 24px;
+    margin-bottom: ${props => (props.marginBottomMobile ? '3rem' : '0')};
+
 	}
 
   @media (max-width: 648px) {
@@ -111,6 +125,10 @@ const FooterLinha = styled.div`
   background: linear-gradient(to right, #992836, #4D141B);
   margin-bottom: 0.4rem;
 
+  @media (max-width: 1023px) {
+    width: 19vw;
+	}
+
   @media (max-width: 768px) {
     width: 25vw;
   }
@@ -133,7 +151,7 @@ const ContentFooterTopo = styled.a`
   top: 150px;
   opacity: 1;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     display: none;
 	}
 `;
@@ -144,6 +162,10 @@ const ContentFooterTriangle = styled.div`
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 10px solid #992836;
+
+  @media (max-width: 1023px) {
+    display: none; 
+	}
 `;
 
 const FooterFinish = styled.footer`
@@ -178,7 +200,7 @@ class Footer extends Component {
               <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
               <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
             </ContentFooterContact>
-            <ContentFooterContact marginBottom>
+            <ContentFooterContact marginBottom marginBottomMobile>
               <FooterLinha></FooterLinha>
               <TitleFooter>CONTATO PORTUGAL</TitleFooter>
               <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>

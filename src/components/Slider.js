@@ -54,7 +54,7 @@ const ContentTitleSlider = styled.div`
   justify-content: center;
 
   hr {
-    width: 15%;
+    width: 3.5vw;
     border: 1px solid #FFFFFF;
     opacity: 1;
   }
@@ -63,7 +63,8 @@ const ContentTitleSlider = styled.div`
 const TitleSlider = styled.h2`
   width: 65%;
   color: #FFFFFF;
-  font-family: 'Product Sans', Bold;
+  font-size: 1.4rem;
+  font-family: 'Spartan', Bold;
   text-align: center;
   text-transform: uppercase;
   margin-top: 2rem;
@@ -98,6 +99,11 @@ const ContentSliderBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+
+  @media (max-width: 1023px) {
+    width: 95%;
+	}
  
   @media (max-width: 648px) {
     display: none;
@@ -106,8 +112,9 @@ const ContentSliderBox = styled.div`
 
 const SliderArrow = styled.svg`
   margin: 0 2rem 0 2rem;
+  transform: ${props => props.isRotation && 'rotate(180deg)'};
   position: relative;
-  bottom: 30px;
+  bottom: ${props => props.botton && '30px'};;
   cursor: pointer;
 
   &:hover {
@@ -117,29 +124,28 @@ const SliderArrow = styled.svg`
     }
   }
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     display: none; 
 	}
 `;
 
-const SliderArrowRotate = styled.svg`
-  margin: 0 2rem 0 2rem;
-  position: relative;
-  bottom: 30px;
-  transform: rotate(180deg);
-  cursor: pointer;
+// const SliderArrowRotate = styled.svg`
+//   margin: 0 2rem 0 2rem;
+//   position: relative;
+//   bottom: 30px;
+//   cursor: pointer;
 
-  &:hover {
-    path {
-      stroke: #FFFFFF;
-      opacity: 1;
-    }
-  }
+//   &:hover {
+//     path {
+//       stroke: #FFFFFF;
+//       opacity: 1;
+//     }
+//   }
 
-  @media (max-width: 648px) {
-    display: none; 
-	}
-`;
+//   @media (max-width: 768px) {
+//     display: none; 
+// 	}
+// `;
 
 const ContentSliderMeio = styled.div`
   width: 24.8em;
@@ -159,8 +165,16 @@ const ContentSliderMeio = styled.div`
     width: 18em;
 	}
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     width: 23em;
+	}
+
+  @media (max-width: 1023px) {
+    width: 18em;
+	}
+
+  @media (max-width: 648px) {
+    /* width: 23em; */
     background-color: #FFFFFF;
     color: #373737;
     font-size: 0.9rem;
@@ -300,7 +314,7 @@ class Slider extends Component {
           <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
-          <SliderArrow xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+          <SliderArrow botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
             viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
             d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
             rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
@@ -309,12 +323,12 @@ class Slider extends Component {
           <ContentSliderBox>
             {this.renderSlider()}
           </ContentSliderBox>
-          <SliderArrowRotate xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+          <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
             viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
             d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
             rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext} />
-          </SliderArrowRotate>
+          </SliderArrow>
         </CarouselSlider>
         <SliderCarousel>
           <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
