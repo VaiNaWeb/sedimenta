@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Carousel from 'nuka-carousel';
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
@@ -50,14 +51,19 @@ const ContainerLogo = styled.div`
 
 const HeaderScroll = styled.div`
   width: 100%;
-  height: 3.59rem;
+  height: 3.79rem;
   background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
   box-shadow: ${props => (props.isScroll && '0px 3px 6px #00000029')};
-  padding: 0 1.5rem 0.4rem;
+  padding: 0 1.5rem;
+  margin-bottom: 0.9rem;
   transition: all 0.5s;
   position: fixed;
   top: 0;
   z-index: 99;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem 0.4rem;
+	}
 
   @media (max-width: 648px) {
     height: 3rem;
@@ -105,13 +111,12 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 648px) {
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF99;
     font-size: 0.75rem;
     align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 1rem;
-    padding-bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 1rem 0;
 	}
 `;
 
@@ -137,12 +142,12 @@ const ContainerHeaderMobile = styled.div`
   display: none;
 
   @media (max-width: 648px) {
-    width: 95%;
+    width: 100%;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans', Regular;
-    padding-top: 9rem;
+    padding-top: 14rem;
 	}
 
   @media (max-width: 350px) {
@@ -179,7 +184,7 @@ const ContainerHeaderBox = styled.div`
 
   @media (max-width: 648px) {
     width: 100vw;
-    height: 75vh;
+    height: 100vh;
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
     justify-content: flex-end;
     flex-direction: column-reverse;
@@ -196,7 +201,7 @@ const SubContainer = styled.div`
   justify-content: flex-end;
 
   @media (max-width: 648px) {
-    justify-content: center;
+    justify-content: flex-start;
 	}
 `;
 
@@ -208,10 +213,12 @@ const BoxMenu = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
+    height: 100%;
     display: ${props => (props.open ? 'flex' : 'none')};
-    align-items: end;
+    align-items: center;
     flex-direction: column;
-    padding: 0 0 0 1rem;
+    justify-content: center;
+    /* padding: 0 0 0 1rem; */
 	}
 `;
 
@@ -228,7 +235,8 @@ const SubContainerParagraph = styled.p`
   a {
     color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
     font-size: 0.8rem;
-    font-family: 'Arial', Bold;
+    font-family: 'Spartan', SemiBold;
+    font-weight: bold;
     text-decoration: none;
 
     @media (max-width: 648px) {
@@ -238,7 +246,7 @@ const SubContainerParagraph = styled.p`
 
   @media (max-width: 648px) {
     margin-right: 0;
-    padding-top: 1.3rem;
+    padding-top: 4rem;
 	}
 `;
 
@@ -256,19 +264,34 @@ const MenuHamburguer = styled.img`
 `;
 
 const MenuHamburguerMobile = styled.img`
-  height: 13px;
+  height: 16px;
   display: none;
   cursor: pointer;
 
-@media (max-width: 648px) {
+  @media (max-width: 648px) {
+    display: flex;
+    align-self: flex-end;
+    padding-right: 1rem;
+  }
+`;
+
+const CarouselMobile = styled.div`
   display: flex;
-  align-self: end;
-  padding-left: 1rem;
-}
+
+  @media (max-width: 648px) {
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-left: 2rem;
+    margin-right: 2rem;
+	}
 `;
 
 const SubContainerText = styled.div`
-  width: ${props => (props.title ? '53%' : '43%')};
+  width: ${props => (props.title ? '55%' : '45%')};
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -276,7 +299,7 @@ const SubContainerText = styled.div`
   padding: 8% 4rem;
   margin-top: 4rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     width: 70%;
 	}
 
@@ -293,8 +316,8 @@ const SubContainerText = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
-  font-family: 'Product Sans', Bold;
+  font-size: 2.875rem;
+  font-family: 'Spartan', Bold;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -335,24 +358,19 @@ const ParagraphHeaderImage = styled.a`
 `;
 
 const ButtonHeader = styled.button`
-  width: 55%;
+  width: 49%;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
-  font-family: 'Open Sans', Bold;
+  border-radius: 2px;
   text-transform: uppercase;
   letter-spacing: 0.14px;
-  padding: 0.7rem;
+  padding: 0.95rem;
   outline: none;
   cursor: pointer;
 
   @media (max-width: 1130px) {
     width: 65%;
 	}
-
-  @media (max-width: 768px) {
-    width: 48%;
-	}
-
   @media (max-width: 648px) {
     font-size: 0.8rem;
     font-weight: bold;
@@ -367,12 +385,9 @@ const ButtonHeader = styled.button`
   a {
     color: #FFFFFF;
     text-decoration: none;
-    font-size: 1rem;
-    font-family: 'Product Sans', Bold;
-
-    @media (max-width: 485px) {
-      font-size: 0.8rem;
-	  }
+    font-size: 0.8rem;
+    font-family: 'Spartan', Bold;
+    font-weight: 600;
   }
 `;
 
@@ -385,7 +400,7 @@ const Slider = styled.div`
 
   @media (max-width: 648px) {
     position: relative;
-    bottom: 1em;
+    bottom: 2.3em;
 	}
 `;
 
@@ -467,9 +482,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
+    // this.interval = setInterval(
+    //   this.handleTransition, 6000
+    // )
   }
 
   handleTransition = () => {
@@ -487,7 +502,7 @@ class Header extends Component {
     const positionBackground = sliderHeader === 0 && '-255px';
     const positionBackground1 = sliderHeader === 1 && '-375px';
     const positionBackground2 = sliderHeader === 2 && '-545px';
-    
+
     return (
       <>
         <HeaderScroll isScroll={isScroll}>
@@ -546,7 +561,7 @@ class Header extends Component {
             >
               <Title>{artigos[sliderHeader].title}</Title>
               <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nosso serviço!</a></ButtonHeader>
+              {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
                 : null}
             </SubContainerText>
             <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>

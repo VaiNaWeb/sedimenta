@@ -72,10 +72,11 @@ const ParagraphForm = styled.p`
 
 const ButtonSolicitation = styled.button`
   width: 18%;
-  color: #FFFFFF;
-  background: none;
+  color: #974757;
+  background: #FFFFFF;
   border: 2px solid #FFF;
-  font-family: 'Product Sans', Bold;
+  border-radius: 2px;
+  font-family: 'Arial', Bold;
   font-weight: 700;
   padding: .75rem;
   margin-top: 2rem;
@@ -84,7 +85,12 @@ const ButtonSolicitation = styled.button`
   justify-content: center;
   text-transform: uppercase;
   outline: none;
+  opacity: 1;
   cursor: pointer;
+
+  @media (max-width: 1023px) {
+    width: 21%;
+	}
 
   @media (max-width: 768px) {
     width: 27%;
@@ -278,9 +284,10 @@ const Textarea = styled.textarea`
 
 const ButtonForm = styled.button`
   width: 10vw;
-  background: none;
+  background: #FFFFFF;
   border: 2px solid #FFFFFF;
-  color: #FFFFFF;
+  border-radius: 2px;
+  color: #b56670;
   font-weight: bold;
   padding: 0.5rem 0.5rem;
   margin-top: 3rem;

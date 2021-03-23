@@ -23,9 +23,11 @@ const ContentServiços = styled.div`
   margin-bottom: 20rem;
   padding-left: 5rem;
 
+  @media (max-width: 1023px) {
+    padding-left: 3rem;
+	}
+
   @media (max-width: 768px) {
-    width: 100%;
-    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -35,23 +37,25 @@ const ContentServiços = styled.div`
 
   @media (max-width: 648px) {
     padding-left: 0;
+    margin: 5rem 0 12rem;
 	}
 `;
 
 const ContentServiçosTitle = styled.div`
   color: #373737;
-  font-size: 1.4rem;
-  font-family: 'Product Sans', Bold;
+  font-size: 1.125rem;
+  font-family: 'Spartan', Bold;
 
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
+    margin-top: 2rem;
 	}
   hr {
-    width: 4vw;
+    width: 3.5vw;
     border: 1px solid #707070;
     margin-bottom: 2rem;
 
@@ -804,7 +808,7 @@ class Services extends Component {
         <>
           <ContentBoxGalery id={index} isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
             <ContentBoxImage src={item.imageServices} alt='category' />
-            <BoxTitle>{item.title}</BoxTitle>
+            <BoxTitle id="product-sans">{item.title}</BoxTitle>
             <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
               <BoxText>{item.text}</BoxText>
               <Box onClick={() => this.handleClick(index)} widthText='61%'>{item.knowMore} <BoxImage src={setinha} /></Box>

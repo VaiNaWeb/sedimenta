@@ -35,8 +35,8 @@ const CargoMobile = styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
   padding-left: 1rem;
-  /* margin-right: 2rem; */
 }
+
   .slider-control-centerleft {
     display: none;
   }
@@ -56,34 +56,6 @@ const CargoMobile = styled.div`
   button {
     outline: none;
     fill: #373737 !important;
-  }
-`;
-
-const ScroolMobile = styled.div`
-  width: 341px;
-  display: block;
-  margin-top: 1rem;
-`;
-
-const ImageMobile = styled.svg`
-  transform: ${props => props.isRotation && 'rotate(180deg)'};
-  position: absolute;
-  left: ${props => props.left && '80px'};
-  right: ${props => props.right && '80px'};
-  cursor: pointer;
-
-  path {
-    width: 5rem;
-    height: 5rem;
-    stroke: #373737;
-    opacity: 1;
-  }
-
-  &:hover {
-    path {
-      stroke: #373737;
-      opacity: 1;
-    }
   }
 `;
 
@@ -148,7 +120,7 @@ const ContentCargoCaixa = styled.div`
   }
   
   hr {
-    width: 3vw;
+    width: 3.1vw;
     border: 1px solid #00000029;
     margin-bottom: 1rem;
     opacity: 1;
@@ -160,7 +132,7 @@ const ContentCargoCaixa = styled.div`
   }
 
   img {
-    margin-top: 0.9rem;
+    margin-top: 1.2rem;
 
   @media (max-width: 648px) {
       margin-top: 0.9rem;
@@ -170,17 +142,17 @@ const ContentCargoCaixa = styled.div`
 
 const ContentBoxTitle = styled.p`
   color: #373737;
-  font-size: 1.125rem;
-  font-family: 'Product Sans', Bold;
+  font-size: 1rem;
+  font-family: 'Spartan', Bold;
   font-weight: bold;
   text-transform: uppercase;
 `;
 
 const ContentBoxParagraph = styled.p`
   color: #373737;
-  font-size: 0.6875rem;
-  font-family: 'Product Sans', Regular;
-  padding-top: 0.2rem;
+  font-size: 0.625rem;
+  font-family: 'Spartan', Medium;
+  padding-top: 0.1rem;
 `;
 
 const Cargo = styled.div`
@@ -196,7 +168,6 @@ const Cargo = styled.div`
 
 class Home extends Component {
   state = {
-    current: 0,
     persons: [
       {
         imgPerson: People1,
@@ -224,29 +195,6 @@ class Home extends Component {
       },
     ]
   }
-
-  handlePrevSlide = () => {
-    const { current } = this.state;
-    const length = this.state.persons.length - 1;
-
-    if (current !== 0) {
-      this.setState({
-        current: current === 0 ? length - 2 : current - 1,
-      })
-    }
-  };
-
-  handleNextSlide = () => {
-    const { current } = this.state;
-    const length = this.state.persons.length - 1;
-
-    if (current <= length - 1) {
-
-      this.setState({
-        current: current === 2 ? 0 : current + 1,
-      })
-    }
-  };
 
   renderPerson = () => {
     return this.state.persons.map((item, index) => {
@@ -283,28 +231,6 @@ class Home extends Component {
           >
             {this.renderPerson()}
           </Carousel>
-          <ScroolMobile>
-            {
-              this.state.current !== 0 && (
-                <ImageMobile left xmlns="http://www.w3.org/2000/svg" width="22.262" height="22"
-                  viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
-                  d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-                  rotate(-90)" fill="none" stroke="purple" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handlePrevSlide} />
-                </ImageMobile>
-              )
-            }
-            {
-              this.state.current !== 2 && (
-                <ImageMobile right isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="22"
-                  viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
-                  d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-                  rotate(-90)" fill="none" stroke="purple" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleNextSlide} />
-                </ImageMobile>
-              )
-            }
-          </ScroolMobile>
         </CargoMobile>
         <Cargo>
           {this.renderPerson()}
