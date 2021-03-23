@@ -190,7 +190,8 @@ const ContainerHeaderBox = styled.div`
     flex-direction: column-reverse;
     padding: 1rem 0 0 0;
     opacity: 1;
-    position: absolute;
+    /* position: absolute; */
+    position: ${props => (props.open ? 'fixed' : 'absolute')};
     right: 0;
     top: 0;
 	}
@@ -234,7 +235,7 @@ const SubContainerParagraph = styled.p`
 
   a {
     color: ${props => (props.isScroll ? '#373737' : '#FFFFFF')};
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-family: 'Spartan', SemiBold;
     font-weight: bold;
     text-decoration: none;
@@ -291,8 +292,8 @@ const CarouselMobile = styled.div`
 `;
 
 const SubContainerText = styled.div`
-  width: ${props => (props.title ? '55%' : '45%')};
-  height: 70vh;
+  width: ${props => (props.title ? '53%' : '45%')};
+  height: 73.5vh;
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
@@ -316,7 +317,7 @@ const SubContainerText = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.875rem;
+  font-size: 2.625rem;
   font-family: 'Spartan', Bold;
   
   @media (max-width: 768px) {
@@ -326,8 +327,9 @@ const Title = styled.h1`
 
 const ParagraphHeader = styled.p`
   width: ${props => (props.paragraph ? '89%' : '99%')};
-  margin: 1rem 0 1.5rem;
   font-family: 'Open Sans', Regular;
+  font-size: 1.125rem;
+  margin: 1rem 0 1.5rem;
   opacity: 1;
 
   @media (max-width: 450px) {
@@ -385,8 +387,8 @@ const ButtonHeader = styled.button`
   a {
     color: #FFFFFF;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-family: 'Spartan', Bold;
+    font-size: 0.813rem;
+    font-family: 'Spartan', 'SemiBold';
     font-weight: 600;
   }
 `;

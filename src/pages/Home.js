@@ -100,7 +100,7 @@ const Content = styled.div`
 const TitleHeader = styled.h2`
   width: 15vw;
   color: #373737;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-family: 'Spartan', Bold;
   margin-left: 2.2rem;
 
@@ -174,6 +174,7 @@ const ContentSobre = styled.div`
   span {
     display: flex;
     justify-content: space-between;
+    margin-top: 5rem;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -191,15 +192,12 @@ const ContentBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
-  @media (max-width: 648px) {
-  }
 `;
 
 const ContentSobreTitle = styled.div`
   width: 11vw;
   color: #373737;
-  font-size: 1.25rem;
+  font-size: 1.313rem;
   font-family: 'Spartan', Bold;
 
   @media (max-width: 1024px) {
