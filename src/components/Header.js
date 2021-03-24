@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Carousel from 'nuka-carousel';
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
@@ -285,21 +284,6 @@ const MenuHamburguerMobile = styled.img`
     align-self: flex-end;
     padding-right: 1rem;
   }
-`;
-
-const CarouselMobile = styled.div`
-  display: flex;
-
-  @media (max-width: 648px) {
-    width: 100%;
-    background-color: transparent;
-    box-shadow: none;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    padding-left: 2rem;
-    margin-right: 2rem;
-	}
 `;
 
 const SubContainerText = styled.div`
