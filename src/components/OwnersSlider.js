@@ -15,7 +15,7 @@ const ContentCargo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 7rem 0 5rem 0;
+  margin: 8rem 0 5rem 0;
 
   @media (max-width: 648px) {
     margin: 4rem 0 2rem;
@@ -159,7 +159,7 @@ const Cargo = styled.div`
   width: 98%;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 
   @media (max-width: 648px) {
     display: none;
@@ -173,7 +173,7 @@ class Home extends Component {
         imgPerson: People1,
         name: "Eduardo Pereira",
         office: "CEO,",
-        area: "Responsável pelas áreas Contábil e Fiscal;",
+        area: "Área Contábil e Fiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/eduardo-pereira-4b686013/",
       },
@@ -181,7 +181,7 @@ class Home extends Component {
         imgPerson: People2,
         name: "CRISTIANI NASCIMENTO",
         office: "CEO,",
-        area: "Resp. pela Legalização de Empresas, Parafiscal;",
+        area: "Legalização de Empresas, Parafiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
       },
@@ -189,7 +189,7 @@ class Home extends Component {
         imgPerson: People3,
         name: "Mauro Moura",
         office: "CEO,",
-        area: "Responsável pelo Capital Humano;",
+        area: "Capital Humano;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/mauro-moura-5a406a74/",
       },

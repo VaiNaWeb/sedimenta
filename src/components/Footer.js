@@ -35,6 +35,7 @@ const ContentFooterRede = styled.div`
 `;
 
 const ContentRedeSocial = styled.div`
+  width: 15%;
   color: #373737;
   margin-bottom: 5%;
   display: flex;
@@ -95,10 +96,10 @@ const ContentFooterContact = styled.div`
 `;
 
 const TitleFooter = styled.h5`
-  font-family: 'Open Sans', Extrabold;
-  font-size: 1rem;
+  font-size: 0.874rem;
+  font-family: 'Spartan', Extrabold;
   font-weight: bolder;
-  margin: 0 0 1.5rem 0;
+  margin: 1rem 0 2rem;
 
   @media (max-width: 648px) {
     margin: 0 0 2rem 1rem;
@@ -106,8 +107,9 @@ const TitleFooter = styled.h5`
 `;
 
 const ParagraphFooter = styled.p`
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   font-family: 'Open Sans', Regular;
+  padding-bottom: 0.3rem;
 
   @media (max-width: 648px) {
     width: 65vw;
@@ -120,17 +122,17 @@ const ParagraphFooter = styled.p`
 `;
 
 const FooterLinha = styled.div`
-  width: 14vw;
+  width: 100%;
   height: 1vh;
   background: linear-gradient(to right, #992836, #4D141B);
-  margin-bottom: 0.4rem;
+  /* margin-bottom: 0.4rem; */
 
   @media (max-width: 1023px) {
-    width: 19vw;
+    /* width: 19vw; */
 	}
 
   @media (max-width: 768px) {
-    width: 25vw;
+    /* width: 25vw; */
   }
 
   @media (max-width: 648px) {

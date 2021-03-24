@@ -42,8 +42,9 @@ const ContentServiços = styled.div`
 `;
 
 const ContentServiçosTitle = styled.div`
+  width: 40%;
   color: #373737;
-  font-size: 1.125rem;
+  font-size: 1.313rem;
   font-family: 'Spartan', Bold;
 
   @media (max-width: 768px) {
@@ -54,18 +55,16 @@ const ContentServiçosTitle = styled.div`
     margin-bottom: 3.5rem;
     margin-top: 2rem;
 	}
+
+  @media (max-width: 648px) {
+      width: 100%;
+	  }
+
   hr {
-    width: 3.5vw;
-    border: 1px solid #707070;
+    width: 4rem;
+    background-color: #707070;
+    border: 2px solid #707070;
     margin-bottom: 2rem;
-
-    @media (max-width: 1024px) {
-      width: 8vw;
-	  }
-
-    @media (max-width: 648px) {
-     width: 25vw;
-	  }
   }
 
   h3 {
@@ -182,9 +181,9 @@ const BoxContentText = styled.span`
 
 const BoxTitle = styled.h2`
   height: 15%;
-  color: ${props => (props.isOpenTitle ? '#812223' : '#000000')};
-  font-size: 1.2rem;
-  font-family: 'Product Sans', Bold;
+  color: ${props => (props.isOpenTitle ? '#812223' : '#373737')};
+  font-size: 1rem;
+  font-family: 'Spartan', Bold;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;

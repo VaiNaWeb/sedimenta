@@ -42,31 +42,27 @@ const ContentFinishSolicitation = styled.span`
 
 const TitleForm = styled.h3`
   width: 49%;
-  font-size: 2rem;
-  font-family: 'Open Sans', Bold;
+  font-size: 1.75rem;
+  font-family: 'Spartan', Bold;
   text-align: center;
-  margin-top: ${props => props.marginTop ? '11rem' : '4rem'};
-
-  @media (max-width: 768px) {
-    width: 75%;
-	}
+  text-transform: uppercase;
+  margin-top: ${props => props.marginTop ? '11rem' : '7.5rem'};
 
   @media (max-width: 648px) {
     width: 100%;
-    font-size: 1.8rem;
+    /* font-size: 1.6rem; */
 	}
 `;
 
 const ParagraphForm = styled.p`
   width: 49%;
   font-size: 1rem;
-  font-family: 'Open Sans', SemiBold;
+  font-family: 'Open Sans', Regular;
   text-align: center;
   margin-top: 0.6rem;
 
   @media (max-width: 648px) {
     width: 95%;
-    font-size: 1.2rem;
 	}
 `;
 
@@ -76,6 +72,7 @@ const ButtonSolicitation = styled.button`
   background: #FFFFFF;
   border: 2px solid #FFF;
   border-radius: 2px;
+  font-size: 0.813rem;
   font-family: 'Arial', Bold;
   font-weight: 700;
   padding: .75rem;
@@ -288,6 +285,7 @@ const ButtonForm = styled.button`
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   color: #b56670;
+  font-size: 0.813rem;
   font-weight: bold;
   padding: 0.5rem 0.5rem;
   margin-top: 3rem;
@@ -298,7 +296,7 @@ const ButtonForm = styled.button`
   cursor: pointer;
 
   @media (max-width: 648px) {
-    width: 35vw;
+    width: 30%;
 	}
 `;
 
@@ -581,7 +579,7 @@ class Formulation extends Component {
             Ainda em duvida?? 
           </TitleForm>
           <ParagraphForm>
-            Deixe a Sedimenta cuidar da gestão financeira da sua empresa para você!!
+            Deixe a <b>Sedimenta</b> cuidar da gestão financeira da sua empresa para você!!
           </ParagraphForm>
           <ButtonSolicitation
             display={this.state.solicitation}

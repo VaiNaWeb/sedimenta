@@ -9,7 +9,7 @@ const ContentSlider = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem 0 0;
+  padding: 4.5rem 0 0;
   margin-bottom: 4rem;
 
   @media (max-width: 648px) {
@@ -44,6 +44,7 @@ const ContentCarouselMobile = styled.div`
   
   button {
     outline: none;
+    fill: #FFFFFF !important;
   }
 `;
 
@@ -52,10 +53,16 @@ const ContentTitleSlider = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 5.5rem;
+
+  @media (max-width: 648px) {
+    margin-bottom: 4rem;
+	}
 
   hr {
-    width: 3.5vw;
-    border: 1px solid #FFFFFF;
+    width: 4rem;
+    background-color: #FFFFFF;
+    border: 2px solid #FFFFFF;
     opacity: 1;
   }
 `;
@@ -63,7 +70,7 @@ const ContentTitleSlider = styled.div`
 const TitleSlider = styled.h2`
   width: 65%;
   color: #FFFFFF;
-  font-size: 1.4rem;
+  font-size: 1.313rem;
   font-family: 'Spartan', Bold;
   text-align: center;
   text-transform: uppercase;
@@ -71,19 +78,18 @@ const TitleSlider = styled.h2`
   opacity: 1;
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 90%;
 	}
 `;
 
 const CarouselSlider = styled.div`
   width: 100%;
-  margin: 6rem 0 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media (max-width: 648px) {
-    margin: 4rem 0 2rem;
+    /* margin: 4rem 0 2rem; */
     align-items: flex-end;
 	}
 `;
@@ -99,7 +105,7 @@ const ContentSliderBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  /* padding: 3rem 0; */
 
   @media (max-width: 1023px) {
     width: 95%;
@@ -114,7 +120,7 @@ const SliderArrow = styled.svg`
   margin: 0 2rem 0 2rem;
   transform: ${props => props.isRotation && 'rotate(180deg)'};
   position: relative;
-  bottom: ${props => props.botton && '30px'};;
+  bottom: ${props => props.botton && '28px'};;
   cursor: pointer;
 
   &:hover {
@@ -129,24 +135,6 @@ const SliderArrow = styled.svg`
 	}
 `;
 
-// const SliderArrowRotate = styled.svg`
-//   margin: 0 2rem 0 2rem;
-//   position: relative;
-//   bottom: 30px;
-//   cursor: pointer;
-
-//   &:hover {
-//     path {
-//       stroke: #FFFFFF;
-//       opacity: 1;
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     display: none; 
-// 	}
-// `;
-
 const ContentSliderMeio = styled.div`
   width: 24.8em;
   background-color: ${props => (props.selected ? '#FFFFFF' : '#A37D82')};
@@ -157,7 +145,7 @@ const ContentSliderMeio = styled.div`
   align-items: flex-end;
   flex-direction: column;
   padding: 2rem 1.3rem 1rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   transform: ${props => (props.selected && 'scale(1.4)')};
   outline: none;
 
@@ -169,12 +157,12 @@ const ContentSliderMeio = styled.div`
     width: 23em;
 	}
 
-  @media (max-width: 1023px) {
+  @media (max-width: 768px) {
     width: 18em;
 	}
 
   @media (max-width: 648px) {
-    /* width: 23em; */
+    width: 90%;
     background-color: #FFFFFF;
     color: #373737;
     font-size: 0.9rem;
@@ -191,7 +179,8 @@ const SliderCarousel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
+  margin: 1.5rem 0 2rem;
   cursor: pointer;
 
   @media (max-width: 648px) {
@@ -311,7 +300,7 @@ class Slider extends Component {
       <ContentSlider id='clientes'>
         <ContentTitleSlider>
           <hr></hr>
-          <TitleSlider>o que nossos clientes falam da gente!!</TitleSlider>
+          <TitleSlider>o que os clientes falam da nossa empresa!!</TitleSlider>
         </ContentTitleSlider>
         <CarouselSlider>
           <SliderArrow botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
