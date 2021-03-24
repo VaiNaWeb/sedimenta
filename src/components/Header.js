@@ -43,7 +43,7 @@ const ContainerLogo = styled.div`
 	}
 
   @media (max-width: 648px) {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     height: 95vh;
 	}
 }
@@ -55,7 +55,7 @@ const HeaderScroll = styled.div`
   background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
   box-shadow: ${props => (props.isScroll && '0px 3px 6px #00000029')};
   padding: 0 1.5rem;
-  margin-bottom: 0.9rem;
+  /* margin-bottom: 0.9rem; */
   transition: all 0.5s;
   position: fixed;
   top: 0;
@@ -111,12 +111,15 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 648px) {
+    width: 100%;
     border-top: 1px solid #FFFFFF99;
     font-size: 0.75rem;
     align-items: flex-start;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1.5rem 1rem 0;
+    padding: 1.5rem 1rem;
+    position: absolute;
+    bottom: 0;
 	}
 `;
 
@@ -147,11 +150,7 @@ const ContainerHeaderMobile = styled.div`
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans', Regular;
-    padding-top: 14rem;
-	}
-
-  @media (max-width: 350px) {
-    padding-top: 7rem;
+    /* padding-top: 14rem; */
 	}
 `;
 
@@ -190,7 +189,6 @@ const ContainerHeaderBox = styled.div`
     flex-direction: column-reverse;
     padding: 1rem 0 0 0;
     opacity: 1;
-    /* position: absolute; */
     position: ${props => (props.open ? 'fixed' : 'absolute')};
     right: 0;
     top: 0;
@@ -214,13 +212,24 @@ const BoxMenu = styled.div`
 
   @media (max-width: 648px) {
     width: 100%;
-    height: 100%;
+    height: 75%;
     display: ${props => (props.open ? 'flex' : 'none')};
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* padding: 0 0 0 1rem; */
 	}
+`;
+
+const Box = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 648px) {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const rotate = keyframes`
@@ -242,6 +251,7 @@ const SubContainerParagraph = styled.p`
 
     @media (max-width: 648px) {
       color: #FFFFFF !important;
+      font-size: 1rem;
 	  }
   }
 
@@ -265,11 +275,12 @@ const MenuHamburguer = styled.img`
 `;
 
 const MenuHamburguerMobile = styled.img`
-  height: 16px;
+  height: 12px;
   display: none;
   cursor: pointer;
 
   @media (max-width: 648px) {
+    height: ${props => (props.height && '18px')};
     display: flex;
     align-self: flex-end;
     padding-right: 1rem;
@@ -308,11 +319,9 @@ const SubContainerText = styled.div`
     width: 95%;
     text-align: center;
     align-items: center;
-    padding: 25% 0;
-	}
-
-  @media (max-width: 470px) {
-    padding: 15% 0;
+    justify-content: center;
+    padding: 0;
+    /* padding: 25% 0; */
 	}
 `;
 
@@ -321,7 +330,7 @@ const Title = styled.h1`
   font-family: 'Spartan', Bold;
   
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 3rem;
 	}
 `;
 
@@ -333,7 +342,7 @@ const ParagraphHeader = styled.p`
   opacity: 1;
 
   @media (max-width: 450px) {
-    width: 100%;
+    width: 95%;
 	}
 `;
 
@@ -364,24 +373,29 @@ const ButtonHeader = styled.button`
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   border-radius: 2px;
-  text-transform: uppercase;
   letter-spacing: 0.14px;
   padding: 0.95rem;
+  text-transform: uppercase;
   outline: none;
   cursor: pointer;
 
   @media (max-width: 1130px) {
     width: 65%;
 	}
+
   @media (max-width: 648px) {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     font-weight: bold;
+    padding: 0.5rem 0.5rem;
+    margin-top: 3rem;
 	}
 
   @media (max-width: 485px) {
-    width: 85%;
+    width: 78%;
     display: flex;
     justify-content: center;
+    padding: 1.3rem 0 1rem;
+    margin-top: 1.2rem;
 	}
 
   a {
@@ -507,6 +521,7 @@ class Header extends Component {
 
     return (
       <>
+     
         <HeaderScroll isScroll={isScroll}>
           <ContainerHeader>
             <Logo src={logo} alt='Logo' />
@@ -523,22 +538,24 @@ class Header extends Component {
             <LogoMobile src={logo} alt='Logo' />
             <ContainerHeaderBox open={menu}>
               <BoxMenu open={menu}>
-                <SubContainerParagraph><a
-                  style={{
-                    color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                  }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                <SubContainerParagraph><a
-                  style={{
-                    color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                  }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
-                <SubContainerParagraph><a
-                  style={{
-                    color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                  }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
-                <SubContainerParagraph><a
-                  style={{
-                    color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                  }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                <Box>
+                  <SubContainerParagraph><a
+                    style={{
+                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                    }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a
+                    style={{
+                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                    }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a
+                    style={{
+                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                    }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                  <SubContainerParagraph><a
+                    style={{
+                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                    }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                </Box>
                 <ContainerHeaderMobile>
                   <ContainerHeaderPage>
                     <Page><b>Tel:</b> 2232-1337</Page>
@@ -546,8 +563,9 @@ class Header extends Component {
                   </ContainerHeaderPage>
                 </ContainerHeaderMobile>
               </BoxMenu>
+          
               <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
-              <MenuHamburguerMobile isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
+              <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} />
             </ContainerHeaderBox>
           </SubContainer>
         </HeaderScroll>

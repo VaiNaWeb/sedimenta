@@ -57,7 +57,11 @@ const ContentCaixaGeral = styled.div`
     width: 90%;
     padding: 3.5rem 0;
     text-align: center;
-    transform: translateY(-22%);
+    transform: translateY(-19%);
+	}
+
+  @media (max-width: 425px) {
+    transform: translateY(-16%);
 	}
 `;
 
@@ -82,6 +86,40 @@ const ContentCaixaBox = styled.div`
 	}
 `;
 
+const CaixaParagraph = styled.p`
+  width: ${props => (props.width)};
+  color: #373737;
+  font-size: 0.875rem;
+  font-family: 'Spartan', Bold;
+  font-weight: bold;
+  padding: 0 7rem 0 0;
+
+  b {
+    color: #000000;
+  }
+
+  @media (max-width: 1024px) {
+    width: ${props => (props.widthMobile)};
+    padding: 0 2rem 0 0;
+	}
+
+  @media (max-width: 768px) {
+    width: 30vw;
+    padding: ${props => (props.paddingMobile)};
+	}
+
+  @media (max-width: 648px) {
+    width: 72vw;
+    font-size: 1.25rem;
+    padding: 0 0 6.5rem;
+    padding-top: ${props => (props.paddingTop ? '4rem' : '0')};
+
+    :last-child {
+      padding-bottom: 1rem;
+    }
+	}
+`;
+
 const Content = styled.div`
   width: 18vw;
   display: flex;
@@ -92,7 +130,7 @@ const Content = styled.div`
 	}
 
   @media (max-width: 768px) {
-    width: 40vw;
+    width: 70vw;
     flex-direction: column;
 	}
 `;
@@ -122,40 +160,6 @@ const ImageSeta = styled.img`
   @media (max-width: 768px) {
     height: 4vh;
     transform: rotate(90deg);
-	}
-`;
-
-const CaixaParagraph = styled.p`
-  width: ${props => (props.width)};
-  color: #373737;
-  font-size: 0.875rem;
-  font-family: 'Spartan', Bold;
-  font-weight: bold;
-  padding: 0 8rem 0 0;
-
-  b {
-    color: #000000;
-  }
-
-  @media (max-width: 1024px) {
-    width: ${props => (props.widthMobile)};
-    padding: 0 2rem 0 0;
-	}
-
-  @media (max-width: 768px) {
-    width: 30vw;
-    padding: ${props => (props.paddingMobile)};
-	}
-
-  @media (max-width: 648px) {
-    width: 60vw;
-    font-size: 1.25rem;
-    padding: 0 0 5.5rem;
-    padding-top: ${props => (props.paddingTop ? '4rem' : '0')};
-
-    :last-child {
-      padding-bottom: 1rem;
-    }
 	}
 `;
 
@@ -205,38 +209,25 @@ const ContentSobreTitle = styled.div`
 	}
 
   @media (max-width: 648px) {
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     padding-bottom: 3rem;
 	}
 
   hr {
-    width: 3.5rem;
-    border: 1px solid #707070;
+    width: 4rem;
+    background-color: #707070;
+    border: 2px solid #707070;
     margin-bottom: 2rem;
-
-    @media (max-width: 1024px) {
-      width: 8vw;
-    }
-
-    @media (max-width: 768px) {
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 648px) {
-      width: 10vw;
-    }
-    @media (max-width: 425px) {
-      width: 15vw;
-    }
   }
 `;
 
 const ContentSobreText = styled.div`
-  width: 54%;
+  width: 57.8%;
   margin-top: ${props => (props.marginTop ? '2.4rem' : '0')};
   align-self: flex-end;
 
@@ -258,13 +249,13 @@ const ContentSobreText = styled.div`
 
 const ContainerParagraph = styled.p`
   color: #373737;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: 'Open Sans', Regular;
   padding-bottom: 1.4rem;
 
   @media (max-width: 648px) {
     width: 95%;
-    display: flex;
+    display: block;
     flex-direction: column;
     padding-bottom: ${props => (props.paddingBottom ? '0' : '1.4rem')};
 	}
@@ -278,7 +269,7 @@ const ContainerParagraphRead = styled.p`
     font-size: 0.75rem;
     font-family: 'Open Sans', Semibold;
     font-weight: 600;
-    padding-top: 1.2rem;
+    padding-top: 2rem;
     display: ${props => (props.isOpen ? 'none' : 'flex')};
     align-items: center;
     justify-content: center;
@@ -340,8 +331,9 @@ const SubContentMeio = styled.span`
 	}
 
   hr {
-    width: 5vw;
-    border: 1px solid #FFFFFF;
+    width: 4rem;
+    background-color: #FFFFFF;
+    border: 2px solid #FFFFFF;
     opacity: 1;
 
     @media (max-width: 768px) {
@@ -679,11 +671,11 @@ class Home extends Component {
             <ImageSeta src={seta} alt='seta' />
           </Content>
           <ContentCaixaBox>
-            <CaixaParagraph paddingTop width='27vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
+            <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
               eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
             <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência
               nas informações</CaixaParagraph>
-            <CaixaParagraph width='23vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
+            <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
               com o seu negócio</CaixaParagraph>
           </ContentCaixaBox>
         </ContentCaixaGeral>
