@@ -105,7 +105,6 @@ const ContentSliderBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 3rem 0; */
 
   @media (max-width: 1023px) {
     width: 95%;
@@ -179,7 +178,6 @@ const SliderCarousel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 2rem; */
   margin: 1.5rem 0 2rem;
   cursor: pointer;
 
