@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Carousel from 'nuka-carousel';
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
@@ -192,7 +193,6 @@ const Logo = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 0.325rem; */
 
   @media (max-width: 768px) {
     height: 8vh;
@@ -277,7 +277,6 @@ const rotate = keyframes`
 `;
 
 const SubContainerParagraph = styled.p`
-  /* margin-right: 2rem; */
   padding-left: 2rem;
   animation: 0.7s ease-in ${rotate};
 
@@ -297,21 +296,22 @@ const SubContainerParagraph = styled.p`
   @media (max-width: 648px) {
     margin-right: 0;
     padding-top: 4rem;
+    padding-left: 0;
 	}
 `;
 
-const MenuHamburguer = styled.img`
-  height: 13px;
-  display: ${props => (props.isClosed ? 'none' : 'flex')};
-  cursor: pointer;
+// const MenuHamburguer = styled.img`
+//   height: 13px;
+//   display: ${props => (props.isClosed ? 'none' : 'flex')};
+//   cursor: pointer;
 
 
-  @media (max-width: 648px) {
-    display: none;
-    align-self: end;
-    padding-left: 1rem;
-	}
-`;
+//   @media (max-width: 648px) {
+//     display: none;
+//     align-self: end;
+//     padding-left: 1rem;
+// 	}
+// `;
 
 const MenuHamburguerMobile = styled.img`
   height: 12px;
@@ -357,7 +357,6 @@ const Title = styled.h1`
   
   @media (max-width: 768px) {
     width: 95%;
-    /* font-size: 3rem; */
 	}
 `;
 
@@ -511,7 +510,6 @@ class Header extends Component {
   handleClick = () => {
     this.setState({
       menu: !this.state.menu,
-      // menuMobile: !this.state.menuMobile,
     });
   }
 
@@ -538,19 +536,22 @@ class Header extends Component {
   }
 
   renderCarousselMobile = () => {
-    const { isScroll } = this.state;
+    const { isScroll, sliderHeader } = this.state;
+
+    const positionBackground = sliderHeader === 0 && '-255px';
+    const positionBackground1 = sliderHeader === 1 && '-375px';
+    const positionBackground2 = sliderHeader === 2 && '-545px';
 
     return (
       <ContainerLogo>
         <Carousel
-          // cellSpacing={32}
           enableKeyboardControls='true'
         >
           {this.state.artigos.map((item, index) => (
             <ContainerLogo
-              image={item.image}
               mobile
-              // positionImg={positionBackground || positionBackground1 || positionBackground2}
+              image={item.image}
+              positionImg={positionBackground || positionBackground1 || positionBackground2}
               id="topo"
             >
               <span>
@@ -579,10 +580,6 @@ class Header extends Component {
 
   render() {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
-
-    const positionBackground = sliderHeader === 0 && '-255px';
-    const positionBackground1 = sliderHeader === 1 && '-375px';
-    const positionBackground2 = sliderHeader === 2 && '-545px';
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 // se menu for true renderiza X se for scroll renderiza  menu preto ou menu branco
@@ -643,7 +640,7 @@ class Header extends Component {
         <ContainerLogo
           desktop
           image={artigos[sliderHeader].image}
-          positionImg={positionBackground || positionBackground1 || positionBackground2}
+          // positionImg={positionBackground || positionBackground1 || positionBackground2}
           id="topo"
         >
           <span>
