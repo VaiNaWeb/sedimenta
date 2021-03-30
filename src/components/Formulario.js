@@ -20,6 +20,10 @@ const ContainerForm = styled.div`
   @media (max-width: 768px) {
     height: ${props => props.isBig ? '85vh' : '160vh'};
 	}
+
+  @media (max-width: 490px) {
+    height: ${props => props.isBig ? '85vh' : '200vh'};
+	}
 `;
 
 const ContentFinishSolicitation = styled.span`
@@ -40,6 +44,10 @@ const ContentFinishSolicitation = styled.span`
   @media (max-width: 648px) {
     height: ${props => props.height ? '150vh' : '55vh'};
 	}
+
+  @media (max-width: 490px) {
+    height: ${props => props.height ? '190vh' : '55vh'};
+	}
 `;
 
 const TitleForm = styled.h3`
@@ -52,7 +60,6 @@ const TitleForm = styled.h3`
 
   @media (max-width: 648px) {
     width: 100%;
-    /* font-size: 1.6rem; */
 	}
 `;
 
@@ -287,6 +294,11 @@ const ErroMessage = styled.div`
   border: none;
   border-radius: 2px;
   opacity: 1;
+
+
+  @media (max-width: 648px) {
+    width: 80%;
+	}
 `;
 
 const Error = styled.p`
