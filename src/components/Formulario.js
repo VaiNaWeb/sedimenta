@@ -4,6 +4,8 @@ import styled from 'styled-components';
 //Images
 import Proposta from '../assets/proposta.png';
 import Forma from '../assets/forma.svg';
+import closed from '../assets/close.svg';
+
 
 function encode(data) {
   return Object.keys(data)
@@ -67,15 +69,15 @@ const ParagraphForm = styled.p`
 `;
 
 const ButtonSolicitation = styled.button`
-  width: 18%;
+  width: 20%;
   color: #974757;
   background: #FFFFFF;
   border: 2px solid #FFF;
   border-radius: 2px;
-  font-size: 0.813rem;
-  font-family: 'Arial', Bold;
+  font-size: 0.75rem;
+  font-family: 'Spartan', Bold;
   font-weight: 700;
-  padding: .75rem;
+  padding: 1.3rem 0 1.1rem;
   margin-top: 2rem;
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
@@ -136,7 +138,7 @@ const Label = styled.label`
   display: ${props => props.labelShow ? "flex" : "none"};
 	color: #d2a2a8;
   font-size: 0.75rem;
-  font-family: 'Arial', ExtraBold;
+  font-family: 'Roboto', Black;
   font-weight: bold;
 	transition: 0.5s;
   position: absolute;
@@ -159,7 +161,7 @@ const Input = styled.input`
   border-radius: 0;
   color: #FFFFFF;
   font-size: 0.85rem;
-  font-family: 'Arial', ExtraBold;
+  font-family: 'Roboto', Black;
   font-weight: bold;
   padding-top: 0.9rem;
   padding-bottom: 0.3rem;
@@ -194,7 +196,7 @@ const FormTriangle = styled.div`
   transform: ${props => (props.isSelected ? 'rotate(180deg)' : 'rotate(0)')};
   transition: 0.5s;
   position: absolute;
-  bottom: 8px;
+  top: 10px;
   right: 10px;
   cursor: pointer;
 
@@ -234,9 +236,9 @@ const FormSelectList = styled.div`
   border-radius: 0;
   color: #d2a2a8;
   font-size: 0.8rem;
-  font-family: 'Arial', ExtraBold;
+  font-family: 'Roboto', Black;
   font-weight: bold;
-  padding: 0.7rem 0.6rem 0.2rem;
+  padding: 0.5rem 0.6rem;
   cursor: pointer;
 
   &:hover {
@@ -246,7 +248,7 @@ const FormSelectList = styled.div`
 
   :last-child {
     border-bottom: 1px solid #FFFFFF;
-    padding-bottom: 0.7rem;
+    padding-bottom: 0.5rem;
   }
 `;
 
@@ -259,7 +261,7 @@ const Textarea = styled.textarea`
   border-radius: 0;
   color: #FFFFFF;
   font-size: 0.9rem;
-  font-family: 'Arial', ExtraBold;
+  font-family: 'Roboto', Black;
   font-weight: bold;
   margin-top: 0.7rem;
   outline: none;
@@ -279,15 +281,37 @@ const Textarea = styled.textarea`
 	}
 `;
 
+const ErroMessage = styled.div`
+  width: 45%;
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 2px;
+  opacity: 1;
+`;
+
+const Error = styled.p`
+  color: #000000;
+  display: flex;
+  font-family: 'Open Sans', Regular;
+  font-size: 0.8rem;
+  padding: 0.3rem 1rem;
+
+  span {
+    color: #FF0000;
+    padding-right: 0.3rem;
+  }
+`;
+
 const ButtonForm = styled.button`
   width: 10vw;
   background: #FFFFFF;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   color: #b56670;
-  font-size: 0.813rem;
+  font-size: 0.75rem;
+  font-family: 'Spartan', Bold;
   font-weight: bold;
-  padding: 0.5rem 0.5rem;
+  padding: 1.2rem 0 1rem;
   margin-top: 3rem;
   display: flex;
   align-items: center;
@@ -299,6 +323,26 @@ const ButtonForm = styled.button`
     width: 30%;
 	}
 `;
+
+const ParagraphClosed = styled.p`
+  color: #FFFFFF;
+  font-size: 0.9375rem;
+  font-family: 'Open Sans', Semibold;
+  font-weight: bold;
+  margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const ImageClosed = styled.img`
+  width: 14%;
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
+  cursor: pointer;
+`;
+
 
 const BoxImage = styled.div`
   width: 100%;
@@ -319,7 +363,7 @@ const SuccessContainer = styled.div`
 
 const SuccessMessage = styled.span`
   color: #FFF;
-  font-family: 'Open Sans', Bold;
+  font-family: 'Roboto', Black;
   font-size: .9rem;
 `;
 
@@ -333,6 +377,7 @@ class Formulation extends Component {
     placeholderShowName: true,
     placeholderShowCompany: true,
     placeholderShowEmail: true,
+    error: false,
     inputName: '',
     inputCompany: '',
     inputEmail: '',
@@ -355,7 +400,7 @@ class Formulation extends Component {
     showSuccessMessage: false,
   }
 
-  handleSolicitacion = () => {
+  handleClick = () => {
     this.setState({
       solicitation: !this.state.solicitation,
     });
@@ -471,6 +516,20 @@ class Formulation extends Component {
     }).catch(() => { });
   }
 
+  handleCheck = () => {
+    const { name, company, email, subject } = this.state.form;
+
+    if (!name.length || !company.length || !email.length || !subject.length) {
+      this.setState({
+        error: true,
+      })
+    } else {
+      this.setState({
+        error: false,
+      })
+    }
+  }
+
   renderForm = () => {
     const { showSuccessMessage, } = this.state;
 
@@ -496,6 +555,7 @@ class Formulation extends Component {
               <Input
                 name="name"
                 type="text"
+                required
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
                 onChange={this.handleChangeName}
                 onFocus={this.handleFocusName}
@@ -507,6 +567,7 @@ class Formulation extends Component {
               <Input
                 name="company"
                 type="text"
+                required
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onChange={this.handleChangeCompany}
                 onFocus={this.handleFocusCompany}
@@ -518,6 +579,7 @@ class Formulation extends Component {
               <Input
                 name="email"
                 type="email"
+                required
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
@@ -549,6 +611,13 @@ class Formulation extends Component {
                 this.handleForm('message', ev.target.value);
               }}
             />
+            {this.state.error &&
+              <ErroMessage>
+                <Error>
+                  <span>!!!</span> Preencha todos os campos obrigatórios!
+                </Error>
+              </ErroMessage>
+            }
             {showSuccessMessage ? (
               <SuccessContainer>
                 <SuccessMessage>
@@ -557,8 +626,9 @@ class Formulation extends Component {
               </SuccessContainer>
             ) :
               (
-                <ButtonForm>ENVIAR</ButtonForm>
+                <ButtonForm onClick={this.handleCheck}>ENVIAR</ButtonForm>
               )}
+            <ParagraphClosed onClick={this.handleClick}>Fechar <ImageClosed src={closed} /></ParagraphClosed>
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
@@ -567,23 +637,21 @@ class Formulation extends Component {
   }
 
   render() {
-    const {
-      solicitation,
-    } = this.state;
+    const { solicitation } = this.state;
 
     return (
       <ContainerForm isBig={this.state.solicitation}
         isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
           <TitleForm>
-            Ainda em duvida?? 
+            Ainda em duvida??
           </TitleForm>
           <ParagraphForm>
             Deixe a <b>Sedimenta</b> cuidar da gestão financeira da sua empresa para você!!
           </ParagraphForm>
           <ButtonSolicitation
             display={this.state.solicitation}
-            onClick={this.handleSolicitacion}>
+            onClick={this.handleClick}>
             Solicite sua proposta
           </ButtonSolicitation>
         </ContentFinishSolicitation> : this.renderForm()}
