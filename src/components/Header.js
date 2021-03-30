@@ -1,3 +1,4 @@
+// Libs
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Carousel from 'nuka-carousel';
@@ -581,7 +582,7 @@ class Header extends Component {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
-// se menu for true renderiza X se for scroll renderiza  menu preto ou menu branco
+
     return (
       <>
         <HeaderScroll isScroll={isScroll}>
@@ -629,8 +630,6 @@ class Header extends Component {
               </BoxMenu>
               {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
               {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-              
-              {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
               <MenuHamburguerMobile height={menu} src={isMenu} alt='Menu Hamburguer' onClick={this.handleClick} />
             </ContainerHeaderBox>
           </SubContainer>
