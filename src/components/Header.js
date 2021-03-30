@@ -522,9 +522,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    // this.interval = setInterval(
-    //   this.handleTransition, 6000
-    // )
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
   }
 
   handleTransition = () => {
