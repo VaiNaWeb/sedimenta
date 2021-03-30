@@ -699,7 +699,7 @@ class Home extends Component {
                 Física e Finanças que permitem que você se concentre no
                 crescimento de seus negócios - enquanto cuidamos de todo o trabalho
                 de Contabilidade. </ContainerParagraph>
-                <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Continue lendo <img src={setinha} /> </ContainerParagraphRead>
+                <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Continue lendo <img src={setinha} alt="arrow"/> </ContainerParagraphRead>
               </ContentSobreText>
               <ContentSobreText isOpen={this.state.isOpenReading}>
                 <ContainerParagraph>​Com mais de 10 anos de experiência no mercado aliada

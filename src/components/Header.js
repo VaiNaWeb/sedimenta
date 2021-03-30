@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Carousel from 'nuka-carousel';
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
