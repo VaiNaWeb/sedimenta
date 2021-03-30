@@ -5,11 +5,11 @@ import Carousel from 'nuka-carousel';
 //Images
 import Contabilidade from '../assets/contabilidade.svg';
 import RH from '../assets/RH.svg';
-import Fiscal from '../assets/fiscal.svg';
-import Legalização from '../assets/legalização.svg';
+import Fiscal from '../assets/departamentoFiscal.svg';
+import Legalização from '../assets/legalizaçãoEmpresas.svg';
 import AssessoriaFinanceira from '../assets/assessoriaFinanceira.svg';
 import Consultoria from '../assets/consultoria.svg';
-import Terceirização from '../assets/terceirização.svg';
+import Terceirização from '../assets/Terceirização.svg';
 import PessoaFisica from '../assets/pessoaFisica.svg';
 
 import setinha from '../assets/setinha.svg';
@@ -42,12 +42,13 @@ const ContentServiços = styled.div`
 `;
 
 const ContentServiçosTitle = styled.div`
-  width: 40%;
+  width: 37%;
   color: #373737;
   font-size: 1.313rem;
   font-family: 'Spartan', Bold;
 
   @media (max-width: 768px) {
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -57,8 +58,8 @@ const ContentServiçosTitle = styled.div`
 	}
 
   @media (max-width: 648px) {
-      width: 100%;
-	  }
+    width: 88%;
+	}
 
   hr {
     width: 4rem;
@@ -69,7 +70,6 @@ const ContentServiçosTitle = styled.div`
 
   h3 {
     @media (max-width: 648px) {
-      width: 70%;
       text-align: center;
 	  }
   }
@@ -81,6 +81,7 @@ const ContentBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 2rem;
   margin-right: 5rem;
   box-shadow: 0px 3px 6px #00000029;
 
@@ -160,16 +161,16 @@ const ContentBoxGalery = styled.div`
 `;
 
 const ContentBoxImage = styled.img`
-  height: 25%;
+  height: 30%;
   margin-bottom: 1.5rem;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     height: 20%;
 	}
 
   @media (max-width: 648px) {
     height: 32%;
-	}
+	} */
 `;
 
 const BoxContentText = styled.span`
@@ -230,7 +231,7 @@ const Box = styled.button`
   outline: none;
   opacity: 1;
   cursor: pointer;
-
+  
   @media (max-width: 768px) {
     bottom: 5rem;
 	}
@@ -807,7 +808,7 @@ class Services extends Component {
         <>
           <ContentBoxGalery id={index} isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
             <ContentBoxImage src={item.imageServices} alt='category' />
-            <BoxTitle id="product-sans">{item.title}</BoxTitle>
+            <BoxTitle>{item.title}</BoxTitle>
             <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
               <BoxText>{item.text}</BoxText>
               <Box onClick={() => this.handleClick(index)} widthText='61%'>{item.knowMore} <BoxImage src={setinha} /></Box>

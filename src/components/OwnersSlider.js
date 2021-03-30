@@ -150,9 +150,9 @@ const ContentBoxTitle = styled.p`
 
 const ContentBoxParagraph = styled.p`
   color: #373737;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-family: 'Spartan', Medium;
-  padding-top: 0.1rem;
+  padding-top: 0.3rem;
 `;
 
 const Cargo = styled.div`
@@ -172,24 +172,24 @@ class Home extends Component {
       {
         imgPerson: People1,
         name: "Eduardo Pereira",
-        office: "CEO,",
-        area: "Área Contábil e Fiscal;",
+        // office: "CEO,",
+        area: " CEO - Área Contábil e Fiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/eduardo-pereira-4b686013/",
       },
       {
         imgPerson: People2,
         name: "CRISTIANI NASCIMENTO",
-        office: "CEO,",
-        area: "Legalização de Empresas, Parafiscal;",
+        // office: "CEO,",
+        area: " CEO - Leg. de empresas, parafiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
       },
       {
         imgPerson: People3,
         name: "Mauro Moura",
-        office: "CEO,",
-        area: "Capital Humano;",
+        // office: "CEO,",
+        area: " CEO - Capital Humano;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/mauro-moura-5a406a74/",
       },
@@ -204,7 +204,7 @@ class Home extends Component {
           <ContentCargoCaixa>
             <hr></hr>
             <ContentBoxTitle>{item.name}</ContentBoxTitle>
-            <ContentBoxParagraph>{item.office}</ContentBoxParagraph>
+            {/* <ContentBoxParagraph>{item.office}</ContentBoxParagraph> */}
             <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
             <a
               href={item.link}
@@ -224,10 +224,8 @@ class Home extends Component {
       <ContentCargo>
         <CargoMobile>
           <Carousel
-            afterSlide={(index) => this.setState({ current: index })}
             cellSpacing={32}
             enableKeyboardControls='true'
-            slideIndex={this.state.current}
           >
             {this.renderPerson()}
           </Carousel>

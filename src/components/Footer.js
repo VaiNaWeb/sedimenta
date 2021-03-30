@@ -141,16 +141,17 @@ const FooterLinha = styled.div`
 `;
 
 const ContentFooterTopo = styled.a`
-  width: 5vh;
-  height: 5vh;
-  background: #F5F5F5;
+  width: 9vh;
+  height: 9vh;
+  background: #992836;
   border-radius: 2px;
   box-shadow: 0px 3px 6px #00000029;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  top: 150px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
   opacity: 1;
 
   @media (max-width: 1023px) {
@@ -159,11 +160,11 @@ const ContentFooterTopo = styled.a`
 `;
 
 const ContentFooterTriangle = styled.div`
-  width: 0; 
-  height: 0; 
+  width: 2px; 
+  height: 2px; 
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-bottom: 10px solid #992836;
+  border-bottom: 10px solid #F5F5F5;
 
   @media (max-width: 1023px) {
     display: none; 
