@@ -24,7 +24,6 @@ const ContainerLogo = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-
   .slider-control-centerleft {
     display: none !important;
   }
@@ -44,7 +43,6 @@ const ContainerLogo = styled.div`
   button {
     outline: none;
     fill: #FFFFFF !important;
-
   }
   
   @media (max-width: 768px) {
@@ -546,6 +544,7 @@ class Header extends Component {
       <ContainerLogo>
         <Carousel
           enableKeyboardControls='true'
+          cellAlign='left'
         >
           {this.state.artigos.map((item, index) => (
             <ContainerLogo

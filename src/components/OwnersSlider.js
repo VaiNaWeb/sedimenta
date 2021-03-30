@@ -172,7 +172,6 @@ class Home extends Component {
       {
         imgPerson: People1,
         name: "Eduardo Pereira",
-        // office: "CEO,",
         area: " CEO - Área Contábil e Fiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/eduardo-pereira-4b686013/",
@@ -180,7 +179,6 @@ class Home extends Component {
       {
         imgPerson: People2,
         name: "CRISTIANI NASCIMENTO",
-        // office: "CEO,",
         area: " CEO - Leg. de empresas, parafiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
@@ -188,7 +186,6 @@ class Home extends Component {
       {
         imgPerson: People3,
         name: "Mauro Moura",
-        // office: "CEO,",
         area: " CEO - Capital Humano;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/mauro-moura-5a406a74/",
@@ -204,7 +201,6 @@ class Home extends Component {
           <ContentCargoCaixa>
             <hr></hr>
             <ContentBoxTitle>{item.name}</ContentBoxTitle>
-            {/* <ContentBoxParagraph>{item.office}</ContentBoxParagraph> */}
             <ContentBoxParagraph>{item.area}</ContentBoxParagraph>
             <a
               href={item.link}
