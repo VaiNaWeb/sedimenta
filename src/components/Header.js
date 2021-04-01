@@ -1,5 +1,8 @@
+// Libs
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Carousel from 'nuka-carousel';
+
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
@@ -23,7 +26,6 @@ const ContainerLogo = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-
   .slider-control-centerleft {
     display: none !important;
   }
@@ -43,7 +45,6 @@ const ContainerLogo = styled.div`
   button {
     outline: none;
     fill: #FFFFFF !important;
-
   }
   
   @media (max-width: 768px) {
@@ -354,8 +355,9 @@ const Title = styled.h1`
   font-size: 2.625rem;
   font-family: 'Spartan', Bold;
   
-  @media (max-width: 768px) {
+  @media (max-width: 648px) {
     width: 95%;
+    font-size: 2.3rem;
 	}
 `;
 
@@ -408,10 +410,13 @@ const ButtonHeader = styled.button`
     width: 55%;
 	}
 
+  @media (max-width: 768px) {
+    width: 70%;
+	}
+
   @media (max-width: 648px) {
     font-weight: bold;
-    padding: 1.3rem 0 1rem;
-
+    padding: 1.2rem 0 1rem;
     margin-top: 3rem;
 	}
 
@@ -545,6 +550,7 @@ class Header extends Component {
       <ContainerLogo>
         <Carousel
           enableKeyboardControls='true'
+          cellAlign='left'
         >
           {this.state.artigos.map((item, index) => (
             <ContainerLogo
@@ -572,7 +578,6 @@ class Header extends Component {
           ))}
         </Carousel>
       </ContainerLogo>
-
     )
   }
 
@@ -581,7 +586,11 @@ class Header extends Component {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
-// se menu for true renderiza X se for scroll renderiza  menu preto ou menu branco
+
+    console.log('sliderHeader', sliderHeader);
+    console.log('isScroll', isScroll);
+
+
     return (
       <>
         <HeaderScroll isScroll={isScroll}>
@@ -629,8 +638,6 @@ class Header extends Component {
               </BoxMenu>
               {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
               {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-              
-              {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
               <MenuHamburguerMobile height={menu} src={isMenu} alt='Menu Hamburguer' onClick={this.handleClick} />
             </ContainerHeaderBox>
           </SubContainer>

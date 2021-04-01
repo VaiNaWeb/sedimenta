@@ -113,12 +113,16 @@ const ButtonSolicitation = styled.button`
 
 const Formulario = styled.form`
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   margin-top: ${props => props.margin ? '0' : '2rem'};
+
+  /* @media (max-width: 648px) {
+    height: 100vh;
+	} */
 `;
 
 const FormContent = styled.div`
@@ -277,7 +281,7 @@ const Textarea = styled.textarea`
     color: #d2a2a8;
    }
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     width: 58%;
 	}
 
@@ -295,6 +299,9 @@ const ErroMessage = styled.div`
   border-radius: 2px;
   opacity: 1;
 
+  @media (max-width: 768px) {
+    width: 58%;
+	}
 
   @media (max-width: 648px) {
     width: 80%;
@@ -330,6 +337,10 @@ const ButtonForm = styled.button`
   justify-content: center;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 15%;
+	}
 
   @media (max-width: 648px) {
     width: 30%;
@@ -567,7 +578,7 @@ class Formulation extends Component {
               <Input
                 name="name"
                 type="text"
-                required
+                // required
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
                 onChange={this.handleChangeName}
                 onFocus={this.handleFocusName}
@@ -579,7 +590,7 @@ class Formulation extends Component {
               <Input
                 name="company"
                 type="text"
-                required
+                // required
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onChange={this.handleChangeCompany}
                 onFocus={this.handleFocusCompany}
@@ -591,7 +602,7 @@ class Formulation extends Component {
               <Input
                 name="email"
                 type="email"
-                required
+                // required
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
