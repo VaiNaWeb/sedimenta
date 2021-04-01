@@ -1,6 +1,8 @@
 // Libs
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Carousel from 'nuka-carousel';
+
 
 //Images
 import logo from '../assets/logoSedimenta.svg';
@@ -524,9 +526,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    // this.interval = setInterval(
-    //   this.handleTransition, 6000
-    // )
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
   }
 
   handleTransition = () => {
@@ -550,7 +552,6 @@ class Header extends Component {
           enableKeyboardControls='true'
           cellAlign='left'
         >
-          {/* {console.log('alguma coisa')}; */}
           {this.state.artigos.map((item, index) => (
             <ContainerLogo
               mobile
