@@ -9,8 +9,8 @@ const ContentSlider = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 4.5rem 0 0;
-  margin-bottom: 4rem;
+  padding: 4rem 0 0;
+  margin-bottom: 5rem;
 
   @media (max-width: 648px) {
     height: 77vh;
@@ -35,7 +35,7 @@ const ContentCarouselMobile = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: -47px !important;
+    bottom: -48px !important;
   }
 
   .paging-item {
@@ -89,7 +89,6 @@ const CarouselSlider = styled.div`
   justify-content: center;
 
   @media (max-width: 648px) {
-    /* margin: 4rem 0 2rem; */
     align-items: flex-end;
 	}
 `;
@@ -136,6 +135,7 @@ const SliderArrow = styled.svg`
 
 const ContentSliderMeio = styled.div`
   width: 24.8em;
+  height: 10rem;
   background-color: ${props => (props.selected ? '#FFFFFF' : '#A37D82')};
   color: ${props => (props.selected ? '#373737' : '#4A2529')};
   font-size: 0.7rem;
@@ -143,13 +143,14 @@ const ContentSliderMeio = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  padding: 2rem 1.3rem 1rem;
+  justify-content: space-around;
+  padding: 1rem 1.3rem;
   margin-bottom: 3rem;
   transform: ${props => (props.selected && 'scale(1.4)')};
   outline: none;
 
   @media (max-width: 1024px) {
-    width: 18em;
+    width: 21em;
 	}
 
   @media (max-width: 1023px) {
@@ -162,16 +163,19 @@ const ContentSliderMeio = styled.div`
 
   @media (max-width: 648px) {
     width: 90%;
+    height: 12rem;
     background-color: #FFFFFF;
     color: #373737;
+    justify-content: space-between;
     font-size: 0.9rem;
     margin-bottom: 0;
     transform: none;
+    padding: 2rem 1.25rem 1.25rem;
   }
 `;
 
 const ContentSliderParagraph = styled.p`
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 `;
 
 const SliderCarousel = styled.div`

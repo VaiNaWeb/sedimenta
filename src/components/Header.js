@@ -354,8 +354,9 @@ const Title = styled.h1`
   font-size: 2.625rem;
   font-family: 'Spartan', Bold;
   
-  @media (max-width: 768px) {
+  @media (max-width: 648px) {
     width: 95%;
+    font-size: 2.3rem;
 	}
 `;
 
@@ -408,10 +409,13 @@ const ButtonHeader = styled.button`
     width: 55%;
 	}
 
+  @media (max-width: 768px) {
+    width: 70%;
+	}
+
   @media (max-width: 648px) {
     font-weight: bold;
-    padding: 1.3rem 0 1rem;
-
+    padding: 1.2rem 0 1rem;
     margin-top: 3rem;
 	}
 
@@ -521,9 +525,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
+    // this.interval = setInterval(
+    //   this.handleTransition, 6000
+    // )
   }
 
   handleTransition = () => {
@@ -547,6 +551,7 @@ class Header extends Component {
           enableKeyboardControls='true'
           cellAlign='left'
         >
+          {/* {console.log('alguma coisa')}; */}
           {this.state.artigos.map((item, index) => (
             <ContainerLogo
               mobile
@@ -573,7 +578,6 @@ class Header extends Component {
           ))}
         </Carousel>
       </ContainerLogo>
-
     )
   }
 
@@ -582,6 +586,10 @@ class Header extends Component {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
+
+    console.log('sliderHeader', sliderHeader);
+    console.log('isScroll', isScroll);
+
 
     return (
       <>

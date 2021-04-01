@@ -20,7 +20,7 @@ const ContentServiços = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20rem;
+  margin-bottom: 10.5rem;
   padding-left: 5rem;
 
   @media (max-width: 1023px) {
@@ -37,7 +37,7 @@ const ContentServiços = styled.div`
 
   @media (max-width: 648px) {
     padding-left: 0;
-    margin: 5rem 0 12rem;
+    margin: 8.5rem 0;
 	}
 `;
 
@@ -53,7 +53,7 @@ const ContentServiçosTitle = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     margin-top: 2rem;
 	}
 
@@ -122,7 +122,7 @@ const ContentBoxMobile = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: -50px !important;
+    bottom: -48px !important;
   }
   .paging-item {
     padding-right: 1rem;
@@ -153,7 +153,7 @@ const ContentBoxGalery = styled.div`
     height: 457px;
     background-color: #FFFFFF;
     border-radius: 3px;
-    box-shadow: 0px 3px 6px #57575799;
+    box-shadow: 0px 3px 6px #00000029;
     padding: 2rem 2rem;
     margin-right: 2rem;
     opacity: 1;
@@ -166,11 +166,11 @@ const ContentBoxImage = styled.img`
 
   /* @media (max-width: 768px) {
     height: 20%;
-	}
+	} */
 
   @media (max-width: 648px) {
-    height: 32%;
-	} */
+    margin-bottom: 2rem;
+	}
 `;
 
 const BoxContentText = styled.span`
@@ -191,6 +191,7 @@ const BoxTitle = styled.h2`
   margin-bottom: 1rem;
  
   @media (max-width: 648px) {
+    height: ${props => (props.isOpenTitle ? '0' : '15%')};
     font-size: 1.5rem;
   }
 `;
@@ -217,6 +218,10 @@ const BoxImageText = styled.img`
   bottom: 5%;
   left: 50%;
   cursor: pointer;
+
+  @media (max-width: 648px) {
+    display: none;
+	}
 `;
 
 const Box = styled.button`
@@ -278,6 +283,7 @@ const BoxContext = styled.div`
     width: 340px;
     display: flex;
     padding: 4rem 1.2rem 0;
+    box-shadow: 0px 3px 6px #00000029;
 	}
 `;
 
@@ -555,7 +561,9 @@ class Services extends Component {
   renderTitleContabilidade = () => (
     <ContentBoxGalery id='list0' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
       <ContentBoxImage src={Contabilidade} alt='category' />
-      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>contabilidade</BoxTitle>
+      <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
+        contabilidade
+      </BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list0'}>
         <BoxText widthText='61%'>A contabilidade da sua empresa sem burocracia,
           entregas seguras e econômicas.</BoxText>
@@ -808,7 +816,7 @@ class Services extends Component {
         <>
           <ContentBoxGalery id={index} isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
             <ContentBoxImage src={item.imageServices} alt='category' />
-            <BoxTitle>{item.title}</BoxTitle>
+            <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === index}>{item.title}</BoxTitle>
             <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
               <BoxText>{item.text}</BoxText>
               <Box onClick={() => this.handleClick(index)} widthText='61%'>{item.knowMore} <BoxImage src={setinha} /></Box>

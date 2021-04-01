@@ -110,7 +110,7 @@ const CaixaParagraph = styled.p`
 
   @media (max-width: 648px) {
     width: 72vw;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     padding: 0 0 6.5rem;
     padding-top: ${props => (props.paddingTop ? '4rem' : '0')};
 
@@ -148,7 +148,7 @@ const TitleHeader = styled.h2`
 
   @media (max-width: 768px) {
     width: 100%;
-    font-size: 1.39rem;
+    font-size: 1.313rem;
     display: flex;
     justify-content: center;
     padding-bottom: 1.5rem;
@@ -165,14 +165,14 @@ const ImageSeta = styled.img`
 
 const ContentSobre = styled.div`
   width: 100%;
-  padding: 0 5rem;
+  padding: 8rem 5rem;
 
   @media (max-width: 1023px) {
     padding: 0 3rem;
 	}
 
   @media (max-width: 648px) {
-    padding: 5rem 0;
+    padding: 4rem 0;
 	}
 
   span {
@@ -187,6 +187,7 @@ const ContentSobre = styled.div`
     @media (max-width: 648px) {
       align-items: center;
       flex-direction: column;
+      margin-top: 0;
 	  }
   }
 `;
@@ -196,6 +197,7 @@ const ContentBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  line-height: 24px;
 `;
 
 const ContentSobreTitle = styled.div`
@@ -346,7 +348,7 @@ const SubContentMeio = styled.span`
   }
 
   h2 {
-    padding-top: 2.5rem;
+    padding-top: 2rem;
     font-size: 1.7rem;
     text-align: center;
 
@@ -527,7 +529,7 @@ const ContentImages = styled.img`
   left: ${props => (props.left)};
 
   @media (max-width: 768px) {
-    width: 22%;
+    width: 17%;
 	}
 
   @media (max-width: 648px) {
@@ -568,6 +570,10 @@ const LogoSeparationMobile = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 0 5rem 0;
+
+    :last-child {
+      margin-bottom: 7rem;
+    }
 	}
 `;
 

@@ -15,10 +15,10 @@ const ContentCargo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 8rem 0 5rem 0;
+  margin: 2.5rem 0 5rem 0;
 
   @media (max-width: 648px) {
-    margin: 4rem 0 2rem;
+    margin: 0;
     justify-content: flex-start;
     align-items: flex-start;
 	}
@@ -29,6 +29,7 @@ const CargoMobile = styled.div`
 
 @media (max-width: 648px) {
   width: 100%;
+  height: 70vh;
   background-color: transparent;
   box-shadow: none;
   display: flex;
@@ -46,7 +47,7 @@ const CargoMobile = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: -47px !important;
+    bottom: -48px !important;
   }
 
   .paging-item {
@@ -108,7 +109,7 @@ const ContentCargoCaixa = styled.div`
 
   @media (max-width: 648px) {
     width: 91%;
-    height: 23vh;
+    height: 24vh;
     background-color: #FFFFFF;
     border-left: 5px solid #801422;
     text-align: center;
@@ -121,13 +122,13 @@ const ContentCargoCaixa = styled.div`
   
   hr {
     width: 3.1vw;
-    border: 1px solid #00000029;
+    border: 1px solid #373737;
     margin-bottom: 1rem;
     opacity: 1;
 
     @media (max-width: 648px) {
       width: 10vw;
-      margin-bottom: 0.5rem;
+      /* margin-bottom: 1.5rem; */
 	  }
   }
 
@@ -207,7 +208,7 @@ class Home extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={item.linkeId} alt='linkedin' />
+             <img src={item.linkeId} alt='linkedin' />
             </a>
           </ContentCargoCaixa>
         </SessionCargo>

@@ -47,6 +47,7 @@ const ContentRedeSocial = styled.div`
 	}
   
   @media (max-width: 768px) {
+    width: 32%;
     margin-bottom: 10rem;
 	}
 
