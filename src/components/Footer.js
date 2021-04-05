@@ -54,6 +54,7 @@ const ContentRedeSocial = styled.div`
   @media (max-width: 648px) {
     width: 90%;
     border-left: 7px solid #992836;
+    margin-bottom: 5rem;
 	}
 
   span {
@@ -85,7 +86,6 @@ const ContentFooterContact = styled.div`
     width: 41%;
     line-height: 24px;
     margin-bottom: ${props => (props.marginBottomMobile ? '3rem' : '0')};
-
 	}
 
   @media (max-width: 648px) {
@@ -128,26 +128,18 @@ const FooterLinha = styled.div`
   background: linear-gradient(to right, #992836, #4D141B);
   /* margin-bottom: 0.4rem; */
 
-  @media (max-width: 1023px) {
-    /* width: 19vw; */
-	}
-
-  @media (max-width: 768px) {
-    /* width: 25vw; */
-  }
-
   @media (max-width: 648px) {
     display: none;
 	}
 `;
 
 const ContentFooterTopo = styled.a`
-  width: 9vh;
-  height: 9vh;
-  background: #992836;
+  width: 6.3vh;
+  height: 6.3vh;
+  background: #992863;
   border-radius: 2px;
   box-shadow: 0px 3px 6px #00000029;
-  display: flex;
+  display: ${props => (props.isScrollTop ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -173,7 +165,7 @@ const ContentFooterTriangle = styled.div`
 `;
 
 const FooterFinish = styled.footer`
-  width: 100%;
+  width: 100vw;
   background: linear-gradient(to right, #992836, #4D141B);
   color: #FFFFFF;
   font-family: 'Open Sans', ExtraBold;
@@ -189,7 +181,7 @@ const FooterFinish = styled.footer`
 `;
 
 
-class Footer extends Component {
+class Footer extends Component { 
   render() {
     return (
       <>
@@ -232,7 +224,7 @@ class Footer extends Component {
               </a>
             </span>
           </ContentRedeSocial>
-          <ContentFooterTopo href="#topo">
+          <ContentFooterTopo isScrollTop={this.props.isScrollTop} href="#topo">
             <ContentFooterTriangle />
           </ContentFooterTopo>
         </ContentFooter>

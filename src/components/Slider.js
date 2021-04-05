@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
-const ContentSlider = styled.div`
-  width: 100%;
+
+const Section = styled.section`
+  width: 100vw;
   background: linear-gradient(to right, #992836, #4D141B);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 0 0;
-  margin-bottom: 5rem;
+`;
+
+const ContentSlider = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  /* padding: 4rem 0 0; */
+  /* margin-bottom: 5rem; */
 
   @media (max-width: 648px) {
-    height: 77vh;
-    padding: 0;
+    padding: 0 0 5rem;
   }
 `;
 
@@ -54,6 +59,7 @@ const ContentTitleSlider = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 5.5rem;
+  padding-top: 5rem;
 
   @media (max-width: 648px) {
     margin-bottom: 4rem;
@@ -68,7 +74,7 @@ const ContentTitleSlider = styled.div`
 `;
 
 const TitleSlider = styled.h2`
-  width: 65%;
+  width: 30%;
   color: #FFFFFF;
   font-size: 1.313rem;
   font-family: 'Spartan', Bold;
@@ -144,7 +150,8 @@ const ContentSliderMeio = styled.div`
   align-items: flex-end;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1rem 1.3rem;
+  line-height: 18px;
+  padding: 0.5rem 1.25rem 0;
   margin-bottom: 3rem;
   transform: ${props => (props.selected && 'scale(1.4)')};
   outline: none;
@@ -163,14 +170,15 @@ const ContentSliderMeio = styled.div`
 
   @media (max-width: 648px) {
     width: 90%;
-    height: 12rem;
+    height: 14rem;
     background-color: #FFFFFF;
     color: #373737;
     justify-content: space-between;
     font-size: 0.9rem;
+    line-height: 22px;
+    padding: 2rem 1.25rem 1.25rem;
     margin-bottom: 0;
     transform: none;
-    padding: 2rem 1.25rem 1.25rem;
   }
 `;
 
@@ -299,51 +307,53 @@ class Slider extends Component {
     const { selectedSlide } = this.state;
 
     return (
-      <ContentSlider id='clientes'>
-        <ContentTitleSlider>
-          <hr></hr>
-          <TitleSlider>o que os clientes falam da nossa empresa!!</TitleSlider>
-        </ContentTitleSlider>
-        <CarouselSlider>
-          <SliderArrow botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-            viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
-            d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+      <Section>
+        <ContentSlider id='clientes'>
+          <ContentTitleSlider>
+            <hr></hr>
+            <TitleSlider>o que os clientes falam da nossa empresa!!</TitleSlider>
+          </ContentTitleSlider>
+          <CarouselSlider>
+            <SliderArrow botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+              viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
+                d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
             rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-            stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious} />
-          </SliderArrow>
-          <ContentSliderBox>
-            {this.renderSlider()}
-          </ContentSliderBox>
-          <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-            viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
-            d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
+                stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious} />
+            </SliderArrow>
+            <ContentSliderBox>
+              {this.renderSlider()}
+            </ContentSliderBox>
+            <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+              viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+                d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
             rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
-            stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext} />
-          </SliderArrow>
-        </CarouselSlider>
-        <SliderCarousel>
-          <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
-          <SliderBolinha isSelected={selectedSlide === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
-          <SliderBolinha isSelected={selectedSlide === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
-        </SliderCarousel>
-        <ContentCarouselMobile>
-          <Carousel
-            afterSlide={(index) => this.setState({ slideIndex: index })}
-            cellSpacing={32}
-            enableKeyboardControls='true'
-            slideIndex={this.state.slideIndex}
-          >
-            {this.list.map(i => (
-              <SessionSlider>
-                <ContentSliderMeio selected>
-                  <p>{i.text}</p>
-                  <ContentSliderParagraph>{i.name}</ContentSliderParagraph>
-                </ContentSliderMeio>
-              </SessionSlider>
-            ))}
-          </Carousel>
-        </ContentCarouselMobile>
-      </ContentSlider >
+                stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext} />
+            </SliderArrow>
+          </CarouselSlider>
+          <SliderCarousel>
+            <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
+            <SliderBolinha isSelected={selectedSlide === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
+            <SliderBolinha isSelected={selectedSlide === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
+          </SliderCarousel>
+          <ContentCarouselMobile>
+            <Carousel
+              afterSlide={(index) => this.setState({ slideIndex: index })}
+              cellSpacing={32}
+              enableKeyboardControls='true'
+              slideIndex={this.state.slideIndex}
+            >
+              {this.list.map(i => (
+                <SessionSlider>
+                  <ContentSliderMeio selected>
+                    <p>{i.text}</p>
+                    <ContentSliderParagraph>{i.name}</ContentSliderParagraph>
+                  </ContentSliderMeio>
+                </SessionSlider>
+              ))}
+            </Carousel>
+          </ContentCarouselMobile>
+        </ContentSlider >
+      </Section>
     )
   }
 }

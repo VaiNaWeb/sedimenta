@@ -20,7 +20,7 @@ const ContentServiços = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10.5rem;
+  margin-bottom: 12rem;
   padding-left: 5rem;
 
   @media (max-width: 1023px) {
@@ -37,7 +37,7 @@ const ContentServiços = styled.div`
 
   @media (max-width: 648px) {
     padding-left: 0;
-    margin: 8.5rem 0;
+    margin: 0 0 9.5rem;
 	}
 `;
 
@@ -46,6 +46,7 @@ const ContentServiçosTitle = styled.div`
   color: #373737;
   font-size: 1.313rem;
   font-family: 'Spartan', Bold;
+  padding-top: 5rem;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -54,11 +55,13 @@ const ContentServiçosTitle = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-bottom: 3rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 	}
 
   @media (max-width: 648px) {
     width: 88%;
+    /* margin-top: 0; */
+    padding-top: 7.5rem;
 	}
 
   hr {
@@ -81,7 +84,8 @@ const ContentBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
+  margin-top: 5rem;
   margin-right: 5rem;
   box-shadow: 0px 3px 6px #00000029;
 
@@ -148,29 +152,27 @@ const ContentBoxGalery = styled.div`
   justify-content: ${props => (props.isOpen ? 'center' : 'flex-start')};
   padding: 2.7rem 0 0;
   position: relative;
+  margin-bottom: ${props => (props.marginBottom && '2rem')};
+  /* margin-bottom: 2rem;  */
 
   @media (max-width: 648px) {
     height: 457px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #00000029;
-    padding: 2rem 2rem;
+    padding: 4rem 1.5rem 0;
     margin-right: 2rem;
     opacity: 1;
 	}
 `;
 
 const ContentBoxImage = styled.img`
-  height: 30%;
+  height: 32%;
   margin-bottom: 1.5rem;
-
-  /* @media (max-width: 768px) {
-    height: 20%;
-	} */
-
+/* 
   @media (max-width: 648px) {
-    margin-bottom: 2rem;
-	}
+    margin-bottom: 1.5rem;
+	} */
 `;
 
 const BoxContentText = styled.span`
@@ -191,8 +193,10 @@ const BoxTitle = styled.h2`
   margin-bottom: 1rem;
  
   @media (max-width: 648px) {
-    height: ${props => (props.isOpenTitle ? '0' : '15%')};
-    font-size: 1.5rem;
+    height: 0;
+    /* height: ${props => (props.isOpenTitle ? '0' : '15%')}; */
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -242,8 +246,8 @@ const Box = styled.button`
 	}
 
   @media (max-width: 648px) {
+    bottom: 1.5rem;
     font-size: 0.9rem;
-    bottom: 3rem;
   }
 `;
 
@@ -280,9 +284,9 @@ const BoxContext = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 340px;
+    width: 100vw;
     display: flex;
-    padding: 4rem 1.2rem 0;
+    padding: 4rem 1.5rem 0;
     box-shadow: 0px 3px 6px #00000029;
 	}
 `;
@@ -752,7 +756,7 @@ class Services extends Component {
   // -----------------------------------------------------
 
   renderTitleTerceirização = () => (
-    <ContentBoxGalery id='list6' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
+    <ContentBoxGalery marginBottom id='list6' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
       <ContentBoxImage src={Terceirização} alt='category' />
       <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>terceirização</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list6'}>
@@ -785,7 +789,7 @@ class Services extends Component {
   // -----------------------------------------------------
 
   renderTitlePessoaFisica = () => (
-    <ContentBoxGalery padding id='list7' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'}>
+    <ContentBoxGalery marginBottom id='list7' isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'}>
       <ContentBoxImage src={PessoaFisica} alt='category' />
       <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === 'list7'} margin>pessoa física</BoxTitle>
       <BoxContentText isOpen={this.state.services.isOpen && this.state.services.isSelected === 'list7'}>
