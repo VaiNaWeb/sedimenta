@@ -28,13 +28,20 @@ import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
 
 
-const Container = styled.div`
+const Section = styled.section`
   width: 100%;
+  background-color: #F5F5F5;
+`;
+
+const Container = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  background-color: #F5F5F5;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #F5F5F5;
+  margin: 0 auto;
 `;
 
 const ContentCaixaGeral = styled.div`
@@ -66,6 +73,7 @@ const ContentCaixaGeral = styled.div`
 `;
 
 const ContentCaixaBox = styled.div`
+  max-width: 73%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -165,14 +173,14 @@ const ImageSeta = styled.img`
 
 const ContentSobre = styled.div`
   width: 100%;
-  padding: 8rem 5rem;
+  padding: 0 5rem 8rem;
 
   @media (max-width: 1023px) {
     padding: 0 3rem;
 	}
 
   @media (max-width: 648px) {
-    padding: 4rem 0;
+    padding: 3.5rem 0 5rem;
 	}
 
   span {
@@ -182,6 +190,7 @@ const ContentSobre = styled.div`
 
     @media (max-width: 768px) {
       width: 100%;
+      flex-direction: column;
     } 
 
     @media (max-width: 648px) {
@@ -191,7 +200,6 @@ const ContentSobre = styled.div`
 	  }
   }
 `;
-
 
 const ContentBox = styled.div`
   display: flex;
@@ -208,6 +216,15 @@ const ContentSobreTitle = styled.div`
 
   @media (max-width: 1024px) {
     width: 20vw;
+	}
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem;
 	}
 
   @media (max-width: 648px) {
@@ -231,7 +248,9 @@ const ContentSobreTitle = styled.div`
 const ContentSobreText = styled.div`
   width: 57.8%;
   margin-top: ${props => (props.marginTop ? '2.4rem' : '0')};
+  display: ${props => (props.isOpen ? 'flex' : 'none')};
   align-self: flex-end;
+  flex-direction: column;
 
   @media (max-width: 1023px) {
     width: 65%;
@@ -239,13 +258,11 @@ const ContentSobreText = styled.div`
 	}
 
   @media (max-width: 768px) {
-    width: 80%;
+    width: 100%;
 	}
 
   @media (max-width: 648px) {
     width: 95%;
-    display: ${props => (props.isOpen ? 'flex' : 'none')};
-    flex-direction: column;
 	}
 `;
 
@@ -264,18 +281,18 @@ const ContainerParagraph = styled.p`
 `;
 
 const ContainerParagraphRead = styled.p`
-  display: none;
+  color: #992836;
+  font-size: 0.75rem;
+  font-family: 'Open Sans', Semibold;
+  font-weight: 600;
+  padding-top: 2rem;
+  display: ${props => (props.isOpen ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   @media (max-width: 648px) {
-    color: #992836;
-    font-size: 0.75rem;
-    font-family: 'Open Sans', Semibold;
-    font-weight: 600;
-    padding-top: 2rem;
-    display: ${props => (props.isOpen ? 'none' : 'flex')};
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    
 	}
 
   img {
@@ -289,7 +306,7 @@ const BoxImage = styled.img`
 `;
 
 const SubContent = styled.div`
-  width: 100%;
+  width: 100vw;
   background-image: url(${Fundo});
   background-size: cover;
   background-repeat: no-repeat;
@@ -303,7 +320,7 @@ const SubContentCaixa = styled.div`
 `;
 
 const SubContentMeio = styled.span`
-  width: 35%;
+  width: 32vw;
   height: 40vh;
   background-color: #373737;
   color: #FFFFFF;
@@ -324,6 +341,7 @@ const SubContentMeio = styled.span`
 	}
 
   @media (max-width: 648px) {
+    max-width: 100%;
     width: 70%;
 	}
 
@@ -498,6 +516,7 @@ const ContentLogo = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 5rem;
 
   @media (max-width: 648px) {
     display: none;
@@ -546,6 +565,7 @@ const ContentLogoMobile = styled.div`
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    margin-top: 4rem;
 	}
 `;
 
@@ -572,7 +592,7 @@ const LogoSeparationMobile = styled.div`
     margin: 0 0 5rem 0;
 
     :last-child {
-      margin-bottom: 7rem;
+      margin-bottom: 7.5rem;
     }
 	}
 `;
@@ -669,120 +689,122 @@ class Home extends Component {
     const { posts } = this.state;
 
     return (
-      <Container>
-        <Header />
-        <ContentCaixaGeral>
-          <Content>
-            <TitleHeader>PORQUE NOS ESCOLHER</TitleHeader>
-            <ImageSeta src={seta} alt='seta' />
-          </Content>
-          <ContentCaixaBox>
-            <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
+      <Section>
+        <Container>
+          <Header />
+          <ContentCaixaGeral>
+            <Content>
+              <TitleHeader>PORQUE NOS ESCOLHER</TitleHeader>
+              <ImageSeta src={seta} alt='seta' />
+            </Content>
+            <ContentCaixaBox>
+              <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
               eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
-            <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência
+              <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência
               nas informações</CaixaParagraph>
-            <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
+              <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
               com o seu negócio</CaixaParagraph>
-          </ContentCaixaBox>
-        </ContentCaixaGeral>
-        <ContentSobre id='sobre'>
-          <span>
-            <ContentSobreTitle>
-              <hr></hr>
-              <h3>SOBRE A EMPRESA</h3>
-            </ContentSobreTitle>
-            <ContentBox>
-              <ContentSobreText isOpen marginTop>
-                <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em
+            </ContentCaixaBox>
+          </ContentCaixaGeral>
+          <ContentSobre id='sobre'>
+            <span>
+              <ContentSobreTitle>
+                <hr></hr>
+                <h3>SOBRE A EMPRESA</h3>
+              </ContentSobreTitle>
+              <ContentBox>
+                <ContentSobreText isOpen marginTop>
+                  <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em
                 ajudar pequenas e médias empresas a atingir seus objetivos de
                 negócios.</ContainerParagraph>
-                <ContainerParagraph paddingBottom>Quer seja uma empresa de médio porte, um(a)
-                especialista que pretende lançar a sua ideia no mercado ou numa
-                Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
-                que pretende abrir ou expandir um negócio, estaremos ao seu lado
-                para ajudar em cada etapa do seu percurso. Oferecemos serviços de
-                Contabilidade, Departamento Pessoal, Impostos, Tributação de Pessoa
-                Física e Finanças que permitem que você se concentre no
-                crescimento de seus negócios - enquanto cuidamos de todo o trabalho
+                  <ContainerParagraph paddingBottom>Quer seja uma empresa de médio porte, um(a)
+                  especialista que pretende lançar a sua ideia no mercado ou numa
+                  Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
+                  que pretende abrir ou expandir um negócio, estaremos ao seu lado
+                  para ajudar em cada etapa do seu percurso. Oferecemos serviços de
+                  Contabilidade, Departamento Pessoal, Impostos, Tributação de Pessoa
+                  Física e Finanças que permitem que você se concentre no
+                  crescimento de seus negócios - enquanto cuidamos de todo o trabalho
                 de Contabilidade. </ContainerParagraph>
-                <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Continue lendo <img src={setinha} alt="arrow"/> </ContainerParagraphRead>
-              </ContentSobreText>
-              <ContentSobreText isOpen={this.state.isOpenReading}>
-                <ContainerParagraph>​Com mais de 10 anos de experiência no mercado aliada
-                ao conhecimento de nossos sócios e colaboradores trabalhando em algumas
-                das maiores empresas líderes do país e do mundo, atendemos nossos clientes
-                com o mais alto nível de profissionalismo, honestidade e integridade em tudo
-                o que fazemos. Somos profissionais apaixonados que procuram proporcionar uma
-                experiência de maior proximidade e interação com nossos clientes -
-                colocando-os sempre em primeiro lugar. Abraçamos a inovação e buscamos
+                  <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Saiba mais <img src={setinha} alt="arrow" /> </ContainerParagraphRead>
+                </ContentSobreText>
+                <ContentSobreText isOpen={this.state.isOpenReading}>
+                  <ContainerParagraph>​Com mais de 10 anos de experiência no mercado aliada
+                  ao conhecimento de nossos sócios e colaboradores trabalhando em algumas
+                  das maiores empresas líderes do país e do mundo, atendemos nossos clientes
+                  com o mais alto nível de profissionalismo, honestidade e integridade em tudo
+                  o que fazemos. Somos profissionais apaixonados que procuram proporcionar uma
+                  experiência de maior proximidade e interação com nossos clientes -
+                  colocando-os sempre em primeiro lugar. Abraçamos a inovação e buscamos
                 oportunidades de criar valor para o seu negócio.</ContainerParagraph>
-                <ContainerParagraph>​Estamos sediados no bairro da
-                Lapa, na cidade do Rio de Janeiro - Brasil, com escritório em Almada - Portugal,
+                  <ContainerParagraph>​Estamos sediados no bairro da
+                  Lapa, na cidade do Rio de Janeiro - Brasil, com escritório em Almada - Portugal,
                 e também atendemos clientes internacionais fora do Brasil.</ContainerParagraph>
-                <ContainerParagraph><b>A Sedimenta JPM </b>
+                  <ContainerParagraph><b>A Sedimenta JPM </b>
                 está ansiosa para ser sua parceira!</ContainerParagraph>
-              </ContentSobreText>
-            </ContentBox>
-          </span>
-        </ContentSobre>
-        < OwnerSlider />
-        <Services />
-        <OpinionCard />
-        <ContentLogo>
-          <ContentLogoImages>
-            <LogoSeparation>
-              <ContentImages height='55px' src={ChooseMed} alt='logo' />
-              <ContentImages height='66px' src={AndreLuiz} alt='logo' />
-              <ContentImages height='52px' src={FichaCerta} alt='logo' />
-              <ContentImages height='45px' src={PrecisaSer} alt='logo' />
-            </LogoSeparation>
-            <LogoSeparation>
-              <ContentImages height='60px' src={FitaArquitetura} alt='logo' />
-              <ContentImages height='128px' position='relative' bottom='22px' left='20px' src={SabendoMais} alt='logo' />
-              <ContentImages height='57px' src={Velatura} alt='logo' />
-              <ContentImages height='100px' src={PlanoB} alt='logo' />
-            </LogoSeparation>
-          </ContentLogoImages>
-        </ContentLogo>
-        <ContentLogoMobile>
-          <ContentLogoImagesMobile>
-            <LogoSeparationMobile>
-              <ContentImages src={ChooseMed} alt='logo' />
-              <ContentImages src={AndreLuiz} alt='logo' />
-            </LogoSeparationMobile>
-            <LogoSeparationMobile>
-              <ContentImages src={FichaCerta} alt='logo' />
-              <ContentImages src={PrecisaSer} alt='logo' />
-            </LogoSeparationMobile>
-            <LogoSeparationMobile>
-              <ContentImages src={FitaArquitetura} alt='logo' />
-              <ContentImages src={SabendoMais} alt='logo' />
-            </LogoSeparationMobile>
-            <LogoSeparationMobile>
-              <ContentImages src={Velatura} alt='logo' />
-              <ContentImages src={PlanoB} alt='logo' />
-            </LogoSeparationMobile>
-          </ContentLogoImagesMobile>
-        </ContentLogoMobile>
-        <SubContent>
-          <SubContentCaixa>
-            <SubContentMeio>
-              <hr></hr>
-              <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
-            </SubContentMeio>
-          </SubContentCaixa>
-        </SubContent>
-        <ContainerCaixa>
-          <Caixa>
-            {posts.length > 0
-              ? this.renderPosts()
-              : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
-            }
-          </Caixa>
-        </ContainerCaixa>
-        <Formulation />
-        <Footer />
-      </Container >
+                </ContentSobreText>
+              </ContentBox>
+            </span>
+          </ContentSobre>
+          < OwnerSlider />
+          <Services />
+          <OpinionCard />
+          <ContentLogo>
+            <ContentLogoImages>
+              <LogoSeparation>
+                <ContentImages height='55px' src={ChooseMed} alt='logo' />
+                <ContentImages height='66px' src={AndreLuiz} alt='logo' />
+                <ContentImages height='52px' src={FichaCerta} alt='logo' />
+                <ContentImages height='45px' src={PrecisaSer} alt='logo' />
+              </LogoSeparation>
+              <LogoSeparation>
+                <ContentImages height='60px' src={FitaArquitetura} alt='logo' />
+                <ContentImages height='128px' position='relative' bottom='22px' left='20px' src={SabendoMais} alt='logo' />
+                <ContentImages height='57px' src={Velatura} alt='logo' />
+                <ContentImages height='100px' src={PlanoB} alt='logo' />
+              </LogoSeparation>
+            </ContentLogoImages>
+          </ContentLogo>
+          <ContentLogoMobile>
+            <ContentLogoImagesMobile>
+              <LogoSeparationMobile>
+                <ContentImages src={ChooseMed} alt='logo' />
+                <ContentImages src={AndreLuiz} alt='logo' />
+              </LogoSeparationMobile>
+              <LogoSeparationMobile>
+                <ContentImages src={FichaCerta} alt='logo' />
+                <ContentImages src={PrecisaSer} alt='logo' />
+              </LogoSeparationMobile>
+              <LogoSeparationMobile>
+                <ContentImages src={FitaArquitetura} alt='logo' />
+                <ContentImages src={SabendoMais} alt='logo' />
+              </LogoSeparationMobile>
+              <LogoSeparationMobile>
+                <ContentImages src={Velatura} alt='logo' />
+                <ContentImages src={PlanoB} alt='logo' />
+              </LogoSeparationMobile>
+            </ContentLogoImagesMobile>
+          </ContentLogoMobile>
+            <SubContent>
+              <SubContentCaixa>
+                <SubContentMeio>
+                  <hr></hr>
+                  <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
+                </SubContentMeio>
+              </SubContentCaixa>
+            </SubContent>
+          <ContainerCaixa>
+            <Caixa>
+              {posts.length > 0
+                ? this.renderPosts()
+                : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
+              }
+            </Caixa>
+          </ContainerCaixa>
+          <Formulation />
+          <Footer />
+        </Container >
+      </Section>
     )
   }
 }

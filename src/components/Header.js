@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Carousel from 'nuka-carousel';
 
-
 //Images
 import logo from '../assets/logoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
@@ -14,16 +13,31 @@ import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
 
 
-const ContainerLogo = styled.div`
-  width: 100%;
+const Section = styled.section`
+  width: 100vw;
   height: 100vh;
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
   background-position-y: -35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   color: #FFFFFF;
   display: ${props => (props.desktop ? 'flex' : 'none')};
   flex-direction: row;
+  justify-content: space-between;
+`;
+
+const ContainerLogo = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-size: cover;
+  color: #FFFFFF;
+  display: ${props => (props.desktop ? 'flex' : 'none')};
+  flex-direction: column;
   justify-content: space-between;
 
   .slider-control-centerleft {
@@ -52,32 +66,32 @@ const ContainerLogo = styled.div`
 	}
 
   @media (max-width: 648px) {
-    display: ${props => (props.desktop ? 'none' : 'flex')};
+    /* display: ${props => (props.desktop ? 'none' : 'flex')}; */
 	}
 
   @media (max-width: 450px) {
     background-position-x: ${props => (props.positionImg)};
 	}
+`;
 
-  span {
-    width: 100%;
-    height: 100vh;
-    background: #0000005C 0% 0% no-repeat padding-box;
-    opacity: 0.97;
+const Overlay = styled.div`
+  width: 100%;
+  height: 100vh;
+  background: #0000005C 0% 0% no-repeat padding-box;
+  opacity: 0.97;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      padding: 2rem 1rem;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
 
-    @media (max-width: 648px) {
-      padding: 0.5rem;
-      height: 95vh;
-    }
+  @media (max-width: 648px) {
+    padding: 0.5rem;
+    /* height: 95vh; */
   }
 `;
 
-const HeaderScroll = styled.div`
+const HeaderScrollMax = styled.section`
   width: 100%;
   height: 3.79rem;
   background-color: ${props => (props.isScroll ? '#FFFFFF' : 'transparent')};
@@ -96,10 +110,14 @@ const HeaderScroll = styled.div`
   @media (max-width: 648px) {
     height: 3rem;
     padding: 0 0.6rem 0.4rem;
-    /* background-color: #FFFFFF; */
     box-shadow: none;
-    /* position: absolute; */
-	}
+  }
+`;
+
+
+const HeaderScroll = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
 `;
 
 const ContainerHeader = styled.div`
@@ -190,9 +208,16 @@ const ContainerHeaderMobile = styled.div`
 
 const Logo = styled.img`
   height: 8.4vh;
+  stroke: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    path {
+      stroke: #9a2c37;
+    }
+  }
 
   @media (max-width: 768px) {
     height: 8vh;
@@ -201,6 +226,7 @@ const Logo = styled.img`
   @media (max-width: 648px) {
     display: none;
 	}
+
 `;
 
 const LogoMobile = styled.img`
@@ -222,6 +248,7 @@ const ContainerHeaderBox = styled.div`
     width: 100vw;
     height: 100%;
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
+    /* box-shadow: 0px 0px 6px #00000030; */
     justify-content: flex-end;
     flex-direction: column-reverse;
     padding: 1rem 0 0 0;
@@ -354,6 +381,10 @@ const SubContainerText = styled.div`
 const Title = styled.h1`
   font-size: 2.625rem;
   font-family: 'Spartan', Bold;
+
+  /* @media (min-width: 1920px) {
+    font-size: 4rem;
+	} */
   
   @media (max-width: 648px) {
     width: 95%;
@@ -367,6 +398,10 @@ const ParagraphHeader = styled.p`
   font-size: 1.125rem;
   margin: 0.5rem 0 2rem;
   opacity: 1;
+
+  /* @media (min-width: 1920px) {
+    font-size: 1.8rem;
+	} */
 
   @media (max-width: 648px) {
     width: 93%;
@@ -396,7 +431,7 @@ const ParagraphHeaderImage = styled.a`
 `;
 
 const ButtonHeader = styled.button`
-  width: 45%;
+  width: 43%;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   border-radius: 2px;
@@ -441,6 +476,7 @@ const Slider = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  transform: translateY(-7rem);
   cursor: pointer;
 
   @media (max-width: 648px) {
@@ -526,9 +562,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    this.interval = setInterval(
-      this.handleTransition, 6000
-    )
+    // this.interval = setInterval(
+    //   this.handleTransition, 6000
+    // )
   }
 
   handleTransition = () => {
@@ -536,7 +572,7 @@ class Header extends Component {
 
     const slide = sliderHeader === 2 ? 0 : sliderHeader + 1;
 
-    this.handleSlider(slide)
+    this.handleSlider(slide);
   }
 
   renderCarousselMobile = () => {
@@ -557,7 +593,6 @@ class Header extends Component {
               mobile
               image={item.image}
               positionImg={positionBackground || positionBackground1 || positionBackground2}
-              id="topo"
             >
               <span>
                 <SubContainerText
@@ -587,13 +622,14 @@ class Header extends Component {
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 
-    console.log('sliderHeader', sliderHeader);
-    console.log('isScroll', isScroll);
-
-
     return (
-      <>
-        <HeaderScroll isScroll={isScroll}>
+      // <>
+      <Section desktop
+        image={artigos[sliderHeader].image}
+        // positionImg={positionBackground || positionBackground1 || positionBackground2}
+        id="topo">
+        <HeaderScrollMax isScroll={isScroll}>
+        <HeaderScroll>
           <ContainerHeader>
             <ContainerImage>
               <Logo src={logo} alt='Logo' />
@@ -642,14 +678,15 @@ class Header extends Component {
             </ContainerHeaderBox>
           </SubContainer>
         </HeaderScroll>
+        </HeaderScrollMax>
         {this.renderCarousselMobile()}
-        <ContainerLogo
-          desktop
-          image={artigos[sliderHeader].image}
-          // positionImg={positionBackground || positionBackground1 || positionBackground2}
-          id="topo"
-        >
-          <span>
+        <Overlay>
+          <ContainerLogo
+            desktop
+            image={artigos[sliderHeader].image}
+            // positionImg={positionBackground || positionBackground1 || positionBackground2}
+            id="topo"
+          >
             <SubContainerText
               title={artigos[sliderHeader].isBig}
               isScroll={isScroll}
@@ -668,9 +705,10 @@ class Header extends Component {
               <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>
               <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
             </Slider>
-          </span>
-        </ContainerLogo>
-      </>
+          </ContainerLogo>
+        </Overlay>
+      </Section>
+      /* </> */
     );
   }
 }
