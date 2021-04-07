@@ -23,11 +23,11 @@ const ContentServiços = styled.div`
   margin-bottom: 12rem;
   padding-left: 5rem;
 
-  @media (max-width: 1023px) {
+  /* @media (max-width: 1023px) {
     padding-left: 3rem;
-	}
+	} */
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -48,19 +48,20 @@ const ContentServiçosTitle = styled.div`
   font-family: 'Spartan', Bold;
   padding-top: 5rem;
 
-  @media (max-width: 768px) {
-    width: 100%;
+  @media (max-width: 1023px) {
+    width: 39%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 3rem;
-    margin-top: 2.5rem;
+    text-align: center;
 	}
 
   @media (max-width: 648px) {
     width: 88%;
     /* margin-top: 0; */
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
     padding-top: 7.5rem;
 	}
 
@@ -93,7 +94,7 @@ const ContentBox = styled.div`
     margin-right: 2rem;
 	}
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     width: 90%;
     margin-right: 0;
 	}
@@ -150,17 +151,21 @@ const ContentBoxGalery = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${props => (props.isOpen ? 'center' : 'flex-start')};
-  padding: 2.7rem 0 0;
-  position: relative;
+  padding: ${props => (props.isOpen ? '0' : '2.7rem 0 0')};
   margin-bottom: ${props => (props.marginBottom && '2rem')};
-  /* margin-bottom: 2rem;  */
+  position: relative;
+
+  @media (max-width: 1023px) {
+    margin-bottom: 0;
+	}
 
   @media (max-width: 648px) {
     height: 457px;
     background-color: #FFFFFF;
     border-radius: 3px;
     box-shadow: 0px 3px 6px #00000029;
-    padding: 4rem 1.5rem 0;
+    /* padding: 4rem 1.5rem 0; */
+    padding: ${props => (props.isOpen ? '0' : '4rem 1.5rem 0')};
     margin-right: 2rem;
     opacity: 1;
 	}
@@ -279,12 +284,18 @@ const BoxContext = styled.div`
   line-height: 1.3rem;
   padding: 3rem 8.5rem 0;
 
+  @media (max-width: 1023px) {
+    padding: 3rem 5rem 0;
+    line-height: 1.8rem;
+	}
+
   @media (max-width: 768px) {
     padding: 3rem 2rem 0;
+    line-height: 1.5rem;
 	}
 
   @media (max-width: 648px) {
-    width: 100vw;
+    width: 90vw;
     display: flex;
     padding: 4rem 1.5rem 0;
     box-shadow: 0px 3px 6px #00000029;
@@ -337,20 +348,20 @@ const BoxImageClose = styled.div`
   margin: 4rem 0 1.5rem 0;
 `;
 
-const ImageClose = styled.button`
-  background: none;
+const ImageClosed = styled.img`
+  /* background: none;
   border: none;
   color: #992836;
   font-size: 0.75rem;
   font-family: 'Open Sans', Bold;
   font-weight: 600;
-  outline: none;
+  outline: none; */
   cursor: pointer;
 
-  img {
+  /* img {
     width: 14%;
     margin-left: 0.3rem;
-  }
+  } */
 `;
 
 class Services extends Component {
@@ -591,7 +602,7 @@ class Services extends Component {
       <BoxContextText>Nossa Escrituração Contábil e Demonstrações Contábeis são
         adequadas ao padrões contabéis internacionais. </BoxContextText>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -620,7 +631,7 @@ class Services extends Component {
       <li>Avaliação de Desempenho;</li>
       <li>Treinamentos;</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -653,7 +664,7 @@ class Services extends Component {
         fiscais.</li>
       <li>Estudos de Cenários de Tributação - Visando redução de custos.</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /></ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -685,7 +696,7 @@ class Services extends Component {
       <li>Manutenção mensal da situação fiscal das empresas -
         Identificação prévia de possíveis problemas fiscais.</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -717,7 +728,7 @@ class Services extends Component {
       <BoxContextText>Também estão incluidos os relatórios de Fluxos de Caixas e outros
       pertinentes a sua tomada decisão</BoxContextText>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -748,7 +759,7 @@ class Services extends Component {
       ações operacionais, Recrutamento e Seleção, pesquisa de Clima
         Organizacional, avaliação e implantação de Cargos e Salários</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -781,7 +792,7 @@ class Services extends Component {
       <li>Gestão de Capital Humano;</li>
       <li>Contabilidade.</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -807,7 +818,7 @@ class Services extends Component {
       <li>Gestão de Empregados Domésticos (Babás, motoristas, domésticas e etc) </li>
       <li>Previdência Social (Aposentadoria)</li>
       <BoxImageClose>
-        <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -846,7 +857,7 @@ class Services extends Component {
           ))}
           <BoxContentText>{item.textFinal}</BoxContentText>
           <BoxImageClose>
-            <ImageClose onClick={this.handleClose}>Fechar <img src={fechar} alt='close' /> </ImageClose>
+            <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
           </BoxImageClose>
         </BoxContext>
       </ContentBoxContainer>

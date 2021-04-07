@@ -17,27 +17,14 @@ const Section = styled.section`
   width: 100vw;
   height: 100vh;
   background-image: url(${props => props.image});
-  background-repeat: no-repeat;
   background-position-y: -35px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-size: cover;
-  color: #FFFFFF;
-  display: ${props => (props.desktop ? 'flex' : 'none')};
   flex-direction: row;
-  justify-content: space-between;
-`;
-
-const ContainerLogo = styled.div`
-  max-width: 1440px;
-  width: 100%;
-  height: 100vh;
-  margin: 0 auto;
-  background-size: cover;
-  color: #FFFFFF;
-  display: ${props => (props.desktop ? 'flex' : 'none')};
-  flex-direction: column;
+  justify-content: center;
   justify-content: space-between;
 
   .slider-control-centerleft {
@@ -49,7 +36,7 @@ const ContainerLogo = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: 120px !important;
+    bottom: 135px !important;
   }
 
   .paging-item {
@@ -62,11 +49,8 @@ const ContainerLogo = styled.div`
   }
   
   @media (max-width: 768px) {
-    flex-direction: column;
-	}
-
-  @media (max-width: 648px) {
-    /* display: ${props => (props.desktop ? 'none' : 'flex')}; */
+    height: 95vh;
+    background-image: ${props => (props.desktop ? 'none' : 'flex')};
 	}
 
   @media (max-width: 450px) {
@@ -74,19 +58,52 @@ const ContainerLogo = styled.div`
 	}
 `;
 
+const ContainerLogo = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  color: #FFFFFF;
+  margin: 0 auto;
+  display: ${props => (props.desktop ? 'flex' : 'none')};
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 1023px) {
+    display: ${props => (props.desktop ? 'none' : 'flex')};
+	} 
+
+    span {
+      width: 100%;
+      height: 100vh;
+      background: #0000005C 0% 0% no-repeat padding-box;
+      opacity: 0.97;
+
+    @media (max-width: 768px) {
+      height: 90vh;
+    }
+
+    @media (max-width: 648px) {
+      padding: 0.5rem;
+      /* height: 95vh; */
+    }
+  }
+`;
+
 const Overlay = styled.div`
   width: 100%;
   height: 100vh;
   background: #0000005C 0% 0% no-repeat padding-box;
   opacity: 0.97;
+  display: flex;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     flex-direction: column;
     padding: 2rem 1rem;
-  }
+  } */
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     padding: 0.5rem;
+    display: none;
     /* height: 95vh; */
   }
 `;
@@ -110,10 +127,9 @@ const HeaderScrollMax = styled.section`
   @media (max-width: 648px) {
     height: 3rem;
     padding: 0 0.6rem 0.4rem;
-    box-shadow: none;
+    box-shadow: ${props => (props.isScroll && '0px 3px 0px #00000029')};
   }
 `;
-
 
 const HeaderScroll = styled.div`
   max-width: 1440px;
@@ -131,11 +147,7 @@ const ContainerHeader = styled.div`
   margin-bottom: 0.785rem;
   opacity: 1;
 
-  @media (max-width: 768px) {
-    font-size: 0.6rem;
-	}
-
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     display: none;
 	}
   
@@ -159,11 +171,7 @@ const ContainerHeaderPage = styled.div`
   font-size: 0.6875rem;
   opacity: 0.97;
 
-  @media (max-width: 768px) {
-    padding-bottom: 0.5rem;
-	}
-
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     width: 100%;
     border-top: 1px solid #FFFFFF99;
     font-size: 0.75rem;
@@ -173,6 +181,10 @@ const ContainerHeaderPage = styled.div`
     padding: 1.5rem 1rem;
     position: absolute;
     bottom: 0;
+	}
+
+  @media (max-width: 768px) {
+    padding-bottom: 0.5rem;
 	}
 `;
 
@@ -197,8 +209,9 @@ const Page = styled.p`
 const ContainerHeaderMobile = styled.div`
   display: none;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     width: 100%;
+    height: 3rem;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -208,16 +221,10 @@ const ContainerHeaderMobile = styled.div`
 
 const Logo = styled.img`
   height: 8.4vh;
-  stroke: #FFFFFF;
+  color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:hover {
-    path {
-      stroke: #9a2c37;
-    }
-  }
 
   @media (max-width: 768px) {
     height: 8vh;
@@ -226,13 +233,12 @@ const Logo = styled.img`
   @media (max-width: 648px) {
     display: none;
 	}
-
 `;
 
 const LogoMobile = styled.img`
   display: none;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     display: flex;
     height: 7vh;
 	}
@@ -244,18 +250,21 @@ const ContainerHeaderBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     width: 100vw;
-    height: 100%;
+    height: ${props => (props.open ? '100vh' : '0')};
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
-    /* box-shadow: 0px 0px 6px #00000030; */
     justify-content: flex-end;
     flex-direction: column-reverse;
-    padding: 1rem 0 0 0;
+    padding: 1.5rem 0 0 0;
     opacity: 1;
     position: ${props => (props.open ? 'fixed' : 'absolute')};
     right: 0;
     top: 0;
+	}
+
+  @media (max-width: 768px) {
+    padding: 1rem 0 0 0;
 	}
 `;
 
@@ -263,7 +272,7 @@ const SubContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     justify-content: flex-start;
 	}
 `;
@@ -275,7 +284,7 @@ const BoxMenu = styled.div`
   align-items: center;
   flex-direction: row;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     width: 100%;
     height: 75%;
     display: ${props => (props.open ? 'flex' : 'none')};
@@ -290,7 +299,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -314,13 +323,13 @@ const SubContainerParagraph = styled.p`
     font-weight: bold;
     text-decoration: none;
 
-    @media (max-width: 648px) {
+    @media (max-width: 1023px) {
       color: #FFFFFF !important;
       font-size: 1rem;
 	  }
   }
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     margin-right: 0;
     padding-top: 4rem;
     padding-left: 0;
@@ -340,12 +349,12 @@ const SubContainerParagraph = styled.p`
 // 	}
 // `;
 
-const MenuHamburguerMobile = styled.img`
+const MenuHamburguer = styled.img`
   height: 12px;
   display: none;
   cursor: pointer;
 
-  @media (max-width: 648px) {
+  @media (max-width: 1023px) {
     height: ${props => (props.height && '18px')};
     /* display: flex; */
     display: ${props => (props.isClosed ? 'none' : 'flex')};
@@ -359,12 +368,18 @@ const SubContainerText = styled.div`
   height: 73.5vh;
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+  justify-content: center;
+  /* padding-left: 1rem; */
   padding: 8% 4rem;
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 
   @media (max-width: 1023px) {
     width: 70%;
+	}
+
+  @media (max-width: 768px) {
+    width: 80%;
+    padding: 20% 4rem;
 	}
 
   @media (max-width: 648px) {
@@ -372,7 +387,6 @@ const SubContainerText = styled.div`
     /* height: 100vh; */
     text-align: center;
     align-items: center;
-    justify-content: center;
     padding: 0;
     /* padding: 25% 0; */
 	}
@@ -381,10 +395,6 @@ const SubContainerText = styled.div`
 const Title = styled.h1`
   font-size: 2.625rem;
   font-family: 'Spartan', Bold;
-
-  /* @media (min-width: 1920px) {
-    font-size: 4rem;
-	} */
   
   @media (max-width: 648px) {
     width: 95%;
@@ -398,10 +408,6 @@ const ParagraphHeader = styled.p`
   font-size: 1.125rem;
   margin: 0.5rem 0 2rem;
   opacity: 1;
-
-  /* @media (min-width: 1920px) {
-    font-size: 1.8rem;
-	} */
 
   @media (max-width: 648px) {
     width: 93%;
@@ -479,6 +485,10 @@ const Slider = styled.div`
   transform: translateY(-7rem);
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    transform: translateY(-3rem);
+	}
+
   @media (max-width: 648px) {
     position: relative;
     bottom: 2.3em;
@@ -493,7 +503,6 @@ const SliderBolinha = styled.div`
   margin-left: 1.3rem;
   cursor: pointer;
 `;
-
 
 class Header extends Component {
   state = {
@@ -520,7 +529,7 @@ class Header extends Component {
       {
         image: Amigos,
         title: 'Contabilidade e Assessoria para o Terceiro Setor',
-        paragraph: 'ONGs, Fundações, OSCIP, e outras entidades em fins lucrativos. A gente cuida da burocracia para vocês gerarem mais impacto social.',
+        paragraph: 'ONGs, Fundações, OSCIP, e outras entidades sem fins lucrativos. A gente cuida da burocracia para vocês gerarem mais impacto social.',
         isBig: true,
         name: 'Man photo created by rawpixel.com - www.freepik.com',
         link: 'https://www.freepik.com/photos/man',
@@ -576,11 +585,7 @@ class Header extends Component {
   }
 
   renderCarousselMobile = () => {
-    const { isScroll, sliderHeader } = this.state;
-
-    const positionBackground = sliderHeader === 0 && '-255px';
-    const positionBackground1 = sliderHeader === 1 && '-375px';
-    const positionBackground2 = sliderHeader === 2 && '-545px';
+    const { isScroll } = this.state;
 
     return (
       <ContainerLogo>
@@ -588,34 +593,40 @@ class Header extends Component {
           enableKeyboardControls='true'
           cellAlign='left'
         >
-          {this.state.artigos.map((item, index) => (
-            <ContainerLogo
-              mobile
-              image={item.image}
-              positionImg={positionBackground || positionBackground1 || positionBackground2}
-            >
-              <span>
-                <SubContainerText
-                  title={item.title}
-                  isScroll={isScroll}
-                >
-                  <Title>{item.title}</Title>
-                  <ParagraphHeader paragraph={item}>{item.paragraph}</ParagraphHeader>
-                  {index === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
-                    : null}
-                </SubContainerText>
-                <ContentParahraph right={(index === 1 && '-42px') || (index === 2 && '-92px')}>
-                  <ParagraphHeaderImage target="_blank" href={item.link}>{item.name}</ParagraphHeaderImage>
-                  <ParagraphHeaderImage target="_blank" href={item.lastNameLink}>&nbsp; {item.lastName}</ParagraphHeaderImage>
-                </ContentParahraph>
-              </span>
-            </ContainerLogo>
-          ))}
+          {this.state.artigos.map((item, index) => {
+
+            const positionBackground = index === 0 && '-255px';
+            const positionBackground1 = index === 1 && '-375px';
+            const positionBackground2 = index === 2 && '-545px';
+
+            return (
+              <Section
+                mobile
+                image={item.image}
+                positionImg={positionBackground || positionBackground1 || positionBackground2}
+              >
+                <span>
+                  <SubContainerText
+                    title={item.title}
+                    isScroll={isScroll}
+                  >
+                    <Title>{item.title}</Title>
+                    <ParagraphHeader paragraph={item}>{item.paragraph}</ParagraphHeader>
+                    {index === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
+                      : null}
+                  </SubContainerText>
+                  <ContentParahraph right={(index === 1 && '-42px') || (index === 2 && '-92px')}>
+                    <ParagraphHeaderImage target="_blank" href={item.link}>{item.name}</ParagraphHeaderImage>
+                    <ParagraphHeaderImage target="_blank" href={item.lastNameLink}>&nbsp; {item.lastName}</ParagraphHeaderImage>
+                  </ContentParahraph>
+                </span>
+              </Section>
+            )
+          })}
         </Carousel>
       </ContainerLogo>
     )
   }
-
 
   render() {
     const { menu, sliderHeader, artigos, isScroll } = this.state;
@@ -623,69 +634,71 @@ class Header extends Component {
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 
     return (
-      // <>
-      <Section desktop
+      <>
+      <Section
+        desktop
         image={artigos[sliderHeader].image}
         // positionImg={positionBackground || positionBackground1 || positionBackground2}
         id="topo">
         <HeaderScrollMax isScroll={isScroll}>
-        <HeaderScroll>
-          <ContainerHeader>
-            <ContainerImage>
-              <Logo src={logo} alt='Logo' />
-            </ContainerImage>
-            <ContainerHeaderPage
-              style={{
-                color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
-                borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
-              }}>
-              <Page><b>Telefone:</b> 2232-1337</Page>
-              <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-            </ContainerHeaderPage>
-          </ContainerHeader>
-          <SubContainer>
-            <LogoMobile src={logo} alt='Logo' />
-            <ContainerHeaderBox open={menu}>
-              <BoxMenu open={menu}>
-                <Box>
-                  <SubContainerParagraph><a
-                    style={{
-                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                    }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a
-                    style={{
-                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                    }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a
-                    style={{
-                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                    }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
-                  <SubContainerParagraph><a
-                    style={{
-                      color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                    }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
-                </Box>
-                <ContainerHeaderMobile>
-                  <ContainerHeaderPage>
-                    <Page><b>Tel:</b> 2232-1337</Page>
-                    <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-                  </ContainerHeaderPage>
-                </ContainerHeaderMobile>
-              </BoxMenu>
-              {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-              {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-              <MenuHamburguerMobile height={menu} src={isMenu} alt='Menu Hamburguer' onClick={this.handleClick} />
-            </ContainerHeaderBox>
-          </SubContainer>
-        </HeaderScroll>
+          <HeaderScroll>
+            <ContainerHeader>
+              <ContainerImage>
+                <Logo src={logo} alt='Logo' />
+              </ContainerImage>
+              <ContainerHeaderPage
+                style={{
+                  color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
+                  borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
+                }}>
+                <Page><b>Telefone:</b> 2232-1337</Page>
+                <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+              </ContainerHeaderPage>
+            </ContainerHeader>
+            <SubContainer>
+              <LogoMobile src={logo} alt='Logo' />
+              <ContainerHeaderBox open={menu}>
+                <BoxMenu open={menu}>
+                  <Box>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                    <SubContainerParagraph><a
+                      style={{
+                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                      }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                  </Box>
+                  <ContainerHeaderMobile>
+                    <ContainerHeaderPage>
+                      <Page><b>Tel:</b> 2232-1337</Page>
+                      <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                    </ContainerHeaderPage>
+                  </ContainerHeaderMobile>
+                </BoxMenu>
+                {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
+                {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
+                <MenuHamburguer height={menu} src={isMenu} alt='Menu Hamburguer' 
+                onClick={this.handleClick} />
+              </ContainerHeaderBox>
+            </SubContainer>
+          </HeaderScroll>
         </HeaderScrollMax>
-        {this.renderCarousselMobile()}
+      {this.renderCarousselMobile()}
         <Overlay>
           <ContainerLogo
             desktop
-            image={artigos[sliderHeader].image}
+            // image={artigos[sliderHeader].image}
             // positionImg={positionBackground || positionBackground1 || positionBackground2}
-            id="topo"
+            // id="topo"
           >
             <SubContainerText
               title={artigos[sliderHeader].isBig}
@@ -708,7 +721,7 @@ class Header extends Component {
           </ContainerLogo>
         </Overlay>
       </Section>
-      /* </> */
+      </>
     );
   }
 }

@@ -136,7 +136,7 @@ const FooterLinha = styled.div`
 const ContentFooterTopo = styled.a`
   width: 6.3vh;
   height: 6.3vh;
-  background: #992863;
+  background: rgb(153, 40, 54);
   border-radius: 2px;
   box-shadow: 0px 3px 6px #00000029;
   display: ${props => (props.isScrollTop ? 'none' : 'flex')};
