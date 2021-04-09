@@ -7,8 +7,14 @@ import Linkedin from '../assets/socialLinkedin.svg';
 import LogoVnW from '../assets/logoVnw.png';
 
 
+const Content = styled.div`
+  width: 100%;
+`;
+
 const ContentFooter = styled.div`
   width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding-bottom: 8rem;
@@ -139,7 +145,7 @@ const ContentFooterTopo = styled.a`
   background: rgb(153, 40, 54);
   border-radius: 2px;
   box-shadow: 0px 3px 6px #00000029;
-  display: ${props => (props.isScrollTop ? 'none' : 'flex')};
+  display: ${props => (props.isScrollTopFooter ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -165,7 +171,7 @@ const ContentFooterTriangle = styled.div`
 `;
 
 const FooterFinish = styled.footer`
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(to right, #992836, #4D141B);
   color: #FFFFFF;
   font-family: 'Open Sans', ExtraBold;
@@ -181,53 +187,77 @@ const FooterFinish = styled.footer`
 `;
 
 
-class Footer extends Component { 
+class Footer extends Component {
+  // state = {
+  //   isScrollTop: false,
+  // }
+
+  // componentDidMount() {
+  //   if (typeof window !== undefined) {
+  //     window.onscroll = () => {
+  //       console.log('oiiiii');
+  //       if (window.scrollY <= 250) {
+  //         this.setState({
+  //           isScrollTop: true,
+  //         })
+  //       }
+  //       if (window.scrollY > 265) {
+  //         this.setState({
+  //           isScrollTop: false,
+  //         })
+  //       }
+  //     };
+  //   }
+  // }
+
   render() {
     return (
       <>
-        <ContentFooter>
-          <ContentFooterRede>
-            <ContentFooterContact>
-              <FooterLinha></FooterLinha>
-              <TitleFooter>CONTATO BRASIL</TitleFooter>
-              <ParagraphFooter><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
+        <Content>
+          <ContentFooter>
+            <ContentFooterRede>
+              <ContentFooterContact>
+                <FooterLinha></FooterLinha>
+                <TitleFooter>CONTATO BRASIL</TitleFooter>
+                <ParagraphFooter><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
                 RJ</ParagraphFooter>
-              <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
-              <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-              <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
-            </ContentFooterContact>
-            <ContentFooterContact marginBottom marginBottomMobile>
+                <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
+                <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
+                <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
+              </ContentFooterContact>
+              <ContentFooterContact marginBottom marginBottomMobile>
+                <FooterLinha></FooterLinha>
+                <TitleFooter>CONTATO PORTUGAL</TitleFooter>
+                <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
+                <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
+                <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
+              </ContentFooterContact>
+            </ContentFooterRede>
+            <ContentRedeSocial footer>
               <FooterLinha></FooterLinha>
-              <TitleFooter>CONTATO PORTUGAL</TitleFooter>
-              <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
-              <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-              <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
-            </ContentFooterContact>
-          </ContentFooterRede>
-          <ContentRedeSocial footer>
-            <FooterLinha></FooterLinha>
-            <TitleFooter>REDE SOCIAL</TitleFooter>
-            <span>
-              <a
-                href='https://www.facebook.com/sedimentajpm'
-                target='_blank'
-                rel="noopener noreferrer"
-              >
-                <img src={Face} alt='Facebook' />
-              </a>
-              <a
-                href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
-                target='_blank'
-                rel="noopener noreferrer"
-              >
-                <img src={Linkedin} alt='LinkedIn' />
-              </a>
-            </span>
-          </ContentRedeSocial>
-          <ContentFooterTopo isScrollTop={this.props.isScrollTop} href="#topo">
-            <ContentFooterTriangle />
-          </ContentFooterTopo>
-        </ContentFooter>
+              <TitleFooter>REDE SOCIAL</TitleFooter>
+              <span>
+                <a
+                  href='https://www.facebook.com/sedimentajpm'
+                  target='_blank'
+                  rel="noopener noreferrer"
+                >
+                  <img src={Face} alt='Facebook' />
+                </a>
+                <a
+                  href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
+                  target='_blank'
+                  rel="noopener noreferrer"
+                >
+                  <img src={Linkedin} alt='LinkedIn' />
+                </a>
+              </span>
+            </ContentRedeSocial>
+            <ContentFooterTopo isScrollTopFooter={this.props.isScrollTopFooter} href="#topo">
+              <ContentFooterTriangle />
+            </ContentFooterTopo>
+          </ContentFooter>
+        </Content>
         <FooterFinish>
           <p>DESENVOLVIDO POR:</p>
           <a

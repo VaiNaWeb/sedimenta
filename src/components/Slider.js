@@ -4,7 +4,7 @@ import Carousel from 'nuka-carousel';
 
 
 const Section = styled.section`
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(to right, #992836, #4D141B);
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@ const ContentCarouselMobile = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: -50px !important;
+    bottom: -48px !important;
   }
 
   .paging-item {
@@ -255,8 +255,6 @@ class Slider extends Component {
 
   handleArrowPrevious = () => {
     let { slideIndex, previousSlide, nextSlide } = this.state;
-    console.log('revious ');
-
 
     if (slideIndex > 0 && slideIndex <= 2) {
       slideIndex = slideIndex - 1;
@@ -275,7 +273,6 @@ class Slider extends Component {
 
   handleArrowNext = () => {
     let { slideIndex, previousSlide, nextSlide } = this.state;
-    console.log('next');
 
     slideIndex = slideIndex === 2 ? 0 : slideIndex + 1;
     previousSlide = slideIndex === 0 ? 2 : slideIndex - 1
@@ -354,8 +351,7 @@ class Slider extends Component {
               {this.renderSlider()}
             </ContentSliderBox>
             <figure onClick={this.handleArrowNext} >
-              <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-                viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+              <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262"  height="36.018" viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
                 d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
                 rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="5" opacity="0.2" />
@@ -374,7 +370,6 @@ class Slider extends Component {
               enableKeyboardControls='true'
               slideIndex={this.state.slideIndex}
             >
-              {console.log('oi', this.state.slideIndex)}
               {this.list.map(i => (
                 <SessionSlider>
                   <ContentSliderMeio selected>

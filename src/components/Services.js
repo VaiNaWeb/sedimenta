@@ -13,19 +13,25 @@ import Terceirização from '../assets/Terceirização.svg';
 import PessoaFisica from '../assets/pessoaFisica.svg';
 
 import setinha from '../assets/setinha.svg';
-import fechar from '../assets/fechar.svg';
+import closeBlack from '../assets/closeBlack.svg';
 
+
+const Content = styled.div`
+  width: 100%;
+`;
 
 const ContentServiços = styled.div`
+  max-width: 1440px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
   margin-bottom: 12rem;
   padding-left: 5rem;
 
-  /* @media (max-width: 1023px) {
-    padding-left: 3rem;
-	} */
+  @media (min-width: 1600px) {
+    padding-left: 0;
+	}
 
   @media (max-width: 1023px) {
     align-items: center;
@@ -47,6 +53,10 @@ const ContentServiçosTitle = styled.div`
   font-size: 1.313rem;
   font-family: 'Spartan', Bold;
   padding-top: 5rem;
+
+  @media (min-width: 1920px) {
+    width: 30%;
+	}
 
   @media (max-width: 1023px) {
     width: 39%;
@@ -89,6 +99,10 @@ const ContentBox = styled.div`
   margin-top: 5rem;
   margin-right: 5rem;
   box-shadow: 0px 3px 6px #00000029;
+
+  @media (min-width: 1600px) {
+    margin-right: 0;
+	}
 
   @media (max-width: 1024px) {
     margin-right: 2rem;
@@ -349,19 +363,8 @@ const BoxImageClose = styled.div`
 `;
 
 const ImageClosed = styled.img`
-  /* background: none;
-  border: none;
-  color: #992836;
-  font-size: 0.75rem;
-  font-family: 'Open Sans', Bold;
-  font-weight: 600;
-  outline: none; */
+  width: 2%;
   cursor: pointer;
-
-  /* img {
-    width: 14%;
-    margin-left: 0.3rem;
-  } */
 `;
 
 class Services extends Component {
@@ -602,7 +605,7 @@ class Services extends Component {
       <BoxContextText>Nossa Escrituração Contábil e Demonstrações Contábeis são
         adequadas ao padrões contabéis internacionais. </BoxContextText>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -631,7 +634,7 @@ class Services extends Component {
       <li>Avaliação de Desempenho;</li>
       <li>Treinamentos;</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -664,7 +667,7 @@ class Services extends Component {
         fiscais.</li>
       <li>Estudos de Cenários de Tributação - Visando redução de custos.</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -696,7 +699,7 @@ class Services extends Component {
       <li>Manutenção mensal da situação fiscal das empresas -
         Identificação prévia de possíveis problemas fiscais.</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -728,7 +731,7 @@ class Services extends Component {
       <BoxContextText>Também estão incluidos os relatórios de Fluxos de Caixas e outros
       pertinentes a sua tomada decisão</BoxContextText>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -759,7 +762,7 @@ class Services extends Component {
       ações operacionais, Recrutamento e Seleção, pesquisa de Clima
         Organizacional, avaliação e implantação de Cargos e Salários</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -792,7 +795,7 @@ class Services extends Component {
       <li>Gestão de Capital Humano;</li>
       <li>Contabilidade.</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -818,7 +821,7 @@ class Services extends Component {
       <li>Gestão de Empregados Domésticos (Babás, motoristas, domésticas e etc) </li>
       <li>Previdência Social (Aposentadoria)</li>
       <BoxImageClose>
-        <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+        <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
       </BoxImageClose>
     </BoxContext>
   )
@@ -857,7 +860,7 @@ class Services extends Component {
           ))}
           <BoxContentText>{item.textFinal}</BoxContentText>
           <BoxImageClose>
-            <ImageClosed src={fechar} alt='close' onClick={this.handleClose} />
+            <ImageClosed src={closeBlack} alt='close' onClick={this.handleClose} />
           </BoxImageClose>
         </BoxContext>
       </ContentBoxContainer>
@@ -866,6 +869,7 @@ class Services extends Component {
 
   render() {
     return (
+      <Content>
       <ContentServiços id='services'>
         <ContentServiçosTitle>
           <hr></hr>
@@ -957,6 +961,7 @@ class Services extends Component {
           </Carousel>
         </ContentBoxMobile>
       </ContentServiços>
+      </Content>
     );
   }
 }

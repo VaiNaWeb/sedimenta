@@ -14,7 +14,7 @@ import Calculadora from '../assets/calculadora.jpg';
 
 
 const Section = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-image: url(${props => props.image});
   background-position-y: -35px;
@@ -25,7 +25,16 @@ const Section = styled.section`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  justify-content: space-between;
+
+  &::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #0000005C 0% 0% no-repeat padding-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   .slider-control-centerleft {
     display: none !important;
@@ -47,10 +56,15 @@ const Section = styled.section`
     outline: none;
     fill: #FFFFFF !important;
   }
+
+  @media (max-width: 1023px) {
+    background-image: ${props => (props.desktop ? 'none' : 'flex')};
+    background-position-y: 0;
+	}
   
   @media (max-width: 768px) {
     height: 95vh;
-    background-image: ${props => (props.desktop ? 'none' : 'flex')};
+    /* background-image: ${props => (props.desktop ? 'none' : 'flex')}; */
 	}
 
   @media (max-width: 450px) {
@@ -58,15 +72,20 @@ const Section = styled.section`
 	}
 `;
 
-const ContainerLogo = styled.div`
+const Content = styled.div`
   max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+`;
+
+const ContainerLogo = styled.div`
   width: 100%;
   height: 100vh;
   color: #FFFFFF;
   margin: 0 auto;
   display: ${props => (props.desktop ? 'flex' : 'none')};
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 
   @media (max-width: 1023px) {
     display: ${props => (props.desktop ? 'none' : 'flex')};
@@ -74,9 +93,10 @@ const ContainerLogo = styled.div`
 
     span {
       width: 100%;
-      height: 100vh;
-      background: #0000005C 0% 0% no-repeat padding-box;
+      height: 95vh;
+      /* background: #0000005C 0% 0% no-repeat padding-box; */
       opacity: 0.97;
+      /* z-index: 1; */
 
     @media (max-width: 768px) {
       height: 90vh;
@@ -90,23 +110,20 @@ const ContainerLogo = styled.div`
 `;
 
 const Overlay = styled.div`
-  width: 100%;
+  z-index: 1;
+  /* width: 100%;
   height: 100vh;
   background: #0000005C 0% 0% no-repeat padding-box;
-  opacity: 0.97;
   display: flex;
+  justify-content: center;
+  z-index: 1;
+
 
   /* @media (max-width: 768px) {
     flex-direction: column;
     padding: 2rem 1rem;
   } */
-
-  @media (max-width: 1023px) {
-    padding: 0.5rem;
-    display: none;
-    /* height: 95vh; */
-  }
-`;
+  `;
 
 const HeaderScrollMax = styled.section`
   width: 100%;
@@ -369,9 +386,13 @@ const SubContainerText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* padding-left: 1rem; */
   padding: 8% 4rem;
   /* margin-top: 4rem; */
+  /* z-index: 2; */
+
+  @media (min-width: 1920px) {
+    padding: 0 4rem 0 0;
+	}
 
   @media (max-width: 1023px) {
     width: 70%;
@@ -482,7 +503,7 @@ const Slider = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  transform: translateY(-7rem);
+  transform: translateY(-1rem);
   cursor: pointer;
 
   @media (max-width: 768px) {
@@ -535,26 +556,28 @@ class Header extends Component {
         link: 'https://www.freepik.com/photos/man',
       },
     ],
-    isScroll: false,
+    // isScroll: false,
   }
 
-  componentDidMount() {
-    this.handleInterval();
-    if (typeof window !== undefined) {
-      window.onscroll = () => {
-        if (window.scrollY > 100) {
-          this.setState({
-            isScroll: true,
-          })
-        }
-        if (window.scrollY === 0) {
-          this.setState({
-            isScroll: false,
-          })
-        }
-      };
-    }
-  }
+  // componentDidMount() {
+  //   this.handleInterval();
+  //   if (typeof window !== undefined) {
+  //     window.onscroll = () => {
+  //       console.log('queee');
+
+  //       if (window.scrollY > 100) {
+  //         this.setState({
+  //           isScroll: true,
+  //         })
+  //       }
+  //       if (window.scrollY === 0) {
+  //         this.setState({
+  //           isScroll: false,
+  //         })
+  //       }
+  //     };
+  //   }
+  // }
 
   handleClick = () => {
     this.setState({
@@ -592,18 +615,20 @@ class Header extends Component {
         <Carousel
           enableKeyboardControls='true'
           cellAlign='left'
+          transitionMode="fade"
+          // speed
         >
           {this.state.artigos.map((item, index) => {
-
+            
             const positionBackground = index === 0 && '-255px';
             const positionBackground1 = index === 1 && '-375px';
             const positionBackground2 = index === 2 && '-545px';
-
+            
             return (
               <Section
-                mobile
-                image={item.image}
-                positionImg={positionBackground || positionBackground1 || positionBackground2}
+              mobile
+              image={item.image}
+              positionImg={positionBackground || positionBackground1 || positionBackground2}
               >
                 <span>
                   <SubContainerText
@@ -629,98 +654,105 @@ class Header extends Component {
   }
 
   render() {
-    const { menu, sliderHeader, artigos, isScroll } = this.state;
+    const { menu, sliderHeader, artigos } = this.state;
+    const { isScroll } = this.props;
+
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 
+    console.log('isScroll', this.props.isScrollHeader)
+
+
     return (
       <>
-      <Section
-        desktop
-        image={artigos[sliderHeader].image}
-        // positionImg={positionBackground || positionBackground1 || positionBackground2}
-        id="topo">
-        <HeaderScrollMax isScroll={isScroll}>
-          <HeaderScroll>
-            <ContainerHeader>
-              <ContainerImage>
-                <Logo src={logo} alt='Logo' />
-              </ContainerImage>
-              <ContainerHeaderPage
-                style={{
-                  color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
-                  borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
-                }}>
-                <Page><b>Telefone:</b> 2232-1337</Page>
-                <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-              </ContainerHeaderPage>
-            </ContainerHeader>
-            <SubContainer>
-              <LogoMobile src={logo} alt='Logo' />
-              <ContainerHeaderBox open={menu}>
-                <BoxMenu open={menu}>
-                  <Box>
-                    <SubContainerParagraph><a
-                      style={{
-                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                      }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
-                    <SubContainerParagraph><a
-                      style={{
-                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                      }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
-                    <SubContainerParagraph><a
-                      style={{
-                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                      }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
-                    <SubContainerParagraph><a
-                      style={{
-                        color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                      }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
-                  </Box>
-                  <ContainerHeaderMobile>
-                    <ContainerHeaderPage>
-                      <Page><b>Tel:</b> 2232-1337</Page>
-                      <p><b>E-mail:</b> contato@sedimenta.com.br</p>
-                    </ContainerHeaderPage>
-                  </ContainerHeaderMobile>
-                </BoxMenu>
-                {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-                {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
-                <MenuHamburguer height={menu} src={isMenu} alt='Menu Hamburguer' 
-                onClick={this.handleClick} />
-              </ContainerHeaderBox>
-            </SubContainer>
-          </HeaderScroll>
-        </HeaderScrollMax>
-      {this.renderCarousselMobile()}
-        <Overlay>
-          <ContainerLogo
-            desktop
+        <Section
+          desktop
+          image={artigos[sliderHeader].image}
+          // positionImg={positionBackground || positionBackground1 || positionBackground2}
+          id="topo">
+          <Content>
+            <HeaderScrollMax isScroll={this.props.isScroll}>
+              <HeaderScroll>
+                <ContainerHeader>
+                  <ContainerImage>
+                    <Logo src={logo} alt='Logo' />
+                  </ContainerImage>
+                  <ContainerHeaderPage
+                    style={{
+                      color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
+                      borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
+                    }}>
+                    <Page><b>Telefone:</b> 2232-1337</Page>
+                    <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                  </ContainerHeaderPage>
+                </ContainerHeader>
+                <SubContainer>
+                  <LogoMobile src={logo} alt='Logo' />
+                  <ContainerHeaderBox open={menu}>
+                    <BoxMenu open={menu}>
+                      <Box>
+                        <SubContainerParagraph ><a
+                          style={{
+                            color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                          }} href="#sobre"><b>SOBRE NÓS</b></a></SubContainerParagraph>
+                        <SubContainerParagraph><a
+                          style={{
+                            color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                          }} href="#services"><b>SERVIÇOS</b></a></SubContainerParagraph>
+                        <SubContainerParagraph><a
+                          style={{
+                            color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                          }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
+                        <SubContainerParagraph><a
+                          style={{
+                            color: `${isScroll ? '#373737' : '#FFFFFF'}`,
+                          }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                      </Box>
+                      <ContainerHeaderMobile>
+                        <ContainerHeaderPage>
+                          <Page><b>Tel:</b> 2232-1337</Page>
+                          <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                        </ContainerHeaderPage>
+                      </ContainerHeaderMobile>
+                    </BoxMenu>
+                    {/* <MenuHamburguer src={isScroll ? menuHamburguerPreto : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
+                    {/* <MenuHamburguerMobile height={menu} isClosed={menu && closed} src={menu ? closed : menuHamburguer} alt='Menu Hamburguer' onClick={this.handleClick} /> */}
+                    <MenuHamburguer height={menu} src={isMenu} alt='Menu Hamburguer'
+                      onClick={this.handleClick} />
+                  </ContainerHeaderBox>
+                </SubContainer>
+              </HeaderScroll>
+            </HeaderScrollMax>
+            {this.renderCarousselMobile()}
+            <ContainerLogo
+              desktop
             // image={artigos[sliderHeader].image}
             // positionImg={positionBackground || positionBackground1 || positionBackground2}
             // id="topo"
-          >
-            <SubContainerText
-              title={artigos[sliderHeader].isBig}
-              isScroll={isScroll}
             >
-              <Title>{artigos[sliderHeader].title}</Title>
-              <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-              {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
-                : null}
-            </SubContainerText>
-            <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>
-              <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
-              <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
-            </ContentParahraph>
-            <Slider>
-              <SliderBolinha isSelected={sliderHeader === 0 ? true : false} onClick={() => this.handleSlider(0)}></SliderBolinha>
-              <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>
-              <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
-            </Slider>
-          </ContainerLogo>
-        </Overlay>
-      </Section>
+              <Overlay>
+                <SubContainerText
+                  title={artigos[sliderHeader].isBig}
+                  isScroll={isScroll}
+                >
+                  <Title>{artigos[sliderHeader].title}</Title>
+                  <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
+                  {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
+                    : null}
+                </SubContainerText>
+                <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>
+                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
+                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
+                </ContentParahraph>
+                <Slider>
+                  <SliderBolinha isSelected={sliderHeader === 0 ? true : false} onClick={() => this.handleSlider(0)}></SliderBolinha>
+                  <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>
+                  <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
+                </Slider>
+              </Overlay>
+            </ContainerLogo>
+          </Content>
+        </Section>
       </>
     );
   }
