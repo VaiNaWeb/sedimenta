@@ -9,12 +9,18 @@ import People3 from '../assets/Mauro.png';
 import Icon from '../assets/icon.svg';
 
 
+// const Content = styled.div`
+//   width: 100%;
+// `;
+
 const ContentCargo = styled.div`
+  max-width: 1440px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   margin: 2.5rem 0 0;
 
   @media (max-width: 648px) {
@@ -162,6 +168,10 @@ const Cargo = styled.div`
   justify-content: space-around;
   margin-bottom: 4rem;
 
+  @media (min-width: 1600px) {
+    justify-content: space-between;
+	}
+
   @media (max-width: 1023px) {
     margin: 5rem 0 0;
 	}
@@ -212,7 +222,7 @@ class Home extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-             <img src={item.linkeId} alt='linkedin' />
+              <img src={item.linkeId} alt='linkedin' />
             </a>
           </ContentCargoCaixa>
         </SessionCargo>

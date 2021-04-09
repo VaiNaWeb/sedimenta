@@ -34,18 +34,22 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1440px;
+  /* max-width: 1440px; */
   width: 100%;
-  background-color: #F5F5F5;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* margin: 0 auto; */
+`;
+
+const Content = styled.div`
+  max-width: 1440px;
   margin: 0 auto;
 `;
 
 const ContentCaixaGeral = styled.div`
-  width: 93%;
+  width: 100%;
   background-color: #FFFFFF;
   box-shadow: 0px 3px 6px #00000029;
   display: flex;
@@ -129,7 +133,7 @@ const CaixaParagraph = styled.p`
 	}
 `;
 
-const Content = styled.div`
+const ContentTitle = styled.div`
   width: 18vw;
   display: flex;
   flex-direction: row;
@@ -181,7 +185,7 @@ const ImageSeta = styled.img`
 `;
 
 const ContentSobre = styled.div`
-  width: 100%;
+  /* width: 100%; */
   padding: 0 5rem 8rem;
 
   @media (max-width: 1023px) {
@@ -193,9 +197,10 @@ const ContentSobre = styled.div`
 	}
 
   span {
+    max-width: 1440px;
     display: flex;
     justify-content: space-between;
-    margin-top: 5rem;
+    margin: 5rem 0;
 
     @media (max-width: 1023px) {
       width: 100%;
@@ -306,10 +311,6 @@ const ContainerParagraphRead = styled.p`
   justify-content: center;
   cursor: pointer;
 
-  @media (max-width: 648px) {
-    
-	}
-
   img {
     margin-left: 0.7rem;
   }
@@ -321,7 +322,7 @@ const BoxImage = styled.img`
 `;
 
 const SubContent = styled.div`
-  width: 100vw;
+  width: 100%;
   background-image: url(${Fundo});
   background-size: cover;
   background-repeat: no-repeat;
@@ -539,6 +540,7 @@ const ContentLogo = styled.div`
 `;
 
 const ContentLogoImages = styled.div`
+  max-width: 1440px;
   width: 89%;
   display: flex;
   justify-content: space-between;
@@ -636,12 +638,40 @@ class Home extends Component {
     posts: [],
     isOpenReading: false,
     width: 0,
+    isScrollHeader: false,
+    isScrollTopFooter: false,
   }
 
   componentDidMount() {
     this.getPosts();
     this.handleScreenSize()
     window.addEventListener('resize', this.handleScreenSize)
+
+    if (typeof window !== undefined) {
+      window.onscroll = () => {
+        if (window.scrollY > 100) {
+          console.log('oiiiii');
+          this.setState({
+            isScrollHeader: true,
+          })
+        }
+        if (window.scrollY === 0) {
+          this.setState({
+            isScrollHeader: false,
+          })
+        }
+        if (window.scrollY <= 250) {
+          this.setState({
+            isScrollTopFooter: true,
+          })
+        }
+        if (window.scrollY > 250) {
+          this.setState({
+            isScrollTopFooter: false,
+          })
+        }
+      };
+    }
   }
 
   componentWillUnmount() {
@@ -700,26 +730,29 @@ class Home extends Component {
   }
 
   render() {
+    
     const { posts } = this.state;
+    
+    console.log('this.state.isScrollHeader', this.state.isScrollHeader)
+    console.log('this.state.isScrollTopFooter', this.state.isScrollTopFooter)
 
     return (
       <Section>
         <Container>
-          <Header />
-          <ContentCaixaGeral>
-            <Content>
-              <TitleHeader>PORQUE NOS ESCOLHER</TitleHeader>
-              <ImageSeta src={seta} alt='seta' />
-            </Content>
-            <ContentCaixaBox>
-              <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento
-              eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
-              <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência
-              nas informações</CaixaParagraph>
-              <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento
-              com o seu negócio</CaixaParagraph>
-            </ContentCaixaBox>
-          </ContentCaixaGeral>
+          <Header isScroll={this.state.isScrollHeader}/>
+          <Content>
+            <ContentCaixaGeral>
+              <ContentTitle>
+                <TitleHeader>PORQUE NOS ESCOLHER</TitleHeader>
+                <ImageSeta src={seta} alt='seta' />
+              </ContentTitle>
+              <ContentCaixaBox>
+                <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
+                <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência nas informações</CaixaParagraph>
+                <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento com o seu negócio</CaixaParagraph>
+              </ContentCaixaBox>
+            </ContentCaixaGeral>
+          </Content>
           <ContentSobre id='sobre'>
             <span>
               <ContentSobreTitle>
@@ -798,14 +831,14 @@ class Home extends Component {
               </LogoSeparationMobile>
             </ContentLogoImagesMobile>
           </ContentLogoMobile>
-            <SubContent>
-              <SubContentCaixa>
-                <SubContentMeio>
-                  <hr></hr>
-                  <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
-                </SubContentMeio>
-              </SubContentCaixa>
-            </SubContent>
+          <SubContent>
+            <SubContentCaixa>
+              <SubContentMeio>
+                <hr></hr>
+                <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
+              </SubContentMeio>
+            </SubContentCaixa>
+          </SubContent>
           <ContainerCaixa>
             <Caixa>
               {posts.length > 0
@@ -815,8 +848,8 @@ class Home extends Component {
             </Caixa>
           </ContainerCaixa>
           <Formulation />
-          <Footer />
-        </Container >
+          <Footer isScrollTopFooter={this.state.isScrollTopFooter}/>
+        </Container>
       </Section>
     )
   }

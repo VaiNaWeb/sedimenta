@@ -14,7 +14,7 @@ function encode(data) {
 };
 
 const ContainerForm = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${props => props.isBig ? '78vh' : '197vh'};
 
   @media (max-width: 768px) {
@@ -27,7 +27,7 @@ const ContainerForm = styled.div`
 `;
 
 const ContentFinishSolicitation = styled.span`
-  width: 100vw;
+  width: 100%;
   height: ${props => props.height ? '182vh' : '65vh'};
   color: #FFFFFF;
   display: flex;
