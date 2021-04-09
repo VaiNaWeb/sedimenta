@@ -57,7 +57,7 @@ const ContentCaixaGeral = styled.div`
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
-    transform: translateY(-18%);
+    transform: translateY(-40%);
 	}
 
   @media (max-width: 648px) {
@@ -86,6 +86,7 @@ const ContentCaixaBox = styled.div`
 	}
 
   @media (max-width: 768px) {
+    max-width: 100%;
     margin-left: 0;
 	}
 
@@ -112,7 +113,7 @@ const CaixaParagraph = styled.p`
 	}
 
   @media (max-width: 768px) {
-    width: 30vw;
+    width: 36vw;
     padding: ${props => (props.paddingMobile)};
 	}
 
@@ -144,7 +145,7 @@ const Content = styled.div`
 `;
 
 const TitleHeader = styled.h2`
-  width: 15vw;
+  width: 11vw;
   color: #373737;
   font-size: 1rem;
   font-family: 'Spartan', Bold;
@@ -154,6 +155,10 @@ const TitleHeader = styled.h2`
     margin-left: 1rem;
 	}
 
+  @media (max-width: 1023px) {
+    width: 15vw;
+	}
+
   @media (max-width: 768px) {
     width: 100%;
     font-size: 1.313rem;
@@ -161,6 +166,10 @@ const TitleHeader = styled.h2`
     justify-content: center;
     padding-bottom: 1.5rem;
     margin-left: 0;
+	}
+
+  @media (max-width: 648px) {
+    width: 97%;
 	}
 `;
 
@@ -188,9 +197,10 @@ const ContentSobre = styled.div`
     justify-content: space-between;
     margin-top: 5rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
       width: 100%;
       flex-direction: column;
+      margin-top: 7rem;
     } 
 
     @media (max-width: 648px) {
@@ -218,7 +228,7 @@ const ContentSobreTitle = styled.div`
     width: 20vw;
 	}
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     width: 100%;
     display: flex;
     align-items: center;
@@ -243,6 +253,15 @@ const ContentSobreTitle = styled.div`
     border: 2px solid #707070;
     margin-bottom: 2rem;
   }
+
+  h3 {
+    @media (max-width: 768px) {
+      width: 16vw;
+    }
+    @media (max-width: 648px) {
+      width: 50vw;
+    }
+  }
 `;
 
 const ContentSobreText = styled.div`
@@ -253,12 +272,8 @@ const ContentSobreText = styled.div`
   flex-direction: column;
 
   @media (max-width: 1023px) {
-    width: 65%;
-    margin-top: 1.3rem;
-	}
-
-  @media (max-width: 768px) {
     width: 100%;
+    /* margin-top: 1.3rem; */
 	}
 
   @media (max-width: 648px) {
@@ -654,7 +669,6 @@ class Home extends Component {
     })
   }
 
-
   handleText = () => {
     this.setState({
       text: this.state.text,
@@ -714,9 +728,8 @@ class Home extends Component {
               </ContentSobreTitle>
               <ContentBox>
                 <ContentSobreText isOpen marginTop>
-                  <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em
-                ajudar pequenas e médias empresas a atingir seus objetivos de
-                negócios.</ContainerParagraph>
+                  <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em ajudar pequenas e médias empresas a atingir seus objetivos de negócios.
+                  </ContainerParagraph>
                   <ContainerParagraph paddingBottom>Quer seja uma empresa de médio porte, um(a)
                   especialista que pretende lançar a sua ideia no mercado ou numa
                   Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
@@ -725,7 +738,7 @@ class Home extends Component {
                   Contabilidade, Departamento Pessoal, Impostos, Tributação de Pessoa
                   Física e Finanças que permitem que você se concentre no
                   crescimento de seus negócios - enquanto cuidamos de todo o trabalho
-                de Contabilidade. </ContainerParagraph>
+                  de Contabilidade. </ContainerParagraph>
                   <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Saiba mais <img src={setinha} alt="arrow" /> </ContainerParagraphRead>
                 </ContentSobreText>
                 <ContentSobreText isOpen={this.state.isOpenReading}>
@@ -736,12 +749,12 @@ class Home extends Component {
                   o que fazemos. Somos profissionais apaixonados que procuram proporcionar uma
                   experiência de maior proximidade e interação com nossos clientes -
                   colocando-os sempre em primeiro lugar. Abraçamos a inovação e buscamos
-                oportunidades de criar valor para o seu negócio.</ContainerParagraph>
+                  oportunidades de criar valor para o seu negócio.</ContainerParagraph>
                   <ContainerParagraph>​Estamos sediados no bairro da
                   Lapa, na cidade do Rio de Janeiro - Brasil, com escritório em Almada - Portugal,
-                e também atendemos clientes internacionais fora do Brasil.</ContainerParagraph>
+                  e também atendemos clientes internacionais fora do Brasil.</ContainerParagraph>
                   <ContainerParagraph><b>A Sedimenta JPM </b>
-                está ansiosa para ser sua parceira!</ContainerParagraph>
+                  está ansiosa para ser sua parceira!</ContainerParagraph>
                 </ContentSobreText>
               </ContentBox>
             </span>

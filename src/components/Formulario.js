@@ -70,6 +70,10 @@ const ParagraphForm = styled.p`
   text-align: center;
   margin-top: 0.6rem;
 
+  @media (max-width: 1023px) {
+    width: 60%;
+	}
+
   @media (max-width: 648px) {
     width: 95%;
 	}
@@ -95,16 +99,16 @@ const ButtonSolicitation = styled.button`
   cursor: pointer;
 
   @media (max-width: 1023px) {
-    width: 21%;
-	}
-
-  @media (max-width: 768px) {
     width: 27%;
 	}
 
-  @media (max-width: 648px) {
+  @media (max-width: 768px) {
     width: 35%;
 	}
+
+  /* @media (max-width: 648px) {
+    width: 35%;
+	} */
 
   @media (max-width: 425px) {
     width: 60%;
@@ -339,7 +343,7 @@ const ButtonForm = styled.button`
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 15%;
+    width: 22%;
 	}
 
   @media (max-width: 648px) {
@@ -347,22 +351,23 @@ const ButtonForm = styled.button`
 	}
 `;
 
-const ParagraphClosed = styled.p`
-  color: #FFFFFF;
-  font-size: 0.9375rem;
-  font-family: 'Open Sans', Semibold;
-  font-weight: bold;
-  margin-top: 8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
+// const ParagraphClosed = styled.p`
+//   color: #FFFFFF;
+//   font-size: 0.9375rem;
+//   font-family: 'Open Sans', Semibold;
+//   font-weight: bold;
+//   margin-top: 8rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+// `;
 
 const ImageClosed = styled.img`
-  width: 14%;
-  margin-left: 0.5rem;
-  margin-top: 0.3rem;
+  /* width: 14%; */
+  /* margin-left: 0.5rem;
+  margin-top: 0.3rem; */
+  margin-top: 8rem;
   cursor: pointer;
 `;
 
@@ -651,7 +656,7 @@ class Formulation extends Component {
               (
                 <ButtonForm onClick={this.handleCheck}>ENVIAR</ButtonForm>
               )}
-            <ParagraphClosed onClick={this.handleClick}>Fechar <ImageClosed src={closed} /></ParagraphClosed>
+            <ImageClosed src={closed} onClick={this.handleClick}/>
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
@@ -670,7 +675,7 @@ class Formulation extends Component {
             Ainda em duvida??
           </TitleForm>
           <ParagraphForm>
-            Deixe a <b>Sedimenta</b> cuidar da gestão financeira da sua empresa para você!!
+            Deixe a <b>Sedimenta</b> cuidar da gestão financeira e contábil da sua empresa!!
           </ParagraphForm>
           <ButtonSolicitation
             display={this.state.solicitation}

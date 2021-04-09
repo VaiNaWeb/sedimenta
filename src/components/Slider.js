@@ -18,7 +18,7 @@ const ContentSlider = styled.div`
   /* padding: 4rem 0 0; */
   /* margin-bottom: 5rem; */
 
-  @media (max-width: 648px) {
+  @media (max-width: 768px) {
     padding: 0 0 5rem;
   }
 `;
@@ -26,7 +26,7 @@ const ContentSlider = styled.div`
 const ContentCarouselMobile = styled.div`
   display: none;
 
-  @media (max-width: 648px) {
+  @media (max-width: 768px) {
     width: 100%;
     display: flex;
   }
@@ -40,7 +40,7 @@ const ContentCarouselMobile = styled.div`
   }
 
   .slider-control-bottomcenter {
-    bottom: -48px !important;
+    bottom: -50px !important;
   }
 
   .paging-item {
@@ -61,8 +61,8 @@ const ContentTitleSlider = styled.div`
   margin-bottom: 5.5rem;
   padding-top: 5rem;
 
-  @media (max-width: 648px) {
-    margin-bottom: 4rem;
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
 	}
 
   hr {
@@ -83,6 +83,14 @@ const TitleSlider = styled.h2`
   margin-top: 2rem;
   opacity: 1;
 
+  @media (max-width: 1023px) {
+    width: 35%;
+	}
+
+  @media (max-width: 768px) {
+    width: 43%;
+	}
+
   @media (max-width: 648px) {
     width: 90%;
 	}
@@ -94,6 +102,10 @@ const CarouselSlider = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 768px) {
+    justify-content: space-between;
+	}
+
   @media (max-width: 648px) {
     align-items: flex-end;
 	}
@@ -103,6 +115,7 @@ const SessionSlider = styled.section`
   display: flex;
   justify-content: space-around;
   border-radius: 4px;
+  z-index: 0;
 `;
 
 const ContentSliderBox = styled.div`
@@ -115,7 +128,7 @@ const ContentSliderBox = styled.div`
     width: 95%;
 	}
  
-  @media (max-width: 648px) {
+  @media (max-width: 768px) {
     display: none;
 	}
 `;
@@ -124,8 +137,9 @@ const SliderArrow = styled.svg`
   margin: 0 2rem 0 2rem;
   transform: ${props => props.isRotation && 'rotate(180deg)'};
   position: relative;
-  bottom: ${props => props.botton && '28px'};;
+  bottom: ${props => props.botton && '28px'};
   cursor: pointer;
+  z-index: 1;
 
   &:hover {
     path {
@@ -135,6 +149,15 @@ const SliderArrow = styled.svg`
   }
 
   @media (max-width: 1023px) {
+    margin: ${props => (props.selected ? '0 2rem 0 2rem' : '0 1rem 0 2rem')};
+	}
+
+  @media (max-width: 768px) {
+    bottom: ${props => props.botton && '-100px'};
+    margin: ${props => (props.selected ? '0 2rem 0 6rem' : '0 6rem 0 2rem')};
+	}
+
+  @media (max-width: 648px) {
     display: none; 
 	}
 `;
@@ -161,15 +184,11 @@ const ContentSliderMeio = styled.div`
 	}
 
   @media (max-width: 1023px) {
-    width: 23em;
+    width: 21em;
 	}
 
   @media (max-width: 768px) {
-    width: 18em;
-	}
-
-  @media (max-width: 648px) {
-    width: 90%;
+    width: 47%;
     height: 14rem;
     background-color: #FFFFFF;
     color: #373737;
@@ -179,6 +198,10 @@ const ContentSliderMeio = styled.div`
     padding: 2rem 1.25rem 1.25rem;
     margin-bottom: 0;
     transform: none;
+	}
+
+  @media (max-width: 648px) {
+    width: 90%;
   }
 `;
 
@@ -193,7 +216,7 @@ const SliderCarousel = styled.div`
   margin: 1.5rem 0 2rem;
   cursor: pointer;
 
-  @media (max-width: 648px) {
+  @media (max-width: 768px) {
     display: none;
 	}
 `;
@@ -210,7 +233,7 @@ const SliderBolinha = styled.div`
 
 class Slider extends Component {
   state = {
-    selectedSlide: 1,
+    slideIndex: 1,
     previousSlide: 0,
     nextSlide: 2,
   }
@@ -218,7 +241,7 @@ class Slider extends Component {
   list = [
     {
       text: '"Estamos muito satisfeitos com o atendimento personalizado da Sedimenta JPM. Contabilidade não é só número! E nós sabemos que podemos contar com eles."',
-      name: 'Pedro Herzog, Sócio-diretor',
+      name: 'Pedro Herzog, Plano B',
     },
     {
       text: 'A Sedimenta JPM é uma empresa muito competente. Desde 2017 tem nos auxiliado em todas as questões contábeis e financeiras do Instituto sempre com muita agilidade, destreza técnica e simpatia.',
@@ -226,58 +249,63 @@ class Slider extends Component {
     },
     {
       text: 'Uma empresa que tem como Meta a qualidade nos serviços e no atendimento ao Cliente. Outro diferencial é a Competência, honestidade e seriedade.',
-      name: 'Wallace Caldas, Sócio-diretor, Velatura',
+      name: 'Wallace Caldas, Velatura',
     }
   ]
 
   handleArrowPrevious = () => {
-    let { selectedSlide, previousSlide, nextSlide } = this.state;
+    let { slideIndex, previousSlide, nextSlide } = this.state;
+    console.log('revious ');
 
-    if (selectedSlide > 0 && selectedSlide <= 2) {
-      selectedSlide = selectedSlide - 1;
+
+    if (slideIndex > 0 && slideIndex <= 2) {
+      slideIndex = slideIndex - 1;
     } else {
-      selectedSlide = 2
+      slideIndex = 2
     }
-    previousSlide = selectedSlide === 0 ? 2 : selectedSlide - 1
-    nextSlide = selectedSlide === 2 ? 0 : selectedSlide + 1
+    previousSlide = slideIndex === 0 ? 2 : slideIndex - 1
+    nextSlide = slideIndex === 2 ? 0 : slideIndex + 1
 
     this.setState({
-      selectedSlide,
+      slideIndex,
       previousSlide,
       nextSlide,
     })
   }
 
   handleArrowNext = () => {
-    let { selectedSlide, previousSlide, nextSlide } = this.state;
+    let { slideIndex, previousSlide, nextSlide } = this.state;
+    console.log('next');
 
-    selectedSlide = selectedSlide === 2 ? 0 : selectedSlide + 1;
-    previousSlide = selectedSlide === 0 ? 2 : selectedSlide - 1
-    nextSlide = selectedSlide === 2 ? 0 : selectedSlide + 1
+    slideIndex = slideIndex === 2 ? 0 : slideIndex + 1;
+    previousSlide = slideIndex === 0 ? 2 : slideIndex - 1
+    nextSlide = slideIndex === 2 ? 0 : slideIndex + 1
 
     this.setState({
-      selectedSlide,
+      slideIndex,
       previousSlide,
       nextSlide,
     })
+
+
   }
 
   handleSlider = i => {
-    let { selectedSlide, previousSlide, nextSlide } = this.state;
+    let { slideIndex, previousSlide, nextSlide } = this.state;
 
-    selectedSlide = i;
+    slideIndex = i;
     previousSlide = i === 0 ? 2 : i - 1
     nextSlide = i === 2 ? 0 : i + 1
 
     this.setState({
-      selectedSlide,
+      slideIndex,
       previousSlide,
       nextSlide,
     })
   }
 
   renderSlider = () => {
-    const { selectedSlide, previousSlide, nextSlide } = this.state;
+    const { slideIndex, previousSlide, nextSlide } = this.state;
 
     return (
       <>
@@ -289,8 +317,8 @@ class Slider extends Component {
         </SessionSlider>
         <SessionSlider>
           <ContentSliderMeio selected>
-            <p>{this.list[selectedSlide].text}</p>
-            <ContentSliderParagraph>{this.list[selectedSlide].name}</ContentSliderParagraph>
+            <p>{this.list[slideIndex].text}</p>
+            <ContentSliderParagraph>{this.list[slideIndex].name}</ContentSliderParagraph>
           </ContentSliderMeio>
         </SessionSlider>
         <SessionSlider>
@@ -304,7 +332,7 @@ class Slider extends Component {
   }
 
   render() {
-    const { selectedSlide } = this.state;
+    const { slideIndex } = this.state;
 
     return (
       <Section>
@@ -314,26 +342,30 @@ class Slider extends Component {
             <TitleSlider>o que os clientes falam da nossa empresa!!</TitleSlider>
           </ContentTitleSlider>
           <CarouselSlider>
-            <SliderArrow botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-              viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
+            <figure onClick={this.handleArrowPrevious} >
+              <SliderArrow selected botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+                viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
                 d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="5" opacity="0.2" onClick={this.handleArrowPrevious} />
-            </SliderArrow>
+                rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="5" opacity="0.2" />
+              </SliderArrow>
+            </figure>
             <ContentSliderBox>
               {this.renderSlider()}
             </ContentSliderBox>
-            <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
-              viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
+            <figure onClick={this.handleArrowNext} >
+              <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
+                viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
                 d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-            rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
-                stroke-linejoin="round" stroke-width="5" opacity="0.2" onClick={this.handleArrowNext} />
-            </SliderArrow>
+                rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="5" opacity="0.2" />
+              </SliderArrow>
+            </figure>
           </CarouselSlider>
           <SliderCarousel>
-            <SliderBolinha isSelected={selectedSlide === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlide === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
-            <SliderBolinha isSelected={selectedSlide === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
+            <SliderBolinha isSelected={slideIndex === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
+            <SliderBolinha isSelected={slideIndex === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
+            <SliderBolinha isSelected={slideIndex === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
           </SliderCarousel>
           <ContentCarouselMobile>
             <Carousel
@@ -342,6 +374,7 @@ class Slider extends Component {
               enableKeyboardControls='true'
               slideIndex={this.state.slideIndex}
             >
+              {console.log('oi', this.state.slideIndex)}
               {this.list.map(i => (
                 <SessionSlider>
                   <ContentSliderMeio selected>

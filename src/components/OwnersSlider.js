@@ -15,7 +15,7 @@ const ContentCargo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2.5rem 0 5rem 0;
+  margin: 2.5rem 0 0;
 
   @media (max-width: 648px) {
     margin: 0;
@@ -161,6 +161,10 @@ const Cargo = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 4rem;
+
+  @media (max-width: 1023px) {
+    margin: 5rem 0 0;
+	}
 
   @media (max-width: 648px) {
     display: none;
