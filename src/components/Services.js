@@ -212,10 +212,10 @@ const BoxTitle = styled.h2`
   margin-bottom: 1rem;
  
   @media (max-width: 648px) {
-    height: 0;
+    height: 9%;
     /* height: ${props => (props.isOpenTitle ? '0' : '15%')}; */
     font-size: 1.25rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
   }
 `;
 
@@ -363,7 +363,7 @@ const BoxImageClose = styled.div`
 `;
 
 const ImageClosed = styled.img`
-  width: 2%;
+  width: 3vw;
   cursor: pointer;
 `;
 

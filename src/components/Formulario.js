@@ -111,7 +111,7 @@ const ButtonSolicitation = styled.button`
 	} */
 
   @media (max-width: 425px) {
-    width: 60%;
+    width: 65%;
 	}
 `;
 
@@ -347,7 +347,7 @@ const ButtonForm = styled.button`
 	}
 
   @media (max-width: 648px) {
-    width: 30%;
+    width: 35%;
 	}
 `;
 
@@ -364,9 +364,7 @@ const ButtonForm = styled.button`
 // `;
 
 const ImageClosed = styled.img`
-  /* width: 14%; */
-  /* margin-left: 0.5rem;
-  margin-top: 0.3rem; */
+  width: 3.2vw;
   margin-top: 8rem;
   cursor: pointer;
 `;

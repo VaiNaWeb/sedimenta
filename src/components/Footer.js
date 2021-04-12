@@ -27,7 +27,7 @@ const ContentFooter = styled.div`
   @media (max-width: 648px) {
     flex-direction: column;
     padding-bottom: 0;
-    margin: 0;
+    /* margin: 0; */
 	}
 `;
 
