@@ -34,6 +34,10 @@ const Section = styled.section`
     position: absolute;
     top: 0;
     left: 0;
+
+    @media (max-width: 450px) {
+      /* height: 97%; */
+	  }
   }
 
   .slider-control-centerleft {
@@ -64,7 +68,6 @@ const Section = styled.section`
   
   @media (max-width: 768px) {
     height: 95vh;
-    /* background-image: ${props => (props.desktop ? 'none' : 'flex')}; */
 	}
 
   @media (max-width: 450px) {

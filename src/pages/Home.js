@@ -34,7 +34,6 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  /* max-width: 1440px; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -46,6 +45,14 @@ const Container = styled.div`
 const Content = styled.div`
   max-width: 1440px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 92%;
+	}
+
+  @media (max-width: 425px) {
+    width: 85%;
+	}
 `;
 
 const ContentCaixaGeral = styled.div`
@@ -59,19 +66,20 @@ const ContentCaixaGeral = styled.div`
   transform: translateY(-50%);
 
   @media (max-width: 768px) {
-    width: 95%;
+    /* width: 95%; */
     flex-direction: column;
     transform: translateY(-40%);
 	}
 
   @media (max-width: 648px) {
-    width: 90%;
+    width: 100%;
     padding: 3.5rem 0;
     text-align: center;
     transform: translateY(-19%);
 	}
 
   @media (max-width: 425px) {
+    /* width: 100%; */
     transform: translateY(-16%);
 	}
 `;
@@ -650,7 +658,6 @@ class Home extends Component {
     if (typeof window !== undefined) {
       window.onscroll = () => {
         if (window.scrollY > 100) {
-          console.log('oiiiii');
           this.setState({
             isScrollHeader: true,
           })
@@ -665,7 +672,7 @@ class Home extends Component {
             isScrollTopFooter: true,
           })
         }
-        if (window.scrollY > 250) {
+        if (window.scrollY > 0) {
           this.setState({
             isScrollTopFooter: false,
           })
