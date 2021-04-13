@@ -165,6 +165,10 @@ const TitleHeader = styled.h2`
   font-family: 'Spartan', Bold;
   margin-left: 3.3rem;
 
+  @media (min-width: 1920px) {
+    width: 10vw;
+	}
+
   @media (max-width: 1024px) {
     margin-left: 1rem;
 	}
@@ -739,12 +743,8 @@ class Home extends Component {
   }
 
   render() {
-    
     const { posts } = this.state;
     
-    console.log('this.state.isScrollHeader', this.state.isScrollHeader)
-    console.log('this.state.isScrollTopFooter', this.state.isScrollTopFooter)
-
     return (
       <Section>
         <Container>

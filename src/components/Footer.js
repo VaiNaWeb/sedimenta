@@ -149,9 +149,10 @@ const ContentFooterTopo = styled.a`
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  opacity: 1;
+  bottom: 52px;
+  right: 8px;
+  /* opacity: 1; */
+  z-index: 1;
 
   @media (max-width: 1023px) {
     display: none;
@@ -195,7 +196,6 @@ class Footer extends Component {
   // componentDidMount() {
   //   if (typeof window !== undefined) {
   //     window.onscroll = () => {
-  //       console.log('oiiiii');
   //       if (window.scrollY <= 250) {
   //         this.setState({
   //           isScrollTop: true,
