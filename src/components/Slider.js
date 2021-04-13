@@ -222,8 +222,8 @@ const SliderCarousel = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background-color: ${props => (props.isSelected ? '#FFFFFF' : '#8A4A52')};
   margin-left: 1.3rem;
