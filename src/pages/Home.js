@@ -44,6 +44,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   max-width: 1440px;
+  width: 90%;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -113,7 +114,8 @@ const CaixaParagraph = styled.p`
   font-size: 0.875rem;
   font-family: 'Spartan', Bold;
   font-weight: bold;
-  padding: 0 7rem 0 0;
+  padding-right: ${props => (props.paddingRight ? '7rem' : '0')};
+  /* padding: 0 7rem 0 0; */
 
   b {
     color: #000000;
@@ -157,11 +159,11 @@ const ContentTitle = styled.div`
 `;
 
 const TitleHeader = styled.h2`
-  width: 11vw;
+  width: 13vw;
   color: #373737;
   font-size: 1rem;
   font-family: 'Spartan', Bold;
-  margin-left: 2.2rem;
+  margin-left: 3.3rem;
 
   @media (max-width: 1024px) {
     margin-left: 1rem;
@@ -754,9 +756,9 @@ class Home extends Component {
                 <ImageSeta src={seta} alt='seta' />
               </ContentTitle>
               <ContentCaixaBox>
-                <CaixaParagraph paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
-                <CaixaParagraph width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência nas informações</CaixaParagraph>
-                <CaixaParagraph width='21vw' paddingMobile='2rem 1rem 0 0'>Comprometimento com o seu negócio</CaixaParagraph>
+                <CaixaParagraph paddingRight paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
+                <CaixaParagraph paddingRight width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência nas informações</CaixaParagraph>
+                <CaixaParagraph width='13vw' paddingMobile='2rem 1rem 0 0'>Comprometimento com o seu negócio</CaixaParagraph>
               </ContentCaixaBox>
             </ContentCaixaGeral>
           </Content>

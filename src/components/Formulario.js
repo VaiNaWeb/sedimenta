@@ -18,7 +18,7 @@ const ContainerForm = styled.div`
   height: ${props => props.isBig ? '78vh' : '197vh'};
 
   @media (max-width: 768px) {
-    height: ${props => props.isBig ? '85vh' : '160vh'};
+    height: ${props => props.isBig ? '58vh' : '160vh'};
 	}
 
   @media (max-width: 490px) {
@@ -80,7 +80,7 @@ const ParagraphForm = styled.p`
 `;
 
 const ButtonSolicitation = styled.button`
-  width: 20%;
+  width: 17rem;
   color: #974757;
   background: #FFFFFF;
   border: 2px solid #FFF;
@@ -99,11 +99,11 @@ const ButtonSolicitation = styled.button`
   cursor: pointer;
 
   @media (max-width: 1023px) {
-    width: 27%;
+    /* width: 27%; */
 	}
 
   @media (max-width: 768px) {
-    width: 35%;
+    /* width: 35%; */
 	}
 
   /* @media (max-width: 648px) {
@@ -111,7 +111,7 @@ const ButtonSolicitation = styled.button`
 	} */
 
   @media (max-width: 425px) {
-    width: 65%;
+    /* width: 65%; */
 	}
 `;
 
@@ -326,7 +326,7 @@ const Error = styled.p`
 `;
 
 const ButtonForm = styled.button`
-  width: 10vw;
+  width: 9rem;
   background: #FFFFFF;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
@@ -343,11 +343,11 @@ const ButtonForm = styled.button`
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 22%;
+    /* width: 22%; */
 	}
 
   @media (max-width: 648px) {
-    width: 35%;
+    /* width: 35%; */
 	}
 `;
 
@@ -364,7 +364,7 @@ const ButtonForm = styled.button`
 // `;
 
 const ImageClosed = styled.img`
-  width: 3.2vw;
+  /* width: 2%; */
   margin-top: 8rem;
   cursor: pointer;
 `;

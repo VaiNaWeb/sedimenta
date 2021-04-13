@@ -363,7 +363,7 @@ const BoxImageClose = styled.div`
 `;
 
 const ImageClosed = styled.img`
-  width: 3vw;
+  width: 3%;
   cursor: pointer;
 `;
 

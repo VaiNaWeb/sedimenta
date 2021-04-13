@@ -35,9 +35,9 @@ const Section = styled.section`
     top: 0;
     left: 0;
 
-    @media (max-width: 450px) {
-      /* height: 97%; */
-	  }
+    /* @media (max-width: 648px) {
+      height: 94.3vh;
+	  } */
   }
 
   .slider-control-centerleft {
@@ -95,8 +95,9 @@ const ContainerLogo = styled.div`
 	} 
 
     span {
-      width: 100%;
-      height: 95vh;
+      /* width: 100%; */
+      /* height: 95vh; */
+      /* background: none; */
       /* background: #0000005C 0% 0% no-repeat padding-box; */
       opacity: 0.97;
       /* z-index: 1; */
@@ -106,7 +107,7 @@ const ContainerLogo = styled.div`
     }
 
     @media (max-width: 648px) {
-      padding: 0.5rem;
+      /* padding: 0.5rem; */
       /* height: 95vh; */
     }
   }
@@ -204,7 +205,7 @@ const ContainerHeaderPage = styled.div`
 	}
 
   @media (max-width: 768px) {
-    padding-bottom: 0.5rem;
+    /* padding-bottom: 0.5rem; */
 	}
 `;
 
@@ -282,10 +283,10 @@ const ContainerHeaderBox = styled.div`
     right: 0;
     top: 0;
 	}
-
+/* 
   @media (max-width: 768px) {
     padding: 1rem 0 0 0;
-	}
+	} */
 `;
 
 const SubContainer = styled.div`
@@ -427,7 +428,7 @@ const Title = styled.h1`
 `;
 
 const ParagraphHeader = styled.p`
-  width: ${props => (props.paragraph ? '89%' : '99%')};
+  width: ${props => (props.paragraph ? '33rem' : '41rem')};
   font-family: 'Open Sans', Regular;
   font-size: 1.125rem;
   margin: 0.5rem 0 2rem;
@@ -461,7 +462,8 @@ const ParagraphHeaderImage = styled.a`
 `;
 
 const ButtonHeader = styled.button`
-  width: 43%;
+  /* width: 43%; */
+  width: 17rem;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   border-radius: 2px;
@@ -472,11 +474,11 @@ const ButtonHeader = styled.button`
   cursor: pointer;
 
   @media (max-width: 1130px) {
-    width: 55%;
+    /* width: 55%; */
 	}
 
   @media (max-width: 768px) {
-    width: 70%;
+    /* width: 70%; */
 	}
 
   @media (max-width: 648px) {
@@ -486,7 +488,7 @@ const ButtonHeader = styled.button`
 	}
 
   @media (max-width: 485px) {
-    width: 78%;
+    /* width: 78%; */
     display: flex;
     justify-content: center;
     margin-top: 1.2rem;
@@ -520,8 +522,8 @@ const Slider = styled.div`
 `;
 
 const SliderBolinha = styled.div`
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background-color: ${props => (props.isSelected ? '#FFFFFF' : '#FFFFFF80')};
   margin-left: 1.3rem;
@@ -663,7 +665,7 @@ class Header extends Component {
 
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 
-    console.log('isScroll', this.props.isScrollHeader)
+    console.log('isScroll', )
 
 
     return (
@@ -685,7 +687,7 @@ class Header extends Component {
                       color: `${isScroll ? '#9E9E9E' : '#FFFFFF'}`,
                       borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
                     }}>
-                    <Page><b>Telefone:</b> 2232-1337</Page>
+                    <Page><b>Telefone:</b> +55 (21) 2232-1337</Page>
                     <p><b>E-mail:</b> contato@sedimenta.com.br</p>
                   </ContainerHeaderPage>
                 </ContainerHeader>
@@ -713,7 +715,7 @@ class Header extends Component {
                       </Box>
                       <ContainerHeaderMobile>
                         <ContainerHeaderPage>
-                          <Page><b>Tel:</b> 2232-1337</Page>
+                          <Page><b>Tel:</b> +55 (21) 2232-1337</Page>
                           <p><b>E-mail:</b> contato@sedimenta.com.br</p>
                         </ContainerHeaderPage>
                       </ContainerHeaderMobile>
@@ -739,7 +741,7 @@ class Header extends Component {
                   isScroll={isScroll}
                 >
                   <Title>{artigos[sliderHeader].title}</Title>
-                  <ParagraphHeader paragraph={artigos[sliderHeader].isBig}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
+                  <ParagraphHeader paragraph={sliderHeader === 0}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
                   {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
                     : null}
                 </SubContainerText>
