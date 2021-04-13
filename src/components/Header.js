@@ -463,12 +463,13 @@ const ParagraphHeaderImage = styled.a`
 
 const ButtonHeader = styled.button`
   /* width: 43%; */
-  width: 17rem;
+  width: 16rem;
   background: linear-gradient(to right, #992836 , #761F29, #4D141B);
   border: none;
   border-radius: 2px;
   letter-spacing: 0.14px;
-  padding: 1.1rem;
+  padding: 1.063rem 0 0.813rem;
+  /* padding: 1.1rem; */
   text-transform: uppercase;
   outline: none;
   cursor: pointer;
@@ -568,8 +569,6 @@ class Header extends Component {
   //   this.handleInterval();
   //   if (typeof window !== undefined) {
   //     window.onscroll = () => {
-  //       console.log('queee');
-
   //       if (window.scrollY > 100) {
   //         this.setState({
   //           isScroll: true,
@@ -599,9 +598,9 @@ class Header extends Component {
   }
 
   handleInterval = () => {
-    // this.interval = setInterval(
-    //   this.handleTransition, 6000
-    // )
+    this.interval = setInterval(
+      this.handleTransition, 6000
+    )
   }
 
   handleTransition = () => {
@@ -661,12 +660,7 @@ class Header extends Component {
   render() {
     const { menu, sliderHeader, artigos } = this.state;
     const { isScroll } = this.props;
-
-
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
-
-    console.log('isScroll', )
-
 
     return (
       <>

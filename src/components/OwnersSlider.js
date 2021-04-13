@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
-import People1 from '../assets/oi.png';
-import People2 from '../assets/oii.png';
-import People3 from '../assets/oiii.png';
+import People1 from '../assets/Eduardo.png';
+import People2 from '../assets/Christiani.png';
+import People3 from '../assets/Mauro.png';
 
 import Icon from '../assets/icon.svg';
 

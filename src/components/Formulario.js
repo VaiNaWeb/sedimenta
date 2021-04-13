@@ -80,7 +80,7 @@ const ParagraphForm = styled.p`
 `;
 
 const ButtonSolicitation = styled.button`
-  width: 17rem;
+  /* width: 17rem; */
   color: #974757;
   background: #FFFFFF;
   border: 2px solid #FFF;
@@ -88,7 +88,8 @@ const ButtonSolicitation = styled.button`
   font-size: 0.75rem;
   font-family: 'Spartan', Bold;
   font-weight: 700;
-  padding: 1.3rem 0 1.1rem;
+  padding: 1.063rem 1.5rem 0.813rem;
+  /* padding: 1.3rem 0 1.1rem; */
   margin-top: 2rem;
   display: ${props => props.display ? 'flex' : 'none'};
   align-items: center;
@@ -326,7 +327,7 @@ const Error = styled.p`
 `;
 
 const ButtonForm = styled.button`
-  width: 9rem;
+  /* width: 9rem; */
   background: #FFFFFF;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
@@ -334,7 +335,8 @@ const ButtonForm = styled.button`
   font-size: 0.75rem;
   font-family: 'Spartan', Bold;
   font-weight: bold;
-  padding: 1.2rem 0 1rem;
+  padding: 1.063rem 1.5rem 0.813rem;
+  /* padding: 1.2rem 0 1rem; */
   margin-top: 3rem;
   display: flex;
   align-items: center;
@@ -442,6 +444,7 @@ class Formulation extends Component {
   handleChangeName = (ev) => {
     this.setState({
       inputName: ev.target.value,
+      error: false,
     })
   }
 
@@ -455,6 +458,7 @@ class Formulation extends Component {
   handleChangeCompany = (ev) => {
     this.setState({
       inputCompany: ev.target.value,
+      error: false,
     })
   }
 
@@ -468,6 +472,7 @@ class Formulation extends Component {
   handleChangeEmail = (ev) => {
     this.setState({
       inputEmail: ev.target.value,
+      error: false,
     })
   }
 
@@ -511,6 +516,7 @@ class Formulation extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
+    const { name, company, email, subject, message } = this.state.form;
 
     const form = ev.target;
 
@@ -522,23 +528,33 @@ class Formulation extends Component {
         ...this.state.form
       })
     }).then(() => {
-      this.setState({
-        form: {
-          name: '',
-          company: '',
-          email: '',
-          subject: '',
-          message: '',
-        },
-        isSelectedItems: '',
-        showSuccessMessage: true,
-      });
-
-      setTimeout(() => {
+      if (!name || !company || !email || !subject || !message) {
         this.setState({
-          showSuccessMessage: false,
+          error: true,
         });
-      }, 1200);
+      } else {
+        this.setState({
+          error: false,
+        });
+
+        this.setState({
+          form: {
+            name: '',
+            company: '',
+            email: '',
+            subject: '',
+            message: '',
+          },
+          isSelectedItems: '',
+          showSuccessMessage: true,
+        });
+
+        setTimeout(() => {
+          this.setState({
+            showSuccessMessage: false,
+          });
+        }, 1200);
+      }
     }).catch(() => { });
   }
 
@@ -632,7 +648,7 @@ class Formulation extends Component {
               name="message"
               placeholder="Escreva aqui a sua mensagem:"
               value={this.state.form.message}
-              required
+              // required
               onChange={(ev) => {
                 this.handleForm('message', ev.target.value);
               }}
@@ -654,7 +670,7 @@ class Formulation extends Component {
               (
                 <ButtonForm onClick={this.handleCheck}>ENVIAR</ButtonForm>
               )}
-            <ImageClosed src={closed} onClick={this.handleClick}/>
+            <ImageClosed src={closed} onClick={this.handleClick} />
           </Formulario>
           <BoxImage />
         </ContentFinishSolicitation>
