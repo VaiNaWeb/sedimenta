@@ -9,10 +9,6 @@ import People3 from '../assets/Mauro.png';
 import Icon from '../assets/icon.svg';
 
 
-// const Content = styled.div`
-//   width: 100%;
-// `;
-
 const ContentCargo = styled.div`
   max-width: 1440px;
   width: 100%;

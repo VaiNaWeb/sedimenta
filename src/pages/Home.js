@@ -673,12 +673,13 @@ class Home extends Component {
             isScrollHeader: false,
           })
         }
-        if (window.scrollY <= 250) {
+        if (window.scrollY <= 350) {
+          console.log('isScrollTopFooter', window.scrollY);
           this.setState({
             isScrollTopFooter: true,
           })
         }
-        if (window.scrollY > 0) {
+        if (window.scrollY > 350) {
           this.setState({
             isScrollTopFooter: false,
           })
