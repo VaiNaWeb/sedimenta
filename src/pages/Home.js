@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+// import Carousel from 'nuka-carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
@@ -81,7 +82,7 @@ const ContentCaixaGeral = styled.div`
 
   @media (max-width: 425px) {
     /* width: 100%; */
-    transform: translateY(-16%);
+    transform: translateY(-13%);
 	}
 `;
 
@@ -207,7 +208,7 @@ const ContentSobre = styled.div`
 	}
 
   @media (max-width: 648px) {
-    padding: 3.5rem 0 5rem;
+    padding: 3.5rem 0 0;
 	}
 
   span {
@@ -263,7 +264,7 @@ const ContentSobreTitle = styled.div`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-bottom: 3rem;
+    /* margin-bottom: 3rem; */
 	}
 
   hr {
@@ -297,6 +298,7 @@ const ContentSobreText = styled.div`
 
   @media (max-width: 648px) {
     width: 95%;
+    margin-top: 0;
 	}
 `;
 
@@ -310,7 +312,7 @@ const ContainerParagraph = styled.p`
     width: 95%;
     display: block;
     flex-direction: column;
-    padding-bottom: ${props => (props.paddingBottom ? '0' : '1.4rem')};
+    /* padding-bottom: ${props => (props.paddingBottom ? '0' : '1.4rem')}; */
 	}
 `;
 
@@ -319,7 +321,7 @@ const ContainerParagraphRead = styled.p`
   font-size: 0.75rem;
   font-family: 'Open Sans', Semibold;
   font-weight: 600;
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: ${props => (props.isOpen ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;
@@ -337,9 +339,9 @@ const BoxImage = styled.img`
 
 const SubContent = styled.div`
   width: 100%;
-  background-image: url(${Fundo});
+  /* background-image: url(${Fundo});
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `;
 
 const SubContentCaixa = styled.div`
@@ -352,8 +354,8 @@ const SubContentCaixa = styled.div`
 const SubContentMeio = styled.span`
   width: 32vw;
   height: 40vh;
-  background-color: #373737;
-  color: #FFFFFF;
+  /* background-color: #373737; */
+  color: #373737;
   font-family: 'Open Sans', Bold;
   text-transform: uppercase;
   display: flex;
@@ -382,8 +384,8 @@ const SubContentMeio = styled.span`
 
   hr {
     width: 4rem;
-    background-color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    /* background-color: #FFFFFF; */
+    border: 2px solid #373737;
     opacity: 1;
 
     @media (max-width: 768px) {
@@ -455,7 +457,7 @@ const CaixaBox = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 40%;
+    width: 100%;
     margin-right: 3rem;
 	}
 
@@ -673,12 +675,13 @@ class Home extends Component {
             isScrollHeader: false,
           })
         }
-        if (window.scrollY <= 250) {
+        if (window.scrollY <= 350) {
+          console.log('isScrollTopFooter', window.scrollY);
           this.setState({
             isScrollTopFooter: true,
           })
         }
-        if (window.scrollY > 0) {
+        if (window.scrollY > 350) {
           this.setState({
             isScrollTopFooter: false,
           })
@@ -694,7 +697,8 @@ class Home extends Component {
   getPosts = async () => {
     try {
       const response = await axios.get(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
+        // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
       );
 
       this.setState({
@@ -744,11 +748,11 @@ class Home extends Component {
 
   render() {
     const { posts } = this.state;
-    
+
     return (
       <Section>
         <Container>
-          <Header isScroll={this.state.isScrollHeader}/>
+          <Header isScroll={this.state.isScrollHeader} />
           <Content>
             <ContentCaixaGeral>
               <ContentTitle>
@@ -772,7 +776,7 @@ class Home extends Component {
                 <ContentSobreText isOpen marginTop>
                   <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em ajudar pequenas e médias empresas a atingir seus objetivos de negócios.
                   </ContainerParagraph>
-                  <ContainerParagraph paddingBottom>Quer seja uma empresa de médio porte, um(a)
+                  <ContainerParagraph>Quer seja uma empresa de médio porte, um(a)
                   especialista que pretende lançar a sua ideia no mercado ou numa
                   Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
                   que pretende abrir ou expandir um negócio, estaremos ao seu lado
@@ -857,7 +861,7 @@ class Home extends Component {
             </Caixa>
           </ContainerCaixa>
           <Formulation />
-          <Footer isScrollTopFooter={this.state.isScrollTopFooter}/>
+          <Footer isScrollTopFooter={this.state.isScrollTopFooter} />
         </Container>
       </Section>
     )

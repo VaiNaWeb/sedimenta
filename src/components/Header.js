@@ -35,9 +35,10 @@ const Section = styled.section`
     top: 0;
     left: 0;
 
-    /* @media (max-width: 648px) {
-      height: 94.3vh;
-	  } */
+    @media (max-width: 648px) {
+    background: #0000005C 0% 0% no-repeat content-box;
+      /* background: none; */
+	  }
   }
 
   .slider-control-centerleft {
@@ -49,7 +50,7 @@ const Section = styled.section`
   }
 
   .slider-control-bottomcenter {
-    bottom: 135px !important;
+    bottom: 100px !important;
   }
 
   .paging-item {
@@ -99,17 +100,12 @@ const ContainerLogo = styled.div`
       /* height: 95vh; */
       /* background: none; */
       /* background: #0000005C 0% 0% no-repeat padding-box; */
-      opacity: 0.97;
+      /* opacity: 0.97; */
       /* z-index: 1; */
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
       height: 90vh;
-    }
-
-    @media (max-width: 648px) {
-      /* padding: 0.5rem; */
-      /* height: 95vh; */
-    }
+    } */
   }
 `;
 
@@ -283,10 +279,10 @@ const ContainerHeaderBox = styled.div`
     right: 0;
     top: 0;
 	}
-/* 
+
   @media (max-width: 768px) {
     padding: 1rem 0 0 0;
-	} */
+	}
 `;
 
 const SubContainer = styled.div`
@@ -435,7 +431,7 @@ const ParagraphHeader = styled.p`
   opacity: 1;
 
   @media (max-width: 648px) {
-    width: 93%;
+    width: 73%;
 	}
 `;
 
@@ -485,14 +481,14 @@ const ButtonHeader = styled.button`
   @media (max-width: 648px) {
     font-weight: bold;
     padding: 1.2rem 0 1rem;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
 	}
 
   @media (max-width: 485px) {
     /* width: 78%; */
     display: flex;
     justify-content: center;
-    margin-top: 1.2rem;
+    /* margin-top: 1.2rem; */
 	}
 
   a {
@@ -620,13 +616,15 @@ class Header extends Component {
           enableKeyboardControls='true'
           cellAlign='left'
           transitionMode="fade"
+          slideIndex={this.state.slideIndex}
+          afterSlide={slideIndex => this.setState({ slideIndex })}
           // speed
         >
           {this.state.artigos.map((item, index) => {
             
             const positionBackground = index === 0 && '-255px';
             const positionBackground1 = index === 1 && '-375px';
-            const positionBackground2 = index === 2 && '-545px';
+            const positionBackground2 = index === 2 && '-520px';
             
             return (
               <Section
@@ -634,7 +632,7 @@ class Header extends Component {
               image={item.image}
               positionImg={positionBackground || positionBackground1 || positionBackground2}
               >
-                <span>
+                <Overlay>
                   <SubContainerText
                     title={item.title}
                     isScroll={isScroll}
@@ -648,7 +646,7 @@ class Header extends Component {
                     <ParagraphHeaderImage target="_blank" href={item.link}>{item.name}</ParagraphHeaderImage>
                     <ParagraphHeaderImage target="_blank" href={item.lastNameLink}>&nbsp; {item.lastName}</ParagraphHeaderImage>
                   </ContentParahraph>
-                </span>
+                </Overlay>
               </Section>
             )
           })}

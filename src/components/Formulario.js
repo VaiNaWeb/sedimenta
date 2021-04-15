@@ -52,7 +52,8 @@ const ContentFinishSolicitation = styled.span`
 
 const TitleForm = styled.h3`
   width: 49%;
-  font-size: 1.75rem;
+  font-size: ${props => props.fontSize ? '1.75rem' : '1.313rem'};
+  /* font-size: 1.75rem; */
   font-family: 'Spartan', Bold;
   text-align: center;
   text-transform: uppercase;
@@ -165,7 +166,7 @@ const Label = styled.label`
 	}
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 85%;
 	}
 `;
 
@@ -192,7 +193,7 @@ const Input = styled.input`
 	}
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 85%;
 	}
 `;
 
@@ -240,7 +241,7 @@ const FormSelect = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 85%;
 	}
 `;
 
@@ -291,7 +292,7 @@ const Textarea = styled.textarea`
 	}
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 85%;
     height: 210px;
     padding-top: 1rem;
 	}
@@ -309,7 +310,7 @@ const ErroMessage = styled.div`
 	}
 
   @media (max-width: 648px) {
-    width: 80%;
+    width: 85%;
 	}
 `;
 
@@ -579,7 +580,7 @@ class Formulation extends Component {
       <>
         <ContentFinishSolicitation height background>
           <TitleForm marginTop>
-            Entre em contato!
+            Envie sua proposta ou entre em contato!
           </TitleForm>
           <Formulario
             name="contact"
@@ -685,8 +686,8 @@ class Formulation extends Component {
       <ContainerForm isBig={this.state.solicitation}
         isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
-          <TitleForm>
-            Ainda em duvida??
+          <TitleForm fontSize>
+            Ainda em duvida???
           </TitleForm>
           <ParagraphForm>
             Deixe a <b>Sedimenta</b> cuidar da gestão financeira e contábil da sua empresa!!

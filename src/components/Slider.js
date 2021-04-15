@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
-
 const Section = styled.section`
   width: 100%;
   background: linear-gradient(to right, #992836, #4D141B);
@@ -62,7 +61,7 @@ const ContentTitleSlider = styled.div`
   padding-top: 5rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 	}
 
   hr {
