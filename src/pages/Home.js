@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Carousel from 'nuka-carousel';
+// import Carousel from 'nuka-carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
