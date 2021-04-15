@@ -233,6 +233,8 @@ class Home extends Component {
           <Carousel
             cellSpacing={32}
             enableKeyboardControls='true'
+            slideIndex={this.state.slideIndex}
+            afterSlide={slideIndex => this.setState({ slideIndex })}
           >
             {this.renderPerson()}
           </Carousel>
