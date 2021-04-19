@@ -189,7 +189,7 @@ class Home extends Component {
       },
       {
         imgPerson: People2,
-        name: "CRISTIANI NASCIMENTO",
+        name: "CHRISTIANI NASCIMENTO",
         area: " CEO - Leg. de empresas, parafiscal;",
         linkeId: Icon,
         link: "https://www.linkedin.com/in/christiani-nascimento-23b06018b/",
