@@ -93,36 +93,11 @@ const ContainerLogo = styled.div`
 
   @media (max-width: 1023px) {
     display: ${props => (props.desktop ? 'none' : 'flex')};
-	} 
-
-    span {
-      /* width: 100%; */
-      /* height: 95vh; */
-      /* background: none; */
-      /* background: #0000005C 0% 0% no-repeat padding-box; */
-      /* opacity: 0.97; */
-      /* z-index: 1; */
-
-    /* @media (max-width: 768px) {
-      height: 90vh;
-    } */
-  }
+	}
 `;
 
 const Overlay = styled.div`
   z-index: 1;
-  /* width: 100%;
-  height: 100vh;
-  background: #0000005C 0% 0% no-repeat padding-box;
-  display: flex;
-  justify-content: center;
-  z-index: 1;
-
-
-  /* @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 2rem 1rem;
-  } */
   `;
 
 const HeaderScrollMax = styled.section`
@@ -198,10 +173,6 @@ const ContainerHeaderPage = styled.div`
     padding: 1.5rem 1rem;
     position: absolute;
     bottom: 0;
-	}
-
-  @media (max-width: 768px) {
-    /* padding-bottom: 0.5rem; */
 	}
 `;
 
@@ -353,19 +324,6 @@ const SubContainerParagraph = styled.p`
 	}
 `;
 
-// const MenuHamburguer = styled.img`
-//   height: 13px;
-//   display: ${props => (props.isClosed ? 'none' : 'flex')};
-//   cursor: pointer;
-
-
-//   @media (max-width: 648px) {
-//     display: none;
-//     align-self: end;
-//     padding-left: 1rem;
-// 	}
-// `;
-
 const MenuHamburguer = styled.img`
   height: 12px;
   display: none;
@@ -470,14 +428,6 @@ const ButtonHeader = styled.button`
   outline: none;
   cursor: pointer;
 
-  @media (max-width: 1130px) {
-    /* width: 55%; */
-	}
-
-  @media (max-width: 768px) {
-    /* width: 70%; */
-	}
-
   @media (max-width: 648px) {
     font-weight: bold;
     padding: 1.2rem 0 1rem;
@@ -485,7 +435,6 @@ const ButtonHeader = styled.button`
 	}
 
   @media (max-width: 485px) {
-    /* width: 78%; */
     display: flex;
     justify-content: center;
     /* margin-top: 1.2rem; */
@@ -618,7 +567,6 @@ class Header extends Component {
           transitionMode="fade"
           slideIndex={this.state.slideIndex}
           afterSlide={slideIndex => this.setState({ slideIndex })}
-          // speed
         >
           {this.state.artigos.map((item, index) => {
             
@@ -665,7 +613,6 @@ class Header extends Component {
         <Section
           desktop
           image={artigos[sliderHeader].image}
-          // positionImg={positionBackground || positionBackground1 || positionBackground2}
           id="topo">
           <Content>
             <HeaderScrollMax isScroll={this.props.isScroll}>
