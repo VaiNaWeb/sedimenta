@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-// import Carousel from 'nuka-carousel';
+import Carousel from 'nuka-carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
@@ -87,13 +87,17 @@ const ContentCaixaGeral = styled.div`
 `;
 
 const ContentCaixaBox = styled.div`
-  max-width: 73%;
+  max-width: 67%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   margin-left: 6rem;
+
+  @media (min-width: 1920px) {
+    margin-left: 4rem;
+	}
 
   @media (max-width: 1024px) {
     align-items: center;
@@ -116,11 +120,14 @@ const CaixaParagraph = styled.p`
   font-family: 'Spartan', Bold;
   font-weight: bold;
   padding-right: ${props => (props.paddingRight ? '7rem' : '0')};
-  /* padding: 0 7rem 0 0; */
 
   b {
     color: #000000;
   }
+
+  @media (min-width: 1920px) {
+    padding-right: 4rem;
+	}
 
   @media (max-width: 1024px) {
     width: ${props => (props.widthMobile)};
@@ -149,6 +156,10 @@ const ContentTitle = styled.div`
   display: flex;
   flex-direction: row;
 
+  @media (min-width: 1920px) {
+    width: 13vw;
+	}
+
   @media (max-width: 1024px) {
     width: 22vw;
 	}
@@ -166,9 +177,10 @@ const TitleHeader = styled.h2`
   font-family: 'Spartan', Bold;
   margin-left: 3.3rem;
 
-  @media (min-width: 1920px) {
-    width: 10vw;
-	}
+  // @media (min-width: 1920px) {
+  //   margin-left: 3rem;
+  //   width: 9vw;
+	// }
 
   @media (max-width: 1024px) {
     margin-left: 1rem;
@@ -276,7 +288,7 @@ const ContentSobreTitle = styled.div`
 
   h3 {
     @media (max-width: 768px) {
-      width: 16vw;
+      width: 19vw;
     }
     @media (max-width: 648px) {
       width: 50vw;
@@ -430,21 +442,64 @@ const ContainerCaixa = styled.div`
 `;
 
 const Caixa = styled.div`
-  width: 90%;
+  // width: 100%;
   display: flex;
   justify-content: space-between;
 
   @media (max-width: 648px) {
-    width: 100%;
+    display: none;
+  }
+`;
+
+const CaixaMobile = styled.div`
+  display: none;
+
+  @media (max-width: 648px) {
+    width: 90%;
+    display: flex;
     flex-direction: row;
+  }
+
+  .slider-control-centerleft {
+    display: none;
+  }
+
+  .slider-control-centerright {
+    display: none;
+  }
+
+  .slider-control-bottomcenter {
+    bottom: -48px !important;
+  }
+
+  .paging-item {
+    padding-right: 1rem;
+  }
+  
+  button {
+    outline: none;
+    fill: #373737 !important;
+  }
+`;
+
+
+const ContentCaixa = styled.div`
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  @media (max-width: 648px) {
+    width: 100vw;
+    // align-items: flex-start;
     justify-content: flex-start;
-    padding-left: 2rem;
-    overflow-x: scroll;
-  } 
+  }
 `;
 
 const CaixaBox = styled.div`
-  width: 22%;
+  width: 60%;
   display: flex;
   background-color: #992836;
   justify-content: center;
@@ -452,23 +507,15 @@ const CaixaBox = styled.div`
   flex-direction: column;
   box-shadow: 0px 3px 6px #00000029;
   
-  @media (max-width: 1024px) {
-    width: 30%;
-	}
-
   @media (max-width: 648px) {
-    width: 100%;
-    margin-right: 3rem;
-	}
-
-  @media (max-width: 450px) {
     width: 90%;
+    // margin-right: 3rem;
 	}
 `;
 
 const CaixaBoxHeader = styled.div`
   width: 100%;
-  height: 27vh;
+  height: 13rem;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -477,16 +524,16 @@ const CaixaBoxHeader = styled.div`
 `;
 
 const ImageBox = styled.img`
-  width: 14vw;
+  // width: 12rem;
   padding: 2rem;
 
-  @media (max-width: 768px) {
-    width: 23vw;
-	}
+  // @media (max-width: 768px) {
+  //   width: 23vw;
+	// }
 
-  @media (max-width: 648px) {
-    width: 35vw;
-	}
+  // @media (max-width: 648px) {
+  //   width: 35vw;
+	// }
 
   @media (max-width: 450px) {
     width: 60vw;
@@ -731,19 +778,49 @@ class Home extends Component {
   renderPosts = () => {
     return this.state.posts.map((post) => {
       return (
-        <CaixaBox id='blog'>
-          <ImageBox src={balao} alt='figure' />
-          <CaixaBoxHeader>
-            <BoxDate>{post.pubDate}</BoxDate>
-            <TitleBox>{post.title}</TitleBox>
-            <CaixaBoxSobre>
-              <hr></hr>
-              <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-            </CaixaBoxSobre>
-          </CaixaBoxHeader>
-        </CaixaBox>
+        <ContentCaixa>
+          <CaixaBox id='blog'>
+            <ImageBox src={balao} alt='figure' />
+            <CaixaBoxHeader>
+              <BoxDate>{post.pubDate}</BoxDate>
+              <TitleBox>{post.title}</TitleBox>
+              <CaixaBoxSobre>
+                <hr></hr>
+                <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+              </CaixaBoxSobre>
+            </CaixaBoxHeader>
+          </CaixaBox>
+        </ContentCaixa>
       )
     });
+  }
+
+  renderPostsCarousel = () => {
+    return (
+      <Carousel
+        cellSpacing={32}
+        enableKeyboardControls='true'
+        slideIndex={this.state.slideIndex}
+        afterSlide={slideIndex => this.setState({ slideIndex })}
+      >
+
+        {this.state.posts.map((post) => (
+          <ContentCaixa>
+            <CaixaBox id='blog'>
+              <ImageBox src={balao} alt='figure' />
+              <CaixaBoxHeader>
+                <BoxDate>{post.pubDate}</BoxDate>
+                <TitleBox>{post.title}</TitleBox>
+                <CaixaBoxSobre>
+                  <hr></hr>
+                  <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+                </CaixaBoxSobre>
+              </CaixaBoxHeader>
+            </CaixaBox>
+          </ContentCaixa>
+        ))}
+      </Carousel>
+    )
   }
 
   render() {
@@ -762,7 +839,7 @@ class Home extends Component {
               <ContentCaixaBox>
                 <CaixaParagraph paddingRight paddingTop width='25vw' paddingMobile='3rem 0 0 2rem'>Prestar um atendimento eficiente e diferenciado é a nossa <b>meta!</b></CaixaParagraph>
                 <CaixaParagraph paddingRight width='22vw' widthMobile='19vw' paddingMobile='2rem 3rem 0'>Transparência nas informações</CaixaParagraph>
-                <CaixaParagraph width='13vw' paddingMobile='2rem 1rem 0 0'>Comprometimento com o seu negócio</CaixaParagraph>
+                <CaixaParagraph width='12vw' paddingMobile='2rem 1rem 0 0'>Comprometimento com o seu negócio</CaixaParagraph>
               </ContentCaixaBox>
             </ContentCaixaGeral>
           </Content>
@@ -775,7 +852,7 @@ class Home extends Component {
               <ContentBox>
                 <ContentSobreText isOpen marginTop>
                   <ContainerParagraph><b>Sedimenta JPM</b> é uma empresa de Contabilidade que se concentra em ajudar pequenas e médias empresas a atingir seus objetivos de negócios.
-                  </ContainerParagraph>
+                    </ContainerParagraph>
                   <ContainerParagraph>Quer seja uma empresa de médio porte, um(a)
                   especialista que pretende lançar a sua ideia no mercado ou numa
                   Iniciativa Social – Terceiro Setor -, ou um(a) empresário(a)
@@ -859,6 +936,12 @@ class Home extends Component {
                 : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
               }
             </Caixa>
+            <CaixaMobile>
+              {posts.length > 0
+                ? this.renderPostsCarousel()
+                : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
+              }
+            </CaixaMobile>
           </ContainerCaixa>
           <Formulation />
           <Footer isScrollTopFooter={this.state.isScrollTopFooter} />

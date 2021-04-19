@@ -29,16 +29,16 @@ const ContentCargo = styled.div`
 const CargoMobile = styled.div`
   display: none;
 
-@media (max-width: 648px) {
-  width: 100%;
-  height: 70vh;
-  background-color: transparent;
-  box-shadow: none;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  padding-left: 1rem;
-}
+  @media (max-width: 648px) {
+    width: 100%;
+    height: 70vh;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding-left: 1rem;
+  }
 
   .slider-control-centerleft {
     display: none;
