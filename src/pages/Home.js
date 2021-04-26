@@ -16,7 +16,7 @@ import Footer from '../components/Footer';
 
 //Images
 import seta from '../assets/seta.svg';
-import Fundo from '../assets/fundo.svg';
+// import Fundo from '../assets/fundo.svg';
 
 import Velatura from '../assets/velaturaLogo.png';
 import ChooseMed from '../assets/chooseMedLogo.png';
