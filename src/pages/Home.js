@@ -1,8 +1,10 @@
 // Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import Carousel from 'nuka-carousel';
+// import axios from 'axios';
+
+//Component
+// import Carousel from '../components/Carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
@@ -14,7 +16,7 @@ import Footer from '../components/Footer';
 
 //Images
 import seta from '../assets/seta.svg';
-import Fundo from '../assets/fundo.svg';
+// import Fundo from '../assets/fundo.svg';
 
 import Velatura from '../assets/velaturaLogo.png';
 import ChooseMed from '../assets/chooseMedLogo.png';
@@ -25,7 +27,7 @@ import SabendoMais from '../assets/sabendoMaisLogo.png';
 import PrecisaSer from '../assets/precisaSer.svg';
 import PlanoB from '../assets/planoB.svg';
 
-import balao from '../assets/balao.svg';
+// import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
 
 
@@ -44,12 +46,23 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1440px;
-  width: 90%;
-  margin: 0 auto;
+  // max-width: 1440px;
+  width: 84%;
+  // margin: 0 auto;
+  background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 3rem 0;
+  transform: translateY(-50%);
+
+  @media (max-width: 1440px) {
+    width: 92%;
+	}
 
   @media (max-width: 768px) {
-    width: 92%;
+    transform: translateY(-10%);
 	}
 
   @media (max-width: 425px) {
@@ -59,31 +72,30 @@ const Content = styled.div`
 
 const ContentCaixaGeral = styled.div`
   width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px #00000029;
+  // background-color: #FFFFFF;
+  // box-shadow: 0px 3px 6px #00000029;
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: 3rem 0;
-  transform: translateY(-50%);
+  // padding: 3rem 0;
+  // transform: translateY(-50%);
 
   @media (max-width: 768px) {
     /* width: 95%; */
     flex-direction: column;
-    transform: translateY(-40%);
+    // transform: translateY(-40%);
 	}
 
   @media (max-width: 648px) {
-    width: 100%;
     padding: 3.5rem 0;
     text-align: center;
-    transform: translateY(-19%);
+    // transform: translateY(-19%);
 	}
 
-  @media (max-width: 425px) {
-    /* width: 100%; */
-    transform: translateY(-13%);
-	}
+  // @media (max-width: 425px) {
+  //   /* width: 100%; */
+  //   transform: translateY(-13%);
+	// }
 `;
 
 const ContentCaixaBox = styled.div`
@@ -101,6 +113,7 @@ const ContentCaixaBox = styled.div`
 
   @media (max-width: 1024px) {
     align-items: center;
+    margin-left: 0;
 	}
 
   @media (max-width: 768px) {
@@ -154,6 +167,7 @@ const CaixaParagraph = styled.p`
 const ContentTitle = styled.div`
   width: 18vw;
   display: flex;
+  align-items: center;
   flex-direction: row;
 
   @media (min-width: 1920px) {
@@ -344,250 +358,250 @@ const ContainerParagraphRead = styled.p`
   }
 `;
 
-const BoxImage = styled.img`
-  width: 14%;
-  margin-left: 0.3rem;
-`;
+// const BoxImage = styled.img`
+//   width: 14%;
+//   margin-left: 0.3rem;
+// `;
 
-const SubContent = styled.div`
-  width: 100%;
-  /* background-image: url(${Fundo});
-  background-size: cover;
-  background-repeat: no-repeat; */
-`;
+// const SubContent = styled.div`
+//   width: 100%;
+//   /* background-image: url(${Fundo});
+//   background-size: cover;
+//   background-repeat: no-repeat; */
+// `;
 
-const SubContentCaixa = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 2rem;
-`;
+// const SubContentCaixa = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 4rem 2rem;
+// `;
 
-const SubContentMeio = styled.span`
-  width: 32vw;
-  height: 40vh;
-  /* background-color: #373737; */
-  color: #373737;
-  font-family: 'Open Sans', Bold;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 3rem 1.5rem;
+// const SubContentMeio = styled.span`
+//   width: 32vw;
+//   height: 40vh;
+//   /* background-color: #373737; */
+//   color: #373737;
+//   font-family: 'Open Sans', Bold;
+//   text-transform: uppercase;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   padding: 0 3rem 1.5rem;
 
-  @media (max-width: 1024px) {
-    width: 45%;
-	}
+//   @media (max-width: 1024px) {
+//     width: 45%;
+// 	}
 
-  @media (max-width: 768px) {
-    width: 62%;
-	}
+//   @media (max-width: 768px) {
+//     width: 62%;
+// 	}
 
-  @media (max-width: 648px) {
-    max-width: 100%;
-    width: 70%;
-	}
+//   @media (max-width: 648px) {
+//     max-width: 100%;
+//     width: 70%;
+// 	}
 
-  @media (max-width: 450px) {
-    width: 100%;
-    padding: 0 1rem 1.5rem;
-	}
+//   @media (max-width: 450px) {
+//     width: 100%;
+//     padding: 0 1rem 1.5rem;
+// 	}
 
-  hr {
-    width: 4rem;
-    /* background-color: #FFFFFF; */
-    border: 2px solid #373737;
-    opacity: 1;
+//   hr {
+//     width: 4rem;
+//     /* background-color: #FFFFFF; */
+//     border: 2px solid #373737;
+//     opacity: 1;
 
-    @media (max-width: 768px) {
-      width: 12vw;
-	  }
+//     @media (max-width: 768px) {
+//       width: 12vw;
+// 	  }
 
-    @media (max-width: 648px) {
-      width: 15vw;
-	  }
-  }
+//     @media (max-width: 648px) {
+//       width: 15vw;
+// 	  }
+//   }
 
-  h2 {
-    padding-top: 2rem;
-    font-size: 1.7rem;
-    text-align: center;
+//   h2 {
+//     padding-top: 2rem;
+//     font-size: 1.7rem;
+//     text-align: center;
 
-    @media (max-width: 648px) {
-      font-size: 1.5rem;
-	  }
-  }
+//     @media (max-width: 648px) {
+//       font-size: 1.5rem;
+// 	  }
+//   }
 
-  b {
-    font-size: 1.9rem;
-  }
-`;
+//   b {
+//     font-size: 1.9rem;
+//   }
+// `;
 
-const ContainerCaixa = styled.div`
-  width: 100%;
-  height: 75vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
+// const ContainerCaixa = styled.div`
+//   width: 100%;
+//   height: 75vh;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+//   margin-bottom: 3rem;
 
-  @media (max-width: 648px) {
-    height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-	}
-`;
+//   @media (max-width: 648px) {
+//     height: 100vh;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+// 	}
+// `;
 
-const Caixa = styled.div`
-  // width: 100%;
-  display: flex;
-  justify-content: space-between;
+// const Caixa = styled.div`
+//   // width: 100%;
+//   display: flex;
+//   justify-content: space-between;
 
-  @media (max-width: 648px) {
-    display: none;
-  }
-`;
+//   @media (max-width: 648px) {
+//     display: none;
+//   }
+// `;
 
-const CaixaMobile = styled.div`
-  display: none;
+// const CaixaMobile = styled.div`
+//   display: none;
 
-  @media (max-width: 648px) {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-  }
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     display: flex;
+//     flex-direction: row;
+//   }
 
-  .slider-control-centerleft {
-    display: none;
-  }
+//   .slider-control-centerleft {
+//     display: none;
+//   }
 
-  .slider-control-centerright {
-    display: none;
-  }
+//   .slider-control-centerright {
+//     display: none;
+//   }
 
-  .slider-control-bottomcenter {
-    bottom: -48px !important;
-  }
+//   .slider-control-bottomcenter {
+//     bottom: -48px !important;
+//   }
 
-  .paging-item {
-    padding-right: 1rem;
-  }
+//   .paging-item {
+//     padding-right: 1rem;
+//   }
   
-  button {
-    outline: none;
-    fill: #373737 !important;
-  }
-`;
+//   button {
+//     outline: none;
+//     fill: #373737 !important;
+//   }
+// `;
 
 
-const ContentCaixa = styled.div`
-  max-width: 1440px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+// const ContentCaixa = styled.div`
+//   max-width: 1440px;
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 0 auto;
 
-  @media (max-width: 648px) {
-    width: 100vw;
-    // align-items: flex-start;
-    justify-content: flex-start;
-  }
-`;
+//   @media (max-width: 648px) {
+//     width: 100vw;
+//     // align-items: flex-start;
+//     justify-content: flex-start;
+//   }
+// `;
 
-const CaixaBox = styled.div`
-  width: 60%;
-  display: flex;
-  background-color: #992836;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0px 3px 6px #00000029;
+// const CaixaBox = styled.div`
+//   width: 60%;
+//   display: flex;
+//   background-color: #992836;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   box-shadow: 0px 3px 6px #00000029;
   
-  @media (max-width: 648px) {
-    width: 90%;
-    // margin-right: 3rem;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     // margin-right: 3rem;
+// 	}
+// `;
 
-const CaixaBoxHeader = styled.div`
-  width: 100%;
-  height: 13rem;
-  background-color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0 1rem;
-`;
+// const CaixaBoxHeader = styled.div`
+//   width: 100%;
+//   height: 13rem;
+//   background-color: #FFFFFF;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   padding: 0 1rem;
+// `;
 
-const ImageBox = styled.img`
-  // width: 12rem;
-  padding: 2rem;
+// const ImageBox = styled.img`
+//   // width: 12rem;
+//   padding: 2rem;
 
-  // @media (max-width: 768px) {
-  //   width: 23vw;
-	// }
+//   // @media (max-width: 768px) {
+//   //   width: 23vw;
+// 	// }
 
-  // @media (max-width: 648px) {
-  //   width: 35vw;
-	// }
+//   // @media (max-width: 648px) {
+//   //   width: 35vw;
+// 	// }
 
-  @media (max-width: 450px) {
-    width: 60vw;
-    padding: 2rem 3rem;
-	}
-`;
+//   @media (max-width: 450px) {
+//     width: 60vw;
+//     padding: 2rem 3rem;
+// 	}
+// `;
 
-const BoxDate = styled.div`
-  color: #373737;
-  font-size: 0.7rem;
-  font-family: 'Open Sans', Regular;
-  margin-bottom: 0.3rem;
-`;
+// const BoxDate = styled.div`
+//   color: #373737;
+//   font-size: 0.7rem;
+//   font-family: 'Open Sans', Regular;
+//   margin-bottom: 0.3rem;
+// `;
 
-const TitleBox = styled.p`
-  width: 80%;
-  color: #373737;
-  font-size: 1rem;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bolder;
-  padding-top: 0.3rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
+// const TitleBox = styled.p`
+//   width: 80%;
+//   color: #373737;
+//   font-size: 1rem;
+//   font-family: 'Open Sans', ExtraBold;
+//   font-weight: bolder;
+//   padding-top: 0.3rem;
+//   display: -webkit-box;
+//   -webkit-box-orient: vertical;
+//   -webkit-line-clamp: 3;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+// `;
 
-const CaixaBoxSobre = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.5rem;
+// const CaixaBoxSobre = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding-top: 1.5rem;
 
-  hr {
-    width: 3vw;
-    border: 1px solid #a76b73;
-    opacity: 1;
+//   hr {
+//     width: 3vw;
+//     border: 1px solid #a76b73;
+//     opacity: 1;
 
-    @media (max-width: 648px) {
-      width: 13vw;
-	  }
-  }
-`;
+//     @media (max-width: 648px) {
+//       width: 13vw;
+// 	  }
+//   }
+// `;
 
-const CaixaSaiba = styled.a`
-  color: #992836;
-  font-size: 0.7rem;
-  font-family: 'Open Sans', Regular;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-`;
+// const CaixaSaiba = styled.a`
+//   color: #992836;
+//   font-size: 0.7rem;
+//   font-family: 'Open Sans', Regular;
+//   text-decoration: none;
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const ContentLogo = styled.div`
   width: 100%;
@@ -677,19 +691,19 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-const PostsMessage = styled.span`
-  width: 100%;
-  display: inline-block;
-  color: #000;
-  text-align: center;
-  font-size: 2.75rem;
-  font-family: 'Spartan', Bold;
-  font-weight: 500;
+// const PostsMessage = styled.span`
+//   width: 100%;
+//   display: inline-block;
+//   color: #000;
+//   text-align: center;
+//   font-size: 2.75rem;
+//   font-family: 'Spartan', Bold;
+//   font-weight: 500;
 
-  @media (max-width: 648px) {
-    width: 90%;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 90%;
+// 	}
+// `;
 
 class Home extends Component {
   state = {
@@ -706,24 +720,25 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
-    this.handleScreenSize()
-    window.addEventListener('resize', this.handleScreenSize)
+    // this.getPosts();
+    // this.handleScreenSize();
+    // window.addEventListener('resize', this.handleScreenSize);
 
     if (typeof window !== undefined) {
       window.onscroll = () => {
-        if (window.scrollY > 100) {
-          this.setState({
-            isScrollHeader: true,
-          })
-        }
         if (window.scrollY === 0) {
+
           this.setState({
             isScrollHeader: false,
           })
         }
+        if (window.scrollY > 100) {
+
+          this.setState({
+            isScrollHeader: true,
+          })
+        }
         if (window.scrollY <= 350) {
-          console.log('isScrollTopFooter', window.scrollY);
           this.setState({
             isScrollTopFooter: true,
           })
@@ -737,31 +752,30 @@ class Home extends Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleScreenSize)
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', this.handleScreenSize);
+  // }
 
-  getPosts = async () => {
-    try {
-      const response = await axios.get(
-        // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
-      );
+  // getPosts = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
+  //       "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
+  //     );
 
-      this.setState({
-        posts: response.data.items.slice(0, 3),
-      });
-    } catch (err) { }
-  };
+  //     this.setState({
+  //       posts: response.data.items.slice(0, 3),
+  //     });
+  //   } catch (err) { }
+  // };
 
-  handleScreenSize = () => {
-    const widthViewPort =
-      document.documentElement.clientWidth || window.screen.width
-
-    this.setState({
-      width: widthViewPort,
-    })
-  }
+  // handleScreenSize = () => {
+  //   const widthViewPort =
+  //     document.documentElement.clientWidth || window.screen.width
+  //   this.setState({
+  //     width: widthViewPort,
+  //   })
+  // }
 
   handleText = () => {
     this.setState({
@@ -775,56 +789,50 @@ class Home extends Component {
     })
   }
 
-  renderPosts = () => {
-    return this.state.posts.map((post) => {
-      return (
-        <ContentCaixa>
-          <CaixaBox id='blog'>
-            <ImageBox src={balao} alt='figure' />
-            <CaixaBoxHeader>
-              <BoxDate>{post.pubDate}</BoxDate>
-              <TitleBox>{post.title}</TitleBox>
-              <CaixaBoxSobre>
-                <hr></hr>
-                <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-              </CaixaBoxSobre>
-            </CaixaBoxHeader>
-          </CaixaBox>
-        </ContentCaixa>
-      )
-    });
-  }
+  // renderPosts = () => {
+  //   return this.state.posts.map((post) => {
+  //     return (
+  //       <ContentCaixa>
+  //         <CaixaBox id='blog'>
+  //           <ImageBox src={balao} alt='figure' />
+  //           <CaixaBoxHeader>
+  //             <BoxDate>{post.pubDate}</BoxDate>
+  //             <TitleBox>{post.title}</TitleBox>
+  //             <CaixaBoxSobre>
+  //               <hr></hr>
+  //               <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+  //             </CaixaBoxSobre>
+  //           </CaixaBoxHeader>
+  //         </CaixaBox>
+  //       </ContentCaixa>
+  //     )
+  //   });
+  // }
 
-  renderPostsCarousel = () => {
-    return (
-      <Carousel
-        cellSpacing={32}
-        enableKeyboardControls='true'
-        slideIndex={this.state.slideIndex}
-        afterSlide={slideIndex => this.setState({ slideIndex })}
-      >
-
-        {this.state.posts.map((post) => (
-          <ContentCaixa>
-            <CaixaBox id='blog'>
-              <ImageBox src={balao} alt='figure' />
-              <CaixaBoxHeader>
-                <BoxDate>{post.pubDate}</BoxDate>
-                <TitleBox>{post.title}</TitleBox>
-                <CaixaBoxSobre>
-                  <hr></hr>
-                  <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-                </CaixaBoxSobre>
-              </CaixaBoxHeader>
-            </CaixaBox>
-          </ContentCaixa>
-        ))}
-      </Carousel>
-    )
-  }
+  // renderPostsCarousel = () => {
+  //   return (
+  //     <Carousel>
+  //       {this.state.posts.map((post) => (
+  //         <ContentCaixa>
+  //           <CaixaBox id='blog'>
+  //             <ImageBox src={balao} alt='figure' />
+  //             <CaixaBoxHeader>
+  //               <BoxDate>{post.pubDate}</BoxDate>
+  //               <TitleBox>{post.title}</TitleBox>
+  //               <CaixaBoxSobre>
+  //                 <hr></hr>
+  //                 <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+  //               </CaixaBoxSobre>
+  //             </CaixaBoxHeader>
+  //           </CaixaBox>
+  //         </ContentCaixa>
+  //       ))}
+  //     </Carousel>
+  //   )
+  // }
 
   render() {
-    const { posts } = this.state;
+    // const { posts } = this.state;
 
     return (
       <Section>
@@ -921,15 +929,16 @@ class Home extends Component {
               </LogoSeparationMobile>
             </ContentLogoImagesMobile>
           </ContentLogoMobile>
-          <SubContent>
+
+          {/* <SubContent>
             <SubContentCaixa>
               <SubContentMeio>
                 <hr></hr>
                 <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
               </SubContentMeio>
             </SubContentCaixa>
-          </SubContent>
-          <ContainerCaixa>
+          </SubContent> */}
+          {/* <ContainerCaixa>
             <Caixa>
               {posts.length > 0
                 ? this.renderPosts()
@@ -942,7 +951,8 @@ class Home extends Component {
                 : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
               }
             </CaixaMobile>
-          </ContainerCaixa>
+          </ContainerCaixa> */}
+
           <Formulation />
           <Footer isScrollTopFooter={this.state.isScrollTopFooter} />
         </Container>

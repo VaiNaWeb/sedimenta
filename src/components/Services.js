@@ -1,6 +1,9 @@
+//Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Carousel from 'nuka-carousel';
+
+//Component
+import Carousel from './Carousel';
 
 //Images
 import Contabilidade from '../assets/contabilidade.svg';
@@ -11,10 +14,8 @@ import AssessoriaFinanceira from '../assets/assessoriaFinanceira.svg';
 import Consultoria from '../assets/consultoria.svg';
 import Terceirização from '../assets/Terceirização.svg';
 import PessoaFisica from '../assets/pessoaFisica.svg';
-
 import setinha from '../assets/setinha.svg';
 import closeBlack from '../assets/closeBlack.svg';
-
 
 const Content = styled.div`
   width: 100%;
@@ -951,11 +952,11 @@ class Services extends Component {
         </ContentBox>
         <ContentBoxMobile>
           <Carousel
-            afterSlide={(index) => this.setState({ slideIndex: index })}
-            cellSpacing={32}
-            cellAlign='left'
-            enableKeyboardControls='true'
-            slideIndex={this.state.slideIndex}
+            // afterSlide={(index) => this.setState({ slideIndex: index })}
+            // cellSpacing={32}
+            // cellAlign='left'
+            // enableKeyboardControls='true'
+            // slideIndex={this.state.slideIndex}
           >
             {this.renderServiceCaixa()}
           </Carousel>

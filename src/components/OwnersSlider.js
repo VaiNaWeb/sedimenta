@@ -1,13 +1,15 @@
+//Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Carousel from 'nuka-carousel';
 
+//Component
+import Carousel from './Carousel';
+
+//Images
 import People1 from '../assets/Eduardo.png';
 import People2 from '../assets/Christiani.png';
 import People3 from '../assets/Mauro.png';
-
 import Icon from '../assets/icon.svg';
-
 
 const ContentCargo = styled.div`
   max-width: 1440px;
@@ -177,7 +179,7 @@ const Cargo = styled.div`
   }
 `;
 
-class Home extends Component {
+class OwnersSlider extends Component {
   state = {
     persons: [
       {
@@ -230,12 +232,7 @@ class Home extends Component {
     return (
       <ContentCargo>
         <CargoMobile>
-          <Carousel
-            cellSpacing={32}
-            enableKeyboardControls='true'
-            slideIndex={this.state.slideIndex}
-            afterSlide={slideIndex => this.setState({ slideIndex })}
-          >
+          <Carousel>
             {this.renderPerson()}
           </Carousel>
         </CargoMobile>
@@ -247,4 +244,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default OwnersSlider;

@@ -9,6 +9,11 @@ import LogoVnW from '../assets/logoVnw.png';
 
 const Content = styled.div`
   width: 100%;
+  // margin-top: 5rem;
+
+  @media (max-width: 648px) {
+    margin-top: 5rem;
+	}
 `;
 
 const ContentFooter = styled.div`
@@ -189,27 +194,7 @@ const FooterFinish = styled.footer`
 
 
 class Footer extends Component {
-  // state = {
-  //   isScrollTop: false,
-  // }
-
-  // componentDidMount() {
-  //   if (typeof window !== undefined) {
-  //     window.onscroll = () => {
-  //       if (window.scrollY <= 250) {
-  //         this.setState({
-  //           isScrollTop: true,
-  //         })
-  //       }
-  //       if (window.scrollY > 265) {
-  //         this.setState({
-  //           isScrollTop: false,
-  //         })
-  //       }
-  //     };
-  //   }
-  // }
-
+  
   render() {
     return (
       <>
