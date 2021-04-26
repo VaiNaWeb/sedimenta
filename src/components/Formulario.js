@@ -22,7 +22,7 @@ const ContainerForm = styled.div`
 	}
 
   @media (max-width: 490px) {
-    height: ${props => props.isBig ? '70vh' : '205vh'};
+    height: ${props => props.isBig ? '58vh' : '205vh'};
 	}
 `;
 
@@ -598,7 +598,6 @@ class Formulation extends Component {
               <Input
                 name="name"
                 type="text"
-                // required
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
                 onChange={this.handleChangeName}
                 onFocus={this.handleFocusName}
@@ -610,7 +609,6 @@ class Formulation extends Component {
               <Input
                 name="company"
                 type="text"
-                // required
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onChange={this.handleChangeCompany}
                 onFocus={this.handleFocusCompany}
@@ -622,7 +620,6 @@ class Formulation extends Component {
               <Input
                 name="email"
                 type="email"
-                // required
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
@@ -649,7 +646,6 @@ class Formulation extends Component {
               name="message"
               placeholder="Escreva aqui a sua mensagem:"
               value={this.state.form.message}
-              // required
               onChange={(ev) => {
                 this.handleForm('message', ev.target.value);
               }}

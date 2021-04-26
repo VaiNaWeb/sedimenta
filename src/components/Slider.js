@@ -1,6 +1,10 @@
+//Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Carousel from 'nuka-carousel';
+
+//Component
+import Carousel from './Carousel';
+
 
 const Section = styled.section`
   width: 100%;
@@ -363,12 +367,7 @@ class Slider extends Component {
             <SliderBolinha isSelected={slideIndex === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
           </SliderCarousel>
           <ContentCarouselMobile>
-            <Carousel
-              afterSlide={(index) => this.setState({ slideIndex: index })}
-              cellSpacing={32}
-              enableKeyboardControls='true'
-              slideIndex={this.state.slideIndex}
-            >
+            <Carousel>
               {this.list.map(i => (
                 <SessionSlider>
                   <ContentSliderMeio selected>

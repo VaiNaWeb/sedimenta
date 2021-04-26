@@ -1,17 +1,18 @@
 // Libs
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Carousel from 'nuka-carousel';
+
+//Component
+import Carousel from './Carousel';
 
 //Images
-import logo from '../assets/logoSedimenta.svg';
+import logo from '../assets/LogoSedimenta.svg';
 import menuHamburguer from '../assets/menu.svg';
 import menuHamburguerPreto from '../assets/menuPreto.svg';
 import closed from '../assets/close.svg';
 import Amigos from '../assets/amigos.jpg';
 import Domestica from '../assets/domestica.png';
 import Calculadora from '../assets/calculadora.jpg';
-
 
 const Section = styled.section`
   width: 100%;
@@ -208,15 +209,15 @@ const ContainerHeaderMobile = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 8.4vh;
+  // height: 8.4vh;
   color: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
-    height: 8vh;
-	}
+  // @media (max-width: 768px) {
+  //   height: 8vh;
+	// }
 
   @media (max-width: 648px) {
     display: none;
@@ -228,7 +229,8 @@ const LogoMobile = styled.img`
 
   @media (max-width: 1023px) {
     display: flex;
-    height: 7vh;
+    margin-top: 0.5rem;
+    // height: 7vh;
 	}
 `;
 
@@ -244,15 +246,11 @@ const ContainerHeaderBox = styled.div`
     background: ${props => (props.open && 'linear-gradient(to right, #982626, #4D141B)')};
     justify-content: flex-end;
     flex-direction: column-reverse;
-    padding: 1.5rem 0 0 0;
+    padding: 1rem 0 0 0;
     opacity: 1;
     position: ${props => (props.open ? 'fixed' : 'absolute')};
     right: 0;
     top: 0;
-	}
-
-  @media (max-width: 768px) {
-    padding: 1rem 0 0 0;
 	}
 `;
 
@@ -344,12 +342,12 @@ const SubContainerText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8% 4rem;
+  padding: 8% 4rem 8% 0;
   /* margin-top: 4rem; */
   /* z-index: 2; */
 
-  @media (min-width: 1920px) {
-    padding: 0 4rem 0 0;
+  @media (max-width: 1440px) {
+    padding: 0 4rem;
 	}
 
   @media (max-width: 1023px) {
@@ -561,15 +559,8 @@ class Header extends Component {
 
     return (
       <ContainerLogo>
-        <Carousel
-          enableKeyboardControls='true'
-          cellAlign='left'
-          transitionMode="fade"
-          slideIndex={this.state.slideIndex}
-          afterSlide={slideIndex => this.setState({ slideIndex })}
-        >
+        <Carousel>
           {this.state.artigos.map((item, index) => {
-            
             const positionBackground = index === 0 && '-255px';
             const positionBackground1 = index === 1 && '-375px';
             const positionBackground2 = index === 2 && '-520px';
@@ -627,7 +618,7 @@ class Header extends Component {
                       borderBottom: `1px solid ${isScroll ? '#00000029' : '#FFFFFF5C'}`,
                     }}>
                     <Page><b>Telefone:</b> +55 (21) 2232-1337</Page>
-                    <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                    <p><b>E-mail:</b> sedimenta@sedimenta.com.br</p>
                   </ContainerHeaderPage>
                 </ContainerHeader>
                 <SubContainer>
@@ -647,15 +638,15 @@ class Header extends Component {
                           style={{
                             color: `${isScroll ? '#373737' : '#FFFFFF'}`,
                           }} href="#clientes"><b>NOSSOS CLIENTES</b></a></SubContainerParagraph>
-                        <SubContainerParagraph><a
+                        {/* <SubContainerParagraph><a
                           style={{
                             color: `${isScroll ? '#373737' : '#FFFFFF'}`,
-                          }} href="#blog"><b>BLOG</b></a></SubContainerParagraph>
+                          }} href="#blog"><b>BLOG</b></a></SubContainerParagraph> */}
                       </Box>
                       <ContainerHeaderMobile>
                         <ContainerHeaderPage>
                           <Page><b>Tel:</b> +55 (21) 2232-1337</Page>
-                          <p><b>E-mail:</b> contato@sedimenta.com.br</p>
+                          <p><b>E-mail:</b> sedimenta@sedimenta.com.br</p>
                         </ContainerHeaderPage>
                       </ContainerHeaderMobile>
                     </BoxMenu>

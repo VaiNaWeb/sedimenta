@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Carousel from 'nuka-carousel';
+
+//Component
+// import Carousel from '../components/Carousel';
 
 //Components
 import OpinionCard from '../components/Slider';
@@ -25,7 +27,7 @@ import SabendoMais from '../assets/sabendoMaisLogo.png';
 import PrecisaSer from '../assets/precisaSer.svg';
 import PlanoB from '../assets/planoB.svg';
 
-import balao from '../assets/balao.svg';
+// import balao from '../assets/balao.svg';
 import setinha from '../assets/setinha.svg';
 
 
@@ -44,12 +46,23 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1440px;
-  width: 90%;
-  margin: 0 auto;
+  // max-width: 1440px;
+  width: 84%;
+  // margin: 0 auto;
+  background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 3rem 0;
+  transform: translateY(-50%);
+
+  @media (max-width: 1440px) {
+    width: 92%;
+	}
 
   @media (max-width: 768px) {
-    width: 92%;
+    transform: translateY(-10%);
 	}
 
   @media (max-width: 425px) {
@@ -59,31 +72,30 @@ const Content = styled.div`
 
 const ContentCaixaGeral = styled.div`
   width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px #00000029;
+  // background-color: #FFFFFF;
+  // box-shadow: 0px 3px 6px #00000029;
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: 3rem 0;
-  transform: translateY(-50%);
+  // padding: 3rem 0;
+  // transform: translateY(-50%);
 
   @media (max-width: 768px) {
     /* width: 95%; */
     flex-direction: column;
-    transform: translateY(-40%);
+    // transform: translateY(-40%);
 	}
 
   @media (max-width: 648px) {
-    width: 100%;
     padding: 3.5rem 0;
     text-align: center;
-    transform: translateY(-19%);
+    // transform: translateY(-19%);
 	}
 
-  @media (max-width: 425px) {
-    /* width: 100%; */
-    transform: translateY(-13%);
-	}
+  // @media (max-width: 425px) {
+  //   /* width: 100%; */
+  //   transform: translateY(-13%);
+	// }
 `;
 
 const ContentCaixaBox = styled.div`
@@ -101,6 +113,7 @@ const ContentCaixaBox = styled.div`
 
   @media (max-width: 1024px) {
     align-items: center;
+    margin-left: 0;
 	}
 
   @media (max-width: 768px) {
@@ -154,6 +167,7 @@ const CaixaParagraph = styled.p`
 const ContentTitle = styled.div`
   width: 18vw;
   display: flex;
+  align-items: center;
   flex-direction: row;
 
   @media (min-width: 1920px) {
@@ -706,24 +720,25 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
-    this.handleScreenSize()
-    window.addEventListener('resize', this.handleScreenSize)
+    // this.getPosts();
+    // this.handleScreenSize();
+    // window.addEventListener('resize', this.handleScreenSize);
 
     if (typeof window !== undefined) {
       window.onscroll = () => {
-        if (window.scrollY > 100) {
-          this.setState({
-            isScrollHeader: true,
-          })
-        }
         if (window.scrollY === 0) {
+
           this.setState({
             isScrollHeader: false,
           })
         }
+        if (window.scrollY > 100) {
+
+          this.setState({
+            isScrollHeader: true,
+          })
+        }
         if (window.scrollY <= 350) {
-          console.log('isScrollTopFooter', window.scrollY);
           this.setState({
             isScrollTopFooter: true,
           })
@@ -737,31 +752,30 @@ class Home extends Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleScreenSize)
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', this.handleScreenSize);
+  // }
 
-  getPosts = async () => {
-    try {
-      const response = await axios.get(
-        // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
-      );
+  // getPosts = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
+  //       "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@olavainaweb"
+  //     );
 
-      this.setState({
-        posts: response.data.items.slice(0, 3),
-      });
-    } catch (err) { }
-  };
+  //     this.setState({
+  //       posts: response.data.items.slice(0, 3),
+  //     });
+  //   } catch (err) { }
+  // };
 
-  handleScreenSize = () => {
-    const widthViewPort =
-      document.documentElement.clientWidth || window.screen.width
-
-    this.setState({
-      width: widthViewPort,
-    })
-  }
+  // handleScreenSize = () => {
+  //   const widthViewPort =
+  //     document.documentElement.clientWidth || window.screen.width
+  //   this.setState({
+  //     width: widthViewPort,
+  //   })
+  // }
 
   handleText = () => {
     this.setState({
@@ -775,53 +789,47 @@ class Home extends Component {
     })
   }
 
-  renderPosts = () => {
-    return this.state.posts.map((post) => {
-      return (
-        <ContentCaixa>
-          <CaixaBox id='blog'>
-            <ImageBox src={balao} alt='figure' />
-            <CaixaBoxHeader>
-              <BoxDate>{post.pubDate}</BoxDate>
-              <TitleBox>{post.title}</TitleBox>
-              <CaixaBoxSobre>
-                <hr></hr>
-                <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-              </CaixaBoxSobre>
-            </CaixaBoxHeader>
-          </CaixaBox>
-        </ContentCaixa>
-      )
-    });
-  }
+  // renderPosts = () => {
+  //   return this.state.posts.map((post) => {
+  //     return (
+  //       <ContentCaixa>
+  //         <CaixaBox id='blog'>
+  //           <ImageBox src={balao} alt='figure' />
+  //           <CaixaBoxHeader>
+  //             <BoxDate>{post.pubDate}</BoxDate>
+  //             <TitleBox>{post.title}</TitleBox>
+  //             <CaixaBoxSobre>
+  //               <hr></hr>
+  //               <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+  //             </CaixaBoxSobre>
+  //           </CaixaBoxHeader>
+  //         </CaixaBox>
+  //       </ContentCaixa>
+  //     )
+  //   });
+  // }
 
-  renderPostsCarousel = () => {
-    return (
-      <Carousel
-        cellSpacing={32}
-        enableKeyboardControls='true'
-        slideIndex={this.state.slideIndex}
-        afterSlide={slideIndex => this.setState({ slideIndex })}
-      >
-
-        {this.state.posts.map((post) => (
-          <ContentCaixa>
-            <CaixaBox id='blog'>
-              <ImageBox src={balao} alt='figure' />
-              <CaixaBoxHeader>
-                <BoxDate>{post.pubDate}</BoxDate>
-                <TitleBox>{post.title}</TitleBox>
-                <CaixaBoxSobre>
-                  <hr></hr>
-                  <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
-                </CaixaBoxSobre>
-              </CaixaBoxHeader>
-            </CaixaBox>
-          </ContentCaixa>
-        ))}
-      </Carousel>
-    )
-  }
+  // renderPostsCarousel = () => {
+  //   return (
+  //     <Carousel>
+  //       {this.state.posts.map((post) => (
+  //         <ContentCaixa>
+  //           <CaixaBox id='blog'>
+  //             <ImageBox src={balao} alt='figure' />
+  //             <CaixaBoxHeader>
+  //               <BoxDate>{post.pubDate}</BoxDate>
+  //               <TitleBox>{post.title}</TitleBox>
+  //               <CaixaBoxSobre>
+  //                 <hr></hr>
+  //                 <CaixaSaiba href={post.link} target="_blank">saiba mais <BoxImage src={setinha} /></CaixaSaiba>
+  //               </CaixaBoxSobre>
+  //             </CaixaBoxHeader>
+  //           </CaixaBox>
+  //         </ContentCaixa>
+  //       ))}
+  //     </Carousel>
+  //   )
+  // }
 
   render() {
     const { posts } = this.state;
@@ -921,15 +929,16 @@ class Home extends Component {
               </LogoSeparationMobile>
             </ContentLogoImagesMobile>
           </ContentLogoMobile>
-          <SubContent>
+
+          {/* <SubContent>
             <SubContentCaixa>
               <SubContentMeio>
                 <hr></hr>
                 <h2>fique por dentro do que acontece no nosso <b>medium</b></h2>
               </SubContentMeio>
             </SubContentCaixa>
-          </SubContent>
-          <ContainerCaixa>
+          </SubContent> */}
+          {/* <ContainerCaixa>
             <Caixa>
               {posts.length > 0
                 ? this.renderPosts()
@@ -942,7 +951,8 @@ class Home extends Component {
                 : <PostsMessage>Nenhuma publicação encontrada!</PostsMessage>
               }
             </CaixaMobile>
-          </ContainerCaixa>
+          </ContainerCaixa> */}
+
           <Formulation />
           <Footer isScrollTopFooter={this.state.isScrollTopFooter} />
         </Container>
