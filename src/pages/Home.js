@@ -1,7 +1,7 @@
 // Libs
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+// import axios from 'axios';
 
 //Component
 // import Carousel from '../components/Carousel';
@@ -358,250 +358,250 @@ const ContainerParagraphRead = styled.p`
   }
 `;
 
-const BoxImage = styled.img`
-  width: 14%;
-  margin-left: 0.3rem;
-`;
+// const BoxImage = styled.img`
+//   width: 14%;
+//   margin-left: 0.3rem;
+// `;
 
-const SubContent = styled.div`
-  width: 100%;
-  /* background-image: url(${Fundo});
-  background-size: cover;
-  background-repeat: no-repeat; */
-`;
+// const SubContent = styled.div`
+//   width: 100%;
+//   /* background-image: url(${Fundo});
+//   background-size: cover;
+//   background-repeat: no-repeat; */
+// `;
 
-const SubContentCaixa = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 2rem;
-`;
+// const SubContentCaixa = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 4rem 2rem;
+// `;
 
-const SubContentMeio = styled.span`
-  width: 32vw;
-  height: 40vh;
-  /* background-color: #373737; */
-  color: #373737;
-  font-family: 'Open Sans', Bold;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 3rem 1.5rem;
+// const SubContentMeio = styled.span`
+//   width: 32vw;
+//   height: 40vh;
+//   /* background-color: #373737; */
+//   color: #373737;
+//   font-family: 'Open Sans', Bold;
+//   text-transform: uppercase;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   padding: 0 3rem 1.5rem;
 
-  @media (max-width: 1024px) {
-    width: 45%;
-	}
+//   @media (max-width: 1024px) {
+//     width: 45%;
+// 	}
 
-  @media (max-width: 768px) {
-    width: 62%;
-	}
+//   @media (max-width: 768px) {
+//     width: 62%;
+// 	}
 
-  @media (max-width: 648px) {
-    max-width: 100%;
-    width: 70%;
-	}
+//   @media (max-width: 648px) {
+//     max-width: 100%;
+//     width: 70%;
+// 	}
 
-  @media (max-width: 450px) {
-    width: 100%;
-    padding: 0 1rem 1.5rem;
-	}
+//   @media (max-width: 450px) {
+//     width: 100%;
+//     padding: 0 1rem 1.5rem;
+// 	}
 
-  hr {
-    width: 4rem;
-    /* background-color: #FFFFFF; */
-    border: 2px solid #373737;
-    opacity: 1;
+//   hr {
+//     width: 4rem;
+//     /* background-color: #FFFFFF; */
+//     border: 2px solid #373737;
+//     opacity: 1;
 
-    @media (max-width: 768px) {
-      width: 12vw;
-	  }
+//     @media (max-width: 768px) {
+//       width: 12vw;
+// 	  }
 
-    @media (max-width: 648px) {
-      width: 15vw;
-	  }
-  }
+//     @media (max-width: 648px) {
+//       width: 15vw;
+// 	  }
+//   }
 
-  h2 {
-    padding-top: 2rem;
-    font-size: 1.7rem;
-    text-align: center;
+//   h2 {
+//     padding-top: 2rem;
+//     font-size: 1.7rem;
+//     text-align: center;
 
-    @media (max-width: 648px) {
-      font-size: 1.5rem;
-	  }
-  }
+//     @media (max-width: 648px) {
+//       font-size: 1.5rem;
+// 	  }
+//   }
 
-  b {
-    font-size: 1.9rem;
-  }
-`;
+//   b {
+//     font-size: 1.9rem;
+//   }
+// `;
 
-const ContainerCaixa = styled.div`
-  width: 100%;
-  height: 75vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
+// const ContainerCaixa = styled.div`
+//   width: 100%;
+//   height: 75vh;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+//   margin-bottom: 3rem;
 
-  @media (max-width: 648px) {
-    height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-	}
-`;
+//   @media (max-width: 648px) {
+//     height: 100vh;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+// 	}
+// `;
 
-const Caixa = styled.div`
-  // width: 100%;
-  display: flex;
-  justify-content: space-between;
+// const Caixa = styled.div`
+//   // width: 100%;
+//   display: flex;
+//   justify-content: space-between;
 
-  @media (max-width: 648px) {
-    display: none;
-  }
-`;
+//   @media (max-width: 648px) {
+//     display: none;
+//   }
+// `;
 
-const CaixaMobile = styled.div`
-  display: none;
+// const CaixaMobile = styled.div`
+//   display: none;
 
-  @media (max-width: 648px) {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-  }
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     display: flex;
+//     flex-direction: row;
+//   }
 
-  .slider-control-centerleft {
-    display: none;
-  }
+//   .slider-control-centerleft {
+//     display: none;
+//   }
 
-  .slider-control-centerright {
-    display: none;
-  }
+//   .slider-control-centerright {
+//     display: none;
+//   }
 
-  .slider-control-bottomcenter {
-    bottom: -48px !important;
-  }
+//   .slider-control-bottomcenter {
+//     bottom: -48px !important;
+//   }
 
-  .paging-item {
-    padding-right: 1rem;
-  }
+//   .paging-item {
+//     padding-right: 1rem;
+//   }
   
-  button {
-    outline: none;
-    fill: #373737 !important;
-  }
-`;
+//   button {
+//     outline: none;
+//     fill: #373737 !important;
+//   }
+// `;
 
 
-const ContentCaixa = styled.div`
-  max-width: 1440px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+// const ContentCaixa = styled.div`
+//   max-width: 1440px;
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 0 auto;
 
-  @media (max-width: 648px) {
-    width: 100vw;
-    // align-items: flex-start;
-    justify-content: flex-start;
-  }
-`;
+//   @media (max-width: 648px) {
+//     width: 100vw;
+//     // align-items: flex-start;
+//     justify-content: flex-start;
+//   }
+// `;
 
-const CaixaBox = styled.div`
-  width: 60%;
-  display: flex;
-  background-color: #992836;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0px 3px 6px #00000029;
+// const CaixaBox = styled.div`
+//   width: 60%;
+//   display: flex;
+//   background-color: #992836;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   box-shadow: 0px 3px 6px #00000029;
   
-  @media (max-width: 648px) {
-    width: 90%;
-    // margin-right: 3rem;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 90%;
+//     // margin-right: 3rem;
+// 	}
+// `;
 
-const CaixaBoxHeader = styled.div`
-  width: 100%;
-  height: 13rem;
-  background-color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0 1rem;
-`;
+// const CaixaBoxHeader = styled.div`
+//   width: 100%;
+//   height: 13rem;
+//   background-color: #FFFFFF;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   padding: 0 1rem;
+// `;
 
-const ImageBox = styled.img`
-  // width: 12rem;
-  padding: 2rem;
+// const ImageBox = styled.img`
+//   // width: 12rem;
+//   padding: 2rem;
 
-  // @media (max-width: 768px) {
-  //   width: 23vw;
-	// }
+//   // @media (max-width: 768px) {
+//   //   width: 23vw;
+// 	// }
 
-  // @media (max-width: 648px) {
-  //   width: 35vw;
-	// }
+//   // @media (max-width: 648px) {
+//   //   width: 35vw;
+// 	// }
 
-  @media (max-width: 450px) {
-    width: 60vw;
-    padding: 2rem 3rem;
-	}
-`;
+//   @media (max-width: 450px) {
+//     width: 60vw;
+//     padding: 2rem 3rem;
+// 	}
+// `;
 
-const BoxDate = styled.div`
-  color: #373737;
-  font-size: 0.7rem;
-  font-family: 'Open Sans', Regular;
-  margin-bottom: 0.3rem;
-`;
+// const BoxDate = styled.div`
+//   color: #373737;
+//   font-size: 0.7rem;
+//   font-family: 'Open Sans', Regular;
+//   margin-bottom: 0.3rem;
+// `;
 
-const TitleBox = styled.p`
-  width: 80%;
-  color: #373737;
-  font-size: 1rem;
-  font-family: 'Open Sans', ExtraBold;
-  font-weight: bolder;
-  padding-top: 0.3rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
+// const TitleBox = styled.p`
+//   width: 80%;
+//   color: #373737;
+//   font-size: 1rem;
+//   font-family: 'Open Sans', ExtraBold;
+//   font-weight: bolder;
+//   padding-top: 0.3rem;
+//   display: -webkit-box;
+//   -webkit-box-orient: vertical;
+//   -webkit-line-clamp: 3;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+// `;
 
-const CaixaBoxSobre = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1.5rem;
+// const CaixaBoxSobre = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding-top: 1.5rem;
 
-  hr {
-    width: 3vw;
-    border: 1px solid #a76b73;
-    opacity: 1;
+//   hr {
+//     width: 3vw;
+//     border: 1px solid #a76b73;
+//     opacity: 1;
 
-    @media (max-width: 648px) {
-      width: 13vw;
-	  }
-  }
-`;
+//     @media (max-width: 648px) {
+//       width: 13vw;
+// 	  }
+//   }
+// `;
 
-const CaixaSaiba = styled.a`
-  color: #992836;
-  font-size: 0.7rem;
-  font-family: 'Open Sans', Regular;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-`;
+// const CaixaSaiba = styled.a`
+//   color: #992836;
+//   font-size: 0.7rem;
+//   font-family: 'Open Sans', Regular;
+//   text-decoration: none;
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const ContentLogo = styled.div`
   width: 100%;
@@ -691,19 +691,19 @@ const LogoSeparationMobile = styled.div`
 	}
 `;
 
-const PostsMessage = styled.span`
-  width: 100%;
-  display: inline-block;
-  color: #000;
-  text-align: center;
-  font-size: 2.75rem;
-  font-family: 'Spartan', Bold;
-  font-weight: 500;
+// const PostsMessage = styled.span`
+//   width: 100%;
+//   display: inline-block;
+//   color: #000;
+//   text-align: center;
+//   font-size: 2.75rem;
+//   font-family: 'Spartan', Bold;
+//   font-weight: 500;
 
-  @media (max-width: 648px) {
-    width: 90%;
-	}
-`;
+//   @media (max-width: 648px) {
+//     width: 90%;
+// 	}
+// `;
 
 class Home extends Component {
   state = {
@@ -832,7 +832,7 @@ class Home extends Component {
   // }
 
   render() {
-    const { posts } = this.state;
+    // const { posts } = this.state;
 
     return (
       <Section>

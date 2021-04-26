@@ -669,7 +669,7 @@ class Formulation extends Component {
               )}
             <ImageClosed src={closed} onClick={this.handleClick} />
           </Formulario>
-          <BoxImage />
+          <BoxImage></BoxImage>
         </ContentFinishSolicitation>
       </>
     )
