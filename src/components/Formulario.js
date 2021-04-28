@@ -443,8 +443,14 @@ class Formulation extends Component {
   }
 
   handleChangeName = (ev) => {
+    const { form } = this.state;
+
     this.setState({
-      inputName: ev.target.value,
+      // inputName: ev.target.value,
+      form: {
+        ...form,
+        name: ev.target.value,
+      },
       error: false,
     })
   }
@@ -457,8 +463,13 @@ class Formulation extends Component {
   }
 
   handleChangeCompany = (ev) => {
+    const { form } = this.state;
+
     this.setState({
-      inputCompany: ev.target.value,
+      form: {
+        ...form,
+        company: ev.target.value,
+      },
       error: false,
     })
   }
@@ -471,8 +482,13 @@ class Formulation extends Component {
   }
 
   handleChangeEmail = (ev) => {
+    const { form } = this.state;
+
     this.setState({
-      inputEmail: ev.target.value,
+      form: {
+        ...form,
+        email: ev.target.value,
+      },
       error: false,
     })
   }
@@ -501,6 +517,7 @@ class Formulation extends Component {
         ...form,
         subject: item,
       },
+      error: false,
     });
   }
 
@@ -512,6 +529,8 @@ class Formulation extends Component {
         ...form,
         [field]: value,
       },
+      error: false,
+
     });
   }
 
@@ -552,29 +571,16 @@ class Formulation extends Component {
 
         setTimeout(() => {
           this.setState({
-            showSuccessMessage: false,
+            showSuccessMessage: true,
           });
         }, 1200);
       }
     }).catch(() => { });
   }
 
-  handleCheck = () => {
-    const { name, company, email, subject } = this.state.form;
-
-    if (!name.length || !company.length || !email.length || !subject.length) {
-      this.setState({
-        error: true,
-      })
-    } else {
-      this.setState({
-        error: false,
-      })
-    }
-  }
-
   renderForm = () => {
-    const { showSuccessMessage, } = this.state;
+    const { showSuccessMessage, error } = this.state;
+    // const { name, company, email, subject, message } = this.state.form;
 
     return (
       <>
@@ -594,10 +600,11 @@ class Formulation extends Component {
           >
             <input type="hidden" name="form-name" value="contact" />
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowName || this.state.inputName}>Nome *</Label>
+              <Label for="name" labelShow={this.state.labelShowName || this.state.form.name}>Nome *</Label>
               <Input
                 name="name"
                 type="text"
+                value={this.state.form.name}
                 placeholder={this.state.placeholderShowName === true ? "Nome *" : ''}
                 onChange={this.handleChangeName}
                 onFocus={this.handleFocusName}
@@ -605,10 +612,11 @@ class Formulation extends Component {
               />
             </FormContent>
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowCompany || this.state.inputCompany}>Empresa *</Label>
+              <Label for="name" labelShow={this.state.labelShowCompany || this.state.form.company}>Empresa *</Label>
               <Input
                 name="company"
                 type="text"
+                value={this.state.form.company}
                 placeholder={this.state.placeholderShowCompany === true ? "Empresa *" : ''}
                 onChange={this.handleChangeCompany}
                 onFocus={this.handleFocusCompany}
@@ -616,10 +624,11 @@ class Formulation extends Component {
               />
             </FormContent>
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowEmail || this.state.inputEmail}>E-mail *</Label>
+              <Label for="name" labelShow={this.state.labelShowEmail || this.state.form.email}>E-mail *</Label>
               <Input
                 name="email"
                 type="email"
+                value={this.state.form.email}
                 placeholder={this.state.placeholderShowEmail === true ? "E-mail *" : ''}
                 onChange={this.handleChangeEmail}
                 onFocus={this.handleFocusEmail}
@@ -650,7 +659,7 @@ class Formulation extends Component {
                 this.handleForm('message', ev.target.value);
               }}
             />
-            {this.state.error &&
+            {error &&
               <ErroMessage>
                 <Error>
                   <span>!!!</span> Preencha todos os campos obrigatórios!
@@ -665,7 +674,7 @@ class Formulation extends Component {
               </SuccessContainer>
             ) :
               (
-                <ButtonForm onClick={this.handleCheck}>ENVIAR</ButtonForm>
+                <ButtonForm>ENVIAR</ButtonForm>
               )}
             <ImageClosed src={closed} onClick={this.handleClick} />
           </Formulario>
@@ -679,8 +688,8 @@ class Formulation extends Component {
     const { solicitation } = this.state;
 
     return (
-      <ContainerForm isBig={this.state.solicitation}
-        isOpen={this.state.solicitation ? `url(${Proposta})` : `url(${Forma})`}>
+      <ContainerForm isBig={solicitation}
+        isOpen={solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
           <TitleForm fontSize>
             Ainda em duvida???
@@ -689,7 +698,7 @@ class Formulation extends Component {
             Deixe a <b>Sedimenta</b> cuidar da gestão financeira e contábil da sua empresa!!
           </ParagraphForm>
           <ButtonSolicitation
-            display={this.state.solicitation}
+            display={solicitation}
             onClick={this.handleClick}>
             Solicite sua proposta
           </ButtonSolicitation>

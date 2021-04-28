@@ -286,8 +286,6 @@ class Slider extends Component {
       previousSlide,
       nextSlide,
     })
-
-
   }
 
   handleSlider = i => {

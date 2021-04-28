@@ -93,7 +93,7 @@ const ContainerLogo = styled.div`
   justify-content: center;
 
   @media (max-width: 1023px) {
-    // display: ${props => (props.desktop ? 'none' : 'flex')};
+    display: ${props => (props.desktop ? 'none' : 'flex')};
 	}
 `;
 
@@ -477,7 +477,6 @@ const SliderBolinha = styled.div`
 class Header extends Component {
   state = {
     menu: undefined,
-    menuMobile: undefined,
     sliderHeader: 0,
     artigos: [
       {
@@ -505,26 +504,7 @@ class Header extends Component {
         link: 'https://www.freepik.com/photos/man',
       },
     ],
-    // isScroll: false,
   }
-
-  // componentDidMount() {
-  //   this.handleInterval();
-  //   if (typeof window !== undefined) {
-  //     window.onscroll = () => {
-  //       if (window.scrollY > 100) {
-  //         this.setState({
-  //           isScroll: true,
-  //         })
-  //       }
-  //       if (window.scrollY === 0) {
-  //         this.setState({
-  //           isScroll: false,
-  //         })
-  //       }
-  //     };
-  //   }
-  // }
 
   handleClick = () => {
     this.setState({
@@ -555,10 +535,10 @@ class Header extends Component {
   }
 
   renderCarousselMobile = () => {
-    const { isScroll } = this.state;
+    // const { isScroll } = this.props;
 
     return (
-      <ContainerLogo desktop>
+      <ContainerLogo>
         <Carousel>
           {this.state.artigos.map((item, index) => {
             const positionBackground = index === 0 && '-255px';
@@ -574,7 +554,7 @@ class Header extends Component {
                 <Overlay>
                   <SubContainerText
                     title={item.title}
-                    isScroll={isScroll}
+                    // isScroll={isScroll}
                   >
                     <Title>{item.title}</Title>
                     <ParagraphHeader paragraph={item}>{item.paragraph}</ParagraphHeader>
@@ -658,7 +638,8 @@ class Header extends Component {
                 </SubContainer>
               </HeaderScroll>
             </HeaderScrollMax>
-            {window.innerWidth <= 1023 ? this.renderCarousselMobile() : <ContainerLogo
+            {this.renderCarousselMobile()}
+            <ContainerLogo
               desktop
             // image={artigos[sliderHeader].image}
             // positionImg={positionBackground || positionBackground1 || positionBackground2}
@@ -684,7 +665,7 @@ class Header extends Component {
                   <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
                 </Slider>
               </Overlay>
-            </ContainerLogo>}
+            </ContainerLogo>
           </Content>
         </Section>
       </>

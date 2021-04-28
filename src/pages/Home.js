@@ -707,14 +707,8 @@ const LogoSeparationMobile = styled.div`
 
 class Home extends Component {
   state = {
-    slider: 0,
-    sliderCargo: 0,
-    selectedSlide: 1,
-    sliderSelect: 0,
-    slideIndex: 0,
     posts: [],
     isOpenReading: false,
-    width: 0,
     isScrollHeader: false,
     isScrollTopFooter: false,
   }
@@ -777,11 +771,11 @@ class Home extends Component {
   //   })
   // }
 
-  handleText = () => {
-    this.setState({
-      text: this.state.text,
-    })
-  }
+  // handleText = () => {
+  //   this.setState({
+  //     text: this.state.text,
+  //   })
+  // }
 
   handleClick = () => {
     this.setState({
