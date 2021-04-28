@@ -49,15 +49,15 @@ const ContentServiços = styled.div`
 `;
 
 const ContentServiçosTitle = styled.div`
-  width: 37%;
+  width: 30%;
   color: #373737;
   font-size: 1.313rem;
   font-family: 'Spartan', Bold;
   padding-top: 5rem;
 
-  @media (min-width: 1920px) {
-    width: 30%;
-	}
+  // @media (min-width: 1920px) {
+  //   width: 30%;
+	// }
 
   @media (max-width: 1023px) {
     width: 39%;

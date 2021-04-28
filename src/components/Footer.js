@@ -208,14 +208,14 @@ class Footer extends Component {
                 RJ</ParagraphFooter>
                 <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
                 <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-                <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
+                <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
               </ContentFooterContact>
               <ContentFooterContact marginBottom marginBottomMobile>
                 <FooterLinha></FooterLinha>
                 <TitleFooter>CONTATO PORTUGAL</TitleFooter>
                 <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
                 <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-                <ParagraphFooter><b>E-mail:</b> contato@sedimenta.com.br</ParagraphFooter>
+                <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
               </ContentFooterContact>
             </ContentFooterRede>
             <ContentRedeSocial footer>

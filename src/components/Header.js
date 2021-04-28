@@ -93,7 +93,7 @@ const ContainerLogo = styled.div`
   justify-content: center;
 
   @media (max-width: 1023px) {
-    display: ${props => (props.desktop ? 'none' : 'flex')};
+    // display: ${props => (props.desktop ? 'none' : 'flex')};
 	}
 `;
 
@@ -558,18 +558,18 @@ class Header extends Component {
     const { isScroll } = this.state;
 
     return (
-      <ContainerLogo>
+      <ContainerLogo desktop>
         <Carousel>
           {this.state.artigos.map((item, index) => {
             const positionBackground = index === 0 && '-255px';
             const positionBackground1 = index === 1 && '-375px';
             const positionBackground2 = index === 2 && '-520px';
-            
+
             return (
               <Section
-              mobile
-              image={item.image}
-              positionImg={positionBackground || positionBackground1 || positionBackground2}
+                mobile
+                image={item.image}
+                positionImg={positionBackground || positionBackground1 || positionBackground2}
               >
                 <Overlay>
                   <SubContainerText
@@ -658,8 +658,7 @@ class Header extends Component {
                 </SubContainer>
               </HeaderScroll>
             </HeaderScrollMax>
-            {this.renderCarousselMobile()}
-            <ContainerLogo
+            {window.innerWidth <= 1023 ? this.renderCarousselMobile() : <ContainerLogo
               desktop
             // image={artigos[sliderHeader].image}
             // positionImg={positionBackground || positionBackground1 || positionBackground2}
@@ -685,7 +684,7 @@ class Header extends Component {
                   <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
                 </Slider>
               </Overlay>
-            </ContainerLogo>
+            </ContainerLogo>}
           </Content>
         </Section>
       </>
