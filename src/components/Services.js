@@ -832,7 +832,7 @@ class Services extends Component {
   renderServiceCaixa = () => {
     return this.state.servicesCaixa.map((item, index) => {
       return (
-        <>
+        <div key={index}>
           <ContentBoxGalery id={index} isOpen={this.state.services.isOpen && this.state.services.isSelected === index}>
             <ContentBoxImage src={item.imageServices} alt='category' />
             <BoxTitle isOpenTitle={this.state.services.isOpen && this.state.services.isSelected === index}>{item.title}</BoxTitle>
@@ -843,7 +843,7 @@ class Services extends Component {
             <BoxImageText src={setinha} isOpen={this.state.services.isOpen && this.state.services.isSelected === index} onClick={this.handleClose} />
           </ContentBoxGalery>
           {this.state.services.isOpen && this.state.services.isSelected === index && this.renderServiceCaixaText()}
-        </>
+        </div>
       )
     })
   }
@@ -854,10 +854,10 @@ class Services extends Component {
       <ContentBoxContainer>
         <BoxContext>
           {item.text.map(item => (
-            <BoxContextText>{item}</BoxContextText>
+            <BoxContextText key={item}>{item}</BoxContextText>
           ))}
           {item.list.map(item => (
-            <li>{item}</li>
+            <li key={item}>{item}</li>
           ))}
           <BoxContentText>{item.textFinal}</BoxContentText>
           <BoxImageClose>

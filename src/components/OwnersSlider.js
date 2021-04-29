@@ -209,7 +209,7 @@ class OwnersSlider extends Component {
   renderPerson = () => {
     return this.state.persons.map((item, index) => {
       return (
-        <SessionCargo id='cargo0'>
+        <SessionCargo id='cargo0' key={index}>
           <ImageCargo src={item.imgPerson} alt='people' />
           <ContentCargoCaixa>
             <hr></hr>
@@ -229,15 +229,16 @@ class OwnersSlider extends Component {
   }
 
   render() {
+    const { isMobile } = this.props;
     return (
       <ContentCargo>
         <CargoMobile>
           <Carousel>
-            {this.renderPerson()}
+            {isMobile && this.renderPerson()}
           </Carousel>
         </CargoMobile>
         <Cargo>
-          {this.renderPerson()}
+          {!isMobile && this.renderPerson()}
         </Cargo>
       </ContentCargo>
     )

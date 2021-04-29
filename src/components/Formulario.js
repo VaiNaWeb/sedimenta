@@ -52,7 +52,7 @@ const ContentFinishSolicitation = styled.span`
 
 const TitleForm = styled.h3`
   width: 49%;
-  font-size: ${props => props.fontSize ? '1.75rem' : '1.313rem'};
+  font-size: ${props => props.fontBigger ? '1.75rem' : '1.313rem'};
   /* font-size: 1.75rem; */
   font-family: 'Spartan', Bold;
   text-align: center;
@@ -92,7 +92,7 @@ const ButtonSolicitation = styled.button`
   padding: 1.063rem 1.5rem 0.813rem;
   /* padding: 1.3rem 0 1.1rem; */
   margin-top: 2rem;
-  display: ${props => props.display ? 'flex' : 'none'};
+  display: ${props => props.isDisplay ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
@@ -691,14 +691,14 @@ class Formulation extends Component {
       <ContainerForm isBig={solicitation}
         isOpen={solicitation ? `url(${Proposta})` : `url(${Forma})`}>
         {solicitation ? <ContentFinishSolicitation>
-          <TitleForm fontSize>
+          <TitleForm fontBigger>
             Ainda em duvida???
           </TitleForm>
           <ParagraphForm>
             Deixe a <b>Sedimenta</b> cuidar da gestão financeira e contábil da sua empresa!!
           </ParagraphForm>
           <ButtonSolicitation
-            display={solicitation}
+            isDisplay={solicitation}
             onClick={this.handleClick}>
             Solicite sua proposta
           </ButtonSolicitation>

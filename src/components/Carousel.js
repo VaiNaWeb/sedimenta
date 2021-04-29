@@ -6,7 +6,7 @@ const ContentCarousel = ({ children }) => {
 	return (
 		<Carousel
 			cellSpacing={32}
-			enableKeyboardControls='true'
+			enableKeyboardControls={true}
 		// slideIndex={this.state.slideIndex}
 		// afterSlide={slideIndex => this.setState({ slideIndex })}
 		>

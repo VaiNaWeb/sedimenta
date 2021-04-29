@@ -344,8 +344,8 @@ class Slider extends Component {
               <SliderArrow selected botton xmlns="http://www.w3.org/2000/svg" width="22.262" height="36.018"
                 viewBox="0 0 22.262 36.018" ><path id="Caminho_374" data-name="Caminho 374"
                 d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-                rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="5" opacity="0.2" />
+                rotate(-90)" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round"
+                strokeWidth="5" opacity="0.2" />
               </SliderArrow>
             </figure>
             <ContentSliderBox>
@@ -354,8 +354,8 @@ class Slider extends Component {
             <figure onClick={this.handleArrowNext} >
               <SliderArrow botton isRotation xmlns="http://www.w3.org/2000/svg" width="22.262"  height="36.018" viewBox="0 0 22.262 36.018"><path id="Caminho_374" data-name="Caminho 374"
                 d="M28.958,16.232,14.617,0,0,16.232" transform="translate(2.499 32.487) 
-                rotate(-90)" fill="none" stroke="#fff" stroke-linecap="round"
-                stroke-linejoin="round" stroke-width="5" opacity="0.2" />
+                rotate(-90)" fill="none" stroke="#fff" strokeLinecap="round"
+                strokeLinejoin="round" strokeWidth="5" opacity="0.2" />
               </SliderArrow>
             </figure>
           </CarouselSlider>
@@ -367,7 +367,7 @@ class Slider extends Component {
           <ContentCarouselMobile>
             <Carousel>
               {this.list.map(i => (
-                <SessionSlider>
+                <SessionSlider key={i}>
                   <ContentSliderMeio selected>
                     <p>{i.text}</p>
                     <ContentSliderParagraph>{i.name}</ContentSliderParagraph>
