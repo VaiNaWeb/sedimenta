@@ -715,8 +715,8 @@ class Home extends Component {
 
   componentDidMount() {
     // this.getPosts();
-    // this.handleScreenSize();
-    // window.addEventListener('resize', this.handleScreenSize);
+    this.handleScreenSize();
+    window.addEventListener('resize', this.handleScreenSize);
 
     if (typeof window !== undefined) {
       window.onscroll = () => {
@@ -746,9 +746,9 @@ class Home extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.handleScreenSize);
-  // }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleScreenSize);
+  }
 
   // getPosts = async () => {
   //   try {
@@ -763,13 +763,13 @@ class Home extends Component {
   //   } catch (err) { }
   // };
 
-  // handleScreenSize = () => {
-  //   const widthViewPort =
-  //     document.documentElement.clientWidth || window.screen.width
-  //   this.setState({
-  //     width: widthViewPort,
-  //   })
-  // }
+  handleScreenSize = () => {
+    const widthViewPort =
+      document.documentElement.clientWidth || window.screen.width
+    this.setState({
+      width: widthViewPort,
+    })
+  }
 
   // handleText = () => {
   //   this.setState({
@@ -786,7 +786,7 @@ class Home extends Component {
   // renderPosts = () => {
   //   return this.state.posts.map((post) => {
   //     return (
-  //       <ContentCaixa>
+  //       <ContentCaixa key={post}>
   //         <CaixaBox id='blog'>
   //           <ImageBox src={balao} alt='figure' />
   //           <CaixaBoxHeader>
@@ -807,7 +807,7 @@ class Home extends Component {
   //   return (
   //     <Carousel>
   //       {this.state.posts.map((post) => (
-  //         <ContentCaixa>
+  //         <ContentCaixa key={post}>
   //           <CaixaBox id='blog'>
   //             <ImageBox src={balao} alt='figure' />
   //             <CaixaBoxHeader>
@@ -826,12 +826,12 @@ class Home extends Component {
   // }
 
   render() {
-    // const { posts } = this.state;
+    const { width } = this.state;
 
     return (
       <Section>
         <Container>
-          <Header isScroll={this.state.isScrollHeader} />
+          <Header isMobile={width <= 1023} isScroll={this.state.isScrollHeader} />
           <Content>
             <ContentCaixaGeral>
               <ContentTitle>
@@ -884,8 +884,8 @@ class Home extends Component {
               </ContentBox>
             </span>
           </ContentSobre>
-          < OwnerSlider />
-          <Services />
+          < OwnerSlider isMobile={width <= 648} />
+          <Services isMobile={width <= 648}/>
           <OpinionCard />
           <ContentLogo>
             <ContentLogoImages>

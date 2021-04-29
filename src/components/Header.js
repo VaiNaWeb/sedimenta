@@ -337,7 +337,7 @@ const MenuHamburguer = styled.img`
 `;
 
 const SubContainerText = styled.div`
-  width: ${props => (props.title ? '59%' : '45%')};
+  width: ${props => (props.isTitle ? '59%' : '45%')};
   height: 73.5vh;
   display: flex;
   flex-direction: column;
@@ -547,13 +547,14 @@ class Header extends Component {
 
             return (
               <Section
+                key={index}
                 mobile
                 image={item.image}
                 positionImg={positionBackground || positionBackground1 || positionBackground2}
               >
                 <Overlay>
                   <SubContainerText
-                    title={item.title}
+                    isTitle={item.title}
                     // isScroll={isScroll}
                   >
                     <Title>{item.title}</Title>
@@ -576,7 +577,7 @@ class Header extends Component {
 
   render() {
     const { menu, sliderHeader, artigos } = this.state;
-    const { isScroll } = this.props;
+    const { isScroll, isMobile } = this.props;
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
 
     return (
@@ -638,7 +639,7 @@ class Header extends Component {
                 </SubContainer>
               </HeaderScroll>
             </HeaderScrollMax>
-            {this.renderCarousselMobile()}
+            {isMobile && this.renderCarousselMobile()}
             <ContainerLogo
               desktop
             // image={artigos[sliderHeader].image}
@@ -647,7 +648,7 @@ class Header extends Component {
             >
               <Overlay>
                 <SubContainerText
-                  title={artigos[sliderHeader].isBig}
+                  isTitle={artigos[sliderHeader].isBig}
                   isScroll={isScroll}
                 >
                   <Title>{artigos[sliderHeader].title}</Title>
