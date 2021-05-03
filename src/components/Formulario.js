@@ -600,7 +600,7 @@ class Formulation extends Component {
           >
             <input type="hidden" name="form-name" value="contact" />
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowName || this.state.form.name}>Nome *</Label>
+              <Label htmlFor="name" labelShow={this.state.labelShowName || this.state.form.name}>Nome *</Label>
               <Input
                 name="name"
                 type="text"
@@ -612,7 +612,7 @@ class Formulation extends Component {
               />
             </FormContent>
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowCompany || this.state.form.company}>Empresa *</Label>
+              <Label htmlFor="name" labelShow={this.state.labelShowCompany || this.state.form.company}>Empresa *</Label>
               <Input
                 name="company"
                 type="text"
@@ -624,7 +624,7 @@ class Formulation extends Component {
               />
             </FormContent>
             <FormContent>
-              <Label for="name" labelShow={this.state.labelShowEmail || this.state.form.email}>E-mail *</Label>
+              <Label htmlFor="name" labelShow={this.state.labelShowEmail || this.state.form.email}>E-mail *</Label>
               <Input
                 name="email"
                 type="email"

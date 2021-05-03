@@ -475,6 +475,7 @@ const SliderBolinha = styled.div`
 `;
 
 class Header extends Component {
+  interval = null;
   state = {
     menu: undefined,
     sliderHeader: 0,
@@ -506,6 +507,14 @@ class Header extends Component {
     ],
   }
 
+  componentDidMount(){
+    this.handleInterval();
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
+
   handleClick = () => {
     this.setState({
       menu: !this.state.menu,
@@ -526,7 +535,7 @@ class Header extends Component {
     )
   }
 
-  handleTransition = () => {
+  handleTransition = () => {    
     const { sliderHeader } = this.state;
 
     const slide = sliderHeader === 2 ? 0 : sliderHeader + 1;
@@ -575,10 +584,46 @@ class Header extends Component {
     )
   }
 
+  renderCarousselDesktop = () => {
+    const { sliderHeader, artigos } = this.state;
+    const { isScroll } = this.props;
+    
+    return (
+      <ContainerLogo
+              desktop
+            // image={artigos[sliderHeader].image}
+            // positionImg={positionBackground || positionBackground1 || positionBackground2}
+            // id="topo"
+            >
+              <Overlay>
+                <SubContainerText
+                  isTitle={artigos[sliderHeader].isBig}
+                  isScroll={isScroll}
+                >
+                  <Title>{artigos[sliderHeader].title}</Title>
+                  <ParagraphHeader paragraph={sliderHeader === 0}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
+                  {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
+                    : null}
+                </SubContainerText>
+                <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>
+                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
+                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
+                </ContentParahraph>
+                <Slider>
+                  <SliderBolinha isSelected={sliderHeader === 0} onClick={() => this.handleSlider(0)}></SliderBolinha>
+                  <SliderBolinha isSelected={sliderHeader === 1} onClick={() => this.handleSlider(1)}></SliderBolinha>
+                  <SliderBolinha isSelected={sliderHeader === 2} onClick={() => this.handleSlider(2)}></SliderBolinha>
+                </Slider>
+              </Overlay>
+            </ContainerLogo>
+    )
+  }
+
   render() {
     const { menu, sliderHeader, artigos } = this.state;
     const { isScroll, isMobile } = this.props;
     const isMenu = menu ? closed : isScroll ? menuHamburguerPreto : menuHamburguer;
+
 
     return (
       <>
@@ -639,34 +684,7 @@ class Header extends Component {
                 </SubContainer>
               </HeaderScroll>
             </HeaderScrollMax>
-            {isMobile && this.renderCarousselMobile()}
-            <ContainerLogo
-              desktop
-            // image={artigos[sliderHeader].image}
-            // positionImg={positionBackground || positionBackground1 || positionBackground2}
-            // id="topo"
-            >
-              <Overlay>
-                <SubContainerText
-                  isTitle={artigos[sliderHeader].isBig}
-                  isScroll={isScroll}
-                >
-                  <Title>{artigos[sliderHeader].title}</Title>
-                  <ParagraphHeader paragraph={sliderHeader === 0}>{artigos[sliderHeader].paragraph}</ParagraphHeader>
-                  {sliderHeader === 0 ? <ButtonHeader><a href="#services">conheça nossos serviços!</a></ButtonHeader>
-                    : null}
-                </SubContainerText>
-                <ContentParahraph right={(sliderHeader === 1 && '-42px') || (sliderHeader === 2 && '-92px')}>
-                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].link}>{artigos[sliderHeader].name}</ParagraphHeaderImage>
-                  <ParagraphHeaderImage target="_blank" href={artigos[sliderHeader].lastNameLink}>&nbsp; {artigos[sliderHeader].lastName}</ParagraphHeaderImage>
-                </ContentParahraph>
-                <Slider>
-                  <SliderBolinha isSelected={sliderHeader === 0 ? true : false} onClick={() => this.handleSlider(0)}></SliderBolinha>
-                  <SliderBolinha isSelected={sliderHeader === 1 ? true : false} onClick={() => this.handleSlider(1)}></SliderBolinha>
-                  <SliderBolinha isSelected={sliderHeader === 2 ? true : false} onClick={() => this.handleSlider(2)}></SliderBolinha>
-                </Slider>
-              </Overlay>
-            </ContainerLogo>
+            {isMobile ? this.renderCarousselMobile() : this.renderCarousselDesktop()}
           </Content>
         </Section>
       </>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 //Images
@@ -192,70 +192,67 @@ const FooterFinish = styled.footer`
   }
 `;
 
-
-class Footer extends Component {
-  
-  render() {
-    return (
-      <>
-        <Content>
-          <ContentFooter>
-            <ContentFooterRede>
-              <ContentFooterContact>
-                <FooterLinha></FooterLinha>
-                <TitleFooter>CONTATO BRASIL</TitleFooter>
-                <ParagraphFooter><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
-                RJ</ParagraphFooter>
-                <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
-                <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-                <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
-              </ContentFooterContact>
-              <ContentFooterContact marginBottom marginBottomMobile>
-                <FooterLinha></FooterLinha>
-                <TitleFooter>CONTATO PORTUGAL</TitleFooter>
-                <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
-                <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
-                <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
-              </ContentFooterContact>
-            </ContentFooterRede>
-            <ContentRedeSocial footer>
+const Footer = (props) => {
+  return (
+    <>
+      <Content>
+        <ContentFooter>
+          <ContentFooterRede>
+            <ContentFooterContact>
               <FooterLinha></FooterLinha>
-              <TitleFooter>REDE SOCIAL</TitleFooter>
-              <span>
-                <a
-                  href='https://www.facebook.com/sedimentajpm'
-                  target='_blank'
-                  rel="noopener noreferrer"
-                >
-                  <img src={Face} alt='Facebook' />
-                </a>
-                <a
-                  href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
-                  target='_blank'
-                  rel="noopener noreferrer"
-                >
-                  <img src={Linkedin} alt='LinkedIn' />
-                </a>
-              </span>
-            </ContentRedeSocial>
-            <ContentFooterTopo isScrollTopFooter={this.props.isScrollTopFooter} href="#topo">
-              <ContentFooterTriangle />
-            </ContentFooterTopo>
-          </ContentFooter>
-        </Content>
-        <FooterFinish>
-          <p>DESENVOLVIDO POR:</p>
-          <a
-            href='https://www.vainaweb.com.br/'
-            target='_blank'
-            rel="noopener noreferrer"
-          >
-            <img src={LogoVnW} alt='logoVnw' />
-          </a>
-        </FooterFinish>
-      </>
-    );
-  }
+              <TitleFooter>CONTATO BRASIL</TitleFooter>
+              <ParagraphFooter><b>Endereço:</b> Rua da Lapa, 180 – Salas 804 e 805 – Rio de Janeiro,
+              RJ</ParagraphFooter>
+              <ParagraphFooter><b>Cep:</b> 20.021-180;</ParagraphFooter>
+              <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
+              <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
+            </ContentFooterContact>
+            <ContentFooterContact marginBottom marginBottomMobile>
+              <FooterLinha></FooterLinha>
+              <TitleFooter>CONTATO PORTUGAL</TitleFooter>
+              <ParagraphFooter><b>Endereço:</b> Rua de Moçambique, 12 1° Dir. - Almada, Portugal</ParagraphFooter>
+              <ParagraphFooter><b>Telefone:</b> +55 (21) 2232-1337</ParagraphFooter>
+              <ParagraphFooter><b>E-mail:</b> sedimenta@sedimenta.com.br</ParagraphFooter>
+            </ContentFooterContact>
+          </ContentFooterRede>
+          <ContentRedeSocial footer>
+            <FooterLinha></FooterLinha>
+            <TitleFooter>REDE SOCIAL</TitleFooter>
+            <span>
+              <a
+                href='https://www.facebook.com/sedimentajpm'
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                <img src={Face} alt='Facebook' />
+              </a>
+              <a
+                href='https://www.linkedin.com/company/sedimenta-jpm-consultoria-e-servi-os-cont-beis/about/'
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                <img src={Linkedin} alt='LinkedIn' />
+              </a>
+            </span>
+          </ContentRedeSocial>
+          <ContentFooterTopo isScrollTopFooter={props.isScrollTopFooter} href="#topo">
+            <ContentFooterTriangle />
+          </ContentFooterTopo>
+        </ContentFooter>
+      </Content>
+      <FooterFinish>
+        <p>DESENVOLVIDO POR:</p>
+        <a
+          href='https://www.vainaweb.com.br/'
+          target='_blank'
+          rel="noopener noreferrer"
+        >
+          <img src={LogoVnW} alt='logoVnw' />
+        </a>
+      </FooterFinish>
+    </>
+  );
 }
+
 
 export default Footer;

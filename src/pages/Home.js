@@ -1,5 +1,5 @@
 // Libs
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 // import axios from 'axios';
 
@@ -705,52 +705,75 @@ const LogoSeparationMobile = styled.div`
 // 	}
 // `;
 
-class Home extends Component {
-  state = {
-    posts: [],
-    isOpenReading: false,
-    isScrollHeader: false,
-    isScrollTopFooter: false,
+const Home = (props) => {
+  //const [posts, setPosts] = useState([]);
+  const [width, setWidth] = useState(null);
+  const [isOpenReading, setIsOpenReading] = useState(false);
+  const [isScrollHeader, setIsScrollHeader] = useState(false);
+  const isScrollHeaderRef = useRef(isScrollHeader);
+  const [isScrollTopFooter, setIsScrollTopFooter] = useState(false);
+  const isScrollTopFooterRef = useRef(isScrollTopFooter);
+  let methodId = null;
+
+  const handleScreenSize = () => {
+    const widthViewPort =
+      document.documentElement.clientWidth || window.screen.width
+      setWidth(widthViewPort);
   }
 
-  componentDidMount() {
-    // this.getPosts();
-    this.handleScreenSize();
-    window.addEventListener('resize', this.handleScreenSize);
+  const debounce = (method, delay) => {
+    clearTimeout(methodId);
+    methodId = setTimeout(function(){
+        method();
+    }, delay);
+}
 
-    if (typeof window !== undefined) {
-      window.onscroll = () => {
-        if (window.scrollY === 0) {
+  const handleScroll = (ev) => {
+    if(ev.path[1].scrollY || ev.path[1].scrollY === 0){
+      if(ev.path[1].scrollY === 0){
+        if(isScrollHeaderRef.current){
+          setIsScrollHeader(false);
+          isScrollHeaderRef.current = false;
+        }
+      }
 
-          this.setState({
-            isScrollHeader: false,
-          })
+      if(ev.path[1].scrollY > 100){
+        if(!isScrollHeaderRef.current){
+          setIsScrollHeader(true);
+          isScrollHeaderRef.current = true;
         }
-        if (window.scrollY > 100) {
+      }
 
-          this.setState({
-            isScrollHeader: true,
-          })
+      if (ev.path[1].scrollY <= 350) {
+        if(!isScrollTopFooter.current){
+          setIsScrollTopFooter(true);
+          isScrollTopFooterRef.current = true;
         }
-        if (window.scrollY <= 350) {
-          this.setState({
-            isScrollTopFooter: true,
-          })
+      } else {
+        if(isScrollTopFooterRef.current){
+          setIsScrollTopFooter(false);
+          isScrollTopFooterRef.current = false;
         }
-        if (window.scrollY > 350) {
-          this.setState({
-            isScrollTopFooter: false,
-          })
-        }
-      };
+      }
+    
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleScreenSize);
-  }
 
-  // getPosts = async () => {
+  useEffect(() => {
+    // this.getPosts();
+    handleScreenSize();
+    window.addEventListener('resize', handleScreenSize);
+    window.addEventListener('scroll', ev => debounce(() => handleScroll(ev), 100));
+
+    return () => {
+      window.removeEventListener('resize');
+      window.addEventListener('scroll');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+   // getPosts = async () => {
   //   try {
   //     const response = await axios.get(
   //       // "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@estreia"
@@ -763,24 +786,14 @@ class Home extends Component {
   //   } catch (err) { }
   // };
 
-  handleScreenSize = () => {
-    const widthViewPort =
-      document.documentElement.clientWidth || window.screen.width
-    this.setState({
-      width: widthViewPort,
-    })
-  }
-
   // handleText = () => {
   //   this.setState({
   //     text: this.state.text,
   //   })
   // }
 
-  handleClick = () => {
-    this.setState({
-      isOpenReading: !this.state.isOpenReading,
-    })
+  const handleClick = () => {
+    setIsOpenReading(!isOpenReading);
   }
 
   // renderPosts = () => {
@@ -825,13 +838,10 @@ class Home extends Component {
   //   )
   // }
 
-  render() {
-    const { width } = this.state;
-
     return (
       <Section>
         <Container>
-          <Header isMobile={width <= 1023} isScroll={this.state.isScrollHeader} />
+          <Header isMobile={width <= 1023} isScroll={isScrollHeader} />
           <Content>
             <ContentCaixaGeral>
               <ContentTitle>
@@ -864,9 +874,9 @@ class Home extends Component {
                   Física e Finanças que permitem que você se concentre no
                   crescimento de seus negócios - enquanto cuidamos de todo o trabalho
                   de Contabilidade. </ContainerParagraph>
-                  <ContainerParagraphRead isOpen={this.state.isOpenReading} onClick={this.handleClick}>Saiba mais <img src={setinha} alt="arrow" /> </ContainerParagraphRead>
+                  <ContainerParagraphRead isOpen={isOpenReading} onClick={handleClick}>Saiba mais <img src={setinha} alt="arrow" /> </ContainerParagraphRead>
                 </ContentSobreText>
-                <ContentSobreText isOpen={this.state.isOpenReading}>
+                <ContentSobreText isOpen={isOpenReading}>
                   <ContainerParagraph>​Com mais de 10 anos de experiência no mercado aliada
                   ao conhecimento de nossos sócios e colaboradores trabalhando em algumas
                   das maiores empresas líderes do país e do mundo, atendemos nossos clientes
@@ -948,11 +958,10 @@ class Home extends Component {
           </ContainerCaixa> */}
 
           <Formulation />
-          <Footer isScrollTopFooter={this.state.isScrollTopFooter} />
+          <Footer isScrollTopFooter={isScrollTopFooter} />
         </Container>
       </Section>
     )
-  }
 }
 
 export default Home;
