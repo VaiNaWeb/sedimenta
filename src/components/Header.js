@@ -488,7 +488,7 @@ class Header extends Component {
       },
       {
         image: Domestica,
-        title: 'Administração de domésticas',
+        title: 'Administração de domésticos',
         paragraph: 'Valorize o trabalho de quem cuida do seu lar.',
         name: 'Andrea Piacquadio no',
         lastName: 'Pexels',
